@@ -1,0 +1,132 @@
+{% extends "employee/common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+
+<!-- Banner -->
+<section class="section banner-inner">
+    <div class="hero-container">
+        <h1>Assigned Works</h1>
+        <p>All services assigned to you</p>
+    </div>
+</section>
+
+<!-- Works List -->
+<section class="section">
+    <div class="hero-container">
+
+        <div class="row row-cols-xl-2 row-cols-1 grid-spacer-3">
+
+            {% for w in works %}
+            <div class="col">
+                <div class="card card-appointment h-100">
+
+                    <!-- Car Image -->
+                    <img src="{{ w.car_image.url }}"
+                         style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+
+                    <h3 class="mt-2">{{ w.service.service_name }}</h3>
+
+                    <p><strong>Operation:</strong> {{ w.service.operation }}</p>
+                    <p><strong>Customer:</strong> {{ w.user.full_name }}</p>
+
+                    <p><strong>Car:</strong> {{ w.car_name }}</p>
+                    <p><strong>Car Number:</strong> {{ w.car_number }}</p>
+
+                    <p>{{ w.problem_description }}</p>
+
+                    <!-- Status -->
+                    <p>
+                        <strong>Status:</strong>
+                        <span class="
+                            {% if w.status == 'Paid' %}text-info{% endif %}
+                            {% if w.status == 'In Progress' %}text-primary{% endif %}
+                            {% if w.status == 'Completed' %}text-success{% endif %}
+                        ">
+                            {{ w.status }}
+                        </span>
+                    </p>
+
+                    <!-- Estimated Completion Date -->
+                    <p>
+                        <strong>Estimated Completion Date:</strong>
+                        {% if w.estimate_date %}
+                            {{ w.estimate_date }}
+                        {% else %}
+                            Not Set
+                        {% endif %}
+                    </p>
+
+                    <!-- Progress Bar -->
+                    <div class="progress mb-3" style="height:20px;">
+                        <div class="progress-bar
+                            {% if w.progress == 25 %}bg-warning{% endif %}
+                            {% if w.progress == 50 %}bg-info{% endif %}
+                            {% if w.progress == 75 %}bg-primary{% endif %}
+                            {% if w.progress == 100 %}bg-success{% endif %}
+                        "
+                        style="width: {{ w.progress|default:0 }}%;">
+                            {{ w.progress|default:0 }}%
+                        </div>
+                    </div>
+
+                    <!-- Update Progress -->
+                    {% if w.status != 'Completed' %}
+                    <form method="POST" action="{% url 'update_work_progress' w.id %}">
+                        {% csrf_token %}
+
+                        <!-- Calendar Picker -->
+                        <input type="date"
+                               name="estimate_date"
+                               value="{{ w.estimate_date|date:'Y-m-d' }}"
+                               min="{{ today }}"
+                               onchange="enableProgress{{ w.id }}()"
+                               required>
+
+                        <!-- Progress Dropdown (Disabled Initially) -->
+                        <select name="progress"
+                                id="progress{{ w.id }}"
+                                {% if not w.estimate_date %}disabled{% endif %}
+                                required>
+
+                            <option value="">Select Progress</option>
+                            <option value="0" {% if w.progress == 0 %}selected{% endif %}>0%</option>
+                            <option value="25" {% if w.progress == 25 %}selected{% endif %}>25%</option>
+                            <option value="50" {% if w.progress == 50 %}selected{% endif %}>50%</option>
+                            <option value="75" {% if w.progress == 75 %}selected{% endif %}>75%</option>
+                            <option value="100" {% if w.progress == 100 %}selected{% endif %}>100% (Completed)</option>
+                        </select>
+
+                        <button type="submit" class="btn btn-accent mt-2">
+                            Update Progress
+                        </button>
+                    </form>
+
+                    <!-- JS: Enable Progress After Date -->
+                    <script>
+                        function enableProgress{{ w.id }}() {
+                            document.getElementById("progress{{ w.id }}").disabled = false;
+                        }
+                    </script>
+                    {% endif %}
+
+                    <p class="mt-2">
+                        <small>Booked on: {{ w.booking_date }}</small>
+                    </p>
+
+                </div>
+            </div>
+            {% empty %}
+            <div class="col">
+                <p>No works assigned yet</p>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+
+</main>
+{% endblock %}

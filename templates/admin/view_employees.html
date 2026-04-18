@@ -1,0 +1,86 @@
+{% extends "admin/common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+
+<section class="section banner-inner">
+    <div class="hero-container">
+        <h1>Employees</h1>
+        <p>View all registered employees</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="hero-container">
+        <div class="row row-cols-xl-2 row-cols-1 grid-spacer-3">
+
+            <!-- LEFT INFO -->
+            <div class="col">
+                <div class="d-flex flex-column gspace-2">
+                    <h2>Employee Management</h2>
+                    <p>Approve or reject employee registrations</p>
+                </div>
+            </div>
+
+            <!-- RIGHT TABLE -->
+            <div class="col">
+                <div class="card card-appointment">
+                    <h3>Employee List</h3>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>Image</th>
+                                <th>Operation</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+
+                            {% for e in employees %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ e.full_name }}</td>
+                                <td>{{ e.email }}</td>
+                                <td>{{ e.mobile }}</td>
+                                <td>
+                                    <img src="{{ e.profile_image.url }}" width="50">
+                                </td>
+                                <td>{{ e.operation }}</td>
+
+                                {% if not e.login.is_active %}
+                                    <td class="text-warning">Pending</td>
+                                    <td>
+                                        <a href="{% url 'approve_employee' e.login.id %}" class="btn btn-success btn-sm">
+                                            Approve
+                                        </a>
+                                        <a href="{% url 'reject_employee' e.login.id %}" class="btn btn-danger btn-sm">
+                                            Reject
+                                        </a>
+                                    </td>
+                                {% else %}
+                                    <td class="text-success">Approved</td>
+                                    <td>—</td>
+                                {% endif %}
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="7">No employees found</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+{% endblock %}

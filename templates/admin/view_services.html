@@ -1,0 +1,61 @@
+{% extends "admin/common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+
+<section class="section banner-inner">
+    <div class="hero-container">
+        <h1>Services</h1>
+        <p>Manage car modification services</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="hero-container">
+
+        <div class="card card-appointment">
+            <h3>Service List</h3>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Operations</th>
+                        <th>Actions</th>
+                    </tr>
+
+                    {% for s in services %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            <img src="{{ s.image.url }}" width="80" height="60" style="object-fit:cover;">
+                        </td>
+                        <td>{{ s.service_name }}</td>
+                        <td>₹ {{ s.price }}</td>
+                        <td>{{ s.operation }}</td>
+                        <td>
+                            <a href="{% url 'edit_services' s.id %}" class="btn btn-sm btn-accent">Edit</a>
+                            <a href="{% url 'delete_services' s.id %}"
+                               onclick="return confirm('Are you sure?')"
+                               class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5">No services found</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+</main>
+{% endblock %}

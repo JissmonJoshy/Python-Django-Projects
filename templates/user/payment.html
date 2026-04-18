@@ -1,0 +1,47 @@
+{% extends "user/common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+
+<section class="section banner-inner">
+    <div class="hero-container">
+        <h1>Payment</h1>
+        <p>{{ booking.service.service_name }}</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="hero-container">
+
+        <div class="card card-appointment">
+
+            <h3>Amount: ₹{{ booking.service.price }}</h3>
+
+            <form method="POST" class="form">
+                {% csrf_token %}
+
+                <input type="text" name="card_name" placeholder="Card Holder Name" required>
+
+                <input type="text" name="card_number"
+                       placeholder="Card Number"
+                       maxlength="16" required>
+
+                <input type="text" name="cvv"
+                       placeholder="CVV"
+                       maxlength="3" required>
+
+                <input type="month" name="expiry" required>
+
+                <button type="submit" class="btn btn-accent">
+                    Pay Now
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+</main>
+{% endblock %}

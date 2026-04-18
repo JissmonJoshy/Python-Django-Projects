@@ -1,0 +1,87 @@
+{% extends "common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+
+    <!-- Banner Section -->
+    <section class="section banner-inner">
+        <div class="hero-container">
+            <div class="d-flex flex-column gspace-2">
+                <h1>User Registration</h1>
+                <p>Create your account to continue</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="hero-container">
+            <div class="row row-cols-xl-2 row-cols-1 grid-spacer-3">
+
+                <!-- LEFT CONTENT (UNCHANGED) -->
+                <div class="col">
+                    <div class="d-flex flex-column gspace-2">
+                        <div class="sub-heading-container">
+                            <h6>How it Works</h6>
+                        </div>
+                        <h2>Create your account in a few steps</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+                        <div class="booking-step">
+                            <span class="booking-text">01. Fill Registration Form</span>
+                        </div>
+                        <div class="booking-step">
+                            <span class="booking-text">02. Validate Details</span>
+                        </div>
+                        <div class="booking-step">
+                            <span class="booking-text">03. Upload Profile</span>
+                        </div>
+                        <div class="booking-step">
+                            <span class="booking-text">04. Get Started</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT FORM -->
+                <div class="col">
+                    <div class="card card-appointment">
+
+                        <h3>User Register</h3>
+                        <p>Please fill all required fields</p>
+
+                        
+
+                        <form method="POST" enctype="multipart/form-data" class="form">
+                            {% csrf_token %}
+
+                            <input type="text" name="full_name" placeholder="Full Name" required>
+
+                            <input type="text" name="username" placeholder="Username" required>
+
+                            <input type="password" name="password" placeholder="Password" required>
+
+                            <div class="row row-cols-md-2 row-cols-1 grid-spacer-1">
+                                <div class="col">
+                                    <input type="email" name="email" placeholder="Email (gmail only)" required>
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="phone" placeholder="Mobile Number" required>
+                                </div>
+                            </div>
+
+                            <textarea name="address" rows="3" placeholder="Address" required></textarea>
+
+                            <input type="file" name="profile_image" required>
+
+                            <button type="submit" class="btn btn-accent">Register</button>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "employee/common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+<section class="section banner-inner">
+    <div class="hero-container">
+        <h1>Book Part</h1>
+        <p>{{ part.part_name }}</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="hero-container">
+        <div class="card card-appointment" style="max-width:400px; margin:auto; padding:20px;">
+
+            <img src="{{ part.image.url }}"
+                 style="width:100%; height:150px; object-fit:cover; border-radius:10px;">
+
+            <h3 class="mt-2">{{ part.part_name }}</h3>
+            <p>{{ part.description }}</p>
+            <p><strong>Price:</strong> ₹{{ part.price }}</p>
+            <p><strong>Stock:</strong> {{ part.stock }}</p>
+
+            <form method="POST">
+                {% csrf_token %}
+                <input type="number" name="quantity" min="1" max="{{ part.stock }}" required>
+                <button type="submit" class="btn btn-accent mt-2">Book Part</button>
+            </form>
+
+        </div>
+    </div>
+</section>
+</main>
+{% endblock %}
