@@ -1,0 +1,82 @@
+{% extends "admin/common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+
+<section class="section banner-inner">
+    <div class="hero-container">
+        <h1>Edit Service</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="hero-container">
+
+        <div class="card card-appointment">
+            <h3>Update Service</h3>
+
+            <form method="POST" enctype="multipart/form-data" class="form">
+                {% csrf_token %}
+
+                <input type="text" name="service_name"
+                       value="{{ service.service_name }}" required>
+
+                <textarea name="description" rows="4" required>
+{{ service.description }}</textarea>
+
+                <input type="number" step="0.01"
+                       name="price"
+                       value="{{ service.price }}" required>
+
+                <img src="{{ service.image.url }}" width="120" class="mb-2">
+
+                <input type="file" name="image">
+
+                <select name="operation" required>
+                    <option value="">Select Workshop Operation</option>
+
+                    <option value="Engine Modification"
+                        {% if service.operation == "Engine Modification" %}selected{% endif %}>
+                        Engine Modification
+                    </option>
+
+                    <option value="Paint & Wrap"
+                        {% if service.operation == "Paint & Wrap" %}selected{% endif %}>
+                        Paint & Wrap
+                    </option>
+
+                    <option value="Interior Customization"
+                        {% if service.operation == "Interior Customization" %}selected{% endif %}>
+                        Interior Customization
+                    </option>
+
+                    <option value="Audio & Infotainment"
+                        {% if service.operation == "Audio & Infotainment" %}selected{% endif %}>
+                        Audio & Infotainment
+                    </option>
+
+                    <option value="Lighting & Accessories"
+                        {% if service.operation == "Lighting & Accessories" %}selected{% endif %}>
+                        Lighting & Accessories
+                    </option>
+
+                    <option value="Suspension & Wheels"
+                        {% if service.operation == "Suspension & Wheels" %}selected{% endif %}>
+                        Suspension & Wheels
+                    </option>
+                </select>
+
+
+                <button type="submit" class="btn btn-accent">
+                    Update Service
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+</main>
+{% endblock %}

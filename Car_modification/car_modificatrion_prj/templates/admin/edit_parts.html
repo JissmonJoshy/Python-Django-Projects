@@ -1,0 +1,61 @@
+{% extends "admin/common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+
+<section class="section banner-inner">
+    <div class="hero-container">
+        <h1>Edit Part</h1>
+        <p>Admin panel</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="hero-container">
+
+        <div class="card card-appointment">
+            <h3>Update Part</h3>
+
+            <form method="POST" enctype="multipart/form-data" class="form">
+                {% csrf_token %}
+
+                <input type="text" name="part_name"
+                       value="{{ part.part_name }}"
+                       placeholder="Part Name" required>
+
+                <textarea name="description" rows="4"
+                          placeholder="Description" required>{{ part.description }}</textarea>
+
+                <input type="number" step="0.01" name="price"
+                       value="{{ part.price }}"
+                       placeholder="Price" required>
+
+                <input type="number" name="stock"
+                       value="{{ part.stock }}"
+                       placeholder="Stock Quantity" required>
+
+                <select name="operation" required>
+                    <option value="">Select Workshop Operation</option>
+                    <option value="Engine Modification" {% if part.operation == "Engine Modification" %}selected{% endif %}>Engine Modification</option>
+                    <option value="Paint & Wrap" {% if part.operation == "Paint & Wrap" %}selected{% endif %}>Paint & Wrap</option>
+                    <option value="Interior Customization" {% if part.operation == "Interior Customization" %}selected{% endif %}>Interior Customization</option>
+                    <option value="Audio & Infotainment" {% if part.operation == "Audio & Infotainment" %}selected{% endif %}>Audio & Infotainment</option>
+                    <option value="Lighting & Accessories" {% if part.operation == "Lighting & Accessories" %}selected{% endif %}>Lighting & Accessories</option>
+                    <option value="Suspension & Wheels" {% if part.operation == "Suspension & Wheels" %}selected{% endif %}>Suspension & Wheels</option>
+                </select>
+
+                <input type="file" name="image">
+
+                <button type="submit" class="btn btn-accent">
+                    Update Part
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+</main>
+{% endblock %}

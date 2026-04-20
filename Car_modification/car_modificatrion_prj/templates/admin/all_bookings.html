@@ -1,0 +1,98 @@
+{% extends "admin/common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+
+<section class="section banner-inner">
+    <div class="hero-container">
+        <h1>All Bookings</h1>
+        <p>Approve or reject service bookings</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="hero-container">
+
+        <div class="card card-appointment">
+
+            <h3>Booking List</h3>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>User</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Service</th>
+                        <th>Operation</th>
+                        <th>Car</th>
+                        <th>Problem</th>
+                        <th>Car Image</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                    {% for b in bookings %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ b.user.full_name }}</td>
+                        <td>{{ b.user.email }}</td>
+                        <td>{{ b.user.mobile }}</td>
+                        <td>{{ b.service.service_name }}</td>
+                        <td>{{ b.service.operation }}</td>
+                        <td>{{ b.problem_description }}</td>
+                        <td>{{ b.car_name }}<br>{{ b.car_number }}</td>
+                        
+                        <td>
+                            <img src="{{ b.car_image.url }}" width="80" height="60" style="object-fit:cover;">
+                        </td>
+
+                        <td>
+                            <span class="
+                                {% if b.status == 'Pending' %}text-warning{% endif %}
+                                {% if b.status == 'Approved' %}text-success{% endif %}
+                                {% if b.status == 'Rejected' %}text-danger{% endif %}
+                            ">
+                                {{ b.status }}
+                            </span>
+                        </td>
+
+                        <td>
+                            {% if b.status == 'Pending' %}
+                                <a href="{% url 'update_booking_status' b.id 'Approved' %}"
+                                class="btn btn-success btn-sm">Approve</a>
+
+                                <a href="{% url 'update_booking_status' b.id 'Rejected' %}"
+                                class="btn btn-danger btn-sm">Reject</a>
+
+                            {% elif b.status == 'Paid' and not b.employee %}
+                                <a href="{% url 'assign_booking' b.id %}"
+                                class="btn btn-primary btn-sm">
+                                Assign
+                                </a>
+
+                            {% elif b.employee %}
+                                Assigned to {{ b.employee.full_name }}
+                            {% else %}
+                                ---
+                            {% endif %}
+                        </td>
+
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7">No bookings found</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+</main>
+{% endblock %}

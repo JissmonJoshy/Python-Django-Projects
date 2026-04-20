@@ -1,0 +1,63 @@
+{% extends "user/common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+
+<!-- Banner -->
+<section class="section banner-inner">
+    <div class="hero-container">
+        <h1>Car Modification Parts</h1>
+        <p>Available workshop parts</p>
+    </div>
+</section>
+
+<!-- Parts List -->
+<section class="section">
+    <div class="hero-container">
+
+        <div class="row row-cols-xl-3 row-cols-md-2 row-cols-1 grid-spacer-3">
+
+            {% for p in parts %}
+            <div class="col">
+                <div class="card card-appointment h-100">
+
+                    <img src="{{ p.image.url }}"
+                         style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+
+                    <h3 class="mt-2">{{ p.part_name }}</h3>
+
+                    <p><strong>Operation:</strong> {{ p.operation }}</p>
+
+                    <p>{{ p.description|truncatechars:100 }}</p>
+
+                    <p>
+                        <strong>Price:</strong> ₹{{ p.price }} <br>
+                        <strong>Stock:</strong>
+                        {% if p.stock > 0 %}
+                            <span class="text-success">Available</span>
+                        {% else %}
+                            <span class="text-danger">Out of Stock</span>
+                        {% endif %}
+                    </p>
+                    {% if p.stock > 0 %}
+                        <a href="{% url 'book_part' p.id %}" class="btn btn-accent mt-2">
+                            Book Part
+                        </a>
+                    {% endif %}
+
+                </div>
+            </div>
+            {% empty %}
+            <div class="col">
+                <p>No parts available</p>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+
+</main>
+{% endblock %}

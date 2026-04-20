@@ -1,0 +1,41 @@
+{% extends "employee/common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+
+<section class="section banner-inner">
+    <div class="hero-container">
+        <h1>Employee Profile</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="hero-container">
+        <div class="row row-cols-xl-2 row-cols-1 grid-spacer-3">
+
+            <!-- LEFT INFO -->
+            <div class="col">
+                <div class="d-flex flex-column gspace-2">
+                    <h2>{{ employee.full_name }}</h2>
+                    <p>Email: {{ employee.email }}</p>
+                    <p>Mobile: {{ employee.mobile }}</p>
+                    <p>Address: {{ employee.address }}</p>
+                    <p>Operation: {{ employee.operation }}</p>
+                </div>
+            </div>
+
+            <!-- RIGHT CARD -->
+            <div class="col">
+                <div class="card card-appointment">
+                     <img src="{{ employee.profile_image.url }}" class="profile-img">
+                    <a href="{% url 'employee_profile_edit' %}" class="btn btn-accent mt-2">Edit Profile</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+{% endblock %}

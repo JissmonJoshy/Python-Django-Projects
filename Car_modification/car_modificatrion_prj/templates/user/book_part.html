@@ -1,0 +1,50 @@
+{% extends "user/common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+
+<section class="section banner-inner">
+    <div class="hero-container">
+        <h1>Book Part</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="hero-container">
+
+        <div class="row row-cols-xl-2 row-cols-1 grid-spacer-3">
+
+            <div class="col">
+                <img src="{{ part.image.url }}"
+                     style="width:100%; height:300px; object-fit:cover; border-radius:10px;">
+            </div>
+
+            <div class="col">
+                <div class="card card-appointment">
+
+                    <h3>{{ part.part_name }}</h3>
+                    <p>{{ part.description }}</p>
+                    <p><strong>Price:</strong> ₹{{ part.price }}</p>
+                    <p><strong>Available Stock:</strong> {{ part.stock }}</p>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="number" name="quantity"
+                               placeholder="Enter Quantity" min="1" required>
+
+                        <button type="submit" class="btn btn-accent">
+                            Confirm Booking
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+</main>
+{% endblock %}

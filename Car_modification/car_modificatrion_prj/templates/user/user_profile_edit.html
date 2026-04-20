@@ -1,0 +1,47 @@
+{% extends "user/common.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+
+<section class="section banner-inner">
+    <div class="hero-container">
+        <h1>Edit Profile</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="hero-container">
+        <div class="row row-cols-xl-2 row-cols-1 grid-spacer-3">
+
+            <!-- LEFT INFO -->
+            <div class="col">
+                <div class="d-flex flex-column gspace-2">
+                    <h2>Update Your Info</h2>
+                </div>
+            </div>
+
+            <!-- RIGHT FORM -->
+            <div class="col">
+                <div class="card card-appointment">
+
+                    <form method="POST" enctype="multipart/form-data" class="form">
+                        {% csrf_token %}
+
+                        <input type="text" name="full_name" value="{{ user.full_name }}" placeholder="Full Name" required>
+                        <input type="email" name="email" value="{{ user.email }}" placeholder="Email" required>
+                        <input type="text" name="mobile" value="{{ user.mobile }}" placeholder="Mobile Number" required>
+                        <textarea name="address" rows="3" placeholder="Address" required>{{ user.address }}</textarea>
+                        <input type="file" name="profile_image">
+                        <button type="submit" class="btn btn-accent">Update</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+{% endblock %}
