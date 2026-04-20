@@ -1,0 +1,78 @@
+{% extends 'common/admincommon.html' %}
+
+{% load static %} 
+{% block content %}
+{% for m in messages %}
+<script>
+alert('{{m}}')
+</script>
+{% endfor %}
+<br>
+<center>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px; border-radius: 10px;">
+        <div class="card-body">
+            <h2 class="text-center mb-4 text-primary">Add Other Authority</h2>
+            <hr>
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="authority" class="form-label fw-bold">Select Authority</label>
+                    <select id="authority" name="authority" class="form-select">
+                        <option value="rto">RTO</option>
+                        <option value="election">Election Commissioner</option>
+                        <option value="rpo">RPO</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <input type="text" placeholder="Officer in Charge" name="name" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <input type="email" placeholder="Email" name="email" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <input type="tel" minlength="10" maxlength="10" pattern="[789][0-9]{9}" placeholder="Phone Number" name="phone" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="district" class="form-label fw-bold">Select District</label>
+                    <select id="district" name="district" class="form-select">
+                        <option value="Alappuzha">Alappuzha</option>
+                        <option value="Ernakulam">Ernakulam</option>
+                        <option value="Idukki">Idukki</option>
+                        <option value="Kannur">Kannur</option>
+                        <option value="Kasaragod">Kasaragod</option>
+                        <option value="Kollam">Kollam</option>
+                        <option value="Kottayam">Kottayam</option>
+                        <option value="Kozhikode">Kozhikode</option>
+                        <option value="Malappuram">Malappuram</option>
+                        <option value="Palakkad">Palakkad</option>
+                        <option value="Pathanamthitta">Pathanamthitta</option>
+                        <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                        <option value="Thrissur">Thrissur</option>
+                        <option value="Wayanad">Wayanad</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <input type="password" name="password" placeholder="Password" 
+                        class="form-control" required
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                        title="Password must contain at least one number, one uppercase, one lowercase letter, and at least 8 characters">
+                </div>
+                
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary w-100" style="border-radius: 25px; font-size: 18px;">Register Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</center>
+
+{% endblock %}
+<br>

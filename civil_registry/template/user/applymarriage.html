@@ -1,0 +1,291 @@
+{% extends 'common/usercommon.html' %}
+
+{% load static %} 
+{% block content %}
+{% for m in messages %}
+<script>
+alert('{{m}}')
+</script>
+    {% endfor %}
+<div class="container mt-4">
+    <h2 class="text-center">Application for Marriage Certificate</h2>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <form method="post" enctype="multipart/form-data" onsubmit="return validateForm();" class="border p-4 shadow rounded bg-light">
+                {% csrf_token %}
+                
+                <h4>Bride's Details</h4>
+                <div class="mb-3">
+                    <label for="bridename" class="form-label">Bride's Name:</label>
+                    <input type="text" pattern="[A-Za-z]+" class="form-control" id="bridename" placeholder="Bride's name" name="bridename" required>
+                </div>
+                <div class="mb-3">
+                    <label for="bridefather" class="form-label">Bride's Father's Name:</label>
+                    <input type="text" pattern="[A-Za-z]+" class="form-control" id="bridefather" placeholder="Bride's father's name" name="bridefather" required>
+                </div>
+                <div class="mb-3">
+                    <label for="bridemother" class="form-label">Bride's Mother's Name:</label>
+                    <input type="text" pattern="[A-Za-z]+" class="form-control" id="bridemother" placeholder="Bride's mother's name" name="bridemother" required>
+                </div>
+                <div class="mb-3">
+                    <label for="bridedob" class="form-label">Bride's Date of Birth:</label>
+                    <input type="date" class="form-control" id="bridedob" name="bridedob" required>
+                </div>
+                <div class="mb-3">
+                    <label for="brideaddress" class="form-label">Address of Bride:</label>
+                    <textarea class="form-control" id="brideaddress" name="brideaddress" required></textarea>
+                </div>
+                
+                <h4>Groom's Details</h4>
+                <div class="mb-3">
+                    <label for="groomname" class="form-label">Groom's Name:</label>
+                    <input type="text" pattern="[A-Za-z]+" class="form-control" id="groomname" placeholder="Groom's name" name="groomname" required>
+                </div>
+                <div class="mb-3">
+                    <label for="groomfather" class="form-label">Groom's Father's Name:</label>
+                    <input type="text" pattern="[A-Za-z]+" class="form-control" id="groomfather" placeholder="Groom's father's name" name="groomfather" required>
+                </div>
+                <div class="mb-3">
+                    <label for="groommother" class="form-label">Groom's Mother's Name:</label>
+                    <input type="text" pattern="[A-Za-z]+" class="form-control" id="groommother" placeholder="Groom's mother's name" name="groommother" required>
+                </div>
+                <div class="mb-3">
+                    <label for="groomdob" class="form-label">Groom's Date of Birth:</label>
+                    <input type="date" class="form-control" id="groomdob" name="groomdob" required>
+                </div>
+                <div class="mb-3">
+                    <label for="groomaddress" class="form-label">Groom's Address:</label>
+                    <textarea class="form-control" id="groomaddress" name="groomaddress" required></textarea>
+                </div>
+                
+                <h4>Marriage Details</h4>
+                <div class="mb-3">
+                    <label for="marriagedate" class="form-label">Date of Marriage:</label>
+                    <input type="date" class="form-control" id="marriagedate" name="marriagedate" required>
+                </div>
+                <div class="mb-3">
+                    <label for="district" class="form-label">District:</label>
+                    <select id="district" name="district" class="form-control">
+                        <option value="Alappuzha">Alappuzha</option>
+                        <option value="Ernakulam">Ernakulam</option>
+                        <option value="Idukki">Idukki</option>
+                        <option value="Kannur">Kannur</option>
+                        <option value="Kasaragod">Kasaragod</option>
+                        <option value="Kollam">Kollam</option>
+                        <option value="Kottayam">Kottayam</option>
+                        <option value="Kozhikode">Kozhikode</option>
+                        <option value="Malappuram">Malappuram</option>
+                        <option value="Palakkad">Palakkad</option>
+                        <option value="Pathanamthitta">Pathanamthitta</option>
+                        <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                        <option value="Thrissur">Thrissur</option>
+                        <option value="Wayanad">Wayanad</option>
+                    </select>
+                </div>
+                <div>
+                    <select class="form-control" name="taluk" id="taluk">
+                        <!-- Taluk options will be dynamically populated by JavaScript -->
+                    </select>
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Residential address of the couple:</label>
+                    <textarea type="text" class="form-control" id="address" placeholder="Residential address of the couple" name="address" required></textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="marriageplace" class="form-label">Place of Marriage:</label>
+                    <input type="text" class="form-control" id="marriageplace" name="marriageplace" required>
+                </div>
+                <div class="form-group">
+                    <label for="marriagetype">Type of marriage:</label>
+                    <select class="form-control" id="marriagetype" name="marriagetype" required>
+                        <option value="Civil">Civil</option>
+                        <option value="Religious">Religious</option>
+                        <option value="Court">Court</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="relation">Relation:</label>
+                    <select name="relation" class="form-control" required>
+                        <option value="">Select Relation</option>
+                        <option value="Bride's mother">Bride's mother</option>
+                        <option value="Bride's father">Bride's father</option>
+                        <option value="Groom's mother">Groom's mother</option>
+                        <option value="Groom's father">Groom's father</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                
+                <div class="mb-3">
+                    <label for="idproofbride" class="form-label">ID Proof of Bride:</label>
+                    <input type="file" class="form-control" name="idproofbride" required>
+                </div>
+                <div class="mb-3">
+                    <label for="idproofgroom" class="form-label">ID Proof of Groom:</label>
+                    <input type="file" class="form-control" name="idproofgroom" required>
+                </div>
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" name="declaration" required>
+                    <label class="form-check-label">I declare that the information provided is true and accurate.</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Register Now</button>
+            </form>
+        </div>
+    </div>
+</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var eventDateInput = document.getElementById('date'); // Corrected ID
+            var today = new Date().toISOString().split('T')[0];
+            eventDateInput.setAttribute('max', today);
+      
+            var form = document.querySelector('.contact-form');
+            form.addEventListener('submit', function(event) {
+                var selectedDate = new Date(eventDateInput.value);
+                var currentDate = new Date();
+      
+                // Set current date to start of day
+                currentDate.setHours(0, 0, 0, 0);
+      
+                if (selectedDate < currentDate) {
+                    alert("Date must be greater than today's date.");
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+        });
+      </script>
+<script>
+    function validateForm() {
+        var brideDobInput = document.getElementById('bridedob');
+        var groomDobInput = document.getElementById('groomdob');
+        
+        var brideDob = new Date(brideDobInput.value);
+        var groomDob = new Date(groomDobInput.value);
+        var currentDate = new Date();
+        
+        // Check bride's age
+        var brideAgeDiff = currentDate.getFullYear() - brideDob.getFullYear();
+        var isBrideOver18 = (brideAgeDiff > 18) || (brideAgeDiff === 18 && currentDate.getMonth() > brideDob.getMonth()) || (brideAgeDiff === 18 && currentDate.getMonth() === brideDob.getMonth() && currentDate.getDate() >= brideDob.getDate());
+        
+        // Check groom's age
+        var groomAgeDiff = currentDate.getFullYear() - groomDob.getFullYear();
+        var isGroomOver18 = (groomAgeDiff > 18) || (groomAgeDiff === 18 && currentDate.getMonth() > groomDob.getMonth()) || (groomAgeDiff === 18 && currentDate.getMonth() === groomDob.getMonth() && currentDate.getDate() >= groomDob.getDate());
+
+        if (!isBrideOver18) {
+            alert("Bride must be over 18 years old.");
+            return false; // Prevent form submission
+        }
+        
+        if (!isGroomOver18) {
+            alert("Groom must be over 18 years old.");
+            return false; // Prevent form submission
+        }
+        
+        return true; // Allow form submission
+    }
+</script>
+   <script>
+    const taluksByDistrict = {
+      "Thiruvananthapuram": [
+        "Neyyattinkara",
+        "Kattakkada",
+        "Nedumangadu",
+        "Thiruvananthapuram",
+        "Chirayinkeezhu",
+        "Varkala"
+      ],
+      "Kollam": [
+        "Kollam",
+        "Kunnathoor",
+        "Karunagappally",
+        "Kottarakkara",
+        "Punalur"
+      ],
+      "Pathanamthitta": ["Adoor", "Konni", "Kozhencherry", "Ranni"],
+      "Alappuzha": [
+        "Chenganoor",
+        "Mavelikkara",
+        "Karthikappally",
+        "Kuttanad",
+        "Ambalappuzha",
+        "Cherthala"
+      ],
+      "Kottayam": [
+        "Changanasserry",
+        "Kottayam",
+        "Vaikom",
+        "Meenachil",
+        "Kanjirappally"
+      ],
+      "Idukki": ["Peermade", "Udumbanchola", "Idukki", "Thodupuzha", "Devikulam"],
+      "Ernakulam": [
+        "Kothamangalam",
+        "Muvattupuzha",
+        "Kunnathunad",
+        "Kanayannur",
+        "Kochi",
+        "North Paravur",
+        "Aluva"
+      ],
+      "Thrissur": [
+        "Chalakudy",
+        "Mukundapuram",
+        "Kodungallur",
+        "Thrissur",
+        "Chavakkad",
+        "Kunnamkulam",
+        "Thalapilly"
+      ],
+      "Palakkad": [
+        "Alathoor",
+        "Chittur",
+        "Palakkad",
+        "Pattambi",
+        "Ottappalam",
+        "Mannarkkad"
+      ],
+      "Malappuram": [
+        "Attappady",
+        "Perinthalmanna",
+        "Nilambur",
+        "Eranad",
+        "Kondotty",
+        "Ponnani",
+        "Tirur"
+      ],
+      "Kozhikode": [
+        "Thamarassery",
+        "Koyilandy",
+        "Vatakara",
+        "Kozhikode"
+      ],
+      "Wayanad": ["Vythiri", "Sulthan Bathery", "Mananthavady"],
+      "Kannur": ["Thalassery", "Iritty", "Kannur", "Taliparamba", "Payyanur"],
+      "Kasaragod": ["Hosdurg", "Vellarikundu", "Kasaragod", "Manjeshwaram"]
+    };
+      
+      const districtSelect = document.getElementById('district');
+      const talukSelect = document.getElementById('taluk');
+      
+      districtSelect.addEventListener('change', () => {
+        const selectedDistrict = districtSelect.value;
+        const taluks = taluksByDistrict[selectedDistrict];
+      
+        talukSelect.innerHTML = '';
+      
+        taluks.forEach((taluk) => {
+          const option = document.createElement('option');
+          option.value = taluk;
+          option.textContent = taluk;
+          talukSelect.appendChild(option);
+        });
+      });
+      
+      // Call the event listener to populate taluks initially
+      districtSelect.dispatchEvent(new Event('change'));
+    </script>   
+    {% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'common/usercommon.html' %}
+{% load static %} 
+
+{% block content %}
+
+<div class="container mt-4">
+    {% for m in messages %}
+        <div class="alert alert-info text-center">{{ m }}</div>
+    {% endfor %}
+
+    <h2 class="text-center mb-4">Marriage Certificate Status</h2>
+
+    {% if not res and not resul and not result %}
+        <div class="alert alert-warning text-center">No application status available.</div>
+    {% else %}
+        {% for data in res %}
+            <div class="card mx-auto mb-3 shadow-sm" style="max-width: 500px;">
+                <div class="card-body">
+                    <h4 class="card-title text-center">{{ data.groomname }} & {{ data.bridename }}</h4>
+                    <p><strong>Date of Application:</strong> {{ data.date }}</p>
+                    <p><strong>Application Status:</strong> {{ data.status }}</p>
+                    <div class="text-end">
+                        <a href="/withdrawmarriage?id={{data.id}}" class="btn btn-primary">Withdraw</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% for data in resul %}
+            <div class="card mx-auto mb-3 shadow-sm" style="max-width: 500px;">
+                <div class="card-body">
+                    <h4 class="card-title text-center">{{ data.groomname }} & {{ data.bridename }}</h4>
+                    <p><strong>Date of Application:</strong> {{ data.date }}</p>
+                    <p><strong>Application Status:</strong> {{ data.status }}</p>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% for data in result %}
+            <div class="card mx-auto mb-3 shadow-sm" style="max-width: 500px;">
+                <div class="card-body">
+                    <h4 class="card-title text-center">{{ data.groomname }} & {{ data.bridename }}</h4>
+                    <p><strong>Date of Application:</strong> {{ data.date }}</p>
+                    <p><strong>Application Status:</strong> {{ data.status }}</p>
+                    <div class="text-end">
+                        <a href="../static/media/{{data.certificate}}" class="btn btn-success" download>Download Certificate</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'common/rtocommon.html' %}
+{% load static %} 
+
+{% block content %}
+    {% for m in messages %}
+        <script>
+            alert('{{m}}')
+        </script>
+    {% endfor %}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4"><b>Requests</b></h1>
+
+    {% if res %}
+        {% for data in res %}
+            <div class="card shadow-lg mb-4 p-4">
+                <div class="row align-items-center">
+                    <div class="col-md-2 text-center">
+                        <img src="../static/media/{{ data.photo }}" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
+                    </div>
+                    <div class="col-md-10">
+                        <h3 class="font-weight-bold">{{ data.user.name }}</h3>
+                        <p><strong>Father Name:</strong> {{ data.father }}</p>
+                        <div class="row">
+                            <div class="col-md-6"><strong>Mother:</strong> {{ data.mother }}</div>
+                            <div class="col-md-6"><strong>Gender:</strong> {{ data.gender }}</div>
+                            <div class="col-md-6"><strong>DOB:</strong> {{ data.dob }}</div>
+                            <div class="col-md-6"><strong>Marital Status:</strong> {{ data.martial }}</div>
+                            <div class="col-md-6"><strong>Blood Group:</strong> {{ data.blood }}</div>
+                            <div class="col-md-6"><strong>District:</strong> {{ data.district }}</div>
+                            <div class="col-md-6"><strong>Address:</strong> {{ data.address }}</div>
+                            <div class="col-md-6"><strong>Applicant's Address:</strong> {{ data.user.address }}</div>
+                            <div class="col-md-6"><strong>Phone Number:</strong> {{ data.user.phone_number }}</div>
+                            <div class="col-md-6"><strong>Aadhar Number:</strong> {{ data.user.aadhar }}</div>
+                            <div class="col-md-6"><strong>Email:</strong> {{ data.user.email }}</div>
+                            <div class="col-md-6"><strong>ID Type Uploading:</strong> {{ data.identification }}</div>
+                        </div>
+                        <p><strong>ID Proof:</strong> <a href="../static/media/{{ data.idproof }}" target="_blank">View ID Proof</a></p>
+                        <div class="d-flex justify-content-end mt-3">
+                            <a href="/approvelicense?id={{ data.id }}" class="btn btn-success mx-2">Approve</a>
+                            <a href="/deletelicenserto?id={{ data.id }}" class="btn btn-danger mx-2">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info text-center" role="alert">
+            No requests available.
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

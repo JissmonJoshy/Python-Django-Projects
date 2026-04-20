@@ -1,0 +1,75 @@
+{% extends 'common/admincommon.html' %}
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert('{{ m }}');
+</script>
+{% endfor %}
+
+<main class="container py-5">
+    <h1 class="text-center mb-4">Death Certificate Requests</h1>
+
+    {% if res %}
+    {% for data in res %}
+    <div class="card shadow-lg mb-4">
+        <div class="card-body">
+
+            <h3 class="text-center text-primary fw-bold">{{ data.name }}</h3>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Father's Name:</strong> {{ data.father }}</li>
+                        <li class="list-group-item"><strong>Mother's Name:</strong> {{ data.mother }}</li>
+                        <li class="list-group-item"><strong>Gender:</strong> {{ data.gender }}</li>
+                        <li class="list-group-item"><strong>Date of Birth:</strong> {{ data.dob }}</li>
+                        <li class="list-group-item"><strong>Date of Death:</strong> {{ data.dod }}</li>
+                        <li class="list-group-item"><strong>Death Place:</strong> {{ data.deathplace }}</li>
+                        <li class="list-group-item"><strong>Death Type:</strong> {{ data.death }}</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>District:</strong> {{ data.district }}</li>
+
+                        {% if data.taluk %}
+                        <li class="list-group-item"><strong>Taluk:</strong> {{ data.taluk }}</li>
+                        {% endif %}
+
+                        <li class="list-group-item"><strong>Address:</strong> {{ data.address }}</li>
+                        <li class="list-group-item"><strong>Relation with Applicant:</strong> {{ data.relation }}</li>
+                        <li class="list-group-item"><strong>Applicant Name:</strong> {{ data.user.name }}</li>
+                        <li class="list-group-item"><strong>Phone:</strong> {{ data.user.phone_number }}</li>
+                        <li class="list-group-item"><strong>Aadhar:</strong> {{ data.user.aadhar }}</li>
+                        <li class="list-group-item"><strong>Email:</strong> {{ data.user.email }}</li>
+                        <li class="list-group-item"><strong>ID Proof Type:</strong> {{ data.identification }}</li>
+                    </ul>
+
+                    {% if data.idproof %}
+                    <div class="text-center mt-3">
+                        <a href="{{ data.idproof.url }}" target="_blank"
+                           class="btn btn-outline-primary">
+                            View ID Proof
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-4">
+                <a href="/forwarddeath?id={{ data.id }}" class="btn btn-success me-3">Forward</a>
+                <a href="/deletedeathreg?id={{ data.id }}" class="btn btn-danger">Reject</a>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="text-center text-muted">No requests available.</p>
+    {% endif %}
+</main>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'common/admincommon.html' %}
+{% load static %} 
+
+{% block content %}
+{% for m in messages %}
+<script>
+    alert('{{m}}');
+</script>
+{% endfor %}
+
+<main class="container py-5">
+    <h1 class="text-center mb-4">Requests</h1>
+    
+    {% for data in res %}
+    <div class="card shadow-lg mb-4">
+        <div class="card-body">
+            <h3 class="card-title text-primary text-center">{{ data.name }}</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Father Name:</strong> {{ data.father }}</li>
+                        <li class="list-group-item"><strong>Mother Name:</strong> {{ data.mother }}</li>
+                        <li class="list-group-item"><strong>Gender:</strong> {{ data.gender }}</li>
+                        <li class="list-group-item"><strong>Date of Birth:</strong> {{ data.dob }}</li>
+                        <li class="list-group-item"><strong>Birth Place:</strong> {{ data.birthplace }}</li>
+                        <li class="list-group-item"><strong>Birth Taken at:</strong> {{ data.birth }}</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Birth District:</strong> {{ data.district }}</li>
+                        <li class="list-group-item"><strong>Birth Taluk:</strong> {{ data.taluk }}</li>
+                        <li class="list-group-item"><strong>Birthplace Address:</strong> {{ data.address }}</li>
+                        <li class="list-group-item"><strong>User Name:</strong> {{ data.user.name }}</li>
+                        <li class="list-group-item"><strong>Relation with Applicant:</strong> {{ data.relation }}</li>
+                        <li class="list-group-item"><strong>Applicant Address:</strong> {{ data.user.address }}</li>
+                        <li class="list-group-item"><strong>Phone Number:</strong> {{ data.user.phone_number }}</li>
+                        <li class="list-group-item"><strong>Aadhar Number:</strong> {{ data.user.aadhar }}</li>
+                        <li class="list-group-item"><strong>Email:</strong> {{ data.user.email }}</li>
+                        <li class="list-group-item"><strong>ID Type Uploading:</strong> {{ data.identification }}</li>
+                    </ul>
+                    <div class="text-center mt-3">
+                        <a href="../static/media/{{ data.idproof }}" class="btn btn-outline-primary">View ID Proof</a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-4">
+                <a href="/forwardbirth?id={{data.id}}" class="btn btn-success me-3">Forward</a>
+                <a href="/deletebirth?id={{data.id}}" class="btn btn-danger">Reject</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+
+{% for m in messages %}
+<script>
+    alert('{{m}}');
+</script>
+{% endfor %}
+
+{% endblock %}

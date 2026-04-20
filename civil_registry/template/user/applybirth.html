@@ -1,0 +1,230 @@
+{% extends 'common/usercommon.html' %}
+
+{% load static %} 
+{% block content %}
+{% for m in messages %}
+<script>
+alert('{{m}}')
+</script>
+    {% endfor %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+      <div class="col-md-8">
+          <div class="card shadow p-4">
+              <h2 class="text-center mb-4">Application For Birth Certificate</h2>
+              <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                      <input type="text" pattern="[A-Za-z]+" class="form-control" placeholder="Name" name="name" required>
+                  </div>
+                  <div class="mb-3">
+                      <input type="text" pattern="[A-Za-z]+" class="form-control" placeholder="Father's name" name="father" required>
+                  </div>
+                  <div class="mb-3">
+                      <input type="text" pattern="[A-Za-z]+" class="form-control" placeholder="Mother's name" name="mother" required>
+                  </div>
+
+                  <div class="mb-3">
+                      <label class="form-label">Gender:</label>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gender" value="male" required>
+                          <label class="form-check-label">Male</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gender" value="female" required>
+                          <label class="form-check-label">Female</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gender" value="others" required>
+                          <label class="form-check-label">Others</label>
+                      </div>
+                  </div>
+
+                  <div class="mb-3">
+                      <label class="form-label">Relation:</label>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="relation" value="mother" required>
+                          <label class="form-check-label">Mother</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="relation" value="father" required>
+                          <label class="form-check-label">Father</label>
+                      </div>
+                  </div>
+
+                  <div class="mb-3">
+                      <input type="date" class="form-control" name="dob" required>
+                  </div>
+                  <div class="mb-3">
+                      <input type="text" class="form-control" placeholder="Place of Birth" name="birthplace" required>
+                  </div>
+
+                  <div class="mb-3">
+                      <label class="form-label">Birth Taken at:</label>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="birth" value="home" required>
+                          <label class="form-check-label">Home</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="birth" value="hospital" required>
+                          <label class="form-check-label">Hospital</label>
+                      </div>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="district" class="form-label">Birth District:</label>
+                      <select class="form-control" id="district" name="district" required>
+                          <option value="">Select District</option>
+                          <option value="Alappuzha">Alappuzha</option>
+                          <option value="Ernakulam">Ernakulam</option>
+                          <option value="Idukki">Idukki</option>
+                          <option value="Kannur">Kannur</option>
+                          <option value="Kasaragod">Kasaragod</option>
+                          <option value="Kollam">Kollam</option>
+                          <option value="Kottayam">Kottayam</option>
+                          <option value="Kozhikode">Kozhikode</option>
+                          <option value="Malappuram">Malappuram</option>
+                          <option value="Palakkad">Palakkad</option>
+                          <option value="Pathanamthitta">Pathanamthitta</option>
+                          <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                          <option value="Thrissur">Thrissur</option>
+                          <option value="Wayanad">Wayanad</option>
+                      </select>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="taluk" class="form-label">Taluk:</label>
+                      <select class="form-control" name="taluk" id="taluk">
+                          <!-- Taluks will be populated dynamically -->
+                      </select>
+                  </div>
+
+                  <div class="mb-3">
+                      <textarea class="form-control" placeholder="Address" name="address" required></textarea>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="identification" class="form-label">ID Proof:</label>
+                      <select class="form-control" id="identification" name="identification" required>
+                          <option value="">Select ID Proof</option>
+                          <option value="aadhar">Aadhar Card</option>
+                          <option value="voters_id">Voter's ID</option>
+                          <option value="driving_license">Driving License</option>
+                          <option value="pan_card">PAN Card</option>
+                          <option value="passport">Passport</option>
+                      </select>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="idproof" class="form-label">Upload ID Proof:</label>
+                      <input type="file" class="form-control" id="idproof" name="idproof" required>
+                  </div>
+
+                  <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="declaration" name="declaration" required>
+                      <label for="declaration" class="form-check-label">
+                          I declare that the information provided is true and accurate.
+                      </label>
+                  </div>
+
+                  <div class="d-grid">
+                      <button type="submit" class="btn btn-primary">Register Now</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+<br>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var eventDateInput = document.getElementById('date'); // Corrected ID
+        var today = new Date().toISOString().split('T')[0];
+        eventDateInput.setAttribute('max', today);
+  
+        var form = document.querySelector('.contact-form');
+        form.addEventListener('submit', function(event) {
+            var selectedDate = new Date(eventDateInput.value);
+            var currentDate = new Date();
+  
+            // Set current date to start of day
+            currentDate.setHours(0, 0, 0, 0);
+  
+            if (selectedDate < currentDate) {
+                alert("Date must be greater than today's date.");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    });
+  </script>
+  <script>
+const taluksByDistrict = {
+  "Thiruvananthapuram": ["Neyyattinkara", "Kattakkada", "Nedumangadu", "Thiruvananthapuram", "Chirayinkeezhu", "Varkala"],
+  "Kollam": ["Kollam", "Kunnathoor", "Karunagappally", "Kottarakkara", "Punalur"],
+  "Pathanamthitta": ["Adoor", "Konni", "Kozhencherry", "Ranni"],
+  "Alappuzha": ["Chenganoor", "Mavelikkara", "Karthikappally", "Kuttanad", "Ambalappuzha", "Cherthala"],
+  "Kottayam": ["Changanasserry", "Kottayam", "Vaikom", "Meenachil", "Kanjirappally"],
+  "Idukki": ["Peermade", "Udumbanchola", "Idukki", "Thodupuzha", "Devikulam"],
+  "Ernakulam": ["Kothamangalam", "Muvattupuzha", "Kunnathunad", "Kanayannur", "Kochi", "North Paravur", "Aluva"],
+  "Thrissur": ["Chalakudy", "Mukundapuram", "Kodungallur", "Thrissur", "Chavakkad", "Kunnamkulam", "Thalapilly"],
+  "Palakkad": ["Alathoor", "Chittur", "Palakkad", "Pattambi", "Ottappalam", "Mannarkkad"],
+  "Malappuram": ["Attappady", "Perinthalmanna", "Nilambur", "Eranad", "Kondotty", "Ponnani", "Tirur"],
+  "Kozhikode": ["Thamarassery", "Koyilandy", "Vatakara", "Kozhikode"],
+  "Wayanad": ["Vythiri", "Sulthan Bathery", "Mananthavady"],
+  "Kannur": ["Thalassery", "Iritty", "Kannur", "Taliparamba", "Payyanur"],
+  "Kasaragod": ["Hosdurg", "Vellarikundu", "Kasaragod", "Manjeshwaram"]
+};
+
+  
+  const districtSelect = document.getElementById('district');
+  const talukSelect = document.getElementById('taluk');
+  
+  districtSelect.addEventListener('change', () => {
+    const selectedDistrict = districtSelect.value;
+    const taluks = taluksByDistrict[selectedDistrict];
+  
+    talukSelect.innerHTML = '';
+  
+    taluks.forEach((taluk) => {
+      const option = document.createElement('option');
+      option.value = taluk;
+      option.textContent = taluk;
+      talukSelect.appendChild(option);
+    });
+  });
+  
+  // Call the event listener to populate taluks initially
+  districtSelect.dispatchEvent(new Event('change'));
+</script>
+
+<style>
+  body {
+      background-color: #f8f9fa;
+  }
+  .container {
+      max-width: 800px;
+  }
+  .card {
+      border-radius: 10px;
+      background: white;
+  }
+  .form-control, .form-check-input {
+      border-radius: 5px;
+  }
+  .btn-primary {
+      background-color: #007bff;
+      border: none;
+      padding: 10px;
+      font-size: 18px;
+  }
+  .btn-primary:hover {
+      background-color: #0056b3;
+  }
+  label {
+      font-weight: 500;
+  }
+  textarea {
+      resize: none;
+  }
+</style>
+{% endblock %}

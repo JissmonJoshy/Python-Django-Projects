@@ -1,0 +1,408 @@
+{% extends 'common/admincommon.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert('{{ m }}');
+</script>
+{% endfor %}
+
+
+
+        <!-- Sticky Header  -->
+
+        <div class="sticky-header">
+
+            <div class="auto-container clearfix">
+
+                <!--Logo-->
+
+                <div class="logo pull-left">
+
+                    <a href="" title=""><img src="{% static "images/sticky-logo.png" %}" alt="" title=""></a>
+
+                </div>
+
+                <!--Right Col-->
+
+                <div class="pull-right">
+
+                    <!-- Main Menu -->
+
+                    <nav class="main-menu clearfix">
+
+                        <!--Keep This Empty / Menu will come through Javascript-->
+
+                    </nav>
+                    <!-- Main Menu End-->
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- End Sticky Menu -->
+
+
+
+        <!-- Mobile Menu  -->
+
+        <div class="mobile-menu">
+
+            <div class="menu-backdrop"></div>
+
+            <div class="close-btn"><span class="icon flaticon-targeting-cross"></span></div>
+
+
+
+            <nav class="menu-box">
+
+                <div class="nav-logo">
+                    <a href=""><img src="{% static "images/nav-logo.png" %}" alt="" title=""></a>
+                </div>
+
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+
+                <!--Social Links-->
+
+                <div class="social-links">
+
+                    <ul class="clearfix">
+
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+
+                    </ul>
+
+                </div>
+
+            </nav>
+
+        </div>
+        <!-- End Mobile Menu -->
+
+    </header>
+
+    <!-- End Main Header -->
+     <!-- End Main Header -->
+
+     <main>
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/main-slider/1.jpg' %}" class="d-block w-100" alt="Slide 1">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h1 class="display-3 fw-bold text-light text-shadow">Civil Register</h1>
+                        <p class="lead text-light text-shadow">A secure platform for managing and verifying civil records efficiently.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/main-slider/2.jpg' %}" class="d-block w-100" alt="Slide 2">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h1 class="display-3 fw-bold text-light text-shadow">Civil Register</h1>
+                        <p class="lead text-light text-shadow">Ensuring transparency and accessibility for all your official records.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </main>
+
+
+
+<!--Welcome Section-->
+
+<section class="welcome-section">
+
+<div class="auto-container">
+
+<div class="sec-title centered">
+
+    <h2>What are The Today Activities of City Govt of London </h2>
+
+    <div class="lower-text">We denounce with righteous indignation and dislike men who are so beguiled & demoralized.</div>
+
+</div>
+
+<div class="row clearfix">
+
+    <!--Feature Block-->
+
+    <div class="featured-block col-lg-4 col-md-6 col-sm-12">
+
+        <div class="inner-box">
+
+            <div class="content-box">
+
+                <div class="icon-box"><span class="flaticon-parking"></span></div>
+
+                <div class="content">
+
+                    <div class="subtitle">In Effect</div>
+
+                    <h4><a href="#">Alternate side parking in effect.</a></h4>
+
+                </div>
+
+            </div>
+
+            <div class="hover-box">
+
+                <div class="image-layer" style="background-image: url(images/background/featured-image-1.jpg);"></div>
+
+                <div class="inner">
+
+                    <h4><a href="#">Alternate side parking in effect.</a></h4>
+
+                    <div class="text">These cases are perfectly simple and easy work to distinguish.</div>
+
+                </div>
+
+            </div>
+
+            <div class="more-link">
+
+                <a href="#"><span class="flaticon-right-2"></span></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!--Feature Block-->
+
+    <div class="featured-block col-lg-4 col-md-6 col-sm-12">
+
+        <div class="inner-box">
+
+            <div class="content-box">
+
+                <div class="icon-box"><span class="flaticon-recycling-truck"></span></div>
+
+                <div class="content">
+
+                    <div class="subtitle">Schedule</div>
+
+                    <h4><a href="#">Garbage & recycling on schedule.</a></h4>
+
+                </div>
+
+            </div>
+
+            <div class="hover-box">
+
+                <div class="image-layer" style="background-image: url(images/background/featured-image-1.jpg);"></div>
+
+                <div class="inner">
+
+                    <h4><a href="#">Garbage & recycling on schedule.</a></h4>
+
+                    <div class="text">These cases are perfectly simple and easy work to distinguish.</div>
+
+                </div>
+
+            </div>
+
+            <div class="more-link">
+
+                <a href="#"><span class="flaticon-right-2"></span></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!--Feature Block-->
+
+    <div class="featured-block col-lg-4 col-md-6 col-sm-12">
+
+        <div class="inner-box">
+
+            <div class="content-box">
+
+                <div class="icon-box"><span class="flaticon-school"></span></div>
+
+                <div class="content">
+
+                    <div class="subtitle">Schools</div>
+
+                    <h4><a href="#">All public schools are open.</a></h4>
+
+                </div>
+
+            </div>
+
+            <div class="hover-box">
+
+                <div class="image-layer" style="background-image: url(images/background/featured-image-1.jpg);"></div>
+
+                <div class="inner">
+
+                    <h4><a href="#">All public schools are open.</a></h4>
+
+                    <div class="text">These cases are perfectly simple and easy work to distinguish.</div>
+
+                </div>
+
+            </div>
+
+            <div class="more-link">
+
+                <a href="#"><span class="flaticon-right-2"></span></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="services-section">
+
+<div class="image-left">
+<div class="image-layer" style="background-image: url({% static 'images/background/image-2.jpg' %});"></div>
+</div>
+
+<div class="auto-container">
+<div class="row clearfix">
+
+    <!-- Featured Service Block -->
+    <div class="featured-service-block col-xl-4 col-lg-12 col-md-12">
+        <div class="inner-box">
+            <figure class="image-box">
+                <a href="#"><img src="{% static 'images/resource/featured-image-1.jpg' %}" alt=""></a>
+            </figure>
+            <div class="lower-box">
+                <h3><a href="#">Explore Our Service Departments</a></h3>
+                <div class="more-link"><a href="{% static 'departments.html' %}">All Departments</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="column col-xl-8 col-lg-12 col-md-12">
+        <div class="col-inner">
+            <div class="row clearfix">
+
+                <!-- Feature Block -->
+                <div class="featured-block-two col-lg-6 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="content-box">
+                            <div class="icon-box"><span class="icon flaticon-sheriff-badge"></span></div>
+                            <div class="content">
+                                <h4><a href="{% static 'policing-crime.html' %}">Policing & <br>crime department</a></h4>
+                                <div class="text">Blinded by desire, that they cannot foresee belongs which through shrinking.</div>
+                                <div class="read-more"><a href="{% static 'policing-crime.html' %}">Read More</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Block -->
+                <div class="featured-block-two col-lg-6 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="content-box">
+                            <div class="icon-box"><span class="icon flaticon-traffic-light"></span></div>
+                            <div class="content">
+                                <h4><a href="{% static 'transport-traffice.html' %}">Transport & <br>traffic department</a></h4>
+                                <div class="text">Foresee the pain and trouble that are bound to ensue; and equal blame belongs.</div>
+                                <div class="read-more"><a href="{% static 'transport-traffice.html' %}">Read More</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Block -->
+                <div class="featured-block-two col-lg-6 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="content-box">
+                            <div class="icon-box"><span class="icon flaticon-statue"></span></div>
+                            <div class="content">
+                                <h4><a href="{% static 'arts-culture.html' %}">Arts & <br>culture department</a></h4>
+                                <div class="text">Trouble that are bound to ensue and equal to those city work who fail their duty.</div>
+                                <div class="read-more"><a href="{% static 'arts-culture.html' %}">Read More</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Block -->
+                <div class="featured-block-two col-lg-6 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="content-box">
+                            <div class="icon-box"><span class="icon flaticon-museum"></span></div>
+                            <div class="content">
+                                <h4><a href="{% static 'land-department.html' %}">Housing & <br>land department</a></h4>
+                                <div class="text">Our power of choice untrammelled and when nothing prevents what like best.</div>
+                                <div class="read-more"><a href="{% static 'land-department.html' %}">Read More</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- End Row -->
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+<style>
+    .carousel-caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+        width: 80%;
+    }
+
+    .text-shadow {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        filter: invert(100%);
+    }
+</style>
+
+{% endblock %}

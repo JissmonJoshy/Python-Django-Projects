@@ -1,0 +1,58 @@
+{% extends 'common/rpocommon.html' %}
+
+{% load static %} 
+{% block content %}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Requests</h1>
+
+    {% if res %}
+        <div class="row justify-content-center">
+            {% for data in res %}
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img src="../static/media/{{ data.photo }}" class="rounded-circle mb-3" style="width: 80px; height: 80px;">
+                                <h3 class="card-title">{{ data.user.name }}</h3>
+                            </div>
+                            <p><strong>Father Name:</strong> {{ data.father }}</p>
+                            <p><strong>Mother:</strong> {{ data.mother }}</p>
+                            <p><strong>Gender:</strong> {{ data.gender }}</p>
+                            <p><strong>DOB:</strong> {{ data.dob }}</p>
+                            <p><strong>Marital Status:</strong> {{ data.martial }}</p>
+                            <p><strong>Blood Group:</strong> {{ data.blood }}</p>
+                            <p><strong>District:</strong> {{ data.district }}</p>
+                            <p><strong>Address:</strong> {{ data.address }}</p>
+                            <p><strong>Applicant Address:</strong> {{ data.user.address }}</p>
+                            <p><strong>Phone:</strong> {{ data.user.phone_number }}</p>
+                            <p><strong>Aadhar Number:</strong> {{ data.user.aadhar }}</p>
+                            <p><strong>Email:</strong> {{ data.user.email }}</p>
+                            <p><strong>ID Type Uploading:</strong> {{ data.identification }}</p>
+
+                            <h5 class="mt-3">Attachments</h5>
+                            <p><strong>ID Proof:</strong> <a href="../static/media/{{ data.idproof }}" target="_blank">View</a></p>
+                            <p><strong>Address Proof:</strong> <a href="../static/media/{{ data.addressproof }}" target="_blank">View</a></p>
+
+                            <div class="text-end">
+                                <a href="/approvepassport?id={{ data.id }}" class="btn btn-primary">Approve</a>
+                                <a href="/deletepassportrpo?id={{ data.id }}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-muted">No requests available.</p>
+    {% endif %}
+</div>
+
+{% for m in messages %}
+<script>
+    alert('{{ m }}');
+</script>
+{% endfor %}
+
+{% endblock %}
+
