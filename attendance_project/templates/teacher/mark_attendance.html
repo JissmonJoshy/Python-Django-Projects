@@ -1,0 +1,90 @@
+{% extends "teacher/common.html" %}
+{% load static %}
+
+{% block content %}
+{% for m in messages %}
+<script>
+    alert("{{ m|escapejs }}");
+</script>
+{% endfor %}
+
+<main class="main">
+    <div class="container py-5">
+        <h2 class="mb-4">📋 Mark Attendance - {{ teacher.fullname }} ({{ teacher.batch }})</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Date Picker -->
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="date" class="form-label">Select Date</label>
+                    <input type="date" id="date" name="date" class="form-control" value="{{ today|date:'Y-m-d' }}">
+                </div>
+
+                <!-- Time Slot -->
+                <div class="col-md-4">
+                    <label for="time_slot" class="form-label">Select Time Slot</label>
+                    <select id="time_slot" name="time_slot" class="form-select">
+                        <option value="10-11">10:00 AM - 11:00 AM</option>
+                        <option value="11-12">11:00 AM - 12:00 PM</option>
+                        <option value="12-1">12:00 PM - 01:00 PM</option>
+                        <option value="2-3">02:00 PM - 03:00 PM</option>
+                        <option value="3-4">03:00 PM - 04:00 PM</option>
+                    </select>
+                </div>
+            </div>
+
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Profile</th>
+                        <th>Full Name</th>
+                        <th>Batch</th>
+                        <th>Year</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            {% if student.profile_picture %}
+                                <img src="{{ student.profile_picture.url }}" width="40" height="40" class="rounded-circle">
+                            {% else %}
+                                <span class="text-muted">No Image</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ student.fullname }}</td>
+                        <td>{{ student.batch }}</td>
+                        <td>{{ student.year }}</td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="status_{{ student.id }}" id="present{{ student.id }}" value="Present" checked>
+                                <label class="form-check-label" for="present{{ student.id }}">Present</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="status_{{ student.id }}" id="absent{{ student.id }}" value="Absent">
+                                <label class="form-check-label" for="absent{{ student.id }}">Absent</label>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">No students assigned to you.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% if students %}
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary px-4">Save Attendance</button>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</main>
+{% endblock %}

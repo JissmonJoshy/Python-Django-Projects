@@ -1,0 +1,49 @@
+{% extends "teacher/common.html" %}
+{% load static %}
+
+{% block content %}
+<main class="main">
+    <div class="container py-5">
+        <h2 class="mb-4">📊 Attendance Percentage - {{ teacher.fullname }} ({{ teacher.batch }})</h2>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Student</th>
+                    <th>Batch</th>
+                    <th>Year</th>
+                    <th>Total Classes</th>
+                    <th>Present</th>
+                    <th>Attendance %</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in student_data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ record.student.fullname }}</td>
+                    <td>{{ record.student.batch }}</td>
+                    <td>{{ record.student.year }}</td>
+                    <td>{{ record.total }}</td>
+                    <td>{{ record.present }}</td>
+                    <td>
+                        {% if record.percentage < 75 %}
+                            <span class="text-danger fw-bold">{{ record.percentage }}%</span>
+                        {% else %}
+                            <span class="text-success fw-bold">{{ record.percentage }}%</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted">
+                        No students assigned yet.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}

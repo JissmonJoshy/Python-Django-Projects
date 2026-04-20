@@ -1,0 +1,60 @@
+{% extends "admin/common.html" %}
+{% load static %}
+{% block content %}
+<main class="main">
+    <div class="container py-5">
+        <h2 class="mb-4">Teacher List</h2>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Profile Picture</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Batch</th>
+                    <th>Username</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for teacher in teachers %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        {% if teacher.profile_picture %}
+                            <img src="{{ teacher.profile_picture.url }}" alt="Profile" style="width:50px; height:50px; object-fit:cover; border-radius:50%;">
+                        {% else %}
+                            <span>No Image</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ teacher.fullname }}</td>
+                    <td>{{ teacher.email }}</td>
+                    <td>{{ teacher.phone }}</td>
+                    <td>{{ teacher.address }}</td>
+                    <td>{{ teacher.batch }}</td>
+                    <td>{{ teacher.user.username }}</td>
+                    <td>
+                        {% if teacher.user.is_active %}
+                            🟢 Active
+                        {% else %}
+                            🔴 Inactive
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'approve_teacher' teacher.id %}" class="btn btn-success btn-sm">Approve</a>
+                        <a href="{% url 'reject_teacher' teacher.id %}" class="btn btn-danger btn-sm">Reject</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="10" class="text-center">No teachers found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "teacher/common.html" %}
+{% load static %}
+
+{% block content %}
+<main class="main">
+    <div class="container py-5">
+        <h2 class="mb-4">✏️ Manage Attendance - {{ teacher.fullname }} ({{ teacher.batch }})</h2>
+
+        <!-- Filter Form -->
+        <form method="get" class="row g-3 mb-4">
+            <div class="col-md-4">
+                <label for="date" class="form-label">Select Date</label>
+                <input type="date" id="date" name="date" class="form-control" 
+                       value="{{ selected_date|date:'Y-m-d' }}">
+            </div>
+            <div class="col-md-4">
+                <label for="time_slot" class="form-label">Select Time Slot</label>
+                <select id="time_slot" name="time_slot" class="form-select">
+                    <option value="">Select Time Slot</option>
+                    <option value="9-10" {% if selected_time_slot == "9-10" %}selected{% endif %}>09:00 - 10:00</option>
+                    <option value="10-11" {% if selected_time_slot == "10-11" %}selected{% endif %}>10:00 - 11:00</option>
+                    <option value="11-12" {% if selected_time_slot == "11-12" %}selected{% endif %}>11:00 - 12:00</option>
+                    <option value="12-1" {% if selected_time_slot == "12-1" %}selected{% endif %}>12:00 - 01:00</option>
+                    <option value="2-3" {% if selected_time_slot == "2-3" %}selected{% endif %}>02:00 - 03:00</option>
+                    <option value="3-4" {% if selected_time_slot == "3-4" %}selected{% endif %}>03:00 - 04:00</option>
+
+                </select>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <button type="submit" class="btn btn-secondary w-100">🔍 View Attendance</button>
+            </div>
+        </form>
+
+        <!-- Attendance Table -->
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="date" value="{{ selected_date|date:'Y-m-d' }}">
+            <input type="hidden" name="time_slot" value="{{ selected_time_slot }}">
+
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Student</th>
+                        <th>Batch</th>
+                        <th>Year</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in attendance_records %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ record.student.fullname }}</td>
+                        <td>{{ record.student.batch }}</td>
+                        <td>{{ record.student.year }}</td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" 
+                                       name="status_{{ record.student.id }}" 
+                                       value="Present" 
+                                       {% if record.status == "Present" %}checked{% endif %}>
+                                <label class="form-check-label">Present</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" 
+                                       name="status_{{ record.student.id }}" 
+                                       value="Absent" 
+                                       {% if record.status == "Absent" %}checked{% endif %}>
+                                <label class="form-check-label">Absent</label>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center text-muted">
+                            No attendance records found for this date and time slot.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% if attendance_records %}
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary px-4">💾 Update Attendance</button>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</main>
+{% endblock %}

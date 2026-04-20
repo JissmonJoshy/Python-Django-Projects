@@ -1,0 +1,52 @@
+{% extends "student/common.html" %}
+{% load static %}
+{% block content %}
+
+<main class="main py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg border-0 rounded-lg">
+                    <div class="card-header bg-primary text-white text-center py-4">
+                        <h4 class="mb-0">My Profile</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row mb-3">
+                            <div class="col-sm-4 font-weight-bold">Full Name:</div>
+                            <div class="col-sm-8">{{ student.fullname }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 font-weight-bold">Username:</div>
+                            <div class="col-sm-8">{{ student.user.username }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 font-weight-bold">Email:</div>
+                            <div class="col-sm-8">{{ student.email }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 font-weight-bold">Phone:</div>
+                            <div class="col-sm-8">{{ student.phone }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 font-weight-bold">Address:</div>
+                            <div class="col-sm-8">{{ student.address }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 font-weight-bold">Verified:</div>
+                            <div class="col-sm-8">
+                                {% if student.is_verified %}
+                                    <span class="badge bg-success">Yes</span>
+                                {% else %}
+                                    <span class="badge bg-danger">No</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

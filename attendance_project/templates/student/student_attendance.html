@@ -1,0 +1,54 @@
+{% extends "student/common.html" %}
+{% load static %}
+
+{% block content %}
+<main class="main">
+    <div class="container py-5">
+        <h2 class="mb-4">📅 My Attendance - {{ student.fullname }}</h2>
+
+        <div class="alert alert-info">
+            <strong>Total Classes:</strong> {{ total_classes }} |
+            <strong>Present:</strong> {{ present_classes }} |
+            <strong>Attendance %:</strong>
+            {% if percentage < 75 %}
+                <span class="text-danger fw-bold">{{ percentage }}%</span>
+            {% else %}
+                <span class="text-success fw-bold">{{ percentage }}%</span>
+            {% endif %}
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Time Slot</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in attendance_records %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ record.date }}</td>
+                    <td>{{ record.get_time_slot_display }}</td>
+                    <td>
+                        {% if record.status == "Present" %}
+                            <span class="badge bg-success">Present</span>
+                        {% else %}
+                            <span class="badge bg-danger">Absent</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted">
+                        No attendance records available yet.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "admin/common.html" %}
+{% load static %}
+{% block content %}
+<main class="main">
+    <div class="container py-5">
+        <h2 class="mb-4">Student List</h2>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Profile</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Username</th>
+                    <th>Batch</th>
+                    <th>Year</th>
+                    <th>Verified</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        {% if student.profile_picture %}
+                            <img src="{{ student.profile_picture.url }}" alt="Profile" style="width:50px; height:50px; border-radius:50%;">
+                        {% else %}
+                            <span>No Image</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ student.fullname }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.phone }}</td>
+                    <td>{{ student.address }}</td>
+                    <td>{{ student.user.username }}</td>
+                    <td>{{ student.batch }}</td>
+                    <td>{{ student.year }}</td>
+                    <td>
+                        {% if student.is_verified %}
+                            ✅ Yes
+                        {% else %}
+                            ❌ No
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="10" class="text-center">No students found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "admin/common.html" %}
+{% load static %}
+{% block content %}
+<main class="main">
+    <div class="container py-5">
+        <h2 class="mb-4">Assign Teacher to Students</h2>
+
+        <!-- Select Teacher -->
+        <form method="GET" class="mb-4">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-6">
+                    <label for="teacher" class="form-label">Select Teacher</label>
+                    <select id="teacher" name="teacher_id" class="form-control" required onchange="this.form.submit()">
+                        <option value="">-- Choose Teacher --</option>
+                        {% for teacher in teachers %}
+                            <option value="{{ teacher.id }}" {% if teacher.id|stringformat:"s" == request.GET.teacher_id %}selected{% endif %}>
+                                {{ teacher.fullname }} ({{ teacher.batch }})
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </form>
+
+        {% if selected_teacher %}
+        <hr>
+        <h4>Selected Teacher: {{ selected_teacher.fullname }} ({{ selected_teacher.batch }})</h4>
+
+        <!-- Filter by Year -->
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="teacher_id" value="{{ selected_teacher.id }}">
+            
+            <div class="row g-3 align-items-end">
+                <div class="col-md-4">
+                    <label for="year" class="form-label">Select Year</label>
+                    <select id="year" name="year" class="form-control" required>
+                        <option value="">-- Choose Year --</option>
+                        {% for year in student_years %}
+                            <option value="{{ year }}">{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">Assign Teacher</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Student List -->
+        <div class="mt-4">
+            <h5>Eligible Students</h5>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Profile</th>
+                        <th>Full Name</th>
+                        <th>Batch</th>
+                        <th>Year</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Assigned Teacher</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>
+                                {% if student.profile_picture %}
+                                    <img src="{{ student.profile_picture.url }}" style="width:40px; height:40px; border-radius:50%;">
+                                {% else %}
+                                    No Image
+                                {% endif %}
+                            </td>
+                            <td>{{ student.fullname }}</td>
+                            <td>{{ student.batch }}</td>
+                            <td>{{ student.year }}</td>
+                            <td>{{ student.email }}</td>
+                            <td>{{ student.phone }}</td>
+                            <td>
+                                {% if student.assigned_teacher %}
+                                    {{ student.assigned_teacher.fullname }}
+                                {% else %}
+                                    Not Assigned
+                                {% endif %}
+                            </td>
+
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="8" class="text-center">No students found.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

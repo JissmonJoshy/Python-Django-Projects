@@ -1,0 +1,70 @@
+{% extends "admin/common.html" %}
+{% load static %}
+
+{% block content %}
+<main class="main">
+    <div class="container py-5">
+        <h2 class="mb-4">Assigned Teachers to Batches</h2>
+
+        {% if teachers %}
+            <div class="accordion" id="assignedTeachersAccordion">
+                {% for teacher in teachers %}
+                <div class="card mb-3">
+                    <div class="card-header" id="heading{{ teacher.id }}">
+                        <h5 class="mb-0 d-flex justify-content-between align-items-center">
+                            <button class="btn btn-link text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ teacher.id }}">
+                                👩‍🏫 {{ teacher.fullname }} ({{ teacher.batch }})
+                            </button>
+                            <span class="badge bg-primary">Assigned Students: {{ teacher.students.count }}</span>
+                        </h5>
+                    </div>
+
+                    <div id="collapse{{ teacher.id }}" class="collapse" data-bs-parent="#assignedTeachersAccordion">
+                        <div class="card-body">
+                            {% if teacher.students.all %}
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Student Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Batch</th>
+                                            <th>Year</th>
+                                            <th>Profile</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for student in teacher.students.all %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ student.fullname }}</td>
+                                            <td>{{ student.email }}</td>
+                                            <td>{{ student.phone }}</td>
+                                            <td>{{ student.batch }}</td>
+                                            <td>{{ student.year }}</td>
+                                            <td>
+                                                {% if student.profile_picture %}
+                                                    <img src="{{ student.profile_picture.url }}" class="rounded-circle" width="40" height="40">
+                                                {% else %}
+                                                    <span class="text-muted">No Picture</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            {% else %}
+                                <p class="text-muted">No students assigned yet.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-center text-muted">No teachers with assigned students found.</p>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

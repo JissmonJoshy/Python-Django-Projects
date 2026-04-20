@@ -1,0 +1,91 @@
+{% extends "common.html" %}
+{% load static %}
+{% block content %}
+<main class="main">
+    <div class="login-area py-120">
+        <div class="container">
+            <div class="col-md-6 mx-auto">
+                <div class="login-form">
+                    <div class="login-header text-center mb-3">
+                        <h3>Create your account</h3>
+                    </div>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="fullname" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="Your Username" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" name="phone" class="form-control" placeholder="Your Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <textarea name="address" class="form-control" placeholder="Your Address"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Batch</label>
+                            <select name="batch" id="batch" class="form-control" required>
+                                <option value="">Select Batch</option>
+                                <option value="BCA">BCA</option>
+                                <option value="BCOM">BCom</option>
+                                <option value="BSC CS">BSc CS</option>
+                                <option value="BA ENGLISH">BA English</option>
+                                <option value="BBA">BBA</option>
+                                <option value="BSC CHEMISTRY">BSc Chemistry</option>
+                                <option value="BSC PHYSICS">BSc Physics</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Year</label>
+                            <select name="year" id="year" class="form-control" required>
+                                <option value="">Select Year</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Profile Picture</label>
+                            <input type="file" name="profile_picture" class="form-control">
+                        </div>
+                        <div class="d-flex align-items-center mt-3">
+                            <button type="submit" class="theme-btn"><i class="far fa-paper-plane"></i> Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+const batchYears = {
+    'BCA': ['2022-25','2023-26','2024-27','2025-28'],
+    'BCOM': ['2022-25','2023-26','2024-27','2025-28'],
+    'BSC CS': ['2022-25','2023-26','2024-27','2025-28'],
+    'BA ENGLISH': ['2022-25','2023-26','2024-27','2025-28'],
+    'BBA': ['2022-25','2023-26','2024-27','2025-28'],
+    'BSC CHEMISTRY': ['2022-25','2023-26','2024-27','2025-28'],
+    'BSC PHYSICS': ['2022-25','2023-26','2024-27','2025-28']
+};
+
+document.getElementById('batch').addEventListener('change', function() {
+    const yearSelect = document.getElementById('year');
+    yearSelect.innerHTML = '<option value="">Select Year</option>';
+    if(this.value in batchYears){
+        batchYears[this.value].forEach(function(year){
+            const option = document.createElement('option');
+            option.value = year;
+            option.text = year;
+            yearSelect.appendChild(option);
+        });
+    }
+});
+</script>
+{% endblock %}
