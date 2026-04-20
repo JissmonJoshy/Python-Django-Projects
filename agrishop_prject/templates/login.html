@@ -1,0 +1,57 @@
+{% extends "common.html" %}
+
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<section class="contact-section contact_pg_contact">    
+    <div class="container">
+        <!-- Start: Heading -->
+        <div class="base-header">
+           
+            <h3>Login</h3> 
+        </div>
+        <!-- End: Heading -->
+        <div class="contact_wrp">
+            <div class="row">
+              
+                <div class="col-md-8 col-sm-12 inner-contact" style="margin-left: 300px;">
+                    <!--  Contact Form  -->
+                    <div class="contact-form">
+                        <form method="post" action="{% url 'view_login' %}" id="contact-form">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-8 col-sm-8">
+                                    <input class="con-field" name="username" id="username" type="text" placeholder="Username">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8 col-sm-8">
+                                    <input class="con-field" name="password" id="password" type="password" placeholder="Password">
+                                    <div class="submit-area">
+                                        <input type="submit" class="submit-contact" value="Login">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
+                    <!-- End:Contact Form  -->
+                </div>
+               
+            </div>
+         <!-- row /- -->
+        </div>
+    </div>
+    <!-- container /- -->
+</section>
+
+<br><br><br>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'farmer/common.html' %}
+
+
+{% block content %}
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<main class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <h2 class="text-center text-success mb-4">My Supply Orders</h2>
+
+            {% if orders %}
+                {% for order in orders %}
+                <div class="card mb-4 shadow-sm rounded-4">
+                    <div class="card-body">
+                        <h5 class="text-primary mb-3">Order #{{ order.id }} - <span class="text-muted">{{ order.ordered_at|date:"d M Y, h:i A" }}</span></h5>
+                        
+                        <p><strong>Payment Method:</strong> {{ order.payment_method }}</p>
+                        <p><strong>Status:</strong> {{ order.status }}</p>
+                        <p><strong>Address:</strong> {{ order.delivery_address }}, {{ order.delivery_pin }}</p>
+                        <p><strong>Phone:</strong> {{ order.delivery_phone }}</p>
+                        <h4><strong>Total:</strong> ₹{{ order.total_amount }}</h4>
+                        <h6><strong>Delevery status:</strong> {{ order.delivery_status }}</h6>
+                        <h6><strong>Payment Verification: </strong>{{ order.payment_verification }}</h6>
+                        
+                        
+
+                        {% if order.delivery_status == "Delivered" %}
+                    <form action="{% url 'submit_supply_review' order.id %}" method="POST" class="mt-4">
+                        {% csrf_token %}
+                        <div class="mb-2">
+                            <label for="rating" class="form-label"><strong>Rate this Order:</strong></label>
+                            <select name="rating" class="form-select w-25" required>
+                                <option value="">-- Select Rating --</option>
+                                <option value="1">★☆☆☆☆</option>
+                                <option value="2">★★☆☆☆</option>
+                                <option value="3">★★★☆☆</option>
+                                <option value="4">★★★★☆</option>
+                                <option value="5">★★★★★</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comment" class="form-label"><strong>Review:</strong></label>
+                            <textarea name="comment" class="form-control" rows="3" placeholder="Write your feedback..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit Review</button>
+                    </form>
+                {% endif %}
+
+
+                        <table class="table table-bordered table-hover mt-3">
+                            <thead class="table-success">
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Supply Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in order.supplycheckoutitem_set.all %}
+                                <tr>
+                                    <td>
+                                        {% if item.supply.image %}
+                                        <img src="{{ item.supply.image.url }}" width="60" height="60" style="object-fit: cover;">
+                                        {% else %}
+                                        <img src="https://via.placeholder.com/60" alt="No Image">
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ item.supply.name }}</td>
+                                    <td>{{ item.supply.category }}</td>
+                                    <td>₹{{ item.supply.price }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-warning text-center">You haven't placed any orders yet.</div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+<br><br><br><br><br><br><br><br><br><br>
+{% endblock %} 

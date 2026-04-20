@@ -1,0 +1,41 @@
+{% extends 'user/common.html' %}
+
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">My Favorite Products</h2>
+    <div class="row">
+        {% for fav in favorites %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ fav.product.image.url }}" class="card-img-top" alt="{{ fav.product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ fav.product.name }}</h5>
+                    <p class="card-text">{{ fav.product.description|truncatechars:100 }}</p>
+                    <p><strong>Price:</strong> ${{ fav.product.price }}</p>
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'product_detail' fav.product.id %}" class="btn btn-primary me-2 w-50">View</a>
+                        <a href="{% url 'remove_favorite' fav.id %}" class="btn btn-danger me-2 w-50">Remove</a>
+                    </div>
+                    <a href="{% url 'add_to_cart' fav.product.id %}" class="btn btn-success mt-2 w-100">Add to Cart</a>
+                    
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">You haven’t added any products to favorites yet.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+{% endblock %}

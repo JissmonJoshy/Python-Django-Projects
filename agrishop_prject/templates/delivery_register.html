@@ -1,0 +1,76 @@
+{% extends 'common.html' %}
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+
+<section class="contact-section contact_pg_contact">    
+    <div class="container">
+        <!-- Start: Heading -->
+        <div class="base-header">
+           
+            <h3>Delivery Register</h3> 
+        </div>
+        <!-- End: Heading -->
+        <div class="contact_wrp">
+            <div class="row">
+               
+                <div class="col-md-8 col-sm-12 inner-contact" style="margin-left: 200px;">
+                    <!--  Contact Form  -->
+                    <div class="contact-form">
+                        <form method="post" action="{% url 'delivery_register' %}" enctype="multipart/form-data" id="contact-form">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-12">
+                                    <input class="con-field" name="name" id="name" type="text" placeholder="Full Name" required>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <input class="con-field" name="username" id="username" type="text" placeholder="Username" required>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <input class="con-field" name="email" id="email" type="email" placeholder="Email" required>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <input class="con-field" name="phone" id="phone" type="text" placeholder="Phone" required>
+                                </div>
+                                <div class="col-lg-12 col-sm-12">
+                                    <input class="con-field" name="address" id="address" type="text" placeholder="Address" required>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <input class="con-field" name="password" id="password" type="password" placeholder="Password" required>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <input class="con-field" name="image" id="image" type="file" placeholder="Profile Image" required>
+                                </div>
+                            </div>
+                        
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12">
+                                    <div class="submit-area">
+                                        <input type="submit" class="submit-contact" value="Register">
+                                        <div id="msg" class="message"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        
+                    </div>
+                    <!-- End:Contact Form  -->
+                </div>
+               
+            </div>
+         <!-- row /- -->
+        </div>
+    </div>
+    <!-- container /- -->
+</section>
+<br><br><br><br>
+
+{% endblock %}

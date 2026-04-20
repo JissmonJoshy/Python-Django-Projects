@@ -1,0 +1,145 @@
+{% extends 'delivery/common.html' %}
+
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<main class="container my-5">
+    <h2 class="text-center mb-4">My Assigned Product Orders</h2>
+
+    <!-- Ongoing Orders Table -->
+    <div class="table-responsive mb-5">
+        <h4 class="mb-3">Ongoing Orders</h4>
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Products</th>
+                    <th>User</th>
+                    <th>Payment Method</th>
+                    <th>Total Amount</th>
+                    <th>Delivery Status</th>
+                    <th>Verify Payment</th>
+                    <th>Address</th>
+                    <th>Phone number</th>
+                    <th>Status</th>
+                    <th>Ordered At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    {% if order.delivery_status != "Delivered" %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            <ul class="mb-0">
+                                {% for item in order.checkoutitem_set.all %}
+                                <li>{{ item.product.name }} - {{ item.quantity }}kg</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>{{ order.user.name }}</td>
+                        <td>{{ order.payment_method }}</td>
+                        <td>₹{{ order.total_amount }}</td>
+                        <td>
+                            <form method="POST" action="{% url 'update_delivery_status' order.id %}">
+                                {% csrf_token %}
+                                <select name="delivery_status" class="form-select form-select-sm">
+                                    <option {% if order.delivery_status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                                    <option {% if order.delivery_status == 'Picked Up' %}selected{% endif %}>Picked Up</option>
+                                    <option {% if order.delivery_status == 'Out for Delivery' %}selected{% endif %}>Out for Delivery</option>
+                                    <option {% if order.delivery_status == 'Delivered' %}selected{% endif %}>Delivered</option>
+                                    <option {% if order.delivery_status == 'Cancelled' %}selected{% endif %}>Cancelled</option>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-primary mt-1">Update</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="POST" action="{% url 'verify_payment_status' order.id %}">
+                                {% csrf_token %}
+                                <select name="payment_verification" class="form-select form-select-sm">
+                                    <option {% if order.payment_verification == 'Not Verified' %}selected{% endif %}>Not Verified</option>
+                                    <option {% if order.payment_verification == 'Verified' %}selected{% endif %}>Verified</option>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-success mt-1">Verify</button>
+                            </form>
+                        </td>
+                        <td>{{ order.delivery_address }}, {{ order.delivery_pin }}</td>
+                        <td>{{ order.delivery_phone }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>{{ order.created_at }}</td>
+                    </tr>
+                    {% endif %}
+                {% empty %}
+                <tr>
+                    <td colspan="11" class="text-center">No assigned orders found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Delivered Orders Table -->
+    <div class="table-responsive">
+        <h4 class="mb-3">Delivered Orders</h4>
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-success">
+                <tr>
+                    <th>#</th>
+                    <th>Products</th>
+                    <th>User</th>
+                    <th>Payment Method</th>
+                    <th>Total Amount</th>
+                    <th>Delivery Status</th>
+                    <th>Payment Verification</th>
+                    <th>Address</th>
+                    <th>Phone number</th>
+                    <th>Status</th>
+                    <th>Ordered At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    {% if order.delivery_status == "Delivered" %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            <ul class="mb-0">
+                                {% for item in order.checkoutitem_set.all %}
+                                <li>{{ item.product.name }} - {{ item.quantity }}kg</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>{{ order.user.name }}</td>
+                        <td>{{ order.payment_method }}</td>
+                        <td>₹{{ order.total_amount }}</td>
+                        <td>{{ order.delivery_status }}</td>
+                        <td>{{ order.payment_verification }}</td>
+                        <td>{{ order.delivery_address }}, {{ order.delivery_pin }}</td>
+                        <td>{{ order.delivery_phone }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>{{ order.created_at }}</td>
+                    </tr>
+                    {% endif %}
+                {% empty %}
+                <tr>
+                    <td colspan="11" class="text-center">No delivered orders found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+
+
+
+<br><br><br><br><br><br><br><br>
+<br><br><br>
+{% endblock %}

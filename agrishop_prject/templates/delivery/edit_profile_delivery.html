@@ -1,0 +1,60 @@
+{% extends 'delivery/common.html' %}
+
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<main class="container py-5 d-flex justify-content-center">
+    <div class="card shadow p-4" style="max-width: 500px; width: 100%;">
+        <h3 class="text-center mb-4">Edit Profile</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" name="name" value="{{ delivery.name }}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" value="{{ delivery.username }}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" value="{{ delivery.email }}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input type="text" name="phone" value="{{ delivery.phone }}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Address</label>
+                <textarea name="address" class="form-control" required>{{ delivery.address }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Current Profile Image</label><br>
+                {% if delivery.image %}
+                    <img src="{{ delivery.image.url }}" alt="Profile Image" class="img-thumbnail mb-2" width="120">
+                {% else %}
+                    <p class="text-muted">No image uploaded</p>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Upload New Profile Image</label>
+                <input type="file" name="image" class="form-control">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success px-4 py-1">Update</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+
+<br><br><br><br><br><br><br><br>
+<br><br><br>
+{% endblock %}

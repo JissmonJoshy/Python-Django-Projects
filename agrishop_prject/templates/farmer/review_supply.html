@@ -1,0 +1,29 @@
+{% extends 'farmer/common.html' %}
+
+
+{% block content %}
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+
+<main class="container mt-5 mb-5">
+    <h2 class="text-center text-success mb-4">Review {{ supply.name }}</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Rating (1 to 5)</label>
+            <input type="number" name="rating" min="1" max="5" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Comment</label>
+            <textarea name="comment" class="form-control" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit Review</button>
+    </form>
+</main>
+
+{% endblock %}

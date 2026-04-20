@@ -1,0 +1,48 @@
+{% extends 'user/common.html' %}
+
+{% block content %}
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+
+
+<main class="container my-5">
+    <h2 class="text-center mb-4 text-primary">Your Reviews</h2>
+
+    {% if reviews %}
+        {% for review in reviews %}
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ review.product.name }}</h5>
+                <p class='card-text'>Price: ₹{{ review.product.price }}</p>
+                <p class='card-text'>Description: {{ review.product.description }}</p>
+                <p class="card-text"><strong>Rating:</strong>
+                    {% for i in "12345"|make_list %}
+                        {% if forloop.counter <= review.rating %}
+                            ⭐
+                        {% else %}
+                            ☆
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                <p class="card-text"><strong>Comment:</strong> {{ review.comment }}</p>
+                <p class="card-text text-muted"><small>Reviewed on: {{ review.created_at|date:"d M Y H:i" }}</small></p>
+                
+                <form method="POST" action="{% url 'delete_review' review.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm mt-2">Delete Review</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-center text-muted">You haven’t posted any reviews yet.</p>
+    {% endif %}
+</main>
+
+<br><br><br><br><br><br><br><br>
+<br><br><br><br>
+    {% endblock %}

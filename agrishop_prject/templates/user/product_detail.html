@@ -1,0 +1,27 @@
+{% extends "user/common.html" %}
+
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+        <div class="card-body text-center">
+            <h3 class="card-title">{{ product.name }}</h3>
+            <p class="card-text"><strong>Description:</strong> {{ product.description }}</p>
+            <p class="card-text"><strong>Price:</strong> ${{ product.price }}</p>
+            <p class="card-text"><strong>Available Quantity:</strong> {{ product.quantity }} Kg</p>
+            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary mt-3 px-4">Add to Cart</a>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
+{% endblock %}

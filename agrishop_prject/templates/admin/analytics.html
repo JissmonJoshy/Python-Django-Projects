@@ -1,0 +1,50 @@
+{% extends 'admin/common.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4 text-primary">Product-wise Order Analytics</h2>
+    <canvas id="productChart" height="100"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('productChart').getContext('2d');
+    const productChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ labels|safe }},
+            datasets: [{
+                label: 'Total Orders',
+                data: {{ data|safe }},
+                backgroundColor: 'lightgreen',
+                borderColor: 'green',
+                borderWidth: 1,
+                barThickness: 40
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    beginAtZero: true
+                }
+            },
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `Orders: ${context.raw}`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+<br><br><br><br><br><br><br><br><br>
+<br><br><br><br>
+{% endblock %}

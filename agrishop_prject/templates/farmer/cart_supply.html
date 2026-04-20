@@ -1,0 +1,64 @@
+{% extends 'farmer/common.html' %}
+{% block content %}
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<div class="container mt-5">
+    <h2 class="text-success text-center mb-4">My Supply Cart</h2>
+
+    {% if cart_items %}
+    <table class="table table-bordered table-hover">
+        <thead class="table-success">
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>
+                    {% if item.supply.image %}
+                    <img src="{{ item.supply.image.url }}" width="80" height="80" style="object-fit: cover;">
+                    {% else %}
+                    <img src="https://via.placeholder.com/80" alt="No image">
+                    {% endif %}
+                </td>
+                <td>{{ item.supply.name }}</td>
+                <td>{{ item.supply.category }}</td>
+                <td>₹{{ item.supply.price }}</td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <a href="{% url 'decrease_supply' item.id %}" class="btn btn-outline-danger btn-sm me-1">-</a>
+                        {{ item.quantity }}
+                        <a href="{% url 'increase_supply' item.id %}" class="btn btn-outline-success btn-sm ms-1">+</a>
+                    </div>
+                </td>
+                <td>₹{{ item.total_price }}</td>
+                <td>
+                    <a href="{% url 'remove_supply' item.id %}" class="btn btn-sm btn-outline-danger">Remove</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="text-end">
+        <h3>Total: <span class="text-success">₹{{ total_price }}</span></h3>
+    </div>
+    <center>
+        <button class="btn btn-primary" onclick="window.location.href='{% url 'checkout_supply' %}'">Proceed to Checkout</button>
+    {% else %}
+    <div class="alert alert-warning text-center">Your cart is empty.</div>
+    {% endif %}
+</div>
+<br><br><br><br><br>
+<br><br><br><br><br><br><br>
+{% endblock %}

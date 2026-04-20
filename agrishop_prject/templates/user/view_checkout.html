@@ -1,0 +1,102 @@
+{% extends "user/common.html" %}
+
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<main class="container my-5">
+    <h2 class="text-center mb-4 text-success">Your Orders</h2>
+
+    {% for checkout in checkouts %}
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">Order ID: {{ checkout.id }}</h5>
+            <p class="card-text">Payment Method: <strong>{{ checkout.payment_method }}</strong></p>
+            <p class="card-text">Total Amount: ₹{{ checkout.total_amount }}</p>
+            <p class="card-text">Payment: <span class="text-success">{{ checkout.status }}</span></p>
+            <p class="card-text">Address: <span>{{ checkout.delivery_address }}, {{ checkout.delivery_pin }}</span></p>
+            <p class="card-text">Phone: <span>{{ checkout.delivery_phone }}</span></p>
+
+            <p class="card-text">Order Date: {{ checkout.created_at|date:"d M Y H:i" }}</p>
+            <p class="card-text">Delevery Status: 
+                {% if checkout.delivery_status == "Pending" %}
+                <span class="text-danger">{{ checkout.delivery_status }}</span>
+                {% elif checkout.delivery_status == "In Progress" %}
+                <span class="text-warning">{{ checkout.delivery_status }}</span>
+                {% elif checkout.delivery_status == "Picked Up" %}
+                <span class="text-primary">{{ checkout.delivery_status }}</span>
+                {% elif checkout.delivery_status == "Out for Delivery" %}
+                <span class="text-info">{{ checkout.delivery_status }}</span>
+                {% elif checkout.delivery_status == "Delivered" %}
+                <span class="text-success">{{ checkout.delivery_status }}</span>
+                {% elif checkout.delivery_status == "Cancelled" %}
+                <span class="text-danger">{{ checkout.delivery_status }}</span>
+                {% else %}
+                <span class="text-secondary">{{ checkout.delivery_status }}</span>
+                {% endif %}
+        
+            </p>
+
+            <h6 class="mt-4">Items:</h6>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in checkout.checkoutitem_set.all %}
+                    <tr>
+                        <td>
+                            {{ item.product.name }}
+                            {% if checkout.delivery_status == "Delivered" %}
+                            <form method="POST" action="{% url 'submit_review' item.product.id %}" class="mt-2">
+                                {% csrf_token %}
+                                <div class="mb-1">
+                                    <textarea name="comment" rows="2" class="form-control" placeholder="Write your review..." required></textarea>
+                                </div>
+                                <div class="mb-1">
+                                    <select name="rating" class="form-select" required>
+                                        <option value="" disabled selected>Rate the product</option>
+                                        <option value="1">⭐</option>
+                                        <option value="2">⭐⭐</option>
+                                        <option value="3">⭐⭐⭐</option>
+                                        <option value="4">⭐⭐⭐⭐</option>
+                                        <option value="5">⭐⭐⭐⭐⭐</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-outline-success">Submit Review</button>
+                            </form>
+                            {% endif %}
+                        </td>
+                        <td>₹{{ item.product.price }}</td>
+                        <td>{{ item.quantity }} Kg</td>
+                    </tr>
+                    
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-center text-muted">You have no orders yet.</p>
+    {% endfor %}
+</main>
+<br><br><br><br><br><br><br><br>
+<br><br><br><br>
+{% endblock %}
+

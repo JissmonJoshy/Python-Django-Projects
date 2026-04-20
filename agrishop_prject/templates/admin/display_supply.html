@@ -1,0 +1,59 @@
+{% extends 'admin/common.html' %}
+
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<div class="container mt-5">
+    <h2 class="text-success text-center mb-4">All Added Supplies</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center shadow-sm">
+            <thead class="table-success">
+                <tr>
+                    <th>#</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Added On</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for supply in supplies %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        {% if supply.image %}
+                        <img src="{{ supply.image.url }}" width="70" height="70" style="object-fit: cover;">
+                        {% else %}
+                        No Image
+                        {% endif %}
+                    </td>
+                    <td>{{ supply.name }}</td>
+                    <td>{{ supply.description }}</td>
+                    <td>{{ supply.category }}</td>
+                    <td>₹{{ supply.price }}</td>
+                    <td>{{ supply.quantity }}</td>
+                    <td>{{ supply.created_at|date:"Y-m-d H:i" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8">No supplies found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
+{% endblock %}
+

@@ -1,0 +1,59 @@
+{% extends 'user/common.html' %}
+
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+
+<main class="container py-5 d-flex justify-content-center">
+    <div class="card shadow p-4" style="max-width: 500px; width: 100%;">
+        <h3 class="text-center mb-4">Edit Profile</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label>Name</label>
+                <input type="text" name="name" value="{{ user_profile.name }}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Username</label>
+                <input type="text" name="username" value="{{ user_profile.username }}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" name="email" value="{{ user_profile.email }}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Phone</label>
+                <input type="text" name="phone" value="{{ user_profile.phone }}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Address</label>
+                <textarea name="address" class="form-control" required>{{ user_profile.address }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label>Current Image</label><br>
+                {% if user_profile.image %}
+                    <img src="{{ user_profile.image.url }}" alt="Profile Image" class="img-thumbnail mb-2" width="120">
+                {% else %}
+                    <p class="text-muted">No image uploaded</p>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label>Upload New Profile Image</label>
+                <input type="file" name="image" class="form-control">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success px-4 py-1">Update</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<br><br><br><br><br><br><br><br>
+<br><br><br>
+{% endblock %}

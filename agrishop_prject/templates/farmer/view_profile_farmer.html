@@ -1,0 +1,33 @@
+{% extends 'farmer/common.html' %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">My Profile</h2>
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body text-center">
+            {% if farmer.image %}
+                <img src="{{ farmer.image.url }}" class="rounded-circle mb-3" width="120" height="120" style="object-fit: cover;" alt="Profile Image">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
+            <h4>{{ farmer.name }}</h4>
+            <p><strong>Username:</strong> {{ farmer.username }}</p>
+            <p><strong>Email:</strong> {{ farmer.email }}</p>
+            <p><strong>Phone:</strong> {{ farmer.phone }}</p>
+            <p><strong>Address:</strong> {{ farmer.address }}</p>
+            <button class="btn btn-primary mt-4" onclick="window.location.href='{% url 'edit_profile_farmer' %}'">Edit Profile</button>
+        </div>
+    </div>
+    
+</div>
+
+<br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
+{% endblock %}

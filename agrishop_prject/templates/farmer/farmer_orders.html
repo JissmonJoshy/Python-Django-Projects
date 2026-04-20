@@ -1,0 +1,55 @@
+{% extends 'farmer/common.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-success text-center mb-4">Your Product Orders</h2>
+
+    {% for checkout in checkouts %}
+    <div class="card mb-3">
+        <div class="card-header bg-success text-white">
+            Order ID: {{ checkout.id }} | Buyer: {{ checkout.user.name }} | Payment:
+            {% if checkout.status == "Paid" %}
+              Card Payment
+            {% elif checkout.status == "home delivery" %}
+              Cash On Delivery
+            {% else %}
+              Unknown
+            {% endif %} | 
+           Total: ₹{{ checkout.total_amount }} |  <br>Date: {{ checkout.created_at|date:"Y-m-d H:i" }} | Payment Verification {{ checkout.payment_verification }}
+            | Delivery Status {{ checkout.delivery_status }} 
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Delivery Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in checkout_items %}
+                        {% if item.checkout.id == checkout.id %}
+                        <tr>
+                            <td>{{ item.product.name }}</td>
+                            <td>{{ item.quantity }} Kg</td>
+                            <td>₹{{ item.product.price }}</td>
+                            <td>{{ item.checkout.delivery_status }}</td>
+
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% empty %}
+    <div class="alert alert-warning text-center">No orders found for your products.</div>
+    {% endfor %}
+</div>
+
+
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
+{% endblock %}

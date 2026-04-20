@@ -1,0 +1,31 @@
+{% extends 'delivery/common.html' %}
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<main class="container py-5 d-flex justify-content-center">
+    <div class="card shadow p-4" style="max-width: 500px; width: 100%;">
+        <h3 class="text-center mb-4">Delivery Profile</h3>
+        <div class="text-center mb-3">
+            <img src="{{ delivery.image.url }}" alt="Profile Image" class="img-thumbnail" width="150">
+        </div>
+        <p><strong>Name:</strong> {{ delivery.name }}</p>
+        <p><strong>Username:</strong> {{ delivery.username }}</p>
+        <p><strong>Email:</strong> {{ delivery.email }}</p>
+        <p><strong>Phone:</strong> {{ delivery.phone }}</p>
+        <p><strong>Address:</strong> {{ delivery.address }}</p>
+        <div class="text-center mt-4">
+            <a href="{% url 'edit_profile_delivery' %}" class="btn btn-primary px-4 py-1">Edit Profile</a>
+        </div>
+    </div>
+</main>
+
+<br><br><br><br><br><br><br><br>
+<br><br><br>
+{% endblock %}

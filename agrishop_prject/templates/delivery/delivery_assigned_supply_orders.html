@@ -1,0 +1,144 @@
+{% extends 'delivery/common.html' %}
+
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<main class="container my-5">
+    <h2 class="text-center mb-4">My Assigned Supply Orders</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Farmer Name</th>
+                    <th>Payment Method</th>
+                    <th>Total Amount</th>
+                    <th>Supplies Ordered</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Delivery Status</th>
+                    <th>Payment Verification</th>
+                    <th>Ordered At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in supply_orders %}
+                    {% if order.delivery_status != "Delivered" %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ order.farmer.name }}</td>
+                            <td>{{ order.payment_method }}</td>
+                            <td>₹{{ order.total_amount }}</td>
+                            <td>
+                                <ul>
+                                    {% for item in order.supplycheckoutitem_set.all %}
+                                    <li>{{ item.supply.name }} - {{ item.quantity }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>{{ order.delivery_address }}, {{ order.delivery_pin }}</td>
+                            <td>{{ order.delivery_phone }}</td>
+                            <td>
+                                <form method="POST" action="{% url 'update_supply_delivery_status' order.id %}">
+                                    {% csrf_token %}
+                                    <select name="delivery_status" class="form-select"
+                                        {% if order.delivery_status == "Delivered" and order.payment_verification == "Verified" %}disabled{% endif %}>
+                                        <option value="In Progress" {% if order.delivery_status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                                        <option value="Picked Up" {% if order.delivery_status == 'Picked Up' %}selected{% endif %}>Picked Up</option>
+                                        <option value="Out for Delevery" {% if order.delivery_status == 'Out for Delevery' %}selected{% endif %}>Out for Delevery</option>
+                                        <option value="Delivered" {% if order.delivery_status == 'Delivered' %}selected{% endif %}>Delivered</option>
+                                        <option value="Cancelled" {% if order.delivery_status == 'Cancelled' %}selected{% endif %}>Cancelled</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-sm btn-primary mt-1"
+                                        {% if order.delivery_status == "Delivered" and order.payment_verification == "Verified" %}disabled{% endif %}>
+                                        Update
+                                    </button>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="POST" action="{% url 'verify_supply_payment_status' order.id %}">
+                                    {% csrf_token %}
+                                    <select name="payment_verification" class="form-select"
+                                        {% if order.delivery_status == "Delivered" and order.payment_verification == "Verified" %}disabled{% endif %}>
+                                        <option value="Not Verified" {% if order.payment_verification == 'Not Verified' %}selected{% endif %}>Not Verified</option>
+                                        <option value="Verified" {% if order.payment_verification == 'Verified' %}selected{% endif %}>Verified</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-sm btn-success mt-1"
+                                        {% if order.delivery_status == "Delivered" and order.payment_verification == "Verified" %}disabled{% endif %}>
+                                        Verify
+                                    </button>
+                                </form>
+                            </td>
+                            <td>{{ order.ordered_at }}</td>
+                        </tr>
+                    {% endif %}
+                {% empty %}
+                <tr>
+                    <td colspan="10" class="text-center">No assigned supply orders found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Delivered Orders Section -->
+    <h2 class="text-center my-4">Delivered Supply Orders</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-success">
+                <tr>
+                    <th>#</th>
+                    <th>Farmer Name</th>
+                    <th>Payment Method</th>
+                    <th>Total Amount</th>
+                    <th>Supplies Ordered</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Delivery Status</th>
+                    <th>Payment Verification</th>
+                    <th>Ordered At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in supply_orders %}
+                    {% if order.delivery_status == "Delivered" %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ order.farmer.name }}</td>
+                            <td>{{ order.payment_method }}</td>
+                            <td>₹{{ order.total_amount }}</td>
+                            <td>
+                                <ul>
+                                    {% for item in order.supplycheckoutitem_set.all %}
+                                    <li>{{ item.supply.name }} - {{ item.quantity }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>{{ order.delivery_address }}, {{ order.delivery_pin }}</td>
+                            <td>{{ order.delivery_phone }}</td>
+                            <td>{{ order.delivery_status }}</td>
+                            <td>{{ order.payment_verification }}</td>
+                            <td>{{ order.ordered_at }}</td>
+                        </tr>
+                    {% endif %}
+                {% empty %}
+                <tr>
+                    <td colspan="10" class="text-center">No delivered orders found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<br><br><br><br><br><br><br>
+<br><br><br>
+
+{% endblock %}

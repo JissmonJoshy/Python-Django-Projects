@@ -1,0 +1,74 @@
+{% extends 'user/common.html' %}
+
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<section class="product-section product_pg_prod">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-sm-6">
+                <p class="product_count">Showing {{ total_results }} results</p>
+            </div>
+            <div class="col-sm-6 text-end">
+                <form method="get" class="product_ordering d-flex justify-content-end">
+                    <input type="text" name="search" placeholder="Search product..." value="{{ search_query }}" class="form-control w-50 me-2">
+                    <select name="orderby" class="orderby form-select w-auto" onchange="this.form.submit()">
+                        <option value="default" {% if order_by == 'default' %}selected{% endif %}>Default sorting</option>
+                        <option value="price" {% if order_by == 'price' %}selected{% endif %}>Sort by price: low to high</option>
+                        <option value="price-desc" {% if order_by == 'price-desc' %}selected{% endif %}>Sort by price: high to low</option>
+                        <option value="date" {% if order_by == 'date' %}selected{% endif %}>Sort by newness</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-3 col-sm-12 mb-4">
+                <div class="product_wrp">
+                    <div class="product_img">
+                        <img alt="{{ product.name }}" class="img-responsive" src="{{ product.image.url }}">
+                        <div class="on_sale">
+                            <span>{{ product.quantity }} Kg left</span>
+                        </div>
+                    </div>
+                    <div class="product_info">
+                        <h4>{{ product.name }}</h4> 
+                        <p class="product_desc">{{ product.description }}</p>
+                        
+
+                        {% comment %} <ul class="product_rating">
+                            <li><i class="icon_star"></i></li>
+                            <li><i class="icon_star"></i></li>
+                            <li><i class="icon_star"></i></li>                               
+                            <li><i class="icon_star"></i></li>                                 
+                            <li><i class="icon_star-half_alt"></i></li>
+                        </ul> {% endcomment %}
+                        <span class="product_price">₹{{ product.price }}</span>
+                    </div>
+                    <div class="project_view">
+                        
+                        <a href="{% url 'product_detail' product.id %}"><i class="icon-glyph-13"></i></a>
+                        <a class="project-link" href="{% url 'add_to_favorite' product.id %}">
+                            <i class="icon-glyph-52"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center text-muted">No products found.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<br><br><br><br><br><br><br><br>
+<br><br><br>
+{% endblock %}

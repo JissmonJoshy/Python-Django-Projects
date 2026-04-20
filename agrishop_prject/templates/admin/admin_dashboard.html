@@ -1,0 +1,225 @@
+{% extends 'admin/common.html' %}
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+<style>
+    .slide_bg_1 {
+        background-image: url('/static/images/v4.jpg');
+        background-size: cover; /* Ensures the image covers the entire area */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents repeating the image */
+        height: 100vh; /* Full height of the viewport */
+        color: #fff; /* Optional: make text white for contrast */
+    }
+    </style>
+    <!-- Start: Slides  -->
+    <div class="slides_wrapper">
+        <div class="slider_home">
+             <!-- Slider 1 -->
+            <div class="single_slider slide_bg_1">
+                <div class="slider_item_tb">
+                    <div class="slider_item_tbcell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-12">
+                                    <!-- <h5>Professional Cleaning Services</h5>  -->
+                                    <h2 style="color: #fff;">
+                                        A huge variety <br>  fruits & vegetables.
+                                    </h2>
+                                    <!-- <p>As quas equidem noluisse et, ex pro semper fierent oporteat. Te epic urei ullam corper usu, eos et voluptaria rationibus. Usu cu eligendi ad ipisci sed  altera dae reformidans ea, inermis ration ibus necessitatibus eu eum.</p> -->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End: Slider 1 -->
+            <!-- Slider 2 -->
+            
+            <!-- End: Slider 2 -->
+        </div>
+    </div>
+
+    <!-- End:  Slider Section
+==================================================-->
+
+ 
+
+    <!-- Start: About Us Section
+==================================================-->
+    <section class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="about_img">
+                        <img src="{% static "images/about.jpg" %}" alt="image">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="about_item_tb">
+                        <div class="about_item_tbcell">
+                             <div class="base-header base_header_left">
+                                <small>Welcome To Our Fuodborne Farms</small>
+                                <h3>Organic Food - Farm Fresh Produce Right to Your Door</h3>
+                             </div>
+                            <div class="about_item">
+                                <h4>Natural Products</h4>
+                                 <p>Organically grown crops tend to use natural fertilizers like manure to improve plant growth. Animals raised organically are also not given antibiotic organic  hormones  most commonly purchased organic .</p>
+                            </div>
+                            <div class="about_item">
+                                <h4>Wheat Cultivation</h4>
+                                 <p>Organically grown crops tend to use natural fertilizers like manure to improve plant growth. Animals raised organically are also not given antibiotic organic  hormones  most commonly purchased organic .</p> 
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <!-- /.about_wrp-->
+            </div>
+            <!-- /. row -->
+        </div>
+        <!-- /. container -->
+    </section>
+    <!-- End: About Us Section
+==================================================-->
+
+
+
+    <!-- Start: Our process Section
+==================================================-->
+    <section class="process-section">
+        <div class="container">
+            <!-- Start: Heading -->
+             <div class="base-header">
+                <small>Working Process</small>
+                <h3>How does we work</h3>
+             </div> 
+            <!-- End: Heading -->
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <!-- Working Process item -->
+                    <div class="process-item">
+                        <div class="img_process">
+                            <img src="{% static "images/process_1.png" %}" alt="image">
+                            <span>01</span>
+                            <div class="angle_icon">
+                                <img src="{% static "images/shape1.png" %}" alt="image">
+                            </div>
+                        </div>
+                        <div class="process_text">
+                            <h4>Step 01</h4>
+                            <p>Organically grown crops tend use natural fertilizers like manure to improve growth to plant . </p>
+                        </div>  
+                    </div>
+                    <!-- End: Working Process item-->
+                </div>                
+                <div class="col-md-3 col-sm-12">
+                    <!-- Working Process item -->
+                    <div class="process-item">
+                        <div class="img_process">
+                            <img src="{% static "images/process_3.png" %}" alt="image">
+                            <span>02</span>
+                            <div class="angle_icon">
+                                <img src="{% static "images/shape2.png" %}" alt="image">
+                            </div>
+                        </div>
+                        <div class="process_text">
+                            <h4>Step 02</h4>
+                            <p>Organically grown crops tend use natural fertilizers like manure to improve growth to plant . </p>
+                        </div>  
+                    </div>
+                    <!-- End: Working Process item -->
+                </div>               
+                <div class="col-md-3 col-sm-12">
+                    <!-- Working Process item -->
+                    <div class="process-item">
+                        <div class="img_process">
+                            <img src="{% static "images/process_4.png" %}" alt="image">
+                            <span>03</span>
+                            <div class="angle_icon">
+                                <img src="{% static "images/shape1.png" %}" alt="image">
+                            </div>
+                        </div>
+                        <div class="process_text">
+                            <h4>Step 03</h4>
+                            <p>Organically grown crops tend use natural fertilizers like manure to improve growth to plant .</p>
+                        </div>  
+                    </div>
+                    <!-- End: Working Process item -->
+                </div> 
+                 <div class="col-md-3 col-sm-12">
+                    <!-- about-item -->
+                    <div class="process-item">
+                        <div class="img_process">
+                            <img src="{% static "images/process_2.png" %}" alt="image">
+                            <span>04</span>
+                        </div>
+                        <div class="process_text">
+                            <h4>Step 04</h4>
+                            <p>Organically grown crops tend use natural fertilizers like manure to improve growth to plant .</p>
+                        </div>  
+                    </div>
+                    <!-- End: Working Process item -->
+                </div> 
+            </div>
+            <!-- /. row -->
+        </div>
+        <!-- /. container -->
+    </section>
+    <!-- End: Our process Section
+==================================================-->
+
+
+
+<!-- Start: why chose us  Section 
+==================================================-->
+<section class="whychose-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-12">
+               <div class="whychose_bg"></div> 
+            </div> 
+            <div class="col-lg-7 col-sm-12 my-auto">
+                <div class="whychose_wrp">
+                    <!-- Start:  Header Section -->
+                    <div class="base-header base_header_left">
+                        <small>What We do</small>
+                        <h3> Why Choose Us </h3>
+                    </div>
+                    <!-- End:  Header Section -->
+                    <div class="special_ser_item">
+                        <div class="special_ser_icon">
+                            <i class="icon-glyph-11"></i>
+                        </div>
+                        <h4>Quick Response </h4>
+                        <p>Emergency response time is one hour or less guaranteed at live person will answer your call or you can enter service</p>
+                    </div>                 
+                    <div class="special_ser_item">
+                        <div class="special_ser_icon">
+                            <i class="icon-glyph-30"></i>
+                        </div>
+                        <h4>Very Fast Services</h4>
+                        <p>Emergency response time is one hour or less guaranteed at live person will answer your call or you can enter service</p>
+                    </div> 
+                </div>  
+            </div>  
+        </div>
+        <!-- /. row -->
+    </div>
+    <!-- /. container -->
+</section>
+<!-- End: Why CHoose us Section 
+==================================================-->
+
+
+
+
+
+
+{% endblock %}

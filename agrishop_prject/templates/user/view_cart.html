@@ -1,0 +1,62 @@
+{% extends "user/common.html" %}
+
+{% load static %}
+{% block content %}
+
+
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">My Shopping Cart</h2>
+
+    {% if cart_items %}
+    <table class="table table-bordered text-center align-middle">
+        <thead class="table-success">
+            <tr>
+                <th>Product</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td><img src="{{ item.product.image.url }}" width="100" height="100"></td>
+                <td>₹{{ item.product.price }}</td>
+                <td>
+                    <a href="{% url 'decrease_quantity' item.id %}" class="btn btn-outline-danger btn-sm">-</a>
+                    <span class="mx-2">{{ item.quantity }} Kg</span>
+                    <a href="{% url 'increase_quantity' item.id %}" class="btn btn-outline-success btn-sm">+</a>
+                </td>
+                <td>₹{{ item.subtotal }}</td>
+                <td>
+                    <a href="{% url 'remove_cart_item' item.id %}" class="btn btn-danger btn-sm">Remove</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="text-center mt-4">
+        <a href="{% url 'checkout' %}" class="btn btn-success btn-lg">Proceed to Checkout</a>
+    </div>
+    
+    {% else %}
+    <h5 class="text-center mt-4">Your cart is empty.</h5>
+    {% endif %}
+</div>
+
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+
+{% endblock %}
+

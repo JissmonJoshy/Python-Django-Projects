@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]> <!-->
+<html lang="zxx">
+<!--
+<![endif]-->
+
+
+<!-- Mirrored from tidytheme.xyz/blackgallery/FuodBorne/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Apr 2025 09:27:26 GMT -->
+<head>
+    <!-- TITLE OF SITE -->
+    <title>Agri Shop - Organic Food HTML Template</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Fuodborne - Organic Food HTML Template" />
+    <meta name="keywords" content="Fuodborne, Food, Organic, one page, multipage, responsive, landing, html template" />
+    <meta name="author" content="Fuodborne">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="{% static "images/favicon.png" %}">
+
+
+    <!-- CSS Begins
+================================================== -->
+    <!--Animate Effect-->
+    <link href="{% static "css/animate.css" %}" rel="stylesheet">
+    <link href="{% static "css/hover.css" %}" rel="stylesheet">
+
+    <!-- For Image Preview -->
+    <link rel="stylesheet" href="{% static "css/magnific-popup.css" %}">
+
+    <!--Owl Carousel -->
+    <link href="{% static "css/owl.carousel.css" %}" rel="stylesheet">
+    <link href="{% static "css/owl.transitions.css" %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static "css/slick.css" %}">
+    <link rel="stylesheet" href="{% static "css/slick-theme.css" %}">
+
+    <!--BootStrap -->
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/normalize.css" %}" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+    <link href="{% static "css/responsive.css" %}" rel="stylesheet">
+
+
+    <!--[if IE]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<style>
+    ul{
+        font-weight: bold;
+    }
+</style>
+<body>
+
+   
+
+    <!-- Start: header navigation -->
+    <div class="navigation">
+        <div class="container">
+            <div class="row">
+                    <a href=""><img class="img-responsive" src="/static/images/hi.png" alt="Logo" style="height: 100px;"></a>
+                    </a>
+                <div class="col-md-8 col-sm-12">
+                    <div id="navigation">
+                        <ul>
+                            <li class="active"><a href="{% url 'delivery_dashboard' %}">Home</a></li>
+
+                            {% comment %} <li><a href="">Products</a></li> {% endcomment %}
+                            
+
+                            
+                            
+                            
+                            <li class="has-sub"><a href="">Orders</a>
+                                <ul>
+                                    <li><a href="{% url 'delivery_assigned_supply_orders' %}">Seeds/Fertilizers</a>
+                                    </li>
+                                    <li><a href="{% url 'delivery_assigned_orders' %}">Products</a>
+                                    </li>                                    
+                                    
+                                </ul>
+                            </li> 
+                            <li><a href="{% url 'view_profile_delivery' %}">Profile</a></li>
+
+                            <li><a href="/">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End: Menu  -->
+                </div>
+                
+                <!-- Start: Cart  -->
+                
+                 <!-- End: Cart  -->
+            </div>
+            <!--/ row -->
+        </div>
+        <!--/ container -->
+    </div>
+    <!-- End: header navigation -->
+
+
+
+{% block content %}
+
+{% endblock %}
+
+
+
+
+
+    <!-- Start:Footer Section 
+==================================================-->
+<footer class="footer">
+        
+    <!-- Start:Subfooter -->
+    <div class="subfooter">
+            <p>2019 © Copyright <a href="index.html">Agri Shop.</a> All rights Reserved.</p>
+    </div>
+    <!-- End:Subfooter -->
+</footer>
+<!-- End:Footer Section 
+========================================-->
+
+
+<!-- Scripts
+========================================-->
+<!-- jquery -->
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-1.12.4.min.js" type="691fc1931fbccd8af79a4487-text/javascript"></script>
+<!-- plugins -->
+<script src="{% static "js/plugins.js" %}" type="691fc1931fbccd8af79a4487-text/javascript"></script>
+<!-- Bootstrap -->
+<script src="{% static "js/bootstrap.min.js" %}" type="691fc1931fbccd8af79a4487-text/javascript"></script>
+<script src="{% static "js/popper.min.js" %}" type="691fc1931fbccd8af79a4487-text/javascript"></script>
+<script src="{% static "js/waypoints.min.js" %}" type="691fc1931fbccd8af79a4487-text/javascript"></script>
+<script src="{% static "js/slick.min.js" %}" type="691fc1931fbccd8af79a4487-text/javascript"></script>
+<script src="{% static "js/jquery.ajaxchimp.min.js" %}" type="691fc1931fbccd8af79a4487-text/javascript"></script>
+
+<!-- Custom Scripts
+========================================-->
+<script src="{% static "js/main.js" %}" type="691fc1931fbccd8af79a4487-text/javascript"></script>
+
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="691fc1931fbccd8af79a4487-|49" defer></script></body>
+
+
+<!-- Mirrored from tidytheme.xyz/blackgallery/FuodBorne/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Apr 2025 09:27:47 GMT -->
+</html>

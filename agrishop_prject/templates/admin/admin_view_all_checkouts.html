@@ -1,0 +1,118 @@
+{% extends 'admin/common.html' %}
+
+{% block content %}
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<main class="container py-4">
+    <h2 class="text-center text-primary mb-5">All User Checkouts</h2>
+
+    {% for checkout in checkouts %}
+    <form method="POST" action="{% url 'assign_delivery' checkout.id %}" class="mb-4">
+        {% csrf_token %}
+        <div class="card shadow">
+            <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 text-success">
+                    <i class="bi bi-receipt-cutoff me-1"></i>Order ID: {{ checkout.id }}
+                </h5>
+                <span class="text-muted small">
+                    <i class="bi bi-calendar-event me-1"></i>{{ checkout.created_at|date:"d M Y, H:i A" }}
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <p><i class="bi bi-person-circle me-2"></i><strong>User:</strong> {{ checkout.user.name }} ({{ checkout.user.username }})</p>
+                        <p><i class="bi bi-credit-card me-2"></i><strong>Payment Method:</strong> {{ checkout.payment_method }}</p>
+                        <p><i class="bi bi-cash-coin me-2"></i><strong>Total Amount:</strong> ₹{{ checkout.total_amount }}</p>
+                        <p><i class="bi bi-telephone me-2"></i><strong>Phone:</strong> {{ checkout.delivery_phone }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><i class="bi bi-geo-alt me-2"></i><strong>Address:</strong> {{ checkout.delivery_address }}, {{ checkout.delivery_pin }}</p>
+                        <p><i class="bi bi-truck me-2"></i><strong>Delivery Status:</strong>
+                            {% if checkout.delivery_status == "In Progress" %}
+                                <span class="badge bg-warning text-dark">In Progress</span>
+                            {% elif checkout.delivery_status == "Picked Up" %}
+                                <span class="badge bg-primary">Picked Up</span>
+                            {% elif checkout.delivery_status == "Out for Delivery" %}
+                                <span class="badge bg-info text-dark">Out for Delivery</span>
+                            {% elif checkout.delivery_status == "Delivered" %}
+                                <span class="badge bg-success">Delivered</span>
+                            {% elif checkout.delivery_status == "Cancelled" %}
+                                <span class="badge bg-danger">Cancelled</span>
+                            {% else %}
+                                <span class="badge bg-secondary">Pending</span>
+                            {% endif %}
+                        </p>
+                        <p><i class="bi bi-shield-check me-2"></i><strong>Payment Status:</strong>
+                            {% if checkout.payment_verification == "Verified" %}
+                                <span class="badge bg-success">Verified</span>
+                            {% else %}
+                                <span class="badge bg-danger">Not Verified</span>
+                            {% endif %}
+                        </p>
+                        {% if checkout.assigned_delivery %}
+                            <p><i class="bi bi-person-lines-fill me-2"></i><strong>Assigned Delivery:</strong> {{ checkout.assigned_delivery.name }} ({{ checkout.assigned_delivery.username }})</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if not checkout.assigned_delivery %}
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label class="form-label"><i class="bi bi-person-gear me-2"></i><strong>Assign Delivery Personnel:</strong></label>
+                        <select class="form-select" name="delivery_id" required>
+                            <option value="" selected disabled>Choose Delivery Person</option>
+                            {% for delivery in deliveries %}
+                                <option value="{{ delivery.id }}">{{ delivery.name }} ({{ delivery.username }})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="bi bi-send-check me-1"></i>Assign
+                        </button>
+                    </div>
+                </div>
+                {% endif %}
+
+                <h6 class="mt-4 mb-2">
+                    <i class="bi bi-bag-check me-1"></i><strong>Ordered Items</strong>
+                </h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th><i class="bi bi-box-seam me-1"></i>Product</th>
+                                <th><i class="bi bi-currency-rupee me-1"></i>Product Price (Each)</th>
+                                <th><i class="bi bi-diagram-3 me-1"></i>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in checkout.checkoutitem_set.all %}
+                            <tr>
+                                <td>{{ item.product.name }}</td>
+                                <td>₹{{ item.product.price }}</td>
+                                <td>{{ item.quantity }} Kg</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% empty %}
+    <p class="text-center text-muted">No checkouts found.</p>
+    {% endfor %}
+</main>
+
+
+
+
+<br><br><br><br><br><br><br><br>
+<br><br><br>
+{% endblock %}

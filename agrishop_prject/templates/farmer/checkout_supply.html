@@ -1,0 +1,119 @@
+{% extends 'farmer/common.html' %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+
+<main class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow rounded-4">
+                <div class="card-body p-4">
+                    <h3 class="text-center text-success mb-4">Supply Checkout</h3>
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <h5 class="mb-3">Select Payment Method</h5>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="payment_method" value="Home Delivery" id="homeDelivery" required>
+                            <label class="form-check-label" for="homeDelivery">Home Delivery</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="payment_method" value="Card Payment" id="cardPayment" required>
+                            <label class="form-check-label" for="cardPayment">Card Payment</label>
+                        </div>
+
+
+                        <div id="home-delivery-section" style="display:none;" class="mt-4">
+                            <div class="mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" name="delivery_name" class="form-control" placeholder="Full Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Phone Number</label>
+                                <input type="text" name="delivery_phone" class="form-control" placeholder="Phone Number" maxlength=10 required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Delivery Address</label>
+                                <textarea name="delivery_address" class="form-control" placeholder="Delivery Address"  required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">PIN Code</label>
+                                <input type="text" name="delivery_pin" class="form-control" placeholder="PIN Code" maxlength=6 required>
+                            </div>
+                        </div>
+
+                        
+                        <div id="card-section" style="display:none;" class="mt-4">
+                            <div class="mb-3">
+                                <label class="form-label">Card Holder Name</label>
+                                <input type="text" name="card_holder" class="form-control" placeholder="Card Holder Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Card Number</label>
+                                <input type="text" name="card_number" class="form-control" placeholder="Card Number" maxlength="16" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Expiry Date (MM/YY)</label>
+                                <input type="text" name="expiry_date" class="form-control" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">CVV</label>
+                                <input type="text" name="cvv" class="form-control" placeholder="CVV" maxlength="4" required>
+                            </div>
+                        </div>
+                        
+
+                        <div class="text-end mt-4">
+                            <h5>Total Amount: <span class="text-success">₹{{ total }}</span></h5>
+                        </div>
+
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-success rounded-pill">Place Order</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    function toggleSections() {
+        const cardSection = document.getElementById('card-section');
+        const deliverySection = document.getElementById('home-delivery-section');
+
+        const cardInputs = cardSection.querySelectorAll('input');
+        const deliveryInputs = deliverySection.querySelectorAll('input, textarea');
+
+        if (document.getElementById('cardPayment').checked) {
+            cardSection.style.display = 'block';
+            deliverySection.style.display = 'none';
+
+            cardInputs.forEach(input => input.disabled = false);
+            deliveryInputs.forEach(input => input.disabled = true);
+        } else {
+            cardSection.style.display = 'none';
+            deliverySection.style.display = 'block';
+
+            cardInputs.forEach(input => input.disabled = true);
+            deliveryInputs.forEach(input => input.disabled = false);
+        }
+    }
+
+    document.querySelectorAll('input[name="payment_method"]').forEach(elem => {
+        elem.addEventListener('change', toggleSections);
+    });
+
+    window.onload = toggleSections;
+</script>
+
+    
+<br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
