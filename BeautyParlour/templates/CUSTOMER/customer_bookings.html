@@ -1,0 +1,82 @@
+{% extends 'CUSTOMER/base.html' %}
+
+{% block content %}
+<br><br><br><br>
+<h1>Your Booked Services</h1>
+
+<table class="booking-table">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Service</th>
+            <th>Price</th>
+            <th>Payment</th>
+            <th>Booking Date</th>
+            <th>Scheduled Date</th>
+            <th>Scheduled Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{ booking.service.name }}</td>
+            <td>₹{{ booking.service.price }}</td>
+            <td>{{ booking.payment_status }}</td>
+            <td>{{ booking.booking_date|date:"d M Y, h:i A" }}</td>
+            <td>{{ booking.scheduled_date|default:"Not Scheduled" }}</td>
+            <td>{{ booking.time_schedule|default:"Not Scheduled" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" style="text-align: center;">No bookings found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .booking-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .booking-table th, .booking-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .booking-table th {
+        background-color: #007bff;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    .booking-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .booking-table tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>
+
+{% endblock %}

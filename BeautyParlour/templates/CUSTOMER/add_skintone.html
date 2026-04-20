@@ -1,0 +1,58 @@
+
+{% extends 'CUSTOMER/base.html' %}
+{% block content %}
+    {% load static %}
+  
+  <!-- Banner Section -->
+<section class="banner_area banner_one" style="margin-top: 0px">
+    <div class="container">
+        <div class="content-align">
+            <div class="content-center">
+                <div class="banner_content">
+                    <h3>Upload Skintone</h3>
+                </div>
+                <div class="banner_link">
+                    <div class="abnner_link_inner">
+                        <a class="active" href="/customerHome">Home</a>
+                        <a href="/add_skintone">Upload Skintone</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Registration Section -->
+<section class="registration-area py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="registration-form p-4 shadow-lg rounded bg-light">
+                    <h2 class="form-title text-center mb-4">Upload Skintone</h2>
+                    <form action="{% url 'add_skintone' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    
+                        <div class="form-group mb-3">
+                            <label for="skintone" class="form-label">Upload Skintone Image</label>
+                            <input type="file" class="form-control" name="skintone" id="skintone" accept="image/*" required />
+                        </div>
+                    
+                        {% comment %} <div class="form-group mb-3">
+                            <label for="skintone_type" class="form-label">Select Skintone</label>
+                            <select class="form-control" name="skintone_type" id="skintone_type" required>
+                                <option value="fair">Fair</option>
+                                <option value="medium">Medium</option>
+                                <option value="dark">Dark</option>
+                            </select>
+                        </div> {% endcomment %}
+                    
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Upload</button>
+                        </div>
+                    </form>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  {% endblock %}

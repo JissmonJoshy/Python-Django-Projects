@@ -1,0 +1,555 @@
+
+
+@media (max-width: 1400px){
+    .main_slider_area .rev_slider .tp-leftarrow {
+        left: -35px !important;
+    }
+    .main_slider_area .rev_slider .tp-rightarrow {
+        left: 103% !important;
+    }
+    .footer_up .form-container .btn-full {
+        padding: 11px 40px;
+    }
+}
+@media (max-width: 1300px){
+    .slider_area .carousel-captions .heading {
+        font-size: 40px;
+     }
+     .testimonial-section {
+        padding-top: 80px;
+     }
+     /*1300.............testimonial-section-End............*/
+
+}
+
+@media (max-width:1200px){
+    /*............1200slider_area mr_top-Start............*/
+    /*.slider_area .carousel-captions.caption-align-center {
+        width: 60%;
+    }*/
+    .slider_area .carousel-captions .heading {
+        font-size: 35px;
+    }
+    .slider_area .carousel-captions .heading {
+        line-height: 38px;
+    }
+    .slider_area .parent-btn {
+        margin-top: 30px;
+    }
+    /*............1200slider_area mr_top-End............*/
+    
+
+}
+
+/* small computer device */
+
+@media (max-width: 1024px){
+    h1{
+        font-size: 35px;
+    }
+    p{
+        font-size: 15px;
+    }
+     .service-title h2{
+        font-size: 16px;
+    }
+
+    /*---------------- START WHO I AM SECTION START ------------------*/
+
+    .who-i-am {
+        padding: 100px 0;
+    }
+    .who-i-am h4{
+        font-size: 18px;
+    }
+    .who-i-am .main-wrap-outer .inner-wrap{
+        bottom: 0;
+    }
+    
+    /*---------------- END WHO I AM SECTION START ------------------*/
+
+    .aboutme .left-area {
+        float: left;
+        padding: 10% 0 10% 5%;
+    }
+
+
+    .pro-box h1{
+        font-size: 16px;
+    }
+    .our-mission .cnt-box{
+        padding: 120px 0 70px 50px;
+        float: right;
+    }
+
+    /* End Slider Css */
+
+  
+
+    /* Start testimonial Section*/
+
+    .testimonial-area{
+       
+    }
+    .testimonial-area .testimonial-inner{
+        padding: 0 0 100px 0 ;
+    }
+    .testimonial-area .section-head{
+        text-align: center;
+    }
+    .testimonial-area .container-fluid{
+        max-width: 960px;
+    }
+    .testimonial-area .main-frame{
+        margin: 0;
+    }
+
+ 
+
+    /* Start clients Section*/
+    #clients .owl-nav .owl-prev{
+        width: 45px;
+        height: 45px;
+        line-height: 135px;
+    }
+    #clients .owl-nav .owl-next{
+
+        width: 45px;
+        height: 45px;
+        line-height: 135px;  
+    }
+
+     /* Start Blog Section*/
+
+     #blog{
+        padding: 100px 0;
+     }
+     #blog .img-box img{
+        margin: auto;
+        display: flex;
+     }
+     #blog .cnt-col{
+        width: auto;
+     }
+
+    /*-------------------- Start Footer ------------------*/
+    .footer-widget .opening-hour span{
+        margin-left: 160px;
+    }
+
+    /*--------------- Start Home Page 2 ------------------*/
+
+    .why-choose .fea-box .content-box h4{
+        font-size: 16px;
+    }
+    .our-product .product-name h2{
+        font-size: 14px;
+    }
+    .make-appoitment .appoint_form .title h3{
+        font-size: 25px;
+    }
+    .com-about{
+        padding: 100px 0;
+        height: inherit;
+    }
+
+   
+
+}
+
+/* tablet device */
+
+@media (max-width: 992px){
+
+    .pr-md{
+        padding-right: 15px;
+    }
+     .com-about {
+        background-image: none;
+        padding: 100px 0;
+    }
+    .offset-xs-0{
+        margin-left: 0;
+    }
+
+    /* 992............Banner-End............*/
+
+
+    .sec-title h1{
+        font-size: 40px;
+    }
+    .services .image-box .text h2{
+        margin-bottom: 10px;
+        letter-spacing: 0;
+    }
+
+    /*-------------- Start aboutme  section ---------------*/
+    .aboutme{
+        padding: 120px 0;
+    }
+    .aboutme .right-area{
+        margin-top: 20px;
+    }
+    .aboutme .left-area{
+        padding: 0;
+    }
+    .aboutme .left-area h1{
+        font-size: 40px;
+    }
+    /*-------------- End aboutme section ------------------*/
+
+    /*-------------- Start core-value section -------------*/
+    .core-wrap{
+        background-image: none;
+        overflow: inherit;
+        height: auto;
+    }
+    .our-mission .image-box{
+        width: 100%;
+        height: 100vh;
+    }
+    .our-mission .cnt-box{
+        padding: 100px 0px;
+        float: right;
+    }
+    .achivement{
+        padding: 50px 0;
+    }
+    .achivement h1{
+        font-size: 50px;
+    }
+    .pro-box{
+        height: auto;
+        padding: 50px 0;
+    }
+    /*-------------- Start core-value section -------------*/
+
+
+    /*-------------- Start testimonial-area --------------*/
+    .testimonial-block-outer{
+        width: auto;
+    }
+    .testimonial-block-outer .text-box{
+        width: 100%;
+        padding: 30px;
+    }
+    .testimonial-block-outer .quote-icon {
+        margin-bottom: 30px;
+    }
+    .testimonial-area .owl-nav .owl-prev{
+        margin-right: 0;
+        left: 75%;
+        right: inherit;
+    }
+    .testimonial-area .owl-nav .owl-next{
+        margin-right: 0;
+        right: 0;
+        left: inherit;
+    }
+    /*-------------- End testimonial-area --------------*/
+
+    /*----------- Start blog section css --------------*/
+    .newsblog-conents{
+        padding: 25px 15px;
+    }
+    .blog-auth-area{
+        padding: 0 0 10px 0;
+    }
+    .blog-auth-area a{
+        font-size: 14px;
+        padding-right: 15px;
+    }
+    .newsblog-conents a h3{
+        font-size: 14px;
+        line-height: 24px;
+
+    }
+    /*----------- End blog section css --------------*/
+
+    .newsletter-area{
+        padding: 20px 0 0 0;
+    }
+
+    /*-------------- Strat Footer -------------------*/
+
+    .banner_area{
+        margin-top: 90px;
+    }
+
+    /*=========== START HOME PAGE 2 =============*/
+
+
+    /*----------- Start service 2 section css -------*/
+
+    .service2 .owl-nav .owl-prev {
+        left: 40%;
+    }
+    .service2 .owl-nav .owl-next {
+        right: 44%;
+    }
+   
+}
+
+/*@media (max-width: 767px){
+   
+    .slider_area.mr_top {
+        margin-top: 85px;
+    }
+    .slider_area .carousel-captions .heading {
+        font-size: 18px;
+    }
+    .slider_area .carousel-captions p {
+        font-size: 12px;
+    }
+    .slider_area .carousel-captions p i {
+        width: 8%;
+    }
+
+    
+
+
+
+}*/
+
+@media only screen and (min-width: 320px) and (max-width: 735px){
+
+
+    .pr-0, .px-0 {
+        padding-right: 15px!important;
+    }
+    .prl-0 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .pl-0{
+        padding-left: 15px !important;
+    }
+    .mt-mob-d-30{
+        margin-top: 30px;
+    }
+
+    .sec-title h1{
+        font-size: 30px !important;
+    }
+    p{
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+   .pr-xs-none{
+        padding-right: 0;
+    }
+    .mb-xs-none{
+        margin-bottom: 0 !important;
+    }
+    .section-padding{
+        padding: 100px 0;
+    }
+    /*---------- Start section tilte -----------------*/
+    .title-text{
+        margin-top: 10px;
+    }
+    /*---------- End section tilte -------------------*/
+
+
+    /*---------- Start who-i-am section --------------*/
+
+    .who-i-am {
+        padding: 100px 0;
+    }
+    .who-i-am h1{
+        font-size: 35px;
+    }
+    .who-i-am h4{
+        font-size: 18px;
+    }
+    .who-i-am .main-wrap-outer .inner-wrap{
+        bottom: 0;
+        padding: 70px 15px 50px 15px;
+    }
+    .who-i-am .tel-info{
+        width: 100%;
+        float: left;
+        margin-bottom: 20px;
+    }
+
+    /*---------------- END WHO I AM SECTION START ------------------*/
+
+    .core-wrap{
+        height: auto;
+    }
+    .achivement{
+        border-bottom: 1px solid #333232;
+    }
+    .achivement.pr-37{
+        padding-right: 0;
+    }
+    .achivement h1{
+        font-size: 50px;
+        
+    }
+    .pro-box{
+        height: auto;
+    }
+
+    .make-appoitment .appoint_form .title h3 {
+        font-size: 22px;
+    }
+   .service-box-content{
+        width: 100%;
+        padding-left:0; 
+   }
+
+   .service-box-inner h4::after{
+        left: -16px;
+        margin: 0;
+   }
+   .why-choose{
+        height: 100%;
+   }
+   .counter-area{
+        position: inherit;
+   }
+   .why-choose .m-120-mb{
+        margin-top: 120px;
+
+   }
+   .achivement-area{
+        border-radius: 0;
+   }
+   .pd-150{
+        padding-left: 15px;
+   }
+   .contractor-img img{
+        display: none;
+   }
+   .contractor-phn-info{
+        margin: auto;
+        display: table;
+   }
+    /*======================== End =======================*/
+
+    .project-one-img{
+        height: 409px;
+    }
+
+    .testimonial-area {
+        padding: 120px 0;
+    }
+    .testimonial-area .testimonial-inner{
+        padding: 0;
+    }
+   
+    .testimonial-block-outer{
+        padding: 30px;
+    }
+    .testimonial-block-outer .client-img{
+        float: none;
+    }
+    .testimonial-block-outer .text-box {
+        width: 100%;
+        padding: 30px 0 0 0px;
+    }
+    .testimonial-area .owl-nav .owl-prev {
+        margin-right: 0;
+        left: 58%;
+        right: inherit;
+        top: 93%;
+        width: 70px;
+        height: 70px;
+        line-height: 46px;
+    }
+    .testimonial-area .owl-nav .owl-next{
+        top: 93%;
+        width: 70px;
+        height: 70px;
+        line-height: 46px;
+    }
+    .project-one-img:before{
+        display: none;
+    }
+
+        /*............Start video Section............*/
+
+
+    /*----------- End book-consul -----------------*/
+
+    .blog-section{
+        
+    }
+    .newsblog-group{
+        margin-bottom: 20px;
+    }
+
+
+
+    /*............Start service Section............*/
+
+    .service-section .owl-nav .owl-prev{
+        left: 34%;
+    }
+    .service-section .owl-nav .owl-next{
+        right: 34%;
+    }
+   .service2 .owl-nav .owl-prev {
+        left: 34%;
+    }
+    .service2 .owl-nav .owl-next {
+        right: 34%;
+    }
+
+
+    /*............Start gallery Section............*/
+
+    .gallery .section-padding{
+       padding-bottom: 0;
+    }
+ 
+    .main-header .header-menu{
+        display: none;
+    }
+    .banner_area{
+        margin-top: 90px;
+    }
+    .whoweare-section{
+        padding: 50px 0;
+    }
+    .whoweare-content, .whoweare_main, .callappointment_main{
+        padding-left: 0;
+    }
+    .about-page .whoweare-content h3{
+        font-size: 22px;
+        line-height: 28px;
+        padding: 30px 0 15px 0;
+        text-align: left;
+    }
+    .about-page .whoweare-content p{
+        padding: 0;
+        text-align: left;
+    }
+
+
+    .company-content-area{
+        padding: 30px 0 0 0 ;
+    }
+    .core-value .single-core{
+        padding: 30px 0 30px 0;
+    }
+/*    .founder .founder-info{
+        margin: 0;
+    }*/
+    .com-about {
+        background-image: none;
+    }
+    .offset-xs-0{
+        margin-left: 0;
+    }
+    .pb-xs-0{
+        padding-bottom: 0 !important;
+    }
+    .bg-img-4 {
+        background: url(../img/resource/bg4.jpg);
+        background-position: revert;
+    }
+
+}

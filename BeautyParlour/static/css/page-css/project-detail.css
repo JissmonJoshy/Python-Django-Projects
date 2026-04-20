@@ -1,0 +1,126 @@
+
+.project-d-page{
+    
+}
+.pro-img-group{
+
+}
+.p-img-box{
+    overflow: hidden;
+
+}
+.p-img-box img {
+    width: 100%;
+    transition: 0.5s all ease-in-out;
+}
+.p-img-box:hover img {
+    transform: scale(1.1);
+}
+.project-d-page .m-b{
+    margin-bottom: 10px;
+}
+.project-d-page .pd-lr-10{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.pro-detail-outer-wrap{
+    padding: 80px 0 0 0;
+}
+.pro-detail-outer-wrap .p-des{
+
+}
+.pro-detail-outer-wrap .p-des h1{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.project-d-page .theme-btn{
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.p-list-content{
+    padding: 50px 0 0 0;
+}
+.p-list-content h1{
+    color: #f25b02;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.p-list-content ul li {
+    list-style: none;
+    padding-top: 20px;
+    color: #434343;
+    font-weight: 400;
+}
+.p-list-content ul li i {
+    color: #f25b02;
+    margin-right: 10px;
+}
+.project-d-page .pd-l-30{
+    padding-left: 30px;
+}
+.pd-client-review{
+    width: 100%;
+    padding: 50px 30px;
+    border: 1px solid #f2f2f2;
+        box-shadow: 0px 10px 21px rgb(27 18 18 / 5%);
+}
+.pd-client-review h1{
+    font-size: 30px;
+}
+.pd-client-review p{
+    margin-top: 30px;
+    font-style: italic;
+    font-family: lora;
+}
+.project-info{
+    margin-top: 20px;
+        box-shadow: 0px 10px 21px rgb(27 18 18 / 5%);
+
+}
+.project-info .title{
+    padding: 24px 40px;
+    background: #f60;
+    border-radius: 0;
+    color: #fff;
+    margin-bottom: 0;
+    font-size: 24px;
+    font-weight: 500;
+}
+.project-info .info-body{
+    padding: 15px 40px;
+    border: 1px solid #f2f2f2;
+}
+.project-info .info-body .single-info {
+    display: flex;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid #e9e9e9;
+}
+.project-info .info-body .single-info i {
+    height: 50px;
+    width: 50px;
+    background: #f9f0f0;
+    color: #f60;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.project-info .info-body .single-info .info-details {
+    margin-left: 20px;
+}
+.project-info .info-body .single-info .info-details span {
+    margin-bottom: 5px;
+}
+.project-info .info-body .single-info .info-details .name {
+    font-size: 18px;
+    margin-bottom: 0;
+    margin-top: 3px;
+}

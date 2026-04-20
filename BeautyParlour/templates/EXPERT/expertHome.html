@@ -1,0 +1,531 @@
+{% extends 'EXPERT/base.html' %}
+{% block content %}
+  {% load static %}
+ 
+    
+    <!--================Header Area End =================-->
+
+    <div class="home-page" style="margin-top:0px">
+    <!--================Slider Area =================-->
+    <section class="slider_area ">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="owl-carousel">
+                        <div class="item slide-img-1" data-overlay-dark="3">
+                            <div class="middle caption">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-12 text-center">
+                                            <h3 class="animated fadeInUp">one place to everything</h3>
+                                            <h1 class="animated fadeInUp">the perfect place <br>to relax
+                                            </h1>
+                                            <a class="theme-btn-2 btn-md animated fadeInUp" href="#">
+                                                get started Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /item -->
+                        <div class="item slide-img-2" data-overlay-dark="5">
+                            <div class="middle caption">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-12 text-center">
+                                            <h3>one place to everything</h3>
+                                            <h1 class="animated fadeInUp">the perfect place <br>to relax
+                                            </h1>
+
+                                            <a class="theme-btn-2 btn-md" href="#">
+                                                get started Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /item -->
+
+                        <div class="item slide-img-3" data-overlay-dark="5">
+                            <div class="middle caption">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-12 text-left">
+                                            <h3>one place to everything</h3>
+                                            <h1 class="animated fadeInUp">the perfect place <br>to relax
+                                            </h1>
+                                            <a class="theme-btn-2 btn-md" href="#">
+                                                get started Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /item -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Slider Area =================-->
+
+    <section class="who-i-am ">
+        <div class="container">
+            <div class="main-wrap-outer">
+                <div class="inner-wrap">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-xs-12">
+                                <h1>about us </h1>
+                                <h4>A institute in the field of beauty, makeup, hairstyle</h4>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipiscing elit Praesent libero enim imperdiet vel porta quis, ultricies et tortor In quis feugiat orci vel vestibulum felis Mauris mollis lacus Ut vel lacus non felis laoreet consectetur. 
+                                </p>
+                                <div class="tel-info">
+                                    <div class="tel-icon"><img src={% static "img/icon/tel.png" %} alt="tel-icon"></div>
+                                    <div class="tel-num">
+                                        <span>Call us</span>
+                                        <p>7354-548-698</p>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-xs-12">
+                        <form class="head_form">
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Phone">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <textarea class="form-control" name="message" id="message" rows="1" placeholder="Message.."></textarea>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button type="submit" value="submit" class="theme-btn-2 btn-full mt-none">Submit now</button>
+                                </div>
+                            </div>
+                        </form>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services section-padding">
+        <div class="container">
+            <div class="title">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+                        <div class="sec-title text-left"><h1>what we do</h1></div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+                        <div class="title-text text-left">
+                            <p>
+                                Stylish hair cuts, gorgeous styling, incredible colour techniques, best hair servces, and pampering beauty treatment.
+                            </p>
+                        </div>
+                    </div>
+                </div>     
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 ">
+                    <div class="image-box img-hover-zoom--zoom-n-pan-v">
+                        <img src="{% static "img/service/nail.jpg" %}" alt="image" class="img-fluid">
+                        <div class="text">
+                            <h2>NAILS</h2>
+                            <a href="" class="theme-btn-white-border btn-md">view detail</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 mt-mob-d-30">
+                    <div class="image-box img-hover-zoom--zoom-n-pan-v">
+                        <img src="{% static "img/service/hair.jpg" %}" alt="image" class="img-fluid">
+                        <div class="text">
+                            <h2 class="color-black">hair</h2>
+                            <a href="l" class="theme-btn-white-border btn-md color-black">view detail</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 mt-30">
+                    <div class="image-box img-hover-zoom--zoom-n-pan-v">
+                        <img src="{% static "img/service/facial.jpg" %}" alt="image" class="img-fluid">
+                        <div class="text">
+                            <h2>facial</h2>
+                            <a href="" class="theme-btn-white-border btn-md">view detail</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 mt-30">
+                    <div class="image-box img-hover-zoom--zoom-n-pan-v">
+                        <img src="{% static "img/service/beauty.jpg" %}" alt="image" class="img-fluid">
+                        <div class="text">
+                            <h2>beauty</h2>
+                            <a href="" class="theme-btn-white-border btn-md">view detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="aboutme">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12">
+                    <div class="left-area">
+                        <h6>about ceo</h6>
+                        <h1>HI . I’AM ARILA</h1>
+                        <br><br>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <br>
+                        <p>
+                            On the other hand, we denounce with righteous indignation and every pleasure is to be welcomed and every sures have to be repudiated and annoyances accepted.
+                        </p>
+                        <br>
+                        <a href="#" class="theme-btn-white btn-md">book appointment</a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 pr-none pr-md">
+                    <div class="right-area">
+                        <div class="image-box">
+                            <img src="{% static "img/resource/owner.jpg" %}" alt="image" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="video-section section-padding bg-fixed clearfix" data-overlay-dark="4" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                         <div class="sec-title text-center">
+                        
+                        <h1 class="white">WATCH VIDEO</h1>
+                        <br>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                        <div class="video-media">
+                            <div class="testimonial-inlinemedia">
+                                
+                                <div class="video ">
+                                    <a href="https://www.youtube.com/watch?v=aQ2ZnyvtV5w" class="video-fancybox  lightbox-image">
+                                        <span class="play-video"> <i class=" fa fa-play"></i> </span>  
+                                    </a>
+                                </div>
+                            </div>
+                        </div> 
+                    </div><!-- /col --> 
+                </div>
+            </div>
+    </section>
+
+    <section class="text-marquee">
+        <div class="container-fluid">
+            <div class="scrolling-text marquee">
+                * Make up * Hair Design * Nail Extention * Marketing * Consultant * Advertising * Development * Design * Business * Marketing * Consultant
+            </div>
+        </div>
+    </section>
+
+
+    <section class="core-value section-padding pb-0">
+        <div class="container">
+            <div class="title">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 ">
+                        <div class="sec-title text-left"><h1>core value</h1></div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="title-text text-left">
+                            <p>
+                                Stylish hair cuts, gorgeous styling, incredible colour techniques, best hair servces, and pampering beauty treatment.
+                            </p>
+                        </div>
+                    </div>
+                </div>     
+            </div>
+            <div class="core-wrap">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-xs-12 prl-0">
+                        <div class="counter-area">
+                            <div class="achivement">
+                                <h1><span class="counter">24</span></h1>
+                                <h4>Years of experience</h4>
+                            </div>
+                        </div>
+                    </div><!-- /col -->
+
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-xs-12 pr-0">
+                        <div class="counter-area">
+                            <div class="achivement pr-37">
+                                <h1><span class="counter">1500 </span> 
+                                    <div class="plus-size">
+                                        +
+                                    </div>
+
+                                </h1>
+                                <h4>Happy Customer</h4>
+                            </div>
+                        </div>
+                    </div><!-- /col -->
+
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-xs-12 prl-0">
+                        <div class="counter-area">
+                            <div class="achivement brd-r-0">
+                                <h1><span class="counter">10</span></h1>
+                                <h4>branches</h4>
+                            </div>
+                        </div>
+                    </div><!-- /col -->
+                </div><!-- /row -->
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-xs-12 pr-0">
+                        <div class="pro-box bg-col-black">
+                            <div class="icon">
+                                <img src="{% static "img/icon/pro1.png" %}" alt="icon">
+                            </div>
+                            <!-- <br> -->
+                            <h1>
+                                Top professional Artist
+                            </h1>
+                        </div>
+                    </div><!-- /col -->
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-xs-12 prl-0">
+                        <div class="pro-box bg-col-pink">
+                            <div class="icon">
+                                <img src="{% static "img/icon/pro2.png" %}" alt="icon">
+                            </div>
+                            <!-- <br> -->
+                            <h1>
+                                Free Consultations
+                            </h1>
+                        </div>
+                    </div><!-- /col -->
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-xs-12 pl-0">
+                        <div class="pro-box bg-col-skin">
+                            <div class="icon">
+                                <img src="{% static "img/icon/pro3.png" %}" alt="icon">
+                            </div>
+                            <!-- <br> -->
+                            <h1>
+                                Creative & Smart Work
+                            </h1>
+                        </div>
+                    </div><!-- /col -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="our-mission ">
+        <div class="container-fluid pl-0">
+            <div class="image-box bg-img-mission clearfix">
+              <!--  <img src="img/resource/mission.jpg"> -->
+          </div>
+          <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-xs-12">
+                        <div class="cnt-box">
+                            <h1>Our Mission</h1>
+                            <br>
+                            <p>
+                                My salon Suite isn’t just another place to rent a chair; we’re a space to call your own. Our fully-equipped suites fit all your needs and allow for countless personal touches, from paint to décor, ensuring that your suite is exactly that – yours.
+                            </p>
+                            <br>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua unt in culpa qui officia deserunt mollit anim est laborum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--================Footer Area =================-->
+    <footer class="footer-section">
+        <div class="footer_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="footer-about">
+                            <div class="footer-logo">
+                                <img src="{% static "img/logo.png" %}" alt="logo">
+                            </div>
+                                <p>
+                                 which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish 
+                                </p>
+                                <div class="social-links-footer">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-5">
+                        <aside class="footer-widget pl-45">
+                            <div class="f_title"><h3>Quick Links</h3></div>
+                            <div class="footer-link">
+                                <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Service</a></li>
+                                    <li><a href="#">Clients</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3">
+                        <div class="footer-widget pl-55">
+                            <div class="f_title"><h3>Quick Links</h3></div>
+                            <div class="footer-link">
+                                <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Service</a></li>
+                                    <li><a href="#">Clients</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                            
+                    <div class="col-lg-4 col-md-6 col-sm-5 col-xs-12 ">
+                        <aside class="footer-widget pl-75 mb-none">
+                            <div class="f_title"><h3>Address</h3></div>
+                            <div class="footer-address">
+                                <ul>
+                                    <li>
+                                        <div class="media-left">
+                                            <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="color-white">110, Lorance Road Mount Waverley, Melbourne 3149,
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="tel:92-45-35-43-35"> 
+                                            <div class="media-left">
+                                                <i class="fa fa-phone-alt" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                +91-92-45-35-43-35
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:sales@pulsesecurity.com">
+                                            <div class="media-left">
+                                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="media-body">info@parlor.com</div>
+                                        </a>        
+                                    </li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>                                
+                </div>
+            </div>
+        </div>
+        <div class="footer_copyright">
+            <div class="container">
+                <div class="footer_copyright_inner">
+                    <p>© 2024 All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+            <a href="javascript:void(0)" id="scroll" title="Scroll to Top">
+                <span class="fa fa-angle-up"></span> 
+            </a>
+    </footer>
+    <!--================End Footer Area =================-->
+    
+    <style>
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-img {
+            position: relative;
+            width: 100%;
+            height: 220px;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        
+        .service-price {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+        
+        .service-content {
+            padding: 15px;
+        }
+        
+        .service-content h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .service-content p {
+            font-size: 14px;
+            color: gray;
+            height: 50px;
+            overflow: hidden;
+        }
+        
+        .theme-btn-2 {
+            display: inline-block;
+            background: black;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .theme-btn-2:hover {
+            background: red;
+        }
+
+
+        </style>
+{% endblock %}

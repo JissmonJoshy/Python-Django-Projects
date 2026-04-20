@@ -1,0 +1,176 @@
+{% for i in messages %}
+<script>
+    alert('{{ i }}');
+</script>
+{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from redbitesystems.com/themes/parlor/demo_1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 13 Feb 2025 09:52:01 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="icon" href="img/fav-icon.png" type="image/x-icon" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Parlor - Beauty salon & Academy</title>
+    <!-- Icon css link -->
+    <!-- <link href="css/all.css" rel="stylesheet"> -->
+    {% load static %}
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Animate.css -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+
+    <!-- Custom Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+    <!-- jQuery Fancybox -->
+    <link href="{% static 'css/jquery.fancybox.css' %}" rel="stylesheet" />
+
+    <!-- Extra Plugins -->
+    <link href="{% static 'css/plugins.css' %}" rel="stylesheet" />
+
+    <!-- Responsive Styles -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Header Area Start -->
+    <header class="main-header">
+      <div class="header-menu bg-dark">
+        <div class="container">
+          <nav
+            class="navbar navbar-expand-md affix"
+            data-spy="affix"
+            data-offset-top="197"
+          >
+            <!-- Logo -->
+            <a class="navbar-brand" href="">
+              <img src="{% static 'img/logo.png' %}" alt="Company Logo" />
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <!-- Home Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/customerHome">Home</a>
+                </li>
+            
+                <!-- Customers Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/add_skintone">Add Skintone</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/reply">chat</a>
+              </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/customer_bookings">Bookings</a>
+              </li>
+            
+                <!-- Experts Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/view_skins">Skins</a>
+                </li>
+            
+                <!-- Logout Link -->
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="/">Logout</a>
+                </li>
+            </ul>
+            
+
+              <!-- Contact Info -->
+              <div class="navbar-text ms-auto">
+                {% comment %} <i class="fa fa-phone"></i> Call us: 7354-548-698
+                {% endcomment %}
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <!-- Core JavaScript Libraries -->
+    <script src="{% static 'js/jquery-2.2.4.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Plugin Libraries -->
+    <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendors/isotope/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendors/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+    <!-- Additional Libraries -->
+    <script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+    <script src="{% static 'js/jquery.mixitup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.appear.js' %}"></script>
+    <script src="{% static 'js/jquery.countTo.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+
+    <!-- Custom Scripts -->
+    <script src="{% static 'js/gallery.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+    <script src="{% static 'js/counternew.js' %}"></script>
+    <script src="{% static 'js/mobilemenu.js' %}"></script>
+    <script src="{% static 'dist/jquery-simple-mobilemenu.js' %}"></script>
+
+    <!-- Google Maps (Add your API key to the src URL) -->
+    {% if google_maps_api_key %}
+    <script src="https://maps.google.com/maps/api/js?key={{ google_maps_api_key }}"></script>
+    <script src="{% static 'js/map-script.js' %}"></script>
+    {% endif %}
+    <!-- <script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script> -->
+  </body>
+
+  <!-- Mirrored from redbitesystems.com/themes/parlor/demo_1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 13 Feb 2025 09:52:01 GMT -->
+</html>

@@ -1,0 +1,30 @@
+
+/* == ( Bootstrap-css ) ==*/
+
+
+
+/* == Magnific-popup gallery  == */
+@import url("css/jquery.fancybox.html");
+
+
+/* == Magnific-popup gallery  == */
+@import url("plugins/mobilestyle.css");
+@import url("plugins/mobilemenu-slide.css");
+
+
+/* == Icons ( animate-css ) ==*/
+@import url("plugins/animate.css");
+
+
+/* == Owl.carousel == */
+@import url("plugins/owl.carousel.min.css");
+
+
+/* == Magnific-popup gallery  == */
+@import url("plugins/magnific-popup.css");
+
+
+/* == Icons ( font awesome pro icons ) ==*/
+@import url("plugins/font-awesome-pro.css");
+@import url("plugins/flaticon.css");
+@import url("plugins/strokeicon.css");

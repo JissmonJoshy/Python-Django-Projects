@@ -1,0 +1,143 @@
+{% extends 'ADMIN/base.html' %}
+{% block content %}
+{% load static %}
+<br><br><br><br><br>
+
+<main class="container">
+    <h1>All Bookings</h1>
+
+
+        <table class="booking-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Customer</th>
+                    <th>Service</th>
+                    <th>Category</th> 
+                    <th>Price</th>
+                    <th>Payment</th>
+                    <th>Date</th> 
+                    <th>Time</th>
+                    <th>Assign</th> 
+                    <th>Action</th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ booking.customer.name }}</td>
+                    <td>{{ booking.service.name }}</td>
+                    <td>{{ booking.service.category }}</td>
+                    <td>₹{{ booking.service.price }}</td>
+                    <td>{{ booking.payment_status }}</td>
+                    <td>{{ booking.scheduled_date }}</td>
+                    <td>{{ booking.time_schedule|default:"Not Scheduled" }}</td>
+                    <td>
+                        {% if booking.payment_status == 'Paid' %}
+                        <form action="{% url 'schedule_service' booking.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="time" name="service_time" required>
+                            <button type="submit">Set Time</button>
+                        </form>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form action="{% url 'assign_expert' booking.id %}" method="post">
+                            {% csrf_token %}
+                            <select name="expert_id" required>
+                                <option value="" disabled selected>Select Expert</option>
+                                {% for expert in experts %}
+                                    <option value="{{ expert.id }}" {% if booking.assigned_expert.id == expert.id %}selected{% endif %}>
+                                        {{ expert.name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <button type="submit">Assign</button>
+                        </form>
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+   
+</main>
+
+<style>
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+
+
+    .booking-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 700px;
+        text-align: center;
+    }
+
+    .booking-table th, .booking-table td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+    }
+
+    .booking-table th {
+        background-color: #007bff;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    .booking-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .booking-table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    input[type="time"] {
+        padding: 4px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 12px;
+        width: 100px;
+    }
+
+    button {
+        background-color: #28a745;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+
+    @media (max-width: 768px) {
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .booking-table th, .booking-table td {
+            font-size: 12px;
+            padding: 8px;
+        }
+
+        h1 {
+            font-size: 18px;
+        }
+    }
+</style>
+
+
+
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'ADMIN/base.html' %}
+{% block content %}
+  {% load static %}
+
+        <!--================Header Area End =================-->
+        <!--================Banner Area =================-->
+        <section class="banner_area banner_one" style="margin-top: 0px;">
+            <div class="container">
+                <div class="content-align">
+                    <div class="content-center">
+                        <div class="banner_content">
+                            <h3>Register</h3>
+                        </div>
+                        <div class="banner_link">
+                            <div class="abnner_link_inner">
+                                <a class="active" href="/">Home</a>
+                                <a href="#"> Registeration for Expert</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Banner Area =================-->
+        
+        <!--================Contact Us Area =================-->
+        <section class="registration-area py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="registration-form p-4 shadow-lg rounded bg-light">
+                            <h2 class="form-title text-center mb-4">Register New Expert</h2>
+                            <form class="register-form" action="" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+        
+                                <div class="form-group mb-3">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="Enter expert's username" required>
+                                </div>
+        
+                                <div class="form-group mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" name="password" id="password" 
+                                        placeholder="Enter expert's password" required 
+                                        minlength="6" maxlength="20"
+                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}" 
+                                        title="Password must be 6-20 characters long and include at least one uppercase letter, one lowercase letter, and one number.">
+                                </div>
+                                
+                                <div class="form-group mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" 
+                                        placeholder="Enter expert's email" required
+                                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                                        title="Enter a valid email address (e.g., example@mail.com).">
+                                </div>
+                                
+                                <div class="form-group mb-3">
+                                    <label for="contact" class="form-label">Contact</label>
+                                    <input type="text" class="form-control" name="contact" id="contact" 
+                                        placeholder="Enter expert's contact number" required
+                                        pattern="[0-9]{10}" maxlength="10"
+                                        title="Enter a 10-digit phone number (numbers only).">
+                                </div>
+                                
+        
+                                <div class="form-group mb-3">
+                                    <label for="address" class="form-label">Address</label>
+                                    <textarea class="form-control" name="address" id="address" rows="3" placeholder="Enter expert's address" required></textarea>
+                                </div>
+        
+                                <div class="form-group mb-3">
+                                    <label for="expertise" class="form-label">Expertise</label>
+                                    <input type="text" class="form-control" name="expertise" id="expertise" placeholder="Enter expert's area of expertise" required>
+                                </div>
+        
+                                <div class="form-group mb-3">
+                                    <label for="experience" class="form-label">Experience (in years)</label>
+                                    <input type="number" class="form-control" name="experience" id="experience" placeholder="Enter expert's experience" required>
+                                </div>
+        
+                                <div class="form-group mb-4">
+                                    <label for="file" class="form-label">Upload Profile Picture</label>
+                                    <input type="file" class="form-control" name="file" id="file" accept="image/*" required>
+                                </div>
+        
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">Register Expert</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <!--================End Contact Us Area =================-->
+
+
+{% endblock %}

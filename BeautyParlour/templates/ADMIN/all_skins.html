@@ -1,0 +1,66 @@
+{% extends 'ADMIN/base.html' %}
+
+{% block content %}
+<main class="container mt-5">
+    <h1 class="text-center mb-4">All Skins</h1>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>No</th>
+                    <th>Customer Name</th>
+                    <th>Skin Tone Image</th>
+                    <th>Skin Tone (Select)</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for skin in skins %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ skin.customer_id.name }}</td>
+                        <td>
+                            {% if skin.skintone_image %}
+                                <img src="{{ skin.skintone_image.url }}" alt="Skin Tone Image" class="img-fluid" width="100">
+                            {% else %}
+                                No Image
+                            {% endif %}
+                        </td>
+                        <td>
+                            <form method="POST" action="{% url 'update_skin_tone' skin.id %}">
+                                {% csrf_token %}
+                                <select name="skintone" class="form-control" required>
+                                    <option value="" disabled selected>Select Skin Tone</option>
+                                    <option value="very_fair" {% if skin.skintone == "very_fair" %}selected{% endif %}>Very Fair</option>
+                                    <option value="fair" {% if skin.skintone == "fair" %}selected{% endif %}>Fair</option>
+                                    <option value="light" {% if skin.skintone == "light" %}selected{% endif %}>Light</option>
+                                    <option value="medium" {% if skin.skintone == "medium" %}selected{% endif %}>Medium</option>
+                                    <option value="olive" {% if skin.skintone == "olive" %}selected{% endif %}>Olive</option>
+                                    <option value="tan" {% if skin.skintone == "tan" %}selected{% endif %}>Tan</option>
+                                    <option value="deep_tan" {% if skin.skintone == "deep_tan" %}selected{% endif %}>Deep Tan</option>
+                                    <option value="brown" {% if skin.skintone == "brown" %}selected{% endif %}>Brown</option>
+                                    <option value="dark" {% if skin.skintone == "dark" %}selected{% endif %}>Dark</option>
+                                    <option value="deep_dark" {% if skin.skintone == "deep_dark" %}selected{% endif %}>Deep Dark</option>
+
+                                </select>
+                                <button type="submit" class="btn btn-success mt-2">Update</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="POST" action="{% url 'send_skin_message' skin.id %}">
+                                {% csrf_token %}
+                                <textarea name="message" class="form-control" required placeholder="Describe treatment for better skin"></textarea>
+                                <button type="submit" class="btn btn-primary mt-2">Send</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">No skins found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}

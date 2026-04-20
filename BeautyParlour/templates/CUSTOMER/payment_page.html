@@ -1,0 +1,115 @@
+{% extends 'CUSTOMER/base.html' %}
+
+{% block content %}
+<main class="container mt-5">
+    <h2 class="text-center mb-4">Payment for {{ service.name }}</h2>
+    <p class="text-center">Total Amount: ₹{{ service.price }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <!-- Card Holder Name -->
+        <div class="form-group mb-3">
+            <label for="cardholder-name" class="form-label">Cardholder's Name</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="cardholder-name" 
+                name="cardholder_name" 
+                placeholder="Enter cardholder's name" 
+                
+                pattern="^[a-zA-Z ]{2,30}$"
+                title="Cardholder name should only contain letters and spaces." required>
+            <div class="invalid-feedback">
+                Please enter a valid cardholder's name.
+            </div>
+        </div>
+
+        <!-- Card Number -->
+        <div class="form-group mb-3">
+            <label for="card-number" class="form-label">Card Number</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="card-number" 
+                name="card_number" 
+                placeholder="Enter card number (e.g., 1234 5678 1234 5678)" 
+                
+                maxlength='19'
+                pattern="^(\d{4} \d{4} \d{4} \d{4}|\d{16})$" 
+                title="Card number should be 16 digits long, either in XXXX XXXX XXXX XXXX format or as a continuous 16-digit number."
+                oninput="formatCardNumber(this)"required>
+            <div class="invalid-feedback">
+                Please enter a valid 16-digit card number.
+            </div>
+        </div>
+        
+
+        <!-- Expiry Date -->
+        <div class="form-group mb-3">
+            <label for="expiry-date" class="form-label">Expiry Date</label>
+            <input 
+                type="month" 
+                class="form-control" 
+                id="expiry-date" 
+                name="expiry_date" 
+                min="<?= date('Y-m'); ?>" 
+                required>
+            <div class="invalid-feedback">
+                Please select a valid expiry date (MM/YY) that is not in the past.
+            </div>
+        </div>
+        
+
+        <!-- CVV -->
+        <div class="form-group mb-4">
+            <label for="cvv" class="form-label">CVV</label>
+            <input 
+                type="tel" 
+                class="form-control" 
+                id="cvv" 
+                name="cvv" 
+                placeholder="Enter CVV" 
+                 
+                pattern="[0-9]{3}" 
+                title="CVV should be exactly 3 digits long." 
+                inputmode="numeric" 
+                maxlength="3" required >
+            <div class="invalid-feedback">
+                Please enter a valid 3-digit CVV.
+            </div>
+        </div>
+        
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-success btn-lg w-100 mt-3">Pay & Book Now</button>
+    </form>
+</main>
+
+<!-- JavaScript for Form Validation -->
+<script>
+    // Enable Bootstrap custom form validation
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+
+    function formatCardNumber(input) {
+        let value = input.value.replace(/\D/g, ''); // Remove non-digits
+        let formattedValue = value.replace(/(\d{4})/g, '$1 ').trim(); // Add spaces every 4 digits
+        input.value = formattedValue;
+    }
+</script>
+
+{% endblock %}
+

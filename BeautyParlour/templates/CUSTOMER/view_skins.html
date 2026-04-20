@@ -1,0 +1,86 @@
+{% extends 'CUSTOMER/base.html' %}
+
+{% block content %}
+<br><br><br><br>
+<h1>Your Skin Details</h1>
+
+<table class="skin-table">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Skin Tone</th>
+            
+            <th>Skin Tone Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for skin in skins %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ skin.skintone }}</td>
+           
+            <td>
+                {% if skin.skintone_image %}
+                    <img src="{{ skin.skintone_image.url }}" alt="Skin Tone" width="80">
+                {% else %}
+                    No Image
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" style="text-align: center;">No skin details found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .skin-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .skin-table th, .skin-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .skin-table th {
+        background-color: #007bff;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    .skin-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .skin-table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    img {
+        border-radius: 5px;
+    }
+</style>
+
+{% endblock %}
