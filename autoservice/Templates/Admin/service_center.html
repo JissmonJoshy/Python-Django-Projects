@@ -1,0 +1,44 @@
+{% extends "Admin/common.html" %}
+
+{% block content %}
+<main class="main-container py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Service Centers</h2>
+
+        <div class="row justify-content-center">
+            {% for center in ser %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card shadow-sm mb-3 text-center" style="border-radius: 10px;">
+                    <div class="mt-3">
+                        {% if center.image %}
+                        <img src="{{ center.image.url }}" class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover;" alt="{{ center.center_name }}">
+                        {% else %}
+                        <img src="/static/default-service-image.jpg" class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover;" alt="Default Image">
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-title text-dark mb-1"><strong>{{ center.center_name }}</strong></h6>
+                        <p class="card-text text-dark mb-1"><strong>Type:</strong> {{ center.service_type }}</p>
+                        <p class="card-text text-dark mb-1"><strong>Address:</strong> {{ center.address }}</p>
+                        <p class="card-text text-dark mb-1"><strong>Phone:</strong> {{ center.phone_number }}</p>
+                        <p class="card-text text-dark mb-1"><strong>Email:</strong> {{ center.email }}</p>
+                        <p class="card-text {% if center.status == 'Rejected' %}text-danger{% elif center.status == 'Approved' %}text-success{% else %}text-dark{% endif %}">
+                            <strong>Status:</strong> {{ center.status }}
+                        </p>
+                        <div class="">
+                            <a href="/approve_center/?id={{ center.id }}" class="btn btn-success btn-sm px-2 py-1">✔ Approve</a>
+                            <a href="/reject_center/?id={{ center.id }}" class="btn btn-danger btn-sm px-2 py-1">✖ Reject</a>
+                            <a href="/delete_center/?id={{ center.id }}" class="btn btn-warning btn-sm px-2 py-1">🗑 Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">No service centers available.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

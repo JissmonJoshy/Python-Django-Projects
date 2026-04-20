@@ -1,0 +1,157 @@
+{% extends "common.html" %}
+ {% block content %}
+        <!-- Mobile Responsive Menu -->
+		<div class="mr_menu">
+			<button type="button" class="mr_menu_close"><i class="bi bi-x-lg"></i></button>
+            <div class="logo"></div> <!-- Keep this div empty. Logo will come here by JavaScript -->
+			<div class="mr_navmenu"></div> <!-- Keep this div empty. Menu will come here by JavaScript -->
+		</div>
+
+        <div class="aside_info_wrapper">
+			<button class="aside_close"><i class="bi bi-x-lg"></i></button>
+            <div class="aside_logo">
+                <a href="index.html"><img src="/static/assets/img/logo.svg" alt="logo"></a>
+            </div>
+			<div class="aside_info_inner">
+
+                <p>When you bring your vehicle to Ducatibox Car Mechanic Center, you can rest easy knowing that your vehicle is in professional hands.</p>
+
+                <div class="aside_info_inner_box">
+                    <div class="wptb-office">
+                        <div class="wptb-item--inner">
+                            <div class="wptb-item--subtitle">
+                                Call Us Anytime
+                            </div>
+                            <h5 class="wptb-item--title"><a href="tel:+12345677345">+123 45677345</a></h5>
+                        </div>
+                    </div>
+
+                    <div class="wptb-office">
+                        <div class="wptb-item--inner">
+                            <div class="wptb-item--subtitle">
+                                SEND US MAIL
+                            </div>
+                            <h5 class="wptb-item--title"><a href="mailto:ducatiboxcar@email.com">ducatiboxcar@email.com</a></h5>
+                        </div>
+                    </div>
+
+                    <div class="wptb-office">
+                        <div class="wptb-item--inner">
+                            <div class="wptb-item--subtitle">
+                                VISIT OUR WORKSHOP
+                            </div>
+                            <h5 class="wptb-item--title"><a href="#">17110 116th Ave SE Unit A
+                                Renton, WA 98058-5055</a></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="social_sites">
+                    <ul class="d-flex align-items-center">
+                        <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                        <li><a href="#"><i class="bi bi-twitter-x"></i></a></li>
+                        <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+                        <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                    </ul>
+                </div>
+			</div>
+		</div>
+        
+        <!-- Main Wrapper-->
+        <main class="wrapper">
+            <!-- Page Header -->
+            <div class="wptb-page-heading" style="background-image: url('/static/assets/img/background/page-header-bg.jpg');">
+                <div class="container">
+                    <div class="wptb-item--inner">
+                        <h2 class="wptb-item--title ">User Registration</h2>
+                        <div class="wptb-breadcrumb-wrap">
+                            <ul class="wptb-breadcrumb">
+                                <li><a href="#">Home</a></li>
+                               
+                                <li><span>User Registration</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Registration -->
+            <section class="pd-bottom-300">
+				<div class="container">
+
+					<div class="wptb-login-form">
+                        <div class="wptb-form--wrapper">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1">
+                                    <div class="wptb-heading">
+                                        <div class="wptb-item--inner">
+                                            <h1 class="wptb-item--title">Customer Register</h1>
+                                        </div>
+                                    </div>
+
+                                    <form class="wptb-form" method="post">
+                                        <!-- CSRF Token to prevent CSRF attacks -->
+                                        {% csrf_token %}
+                                        
+                                        <div class="wptb-form--inner">        
+                                            <div class="row">
+                                                <!-- Name Field -->
+                                                <div class="col-lg-12 col-md-12 mb-4">
+                                                    <div class="form-group">
+                                                        <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                                    </div>
+                                                </div>
+                                    
+                                                <!-- Email Field -->
+                                                <div class="col-lg-12 col-md-12 mb-4">
+                                                    <div class="form-group">
+                                                        <input type="email" name="email" class="form-control" placeholder="E-mail Address" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 mb-4">
+                                                    <div class="form-group">
+                                                        <input type="text" name="address" class="form-control" placeholder="Addresss" required>
+                                                    </div>
+                                                </div>
+                                    
+                                                <!-- Password Field -->
+                                                <div class="col-lg-12 col-md-12 mb-4">
+                                                    <div class="form-group">
+                                                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                                                    </div>
+                                                </div>
+                                    
+                                                <!-- Phone Number Field -->
+                                                <div class="col-lg-12 col-md-12 mb-4">
+                                                    <div class="form-group">
+                                                        <input type="text" name="phone_number"  class="form-control" placeholder="Phone Number" required>
+                                                    </div>
+                                                </div>
+                                    
+                                                <!-- Submit Button -->
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="wptb-item--button mt-4"> 
+                                                        <button class="btn-two white" type="submit">
+                                                            <div class="btn-wrap">
+                                                                <span class="text-first"> Register </span> 
+                                                                <span class="text-second"> <i class="bi bi-plus"></i> </span> 
+                                                            </div> 
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>					
+				</div>
+			</section>
+
+            
+
+        </main>
+
+       
+ {% endblock  %}

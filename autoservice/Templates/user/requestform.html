@@ -1,0 +1,165 @@
+{% extends "user/user_common.html" %}
+
+{% block content %}
+<!-- Mobile Responsive Menu -->
+<div class="mr_menu">
+    <button type="button" class="mr_menu_close"><i class="bi bi-x-lg"></i></button>
+    <div class="logo"></div> <!-- Logo will be dynamically added via JavaScript -->
+    <div class="mr_navmenu"></div> <!-- Menu will be dynamically added via JavaScript -->
+</div>
+
+<!-- Aside Info Wrapper -->
+<div class="aside_info_wrapper">
+    <button class="aside_close"><i class="bi bi-x-lg"></i></button>
+    <div class="aside_logo">
+        <a href="/"><img src="/static/assets/img/logo.svg" alt="logo"></a>
+    </div>
+    <div class="aside_info_inner">
+        <p>
+            When you bring your vehicle to Ducatibox Car Mechanic Center, you can rest easy knowing that your vehicle is in professional hands.
+        </p>
+        <div class="aside_info_inner_box">
+            <!-- Call Us -->
+            <div class="wptb-office">
+                <div class="wptb-item--inner">
+                    <div class="wptb-item--subtitle">Call Us Anytime</div>
+                    <h5 class="wptb-item--title"><a href="tel:+12345677345">+123 456 77345</a></h5>
+                </div>
+            </div>
+            <!-- Send Us Mail -->
+            <div class="wptb-office">
+                <div class="wptb-item--inner">
+                    <div class="wptb-item--subtitle">SEND US MAIL</div>
+                    <h5 class="wptb-item--title"><a href="mailto:ducatiboxcar@email.com">ducatiboxcar@email.com</a></h5>
+                </div>
+            </div>
+            <!-- Visit Our Workshop -->
+            <div class="wptb-office">
+                <div class="wptb-item--inner">
+                    <div class="wptb-item--subtitle">VISIT OUR WORKSHOP</div>
+                    <h5 class="wptb-item--title">
+                        <a href="#">17110 116th Ave SE Unit A, Renton, WA 98058-5055</a>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <!-- Social Links -->
+        <div class="social_sites">
+            <ul class="d-flex align-items-center">
+                <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                <li><a href="#"><i class="bi bi-twitter-x"></i></a></li>
+                <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+                <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Main Wrapper -->
+<main class="wrapper">
+    <!-- Page Header -->
+    <div class="wptb-page-heading" style="background-image: url('/static/assets/img/background/page-header-bg.jpg');">
+        <div class="container">
+            <div class="wptb-item--inner">
+                <h2 class="wptb-item--title">Service Vehicles </h2>
+                <div class="wptb-breadcrumb-wrap">
+                    <ul class="wptb-breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        <li><span>Service Vehicles </span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sell Vehicle Form Section -->
+    <section class="pd-bottom-300">
+        <div class="container">
+            <div class="wptb-login-form">
+                <div class="wptb-form--wrapper">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1">
+                            <!-- Heading -->
+                            <div class="wptb-heading">
+                                <div class="wptb-item--inner">
+                                    <h1 class="wptb-item--title">Service Your Vehicles </h1>
+                                </div>
+                            </div>
+
+                            <!-- Form -->
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="wptb-form--inner">
+                                    <div class="row">
+                                        <!-- Name -->
+                                        <div class="col-lg-12 mb-4">
+                                            <div class="form-group">
+                                                <label for="name">Name:</label>
+                                                <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                            </div>
+                                        </div>
+                                        <!-- Phone -->
+                                        <div class="col-lg-12 mb-4">
+                                            <div class="form-group">
+                                                <label for="phone">Phone:</label>
+                                                <input type="text" name="phone" class="form-control" placeholder="Phone" required>
+                                            </div>
+                                        </div>
+                                        <!-- Car Model -->
+                                        <div class="col-lg-12 mb-4">
+                                            <div class="form-group">
+                                                <label for="car_model">Car Model:</label>
+                                                <input type="text" name="car_model" class="form-control" placeholder="Car Model" required>
+                                            </div>
+                                        </div>
+                                        <!-- License Plate -->
+                                        <div class="col-lg-12 mb-4">
+                                            <div class="form-group">
+                                                <label for="license_plate">License Plate:</label>
+                                                <input type="text" name="license_plate" class="form-control" placeholder="License Plate" required>
+                                            </div>
+                                        </div>
+                                        <!-- Service Date -->
+                                        <div class="col-lg-12 mb-4">
+                                            <div class="form-group">
+                                                <label for="service_date">Service Date:</label>
+                                                <input type="date" name="service_date" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <!-- Service Time -->
+                                        <div class="col-lg-12 mb-4">
+                                            <div class="form-group">
+                                                <label for="service_time">Service Time:</label>
+                                                <input type="time" name="service_time" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <!-- Description -->
+                                        <div class="col-lg-12 mb-4">
+                                            <div class="form-group">
+                                                <label for="description">Description:</label>
+                                                <textarea name="description" class="form-control" placeholder="Description" required></textarea>
+                                            </div>
+                                        </div>
+                                        <!-- Submit Button -->
+                                        <div class="col-md-12">
+                                            <div class="wptb-item--button mt-4">
+                                                <button class="btn-two white" type="submit">
+                                                    <div class="btn-wrap">
+                                                        <span class="text-first">Submit</span>
+                                                        <span class="text-second"><i class="bi bi-plus"></i></span>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- End Form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

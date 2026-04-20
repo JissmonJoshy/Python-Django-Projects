@@ -1,0 +1,20 @@
+{% extends "user/user_common.html" %}
+{% block content %}
+<br>
+<br>
+<div class="container">
+    <br><br><br><br>
+    
+    <h1 style="text-align: center;">Feedback</h1>
+<br><br><br>
+    <!-- Feedback form -->
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="feedback" placeholder="Enter your feedback..." required></textarea><br>
+        <button type="submit" style="padding: 12px; background-color: rgb(171, 171, 236);">Submit Feedback</button>
+    </form>
+</div>
+<br>
+<br><br><br><br>
+
+{% endblock %}

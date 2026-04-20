@@ -1,0 +1,46 @@
+{% extends "Admin/common.html" %}
+
+{% block content %}
+<main class="main-container py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Customer List</h2>
+
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.address }}</td>
+                    <td>{{ customer.phone_number }}</td>
+                    <td class="{% if customer.status == 'Approved' %}text-success{% elif customer.status == 'Rejected' %}text-danger{% else %}text-warning{% endif %}">
+                        {{ customer.status }}
+                    </td>
+                    <td>
+                        <a href="/approve_customer/?id={{ customer.id }}">✔ Approve</a>
+                        <a href="/reject_customer/?id={{ customer.id }}" >✖ Reject</a>
+                    </td>
+                    
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted">No customers available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}

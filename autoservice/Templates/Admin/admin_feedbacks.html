@@ -1,0 +1,37 @@
+{% extends "Admin/common.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <center><h2>All Feedbacks</h2></center>
+    <br>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer Name</th>
+                <th>Service Request</th>
+                <th>Title</th>
+                <th>Feedback</th>
+                <th>Created Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feedback in feedbacks %}
+            <tr>
+                <td>{{ feedback.id }}</td>
+                <td>{{ feedback.user.name }}</td>
+                <td>{{ feedback.service_request.service.center_name }}</td>
+                <td>{{ feedback.title }}</td>
+                <td>{{ feedback.feedback }}</td>
+                <td>{{ feedback.created_date }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No feedbacks available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

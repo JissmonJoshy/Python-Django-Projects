@@ -1,0 +1,32 @@
+{% extends "user/user_common.html" %}
+
+{% block content %}
+<br><br>
+<div class="container mt-5">
+    <h2 class="text-center mb-4 card-text text-dark mb-1">Service Centers</h2>
+
+    <div class="row justify-content-center">
+        {% for center in ser %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card shadow-sm mb-4" style="border-radius: 10px;">
+                {% if center.image %}
+                <img src="{{ center.image.url }}" class="card-img-top" style="height: 180px; object-fit: cover; border-radius: 10px 10px 0 0;" alt="{{ center.center_name }}">
+                {% else %}
+                <img src="/static/default-service-image.jpg" class="card-img-top" style="height: 180px; object-fit: cover; border-radius: 10px 10px 0 0;" alt="Default Image">
+                {% endif %}
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark"><strong>{{ center.center_name }}</strong></h5>
+                    <p class="card-text text-dark mb-1"><strong>Service Type:</strong> {{ center.service_type }}</p>
+                    <p class="card-text text-dark mb-1"><strong>Address:</strong> {{ center.address }}</p>
+                    <p class="card-text text-dark mb-1"><strong>Phone:</strong> {{ center.phone_number }}</p>
+                    <p class="card-text text-dark mb-3"><strong>Email:</strong> {{ center.email }}</p>
+                    <a href="/servicerequest/?id={{ center.id }}" class="btn btn-success px-3 py-1" style="font-size: 12px;">🛠 Service Booking</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-muted">No service centers available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "user/user_common.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4" style="text-align: center;">Give Feedback for {{ service_request.name }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label>Title:</label>
+        <input type="text" name="title" class="form-control" placeholder="Name" required>
+        <br>
+        <label>Feedback:</label>
+        <textarea name="feedback" class="form-control" placeholder="Feedback" required></textarea>
+        <br>
+        <button type="submit" class="btn1">Submit Feedback</button>
+    </form>
+</div>
+{% endblock %}
+

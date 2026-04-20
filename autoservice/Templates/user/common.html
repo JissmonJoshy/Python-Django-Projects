@@ -1,0 +1,270 @@
+
+{% load static %}
+
+<!DOCTYPE html>''']''''''''''''''''']'      ''''''[=[]\[\'']]'
+''''''''''''''''''''''''''''''''''<html lang="zxx">
+    
+<!-- Mirrored from wpthemebooster.com/demo/themeforest/html/ducatibox/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 12 Dec 2024 12:18:04 GMT -->
+<head>
+        <!-- Meta Tags -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <meta name="description" content="Ducatibox - Car Service & Auto Repair Template">
+        <meta name="author" content="">
+
+        <!-- Favicon and touch Icons -->
+        <link href="/static/assets/img/favicon.png" rel="shortcut icon" type="image/png">
+        <link href="/static/assets/img/apple-touch-icon.html" rel="apple-touch-icon">
+        <link href="/static/assets/img/apple-touch-icon-72x72.html" rel="apple-touch-icon" sizes="72x72">
+        <link href="/static/assets/img/apple-touch-icon-114x114.html" rel="apple-touch-icon" sizes="114x114">
+        <link href="/static/assets/img/apple-touch-icon-144x144.html" rel="apple-touch-icon" sizes="144x144">
+
+        <!-- Page Title -->
+        <title>Ducatibox - Car Service & Auto Repair Template</title>    
+        
+        <!-- Styles Include -->
+        <link rel="stylesheet" href="/static/assets/css/main.css">
+        
+    </head>
+    
+    {% for m in messages %}
+    <script>
+        alert("{{m}}")
+    </script>
+    {% endfor %}
+
+    <body>
+
+        <!-- Preloader -->
+        <div id="preloader">
+			<div class="preloader-inner">
+				<div class="spinner">
+                    <img src="/static/assets/img/preloader-logo.svg" alt="img">
+                    <img src="/static/assets/img/preloader-wheel.svg" alt="img" class="wheel">
+                </div>
+				<div class="loading-text">
+					<img src="/static/assets/img/preloader-logo-text.svg" alt="img">
+				</div>
+			</div>
+		</div>
+        
+        <!-- Color Mode Switcher -->
+		<div id="mode_switcher">
+			<span><i class="bi bi-moon-fill"></i></span>	
+		</div> 
+        
+        <!-- Main Header -->
+        <header class="header">
+  
+
+            <!-- Lower Bar -->
+            <div class="header-inner">
+                <div class="container-fluid pe-0">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <!-- Left Part -->
+                        <div class="header_left_part d-flex align-items-center">
+                            <div class="logo">
+                                <a href="index.html" class="light_logo"><img src="/static/assets/img/logo.svg" alt="logo"></a>
+                            </div>
+                        </div>
+
+                        <!-- Right Part -->
+                        <!-- <div class="header_right_part d-flex align-items-center" style="margin-left: 50px;"> -->
+                            <div class="mainnav d-none d-xl-block">
+                                <ul class="main-menu">
+                                    <li><a href="/userhome/">Home</a></li>
+                                    <li><a href="#">Request</a>
+                                        <ul class="sub-menu">
+                                            <li class="menu-item"></liclass><a href="/servicerequest/">Request</a>
+                                            <li class="menu-item"><a href="{% url 'servicerequest' %}">Request Details</a></li>
+                                            
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">sell Details</a>
+                                        <ul class="sub-menu">
+                                            <li class="menu-item"><a href="/sell_vechile/"> Add-Vehicles </a></li>
+                                            <li class="menu-item"><a href="/vechile_list/"> Vehicles -Details</a></li>
+                                            <li class="menu-item"><a href="/vechile_buylist/">Sell Details</a></li> 
+                                        </ul>
+                                    </li>                              
+                                    <li><a href="/reply">Chat</a></li>
+                                    <li><a href="/userfeedback">Add Feedback</a></li>
+                                    <li><a href="/">Log out</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="aside_open d-none d-xl-block">
+                                <!-- <div class="aside-open--inner">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div> -->
+                            </div>
+
+                            <button type="button" class="mr_menu_toggle d-xl-none">
+                                <i class="bi bi-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</header>
+        <!-- End Main Header -->			
+
+   {% block content %}
+     
+   {% endblock  %}
+        <!-- Footer -->
+        <footer class="footer style1">
+            <div class="footer-top">
+                <div class="container">
+                    </div>
+                        <div class="row">
+                            <div class="col-xl-3 mb-5 mb-xl-0">
+                                <div class="logo mr-bottom-30">
+                                    <a href="/userhome/" class=""><img src="/static/assets/img/logo.svg" alt="logo"></a>
+                                </div>
+    
+                                <div class="wptb-icon-box1 footer-contact-style mr-bottom-30">
+                                    <div class="wptb-item--inner flex-start">
+                                        <!-- <div class="wptb-item--holder">
+                                            <p class="wptb-item--description">Call Us Anytime</p>
+                                            <h5 class="wptb-item--title"><a href="tel:12345677345">+123 45677345</a></h5>
+                                        </div> -->
+                                    </div>
+                                </div>
+    
+                                <div class="wptb-icon-box1 footer-contact-style address mr-bottom-30">
+                                    <div class="wptb-item--inner flex-start">
+                                        <!-- <div class="wptb-item--holder">
+                                            <p class="wptb-item--description">VISIT OUR LOCATION</p>
+                                            <h5 class="wptb-item--title">17110 116th Ave SE Unit A
+                                                Renton, WA 98058-5055</h5>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-xl-8 offset-xl-1">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 mb-5 mb-md-0">
+                                        <div class="footer-widget footer-links">
+                                            
+                                            <h5 class="widget-title">Our Services</h5>
+                                            <div class="footer-nav">
+                                                <ul>
+                                                    <li class="menu-item"><a href="#">CAR DETAILING</a></li>
+                                                    <li class="menu-item"><a href="#">GLASS REPLACEMENT</a></li>
+                                                    <li class="menu-item"><a href="#">CERAMIC COATING</a></li>
+                                                    <li class="menu-item"><a href="#">CAR REPAIRING</a></li>
+                                                    <li class="menu-item"><a href="#">ALLIGNMENT FIXING</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                    <div class="col-md-4 col-sm-6 mb-5 mb-md-0">
+                                        <div class="footer-widget footer-links">
+                                            
+                                            <h5 class="widget-title">Useful Links</h5>
+                                            <div class="footer-nav">
+                                                <ul>
+                                                    <li class="menu-item"><a href="#">ABOUT DUCATIBOX</a></li>
+                                                    <li class="menu-item"><a href="#">MEMBERSHIP DETAILS</a></li>
+                                                    <li class="menu-item"><a href="#">OPENNING HOURS</a></li>
+                                                    <li class="menu-item"><a href="#">EXPERT MECHANICS</a></li>
+                                                    <li class="menu-item"><a href="#">CONTACT US</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                    <div class="col-md-4 col-sm-6 mb-5 mb-md-0">
+                                        <div class="footer-widget footer-links">
+                                            
+                                            <h5 class="widget-title">Newsletter</h5>
+                                            <form class="newsletter-form" method="post">
+                                                <div class="form-group mr-bottom-25">
+                                                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                                                </div>
+                                                <button type="submit" class="btn-three">
+                                                    <span class="btn-wrap">
+                                                        <span class="text-first">Subscribe</span>
+                                                        <span class="text-second">Subscribe</span>
+                                                    </span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Part -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="footer-bottom-inner">
+                        <div class="copyright">
+                            <p>&copy;Copyright 2024 <a href="https://themeforest.net/user/wpthemebooster">DUCATIBOX</a>. All rights reserved</p>
+                        </div>
+                        <div class="social-box">
+                            <ul>
+                                <li><a href="https://www.facebook.com/" class="bi bi-facebook"></a></li>
+                                <li><a href="https://www.instagram.com/" class="bi bi-instagram"></a></li>
+                                <li><a href="https://www.linkedin.com/" class="bi bi-linkedin"></a></li>
+                                <li><a href="https://www.behance.com/" class="bi bi-behance"></a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-nav-bottom">
+                            <ul>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Term of Use</a></li>
+                                <li><a href="#">Support</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div class="totop">
+            <a href="#"><i class="bi bi-chevron-up"></i></a>
+        </div>
+        
+
+        <!-- Core JS -->
+        <script src="/static/assets/js/jquery-3.6.0.min.js"></script>
+
+        <!-- Framework -->
+        <script src="/static/assets/js/bootstrap.min.js"></script>
+        
+        <!-- WOW Scroll Effect -->
+        <script src="/static/plugins/wow/wow.min.js"></script>
+
+        <!-- Swiper Slider -->
+        <script src="/static/plugins/swiper/swiper-bundle.min.js"></script>
+
+        <!-- Odometer Counter -->
+        <script src="/static/plugins/odometer/appear.js"></script>
+        <script src="/static/plugins/odometer/odometer.js"></script>
+
+        <!-- Fancybox -->
+        <script src="/static/plugins/fancybox/jquery.fancybox.min.js"></script>
+
+        <!-- Flatpickr -->
+        <script src="/static/plugins/flatpickr/flatpickr.min.js"></script>
+
+        <!-- Nice Select -->
+        <script src="/static/plugins/nice-select/jquery.nice-select.min.js"></script>
+
+        <!-- Theme Custom JS -->
+        <script src="/static/assets/js/theme.js"></script>
+        <script src="/static/assets/js/pricetable-toggler.js"></script>
+    </body>
+
+<!-- Mirrored from wpthemebooster.com/demo/themeforest/html/ducatibox/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 12 Dec 2024 12:18:11 GMT -->
+</html>

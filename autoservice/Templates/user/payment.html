@@ -1,0 +1,143 @@
+{% extends "user/user_common.html" %}
+
+{% block content %}
+<br><br><br>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .payment-container {
+        max-width: 450px;
+        margin: auto;
+        padding: 25px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    /* Credit Card Styling */
+    .card-preview {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+        background: linear-gradient(45deg, #007bff, #6610f2);
+        color: white;
+        padding: 20px;
+        text-align: left;
+        position: relative;
+        margin-bottom: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-number {
+        font-size: 20px;
+        letter-spacing: 3px;
+        margin-top: 40px;
+    }
+
+    .card-info {
+        font-size: 16px;
+        margin-top: 15px;
+    }
+
+    .chip {
+        width: 50px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        border-radius: 5px;
+    }
+
+    .form-group {
+        text-align: left;
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        height: 45px;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+
+    .pay-btn {
+        width: 100%;
+        background-color: #28a745;
+        color: white;
+        padding: 12px;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .pay-btn:hover {
+        background-color: #218838;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="payment-container">
+        
+        <!-- Credit Card Preview -->
+        <div class="card-preview">
+            <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA3L2pvYjEwNjgtZWxlbWVudC1jaGlwLTAyLWw1dDJxc243LmpwZw.jpg" 
+                 class="chip" alt="Chip">
+            <div class="card-number" id="display-card-number">**** **** **** ****</div>
+            <div class="card-info">
+                Expiry: <span id="display-expiry">MM/YY</span> &nbsp;&nbsp;&nbsp; CVV: <span id="display-cvv">***</span>
+            </div>
+        </div>
+
+        <h3>Secure Payment</h3>
+
+        <form method="POST" action="/update_payment/">
+            {% csrf_token %}
+            <input type="hidden" name="request_id" value="{{ request_id }}">
+
+            <div class="form-group">
+                <label>Card Number</label>
+                <input type="text" name="card_number" class="form-control" id="card-number" 
+                       placeholder="Enter card number" maxlength="19" required>
+            </div>
+
+            <div class="form-group">
+                <label>Expiry Date</label>
+                <input type="text" name="expiry_date" class="form-control" id="expiry-date" 
+                       placeholder="MM/YY" maxlength="5" required>
+            </div>
+
+            <div class="form-group">
+                <label>CVV</label>
+                <input type="password" name="cvv" class="form-control" id="cvv" 
+                       placeholder="123" maxlength="3" required>
+            </div>
+
+            <button type="submit" class="btn pay-btn">Pay Now</button>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript for Live Credit Card Preview -->
+<script>
+    document.getElementById('card-number').addEventListener('input', function () {
+        let formattedNumber = this.value.replace(/\D/g, '').replace(/(\d{4})/g, '$1 ').trim();
+        document.getElementById('display-card-number').textContent = formattedNumber || '**** **** **** ****';
+    });
+
+    document.getElementById('expiry-date').addEventListener('input', function () {
+        let formattedExpiry = this.value.replace(/\D/g, '').replace(/(\d{2})(\d{0,2})/, '$1/$2').trim();
+        document.getElementById('display-expiry').textContent = formattedExpiry || 'MM/YY';
+    });
+
+    document.getElementById('cvv').addEventListener('input', function () {
+        let maskedCVV = this.value.replace(/\D/g, '');
+        document.getElementById('display-cvv').textContent = maskedCVV.replace(/\d/g, '*') || '***';
+    });
+</script>
+
+<br><br>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "user/user_common.html" %}
+
+{% block content %}
+<br><br><br>
+<style>
+    .btn1{
+        background-color: brown;
+        color: azure;
+        padding: 8px;
+    }
+    .btn1:hover{
+        background-color: blue;
+    }
+</style>
+
+<br>
+<br>
+<div class="container mt-5">
+    <h2 class="mb-4" style="text-align: center; color: black;">Service Requests</h2>
+
+    <br><br>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+                <tr>
+                    <th>Service Center</th>
+                    <th>Phone</th>
+                    <th>Car Model</th>
+                    <th>Service Date</th>
+                    <th>Amount</th>
+                    <th>Time</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Payment</th>
+                    
+                    
+
+                    
+                    <!-- <th>Actions</th> -->
+                </tr>
+                {% for request in det %}
+                <tr>
+                    <td>{{ request.service.center_name }}</td>
+                    <td>{{ request.phone }}</td>
+                    <td>{{ request.car_model }}</td>
+                   
+                    <td>{{ request.service_date }}</td>
+                    <td>{{ request.amount }}</td>
+                    <td>{{ request.service_time }}</td>
+                    <td>{{ request.description }}</td>
+                    
+                    <td style="color: red;">{{ request.status }}</td>
+                    <td class="actions">
+                        {% if request.status == "Completed" %}
+                            <a href="/payment/?id={{ request.id }}" class="btn1">Pay Now</a>
+                        {% elif request.status == "Paid" %}
+                            <span style="color: green;">Completed & Paid</span>
+                            <br>
+                            <a href="{% url 'give_feedback' request.id %}" class="btn1">Give Feedback</a>
+                        {% endif %}
+                    </td>
+                    
+
+                </tr>
+                {% endfor %}
+            
+    </table>
+</div>
+<br>
+<br><br><br><br>
+<br>
+{% endblock %}

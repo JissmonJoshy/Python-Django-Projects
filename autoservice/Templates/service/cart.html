@@ -1,0 +1,84 @@
+{% extends "service/ser_common.html" %}
+{% block content %}
+
+<!-- Main Wrapper-->
+<main class="wrapper">
+    <div class="wptb-page-heading" style="background-image: url('/static/assets/img/background/page-header-bg.jpg');">
+        <div class="container">
+            <div class="wptb-item--inner">
+                <h2 class="wptb-item--title ">Shop Cart</h2>
+                <div class="wptb-breadcrumb-wrap">
+                    <ul class="wptb-breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><span>Cart</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <section class="shopping_cart pd-bottom-300">
+        <div class="container">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table class="cart_table">
+                    <tr class="cart_header">
+                        <th class="cart_header_image">Image</th>
+                        <th class="cart_header_title">Product</th>
+                        <th class="cart_header_price">Price</th>
+                        <th class="cart_header_description">Description</th> <!-- Changed to Description -->
+                        <th class="cart_header_removal"></th>
+                    </tr>
+
+                    {% for item in view %}
+
+                    <tr class="cart_content">
+                        <td class="cart_image">
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" />
+                        </td>
+                        <td class="cart_title">{{ item.product.name }}</td>
+                        <td class="cart_price">
+                            <span class="product_per_price" data-price="{{ item.product.price }}">₹{{ item.product.price }}</span>
+                        </td>
+                        <td class="cart_description"> <!-- Changed column name here -->
+                            <span>{{ item.product.description }}</span>
+                        </td>
+                        <td class="cart_removal">
+                            <a href="/deletecartid/?id={{ item.id }}">
+                                <i class="bi bi-x-lg"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </form>
+
+            <div class="row">
+                <div class="col-lg-6 p-lg-0">
+                    <div class="grand_total">
+                        <h4 class="widget-title mr-bottom-30">Cart Total</h4>
+                        <ul>
+                            <li>
+                                <h3>Total Amount: ₹{{ total_amount }}</h3>
+                            </li>
+                        </ul>
+
+                        <div class="wptb-item--button mr-top-40">
+                            <a href="/order/?id={{ item.id }}&total_amount={{ total_amount }}" class="btn-three white">
+                                <div class="btn-wrap">
+                                    <span class="text-first">Proceed To Checkout</span>
+                                    <span class="text-second">Proceed To Checkout</span>
+                                </div>
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}
