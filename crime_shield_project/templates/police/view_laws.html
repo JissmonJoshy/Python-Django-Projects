@@ -1,0 +1,46 @@
+{% extends 'police/common.html' %}
+
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+<br><br>
+
+
+<main class="container py-5">
+    <h2 class="text-center mb-4 text-primary">Your Added Laws</h2>
+  
+    {% if laws %}
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded">
+          <thead class="table-primary text-center">
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Date Added</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for law in laws %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ law.title }}</td>
+                <td>{{ law.description }}</td>
+                <td>{{ law.date_added|date:"d M Y, h:i A" }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p class="text-center text-muted">No laws have been added yet.</p>
+    {% endif %}
+  </main>
+
+  <br><br>
+  {% endblock %}

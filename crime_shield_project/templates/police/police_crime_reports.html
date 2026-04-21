@@ -1,0 +1,82 @@
+{% extends 'police/common.html' %}
+
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+<br><br>
+
+
+<main class="container py-4">
+    <h2 class="text-center text-primary mb-4">Crime Reports Received</h2>
+
+    {% if reports %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Reported By</th>
+                        <th>Crime Type</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>Evidence</th>
+                        <th>Status</th>
+                        <th>Date Reported</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for report in reports %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ report.user.name }}</td>
+                            <td>{{ report.crime_type }}</td>
+                            <td>{{ report.location }}</td>
+                            <td>{{ report.description }}</td>
+                            <td>
+                                {% if report.evidence %}
+                                    <a href="{{ report.evidence.url }}" target="_blank">View</a>
+                                {% else %}
+                                    No File
+                                {% endif %}
+                            </td>
+                            <td>
+                                <form method="POST" action="{% url 'update_crime_status' report.id %}">
+                                    {% csrf_token %}
+                                    <select name="status" class="form-select form-select-sm mb-1" required>
+                                        <option value="Under Investigation" {% if report.status == "Under Investigation" %}selected{% endif %}>Under Investigation</option>
+                                        <option value="In Progress" {% if report.status == "In Progress" %}selected{% endif %}>In Progress</option>
+                                        <option value="Resolved" disabled {% if report.status == "Resolved" %}selected{% endif %}>Resolved</option>
+                                    </select>
+                                    {% if report.status != "Resolved" %}
+                                        <button type="submit" class="btn btn-sm btn-primary mt-1">Update</button>
+                                    {% endif %}
+                                </form>
+                            </td>
+                            <td>{{ report.date_reported|date:"d M Y, h:i A" }}</td>
+                            <td>
+                                {% if report.status != "Resolved" %}
+                                    <a href="{% url 'add_case_report_crime' report.id %}" class="btn btn-sm btn-success">Add Case Report</a>
+                                {% else %}
+                                    <a href="{% url 'view_crime_report' report.id %}" class="btn btn-sm btn-info">View Report</a>
+                                {% endif %}
+                            </td>
+                            
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+        </div>
+    {% else %}
+        <p class="text-center text-muted">No crime reports received yet.</p>
+    {% endif %}
+</main>
+
+<br><br>
+{% endblock %}

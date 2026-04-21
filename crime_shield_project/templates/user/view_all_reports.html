@@ -1,0 +1,111 @@
+<!-- templates/user/view_all_reports.html -->
+{% extends 'user/common.html' %}
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-primary text-center mb-4">All Reports</h2>
+
+    <!-- Missing Person Search -->
+<form method="get" class="mb-2">
+    <div class="input-group">
+        <input type="text" name="missing_search" value="{{ missing_search }}" class="form-control"
+               placeholder="Search by name, age, location, address, pincode, etc.">
+        <button class="btn btn-success">Search</button>
+    </div>
+</form>
+
+<!-- Complaints Search -->
+<form method="get" class="mb-2">
+    <div class="input-group">
+        <input type="text" name="complaint_search" value="{{ complaint_search }}" class="form-control"
+               placeholder="Search by title, description, status, or date">
+        <button class="btn btn-warning">Search</button>
+    </div>
+</form>
+
+<!-- Crime Reports Search -->
+<form method="get" class="mb-2">
+    <div class="input-group">
+        <input type="text" name="crime_search" value="{{ crime_search }}" class="form-control"
+               placeholder="Search by type, location, status, or description">
+        <button class="btn btn-danger">Search</button>
+    </div>
+</form>
+
+
+    <!-- Missing Persons -->
+    <h4 class="text-success mt-4">Missing Persons</h4>
+    {% if missing_persons %}
+    <div class="table-responsive mb-4">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark"><tr>
+                <th>#</th><th>Name</th><th>Age</th><th>Last Seen</th><th>Status</th><th>Pincode</th><th>Date</th>
+            </tr></thead>
+            <tbody>
+                {% for m in missing_persons %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ m.person_name }}</td>
+                    <td>{{ m.age }}</td>
+                    <td>{{ m.last_seen_location }}</td>
+                    <td>{{ m.status }}</td>
+                    <td>{{ m.pincode }}</td>
+                    <td>{{ m.date_reported|date:"d M Y" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p class="text-muted">No missing person records.</p>
+    {% endif %}
+
+    <!-- Complaints -->
+    <h4 class="text-warning mt-4">Complaints</h4>
+    {% if complaints %}
+    <div class="table-responsive mb-4">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark"><tr>
+                <th>#</th><th>Title</th><th>Status</th><th>Date</th>
+            </tr></thead>
+            <tbody>
+                {% for c in complaints %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ c.title }}</td>
+                    <td>{{ c.status }}</td>
+                    <td>{{ c.date_submitted|date:"d M Y" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p class="text-muted">No complaints found.</p>
+    {% endif %}
+
+    <!-- Crime Reports -->
+    <h4 class="text-danger mt-4">Crime Reports</h4>
+    {% if crime_reports %}
+    <div class="table-responsive mb-4">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark"><tr>
+                <th>#</th><th>Crime Type</th><th>Location</th><th>Status</th><th>Date</th>
+            </tr></thead>
+            <tbody>
+                {% for r in crime_reports %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ r.crime_type }}</td>
+                    <td>{{ r.location }}</td>
+                    <td>{{ r.status }}</td>
+                    <td>{{ r.date_reported|date:"d M Y" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p class="text-muted">No crime reports found.</p>
+    {% endif %}
+</div>
+{% endblock %}

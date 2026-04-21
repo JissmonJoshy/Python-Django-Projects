@@ -1,0 +1,53 @@
+{% extends 'user/common.html' %}
+
+{% block content %}
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+<main class="container py-4">
+    <h2 class="text-center text-primary mb-4">My Crime Reports</h2>
+
+    {% if reports %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Crime Type</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>Evidence</th>
+                        <th>Status</th>
+                        <th>Reported On</th>
+                        <th>Department</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for report in reports %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ report.crime_type }}</td>
+                            <td>{{ report.location }}</td>
+                            <td>{{ report.description }}</td>
+                            <td>
+                                {% if report.evidence %}
+                                    <a href="{{ report.evidence.url }}" target="_blank">View Evidence</a>
+                                {% else %}
+                                    No Evidence
+                                {% endif %}
+                            </td>
+                            <td>{{ report.status }}</td>
+                            <td>{{ report.date_reported|date:"d M Y, h:i A" }}</td>
+                            <td>{{ report.department.name }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-center text-muted">You have not submitted any crime reports yet.</p>
+    {% endif %}
+</main>
+{% endblock %}

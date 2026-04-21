@@ -1,0 +1,18 @@
+{% extends 'user/common.html' %}
+
+{% block content %}
+<br>
+<center>
+<main style="padding: 20px;">
+    <h2>User Profile</h2>
+    <div style="border: 1px solid gray; padding: 20px; border-radius: 10px; max-width: 500px;">
+        <img src="{{ profile.image.url }}" alt="Profile Photo" style="width: 150px; height: 150px; object-fit: cover;"><br><br>
+        <strong>Name:</strong> {{ profile.name }}<br>
+        <strong>Username:</strong> {{ profile.username }}<br>
+        <strong>Address:</strong> {{ profile.address }}<br>
+        <strong>Phone:</strong> {{ profile.phone }}<br>
+        <strong>Email:</strong> {{ profile.email }}<br>
+    </div>
+</main>
+</center><br>
+{% endblock %}

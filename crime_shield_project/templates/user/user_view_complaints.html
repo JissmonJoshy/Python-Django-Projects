@@ -1,0 +1,64 @@
+{% extends 'user/common.html' %}
+
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+<br><br>
+
+<main class="container py-5">
+    <h2 class="text-center text-primary mb-4">My Complaints</h2>
+
+    {% if complaints %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-primary">
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Department</th>
+                        <th>Description</th>
+                        <th>File</th>
+                        <th>Status</th>
+                        <th>Date Submitted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for complaint in complaints %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ complaint.title }}</td>
+                            <td>{{ complaint.department.name }}</td>
+                            <td>{{ complaint.description }}</td>
+                            <td>
+                                {% if complaint.file %}
+                                    <a href="{{ complaint.file.url }}" target="_blank">View File</a>
+                                {% else %}
+                                    No File
+                                {% endif %}
+                            </td>
+                            <td>
+                                <span class="badge 
+                                    {% if complaint.status == 'Resolved' %}bg-success
+                                    {% elif complaint.status == 'In Progress' %}bg-warning
+                                    {% else %}bg-secondary{% endif %}">
+                                    {{ complaint.status }}
+                                </span>
+                            </td>
+                            <td>{{ complaint.date_submitted|date:"d M Y, h:i A" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-center text-muted">No complaints submitted yet.</p>
+    {% endif %}
+</main>
+
+<br><br>
+{% endblock %}

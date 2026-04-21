@@ -1,0 +1,74 @@
+{% extends 'user/common.html' %}
+
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<main class="container py-4">
+    <h2 class="text-center text-primary mb-4">My Missing Person Reports</h2>
+
+    {% if cases %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Person Name</th>
+                        <th>Police Department</th>
+                        <th>Age</th>
+                        <th>Last Seen Location</th>
+                        <th>Address</th>
+                        <th>Pincode</th>
+                        <th>Description</th>
+                        <th>Photo</th>
+                        <th>Status</th>
+                        <th>Date Reported</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for case in cases %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ case.person_name }}</td>
+                            <td>{{ case.department.name }}</td>
+                            <td>{{ case.age }}</td>
+                            <td>{{ case.last_seen_location }}</td>
+                            <td>{{ case.address }}</td>
+                            <td>{{ case.pincode }}</td>
+                            <td>{{ case.description }}</td>
+                            <td>
+                                {% if case.photo %}
+                                    <a href="{{ case.photo.url }}" target="_blank">
+                                        <img src="{{ case.photo.url }}" height="60" width="60" class="rounded">
+                                    </a>
+                                {% else %}
+                                    No Photo
+                                {% endif %}
+                            </td>
+                            <td>
+                                <span class="badge 
+                                    {% if case.status == 'Resolved' %}bg-success
+                                    {% elif case.status == 'In Progress' %}bg-warning
+                                    {% else %}bg-secondary{% endif %}">
+                                    {{ case.status }}
+                                </span>
+                            </td>
+                            <td>{{ case.date_reported|date:"d M Y, h:i A" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-center text-muted">No missing person cases reported yet.</p>
+    {% endif %}
+</main>
+
+<br><br>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'police/common.html' %}
+
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+<br><br>
+
+
+<main class="container py-5">
+    <h2 class="text-center text-primary mb-4">Case Report Details</h2>
+
+    <div class="card shadow p-4">
+        <h4 class="mb-3 text-success">Complaint Title: {{ complaint.title }}</h4>
+
+        <div class="mb-3">
+            <strong>Case Evidence:</strong>
+            <p>{{ report.case_evidence }}</p>
+        </div>
+
+        <div class="mb-3">
+            <strong>Description:</strong>
+            <p>{{ report.description }}</p>
+        </div>
+
+        <div class="mb-3">
+            <strong>Report File:</strong>
+            {% if report.report_file %}
+                <a href="{{ report.report_file.url }}" target="_blank" class="btn btn-sm btn-outline-primary">View File</a>
+            {% else %}
+                <p>No file uploaded</p>
+            {% endif %}
+        </div>
+
+        <a href="{% url 'police_view_complaints' %}" class="btn btn-secondary">Back</a>
+    </div>
+</main>
+
+<br><br>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'police/common.html' %}
+
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+<br><br>
+
+
+
+<main class="container py-5">
+    <h2 class="text-center text-primary mb-4">Complaints Received</h2>
+
+    {% if complaints %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>User</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>File</th>
+                        <th>Status</th>
+                        <th>Update Status</th>
+                        <th>Date</th>
+                        <th>Add Report</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for complaint in complaints %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ complaint.user.name }}</td>
+                            <td>{{ complaint.title }}</td>
+                            <td>{{ complaint.description }}</td>
+                            <td>
+                                {% if complaint.file %}
+                                    <a href="{{ complaint.file.url }}" target="_blank">View File</a>
+                                {% else %}
+                                    No File
+                                {% endif %}
+                            </td>
+                            <td>
+                                <span class="badge 
+                                    {% if complaint.status == 'Resolved' %}bg-success
+                                    {% elif complaint.status == 'In Progress' %}bg-warning
+                                    {% else %}bg-secondary{% endif %}">
+                                    {{ complaint.status }}
+                                </span>
+                            </td>
+                            <td>
+                                <form method="POST" action="{% url 'update_complaint_status' complaint.id %}">
+                                    {% csrf_token %}
+                                    <select name="status" class="form-select form-select-sm mb-1" required>
+                                        <option value="Pending" {% if complaint.status == "Pending" %}selected{% endif %}>Pending</option>
+                                        <option value="In Progress" {% if complaint.status == "In Progress" %}selected{% endif %}>In Progress</option>
+                                        <option value="Resolved" disabled {% if complaint.status == "Resolved" %}selected{% endif %}>Resolved</option>
+                                    </select>
+                            
+                                    {% if complaint.status != "Resolved" %}
+                                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                    {% endif %}
+                                </form>
+                            </td>
+                            
+                            <td>{{ complaint.date_submitted|date:"d M Y, h:i A" }}</td>
+                            <td>
+                                {% if complaint.status == "Resolved" %}
+                                    <a href="{% url 'view_case_report' complaint.id %}" class="btn btn-sm btn-info mt-2">View Report</a>
+                                {% else %}
+                                    <a href="{% url 'add_case_report' complaint.id %}" class="btn btn-sm btn-outline-secondary mt-2">Add Report</a>
+                                {% endif %}
+                            </td>
+                            
+                            
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-center text-muted">No complaints received yet.</p>
+    {% endif %}
+</main>
+
+
+<br><br>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'user/common.html' %}
+
+{% block content %}
+<main class="container my-4">
+    <h2 class="mb-4 text-center">Search Complaints</h2>
+
+    <form method="post" class="row g-3">
+        {% csrf_token %}
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="title" placeholder="Enter Complaint Title" value="{{ title }}">
+        </div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="department" placeholder="Enter Department Name" value="{{ department }}">
+        </div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="status" placeholder="Enter Status" value="{{ status }}">
+        </div>
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary mt-2">Search</button>
+        </div>
+    </form>
+
+    {% if complaints %}
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Department</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in complaints %}
+                <tr>
+                    <td>{{ c.title }}</td>
+                    <td>{{ c.description }}</td>
+                    <td>{{ c.department.name }}</td>
+                    <td>{{ c.status }}</td>
+                    <td>
+                        {% if c.status == 'Resolved' %}
+                        <a href="{% url 'view_complaint_report_search' c.id %}" class="btn btn-success btn-sm">View Case Report</a>
+                        {% else %}
+                        <span class="text-muted">No Report Available</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</main>
+{% endblock %}

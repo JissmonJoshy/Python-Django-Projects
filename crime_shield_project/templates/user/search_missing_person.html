@@ -1,0 +1,79 @@
+{% extends 'user/common.html' %}
+
+{% block content %}
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<main class="container py-4">
+    <h2 class="text-center text-primary mb-4">Search Missing Person by Pincode</h2>
+
+    <form method="POST" class="row g-3 justify-content-center mb-4">
+        {% csrf_token %}
+        <div class="col-auto">
+            <input type="text" name="pincode" class="form-control" placeholder="Enter Pincode"  value="{{ pincode }}">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    {% if missing_persons %}
+        {% if missing_persons.exists %}
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Last Seen</th>
+                            <th>Photo</th>
+                            <th>Status</th>
+                            <th>Date Reported</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in missing_persons %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ person.person_name }}</td>
+                            <td>{{ person.age }}</td>
+                            <td>{{ person.last_seen_location }}</td>
+                            <td>
+                                {% if person.photo %}
+                                    <img src="{{ person.photo.url }}" width="60" height="60" class="rounded" />
+                                {% else %}
+                                    No Image
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if person.status == 'Resolved' %}
+                                    <span class="text-success fw-bold">Resolved</span>
+                                {% else %}
+                                    <span class="text-warning">Unresolved</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ person.date_reported|date:"d M Y" }}</td>
+                            <td>
+                                {% if person.status == 'Resolved' %}
+                                    <a href="{% url 'view_missing_report' person.id %}" class="btn btn-sm btn-outline-primary">View Case Report</a>
+                                {% else %}
+                                    <span class="text-muted">No Report</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-center text-muted">No records found for the entered pincode.</p>
+        {% endif %}
+    {% endif %}
+</main>
+{% endblock %}
+

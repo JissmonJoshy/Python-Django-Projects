@@ -1,0 +1,54 @@
+{% extends 'user/common.html' %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+
+<main class="container py-4">
+    <h2 class="text-center text-primary mb-4">Your Missing Case Reports</h2>
+
+    {% if reports %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Missing Person</th>
+                        <th>Case Evidence</th>
+                        <th>Description</th>
+                        <th>Report File</th>
+                        <th>Police Department</th>
+                        <th>Date Added</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for report in reports %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ report.missing_person.person_name }}</td>
+                            <td>{{ report.case_evidence }}</td>
+                            <td>{{ report.description }}</td>
+                            <td>
+                                {% if report.report_file %}
+                                    <a href="{{ report.report_file.url }}" class="btn btn-sm btn-outline-primary" target="_blank">View File</a>
+                                {% else %}
+                                    No File
+                                {% endif %}
+                            </td>
+                            <td>{{ report.police.name }}</td>
+                            <td>{{ report.date_added|date:"d M Y, h:i A" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-center text-muted">No missing case reports have been added by police yet.</p>
+    {% endif %}
+</main>
+{% endblock %}
+
+

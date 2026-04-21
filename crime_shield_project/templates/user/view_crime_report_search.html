@@ -1,0 +1,20 @@
+{% extends 'user/common.html' %}
+{% block content %}
+<main class="container my-4">
+    <h2 class="mb-4 text-center">Crime Case Report</h2>
+
+    {% if report %}
+    <div class="card shadow p-4">
+        <p><strong>Report File:</strong>
+            <a href="{{ report.report_file.url }}" class="btn btn-outline-primary btn-sm" target="_blank">{{ report.report_file.name }}</a>
+        </p>
+        <p><strong>Evidence:</strong> {{ report.case_evidence }}</p>
+        <p><strong>Description:</strong> {{ report.description }}</p>
+        <p><strong>Reported By:</strong> {{ report.police.name }}</p>
+        <p><strong>Date Added:</strong> {{ report.date_added }}</p>
+    </div>
+    {% else %}
+    <div class="alert alert-warning text-center">No Case Report Found.</div>
+    {% endif %}
+</main>
+{% endblock %}
