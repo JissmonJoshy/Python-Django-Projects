@@ -1,0 +1,65 @@
+{% extends 'USER/common.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container py-5">
+  <h2 class="text-center mb-5 fw-bold">Available Workers</h2>
+
+  <div class="row g-4">
+    {% for i in data %}
+    <div class="col-lg-6 col-md-12">
+      <div class="card shadow-sm border-0 h-100">
+        
+        <div class="row g-0 align-items-center">
+          
+          <!-- Image -->
+          <div class="col-md-4 text-center p-3">
+            <img src="{{ i.image.url }}" 
+                 class="img-fluid rounded"
+                 style="height:150px; width:150px; object-fit:cover;">
+          </div>
+
+          <!-- Details -->
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="fw-bold text-capitalize">{{ i.name }}</h5>
+
+              <p class="mb-1 text-muted">
+                📍 {{ i.place }}
+              </p>
+
+              <p class="mb-1">
+                <strong>📞</strong> {{ i.phone }}
+              </p>
+
+              <p class="mb-2">
+                <strong>🛠</strong> {{ i.job_type }}
+              </p>
+
+              {% comment %} <span class="badge bg-success mb-3">
+                {{ i.status }}
+              </span> {% endcomment %}
+
+              <div class="d-flex gap-2">
+                <a href="{% url 'worker_details' i.id %}" 
+                   class="btn btn-primary btn-sm w-50">
+                   View Details
+                </a>
+
+                {% comment %} <a href="#" class="btn btn-outline-success btn-sm w-50">
+                   Hire
+                </a> {% endcomment %}
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

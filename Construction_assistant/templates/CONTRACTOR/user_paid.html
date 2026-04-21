@@ -1,0 +1,205 @@
+{% extends 'CONTRACTOR/common.html' %}
+{% block content %}
+{% load static %}
+
+{% for message in messages %}
+<script>alert('{{ message }}');</script>
+{% endfor %}
+
+<div class="container-fluid mt-5">
+
+  <!-- ===================== PENDING PAYMENTS ===================== -->
+  <div class="card shadow mb-5">
+    <div class="card-header bg-danger text-white">
+      <h4 class="mb-0">Pending Worker Payments</h4>
+    </div>
+
+    <div class="card-body table-responsive">
+      <table class="table table-bordered table-hover align-middle">
+
+        <thead class="table-dark">
+          <tr>
+            <th>User</th>
+            <th>Worker</th>
+            <th>Work</th>
+            <th>Category</th>
+            <th>Dates</th>
+            
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for i in con %}
+          {% if i.payment_status == "PENDING" %}
+          <tr>
+
+            <!-- USER -->
+            <td>
+              <div class="d-flex align-items-center">
+                <img src="{{ i.user.image.url }}" class="rounded-circle me-2" width="40" height="40">
+                <div>
+                  <strong>{{ i.user.name }}</strong><br>
+                  <small>{{ i.user.phone }}</small>
+                </div>
+              </div>
+            </td>
+
+            <!-- WORKER -->
+            <td>
+              <div class="d-flex align-items-center">
+                <img src="{{ i.worker.image.url }}" class="rounded-circle me-2" width="40" height="40">
+                <div>
+                  <strong>{{ i.worker.name }} - ({{ i.worker.job_type }})</strong><br>
+                  <small>{{ i.worker.place }}</small>
+                </div>
+              </div>
+            </td>
+
+            <!-- WORK -->
+            <td>{{ i.request.plot }}</td>
+            <td>{{ i.request.category }}</td>
+
+            <!-- DATES -->
+            <td>
+              <small>
+                {{ i.request.start_date }} <br> to <br> {{ i.request.end_date }}
+              </small>
+            </td>
+
+            <!-- JOB -->
+            
+
+            <!-- AMOUNT -->
+            <td>₹ {{ i.workeramt }}</td>
+
+            <!-- STATUS -->
+            <td>
+              <span class="badge bg-warning text-dark">Pending</span>
+            </td>
+
+            <!-- ACTION -->
+            <td>
+              <a href="/payWorker?id={{i.id}}" class="btn btn-sm btn-danger">
+                Pay Now
+              </a>
+            </td>
+
+          </tr>
+          {% endif %}
+          {% empty %}
+          <tr>
+            <td colspan="8" class="text-center">No Pending Payments</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+  <!-- ===================== PAID PAYMENTS ===================== -->
+  <div class="card shadow">
+    <div class="card-header bg-success text-white">
+      <h4 class="mb-0">Completed Payments</h4>
+    </div>
+
+    <div class="card-body table-responsive">
+      <table class="table table-bordered table-hover align-middle">
+
+        <thead class="table-dark">
+          <tr>
+            <th>User</th>
+            <th>Worker</th>
+            <th>Work</th>
+            <th>Catgory</th>
+            <th>Dates</th>
+          
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for i in con %}
+          {% if i.payment_status == "PAID" %}
+          <tr>
+
+            <!-- USER -->
+            <td>
+              <div class="d-flex align-items-center">
+                <img src="{{ i.user.image.url }}" class="rounded-circle me-2" width="40" height="40">
+                <div>
+                  <strong>{{ i.user.name }}</strong><br>
+                  <small>{{ i.user.phone }}</small>
+                </div>
+              </div>
+            </td>
+
+            <!-- WORKER -->
+            <td>
+              <div class="d-flex align-items-center">
+                <img src="{{ i.worker.image.url }}" class="rounded-circle me-2" width="40" height="40">
+                <div>
+                  <strong>{{ i.worker.name }} - ({{ i.worker.job_type }})</strong><br>
+                  <small>{{ i.worker.place }}</small>
+                </div>
+              </div>
+            </td>
+
+            <!-- WORK -->
+            <td>{{ i.request.plot }}</td>
+            <td>{{ i.request.category }}</td>
+
+            
+
+            <!-- DATES -->
+            <td>
+              <small>
+                {{ i.request.start_date }} <br> to <br> {{ i.request.end_date }}
+              </small>
+            </td>
+
+            <!-- JOB -->
+          
+
+            <!-- AMOUNT -->
+            <td>₹ {{ i.workeramt }}</td>
+
+            <!-- STATUS -->
+            <td>
+              <span class="badge bg-success">Paid</span>
+            </td>
+
+            <!-- ACTION -->
+            <td>
+              <a href="/upload_work_images?id={{i.id}}" class="btn btn-primary btn-sm mb-1">
+                Upload Images
+              </a><br>
+
+              <a href="/view_work_images?id={{i.id}}" class="btn btn-info btn-sm">
+                View
+              </a>
+            </td>
+
+          </tr>
+          {% endif %}
+          {% empty %}
+          <tr>
+            <td colspan="7" class="text-center">No Completed Payments</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<br><br><br>
+
+{% endblock %}

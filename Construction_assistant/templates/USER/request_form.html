@@ -1,0 +1,82 @@
+{% extends 'USER/common.html' %}
+{% block content %}
+{% load static %}
+
+<div class="page-content py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm">
+
+                    <div class="card-header bg-light text-white text-center">
+                        <h4>Create a Work Request</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            
+                            <!-- CONTRACTOR -->
+                            <div class="mb-3">
+                                <label class="form-label">Select Contractor:</label>
+                                <select name="contractor" class="form-select" required>
+                                    {% for contractor in contractors %}
+                                        <option value="{{ contractor.id }}">{{ contractor.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <!-- CATEGORY -->
+                            <div class="mb-3">
+                                <label class="form-label">Select Work Type:</label>
+                                <select name="category" class="form-select" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="Construction">Construction</option>
+                                    <option value="Interior Design">Interior Design</option>
+                                    <option value="Renovation">Renovation</option>
+                                </select>
+                            </div>
+                            <!-- PLOT -->
+                            <div class="mb-3">
+                                <label class="form-label">Plot:</label>
+                                <input name="plot" type="text" class="form-control" required>
+                            </div>
+
+                            <!-- START DATE -->
+                            <div class="mb-3">
+                                <label class="form-label">Start Date:</label>
+                                <input type="date" id="start_date" name="start_date" class="form-control" required>
+                            </div>
+
+                            <!-- END DATE -->
+                            <div class="mb-3">
+                                <label class="form-label">End Date:</label>
+                                <input type="date" id="end_date" name="end_date" class="form-control" required>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-dark">Submit Request</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🔥 JAVASCRIPT FOR DATE VALIDATION -->
+<script>
+    const today = new Date().toISOString().split('T')[0];
+
+    document.getElementById("start_date").setAttribute("min", today);
+    document.getElementById("end_date").setAttribute("min", today);
+
+    // Ensure end date >= start date
+    document.getElementById("start_date").addEventListener("change", function () {
+        document.getElementById("end_date").setAttribute("min", this.value);
+    });
+</script>
+
+{% endblock %}

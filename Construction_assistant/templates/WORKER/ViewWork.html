@@ -1,0 +1,69 @@
+{% extends 'WORKER/common.html' %}
+{% block content %}
+{% load static %}
+
+{% for message in messages %}
+<script>alert('{{message}}')</script>
+{% endfor %}
+
+<br><br><br>
+
+<div class="dashboard-section pt-5 pb-5">
+
+  <div class="container-fluid">
+
+    <h3 class="text-success mb-4">MY ASSIGNED WORK</h3>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+
+        <thead class="bg-dark text-light">
+          <tr>
+            <th>User Name</th>
+            <th>User Phone</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Work</th>
+            <th>Category</th>
+            <th>Job Type</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for i in data %}
+          <tr>
+            <td>{{ i.user.name }}</td>
+            <td>{{ i.user.phone }}</td>
+
+            <td>{{ i.request.start_date }}</td>
+            <td>{{ i.request.end_date }}</td>
+
+            <td>{{ i.request.plot }}</td>
+            <td>{{ i.request.category }}</td>
+
+            <td>{{ i.worker.job_type }}</td>
+
+            <td>
+              <span class="badge bg-success">
+                {{ i.status }}
+              </span>
+            </td>
+          </tr>
+
+          {% empty %}
+          <tr>
+            <td colspan="7" class="text-center">
+              No Assigned Work Found
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

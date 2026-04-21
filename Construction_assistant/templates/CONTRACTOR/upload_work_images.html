@@ -1,0 +1,31 @@
+{% extends 'CONTRACTOR/common.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container mt-5">
+  <div class="card shadow p-4">
+
+    <h4 class="text-primary mb-4">Upload Work Images</h4>
+
+    {% for message in messages %}
+      <script>alert('{{message}}')</script>
+    {% endfor %}
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <label>Select Images (Multiple Allowed):</label>
+      <input type="file" name="images" multiple class="form-control" required>
+
+      <br>
+
+      <button type="submit" class="btn btn-success">
+        Upload
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'USER/common.html' %}
+{% block content %}
+
+<div class="container mt-5">
+  <h3>Give Feedback to Contractor ({{ req.contractor.name }})</h3>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label>Rating</label>
+      <select name="rating" class="form-control">
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="1">⭐</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Feedback</label>
+      <textarea name="feedback" class="form-control"></textarea>
+    </div>
+
+    <button class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'CONTRACTOR/common.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container py-5">
+
+  <!-- TABS -->
+  <ul class="nav nav-pills justify-content-center mb-4" id="pills-tab">
+    <li class="nav-item">
+      <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#approved">
+        Approved Workers
+      </button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pending">
+        Pending Workers
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+
+    <!-- ✅ APPROVED WORKERS -->
+    <div class="tab-pane fade show active" id="approved">
+      <div class="row g-4">
+        {% for i in assignworker %}
+        <div class="col-md-6 col-lg-6">
+          <div class="card shadow-sm h-100 border-0">
+
+            <div class="card-body d-flex">
+
+              <!-- IMAGE -->
+              <div class="me-3">
+                <img src="{{ i.image.url }}" 
+                     class="rounded-circle border" 
+                     width="90" height="90"
+                     style="object-fit: cover;">
+              </div>
+
+              <!-- DETAILS -->
+              <div class="flex-grow-1">
+                <h6 class="fw-bold mb-1"> {{ i.name }} </h6>
+                <small class="text-muted">{{ i.job_type }}</small>
+
+                <p class="mb-1 mt-2"><strong>📞</strong> {{ i.phone }}</p>
+                <p class="mb-1"><strong>📍</strong> {{ i.place }}</p>
+              </div>
+            </div>
+
+            <!-- ACTION -->
+            <div class="card-footer bg-white border-0 text-end">
+              <a href="/deleteWorker?id={{i.loginId.id}}" 
+                 class="btn btn-sm btn-outline-danger">
+                 Remove
+              </a>
+            </div>
+
+          </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-muted">No approved workers</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- ✅ PENDING WORKERS -->
+    <div class="tab-pane fade" id="pending">
+      <div class="row g-4">
+        {% for i in pendingworker %}
+        <div class="col-md-6 col-lg-6">
+          <div class="card shadow-sm h-100 border-0">
+
+            <div class="card-body d-flex">
+
+              <!-- IMAGE -->
+              <div class="me-3">
+                <img src="{{ i.image.url }}" 
+                     class="rounded-circle border" 
+                     width="90" height="90"
+                     style="object-fit: cover;">
+              </div>
+
+              <!-- DETAILS -->
+              <div class="flex-grow-1">
+                <h6 class="fw-bold mb-1">{{ i.name }}</h6>
+                <small class="text-muted">{{ i.job_type }}</small>
+
+                <p class="mb-1 mt-2"><strong>Email:</strong> {{ i.email }}</p>
+                <p class="mb-1"><strong>📞</strong> {{ i.phone }}</p>
+                <p class="mb-1"><strong>📍</strong> {{ i.place }}</p>
+                <p class="mb-1"><strong>Experience:</strong> {{ i.experience }}</p>
+              </div>
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="card-footer bg-white border-0 d-flex justify-content-between">
+              <a href="/ApproveWorker?id={{i.loginId.id}}" 
+                 class="btn btn-sm btn-success w-50 me-2">
+                 Approve
+              </a>
+              <a href="/deleteWorker?id={{i.loginId.id}}" 
+                 class="btn btn-sm btn-danger w-50">
+                 Reject
+              </a>
+            </div>
+
+          </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-muted">No pending workers</p>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

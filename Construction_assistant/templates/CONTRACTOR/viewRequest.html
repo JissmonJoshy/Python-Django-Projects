@@ -1,0 +1,143 @@
+{% extends 'CONTRACTOR/common.html' %}
+{% block content %}
+{% load static %}
+
+<!-- ALERT MESSAGES -->
+{% for message in messages %}
+<script>
+    alert('{{message}}')
+</script>
+{% endfor %}
+
+<!-- ===================== PENDING REQUESTS ===================== -->
+<div class="dashboard-section pt-5 pb-5">
+  <div class="container-fluid">
+
+    <h3 class="text-success mb-4">PENDING REQUESTS</h3>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+
+        <thead class="bg-dark text-light">
+          <tr>
+            <th>User Name</th>
+            <th>Phone</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Work</th>
+            <th>Category</th>
+            <th>Assign</th>
+            <th>Reject</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for i in data %}
+          {% if i.status == "PENDING" %}
+          <tr>
+            <td>{{ i.user.name }}</td>
+            <td>{{ i.user.phone }}</td>
+            <td>{{ i.start_date }}</td>
+            <td>{{ i.end_date }}</td>
+            <td>{{ i.plot }}</td>
+            <td>{{ i.category }}</td>
+
+            <td>
+              <a href="/AssignWorker?id={{i.id}}" class="btn btn-success btn-sm">
+                Assign Worker
+              </a>
+            </td>
+
+            <td>
+              <a href="/deleteRequest?id={{i.id}}" class="btn btn-danger btn-sm"
+                 onclick="return confirm('Are you sure to reject this request?')">
+                Reject
+              </a>
+            </td>
+          </tr>
+          {% endif %}
+          {% empty %}
+          <tr>
+            <td colspan="7" class="text-center">No Pending Requests</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== ASSIGNED REQUESTS ===================== -->
+<div class="dashboard-section pt-5 pb-5">
+  <div class="container-fluid">
+
+    <h3 class="text-success mb-4">ASSIGNED REQUESTS</h3>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+
+        <thead class="bg-dark text-light">
+          <tr>
+            <th>User Name</th>
+            <th>Phone</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Work</th>
+            <th>Category</th>
+            <th>Workers</th>
+            <th>Job Types</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for i in data %}
+          {% if i.status == "ASSIGNED" %}
+          <tr>
+
+            <td>{{ i.user.name }}</td>
+            <td>{{ i.user.phone }}</td>
+            <td>{{ i.start_date }}</td>
+            <td>{{ i.end_date }}</td>
+            <td>{{ i.plot }}</td>
+            <td>{{ i.category }}</td>
+
+            <!-- MULTIPLE WORKERS -->
+            <td>
+              {% for w in i.assignedworker_set.all %}
+                {{ w.worker.name }} <br>
+              {% empty %}
+                No Workers
+              {% endfor %}
+            </td>
+
+            <!-- JOB TYPES -->
+            <td>
+              {% for w in i.assignedworker_set.all %}
+                {{ w.worker.job_type }} <br>
+              {% empty %}
+                ---
+              {% endfor %}
+            </td>
+
+            <!-- AMOUNT -->
+            <td>{{ i.amount }}</td>
+
+          </tr>
+          {% endif %}
+          {% empty %}
+          <tr>
+            <td colspan="8" class="text-center">No Assigned Requests</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

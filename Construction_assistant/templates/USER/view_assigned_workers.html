@@ -1,0 +1,71 @@
+{% extends 'USER/common.html' %}
+{% block content %}
+{% load static %}
+{% for message in messages %}
+  <script>
+    alert('{{message}}')
+  </script>
+{% endfor %}
+
+
+
+<br><br><br>
+
+<div class="dashboard-section pt-120 pb-120">
+
+  <div class="table-wrapper container-fluid">
+    <h3 class="text-capitalize  text-success">
+    
+    </h3>
+
+    <div class="container py-5">
+  <div class="row g-4">
+
+    {% for i in data %}
+    {% if i.request.user_to_contractor_payment == "PENDING" %}
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 border-0">
+
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">{{ i.contractor.name }}</h5>
+
+          <p class="mb-1"><strong>📅 Start:</strong> {{ i.request.start_date }}</p>
+          <p class="mb-1"><strong>📅 End:</strong> {{ i.request.end_date }}</p>
+
+          <hr>
+
+          <p class="mb-1"><strong>👷 Worker:</strong> {{ i.worker.name }}</p>
+          <p class="mb-1"><strong>🔧 Job:</strong> {{ i.worker.job_type }}</p>
+          <p class="mb-1"><strong>🗂️ Category:</strong> {{ i.request.category }}</p>
+          <p class="mb-1"><strong>🚧 Plot:</strong> {{ i.request.plot }}</p>
+          <p class="mb-1"><strong>📍 Place:</strong> {{ i.worker.place }}</p>
+
+          <hr>
+
+          {% if i.request.worker_change_requested %}
+            <span class="badge bg-warning text-dark">Change Requested</span>
+            <p class="mt-2 small text-muted">
+              Reason: {{ i.request.worker_change_reason }}
+            </p>
+          {% else %}
+            <a href="/request_worker_change?req_id={{i.request.id}}" 
+               class="btn btn-sm btn-primary w-100">
+               Request Worker Change
+            </a>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+
+    {% endif %}
+    {% endfor %}
+
+  </div>
+</div>
+
+  </div>
+</div>
+<br><br><bR><br>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'WORKER/common.html' %}
+{% block content %}
+{% load static %}
+
+{% for message in messages %}
+  <script>
+    alert('{{message}}')
+  </script>
+{% endfor %}
+
+<br><br><br>
+
+<div class="dashboard-section pt-120 pb-120">
+  <div class="table-wrapper container-fluid">
+    <h3 class="text-capitalize text-success">Feedback</h3>
+
+    <table class="eg-table order-table table mb-0">
+      <thead>
+        <tr class="bg-dark">
+          <th class="text-light">User</th>
+          <th class="text-light">User Phone</th>
+          <th class="text-light">Feedback</th>
+          {% comment %} <th class="text-light">Worker</th>
+          <th class="text-light">Job Type</th> {% endcomment %}
+          <th class="text-light">Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data %}
+        <tr class="text-capitalize">
+          <td>
+            <img src="/static/assets/{{ i.user.image}}" alt="User Photo" class="rounded-circle" width="40" height="40">
+            {{ i.user.name }}
+          </td>
+          <td>{{ i.user.phone }}</td>
+          <td>{{ i.feedback }}</td>
+          {% comment %} <td> {% endcomment %}
+            {% comment %} <img src="/static/assets/{{ i.worker.image }}" alt="Worker Photo" class="rounded-circle" width="40" height="40">
+            {{ i.worker.name }}
+          </td>
+          <td>{{ i.worker.job_type }}</td> {% endcomment %}
+          <td>
+            {% if i.rating == "5" %}
+              ⭐⭐⭐⭐⭐
+            {% elif i.rating == "4" %}
+              ⭐⭐⭐⭐
+            {% elif i.rating == "3" %}
+              ⭐⭐⭐
+            {% elif i.rating == "2" %}
+              ⭐⭐
+            {% elif i.rating == "1" %}
+              ⭐
+            {% else %}
+              No rating given
+            {% endif %}
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6" class="text-center">No feedback available</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br><br><br>
+
+{% endblock %}

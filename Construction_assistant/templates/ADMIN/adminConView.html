@@ -1,0 +1,42 @@
+{% extends 'ADMIN/common.html' %}
+{% block content %}
+{% load static %}
+
+<div class="page-content">
+    <section class="section-md">
+        <div class="container">
+            <h2 class="text-center mb-4">Contractor Approvals</h2>
+            <div class="row">
+                {% for i in data %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm border-0">
+                        <img src="../static/assets/{{ i.image }}" class="card-img-top img-fluid rounded-top"  alt="User Image">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-primary">{{ i.name }}</h5>
+                            <p class="card-text mb-1"><strong>Email:</strong> {{ i.email }}</p>
+                            <p class="card-text mb-1"><strong>Place:</strong> {{ i.place }}</p>
+                            <p class="card-text"><strong>Phone:</strong> {{ i.phone }}</p>
+                            
+                            <div class="d-flex justify-content-center mt-3">
+                                {% if i.status != "APPROVE" %}
+                                    <a href="/ApproveCon?id={{ i.loginId.id }}" class="btn btn-success me-2">Approve</a>
+                                    <a href="/dltCon?id={{ i.loginId.id }}" class="btn btn-danger">Reject</a>
+                                {% else %}
+                                <span>✅ Approved</span>
+                                <a href="/dltCon?id={{ i.loginId.id }}" class="btn btn-danger">Reject</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12">
+                    <p class="text-center text-muted">No contractors available for approval.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

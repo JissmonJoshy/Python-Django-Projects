@@ -1,0 +1,28 @@
+{% extends 'CONTRACTOR/common.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container mt-5">
+
+  <h3 class="text-success mb-4">Work Images</h3>
+
+  <div class="row">
+
+    {% for img in images %}
+    <div class="col-md-3 mb-4">
+      <div class="card shadow">
+        <img src="{{ img.image.url }}" class="card-img-top" style="height:200px; object-fit:cover;">
+        <div class="card-body text-center">
+          <small>{{ img.uploaded_at }}</small>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p>No Images Uploaded</p>
+    {% endfor %}
+
+  </div>
+
+</div>
+
+{% endblock %}

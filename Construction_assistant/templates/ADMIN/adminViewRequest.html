@@ -1,0 +1,119 @@
+{% extends 'ADMIN/common.html' %}
+{% block content %}
+{% load static %}
+
+{% for message in messages %}
+<script>alert('{{message}}')</script>
+{% endfor %}
+
+<br><br><br>
+
+<div class="dashboard-section pt-5 pb-5">
+  <div class="container-fluid">
+
+    <h3 class="text-success mb-4">ALL REQUESTS</h3>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+
+        <thead class="bg-dark text-light">
+          <tr>
+            <th>User</th>
+            <th>Phone</th>
+            <th>Contractor</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Plot</th>
+            <th>Status</th>
+            <th>Workers</th>
+            <th>Job Types</th>
+            <th>Amount</th>
+            <th>User Payment</th>
+            <th>Contractor Payment</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for i in data %}
+          <tr>
+
+            <!-- USER -->
+            <td>{{ i.user.name }}</td>
+            <td>{{ i.user.phone }}</td>
+
+            <!-- CONTRACTOR -->
+            <td>{{ i.contractor.name }}</td>
+
+            <!-- DATES -->
+            <td>{{ i.start_date }}</td>
+            <td>{{ i.end_date }}</td>
+
+            <!-- WORK -->
+            <td>{{ i.plot }}</td>
+
+            <!-- STATUS -->
+            <td>
+              <span class="badge bg-info text-dark">
+                {{ i.status }}
+              </span>
+            </td>
+
+            <!-- MULTIPLE WORKERS -->
+            <td>
+              {% for w in i.assignedworker_set.all %}
+                {{ w.worker.name }}<br>
+              {% empty %}
+                No Workers Assigned
+              {% endfor %}
+            </td>
+
+            <!-- JOB TYPES -->
+            <td>
+              {% for w in i.assignedworker_set.all %}
+                {{ w.worker.job_type }}<br>
+              {% empty %}
+                ---
+              {% endfor %}
+            </td>
+
+            <!-- AMOUNT -->
+            <td>{{ i.amount }}</td>
+
+            <!-- USER PAYMENT -->
+            <td>
+              {% if i.user_to_contractor_payment == "PAID" %}
+                <span class="badge bg-success">Paid</span>
+              {% else %}
+                <span class="badge bg-warning text-dark">Pending</span>
+              {% endif %}
+            </td>
+
+            <!-- CONTRACTOR PAYMENT -->
+            <td>
+              {% if i.contractor_to_worker_payment == "PAID" %}
+                <span class="badge bg-success">Paid</span>
+              {% else %}
+                <span class="badge bg-warning text-dark">Pending</span>
+              {% endif %}
+            </td>
+
+          </tr>
+
+          {% empty %}
+          <tr>
+            <td colspan="12" class="text-center">
+              No Requests Found
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<br><br><br>
+
+{% endblock %}

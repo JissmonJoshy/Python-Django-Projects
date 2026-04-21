@@ -1,0 +1,39 @@
+{% extends 'user/common.html' %}
+{% block content %}
+<div class="container py-5">
+  <div class="card shadow p-4">
+
+    <h4 class="text-center mb-4">Change Worker</h4>
+
+    <form method="post">
+      {% csrf_token %}
+
+      <!-- WORKER DROPDOWN -->
+      <div class="mb-3">
+        <label class="form-label">Select New Worker</label>
+        <select name="worker" class="form-control" required>
+          <option value="">-- Select Worker --</option>
+
+          {% for w in workers %}
+          <option value="{{ w.id }}">
+            {{ w.name }} ({{ w.job_type }} - {{ w.place }})
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- REASON -->
+      <div class="mb-3">
+        <label class="form-label">Reason</label>
+        <textarea name="reason" class="form-control" required></textarea>
+      </div>
+
+      <button class="btn btn-primary w-100">
+        Submit Change Request
+      </button>
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

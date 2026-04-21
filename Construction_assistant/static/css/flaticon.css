@@ -1,0 +1,251 @@
+/*!
+*	______ _	   _   _
+*	|  ____| |	 | | (_)
+*	| |__  | | __ _| |_ _  ___ ___  _ __
+*	|  __| | |/ _` | __| |/ __/ _ \| '_ \
+*	| |	| | (_| | |_| | (_| (_) | | | |
+*	|_|	|_|\__,_|\__|_|\___\___/|_| |_|
+*
+*		 https://www.flaticon.com
+*/
+
+@font-face {
+	font-family: "flaticon";
+	src: url("../fonts/flaticon3abc.woff2?6e196479991753c48f3c7822b630c0fa") format("woff2"),
+url("../fonts/flaticon3abc.woff?6e196479991753c48f3c7822b630c0fa") format("woff"),
+url("../fonts/flaticon3abc.eot?6e196479991753c48f3c7822b630c0fa#iefix") format("embedded-opentype"),
+url("../fonts/flaticon3abc.ttf?6e196479991753c48f3c7822b630c0fa") format("truetype"),
+url("../fonts/flaticon3abc.svg?6e196479991753c48f3c7822b630c0fa#flaticon") format("svg")
+}
+
+i[class^="flaticon-"]:before, i[class*=" pbmit-willbuild-icon-"]:before {
+	font-family: flaticon !important;
+	font-style: normal;
+	font-weight: normal !important;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.pbmit-willbuild-icon-plus:before {
+	content: "\f101";
+}
+.pbmit-willbuild-icon-tick:before {
+	content: "\f102";
+}
+.pbmit-willbuild-icon-compass-1:before {
+	content: "\f103";
+}
+.pbmit-willbuild-icon-drawing-tool:before {
+	content: "\f104";
+}
+.pbmit-willbuild-icon-rulers:before {
+	content: "\f105";
+}
+.pbmit-willbuild-icon-pdf-file-format-symbol:before {
+	content: "\f106";
+}
+.pbmit-willbuild-icon-download:before {
+	content: "\f107";
+}
+.pbmit-willbuild-icon-quote:before {
+	content: "\f108";
+}
+.pbmit-willbuild-icon-arrow-right:before {
+	content: "\f109";
+}
+.pbmit-willbuild-icon-wallet-1:before {
+	content: "\f10a";
+}
+.pbmit-willbuild-icon-wallet:before {
+	content: "\f10b";
+}
+.pbmit-willbuild-icon-clock:before {
+	content: "\f10c";
+}
+.pbmit-willbuild-icon-calendar:before {
+	content: "\f10d";
+}
+.pbmit-willbuild-icon-star-1:before {
+	content: "\f10e";
+}
+.pbmit-willbuild-icon-star:before {
+	content: "\f10f";
+}
+.pbmit-willbuild-icon-up-right-arrow:before {
+	content: "\f110";
+}
+.pbmit-willbuild-icon-apartment:before {
+	content: "\f111";
+}
+.pbmit-willbuild-icon-modern-house:before {
+	content: "\f112";
+}
+.pbmit-willbuild-icon-office:before {
+	content: "\f113";
+}
+.pbmit-willbuild-icon-factory:before {
+	content: "\f114";
+}
+.pbmit-willbuild-icon-direct-mail:before {
+	content: "\f115";
+}
+.pbmit-willbuild-icon-envelope:before {
+	content: "\f116";
+}
+.pbmit-willbuild-icon-maps-and-flags:before {
+	content: "\f117";
+}
+.pbmit-willbuild-icon-call:before {
+	content: "\f118";
+}
+.pbmit-willbuild-icon-shopping-cart:before {
+	content: "\f119";
+}
+.pbmit-willbuild-icon-loupe:before {
+	content: "\f11a";
+}
+.pbmit-willbuild-icon-buildings:before {
+	content: "\f11b";
+}
+.pbmit-willbuild-icon-design:before {
+	content: "\f11c";
+}
+.pbmit-willbuild-icon-tripod:before {
+	content: "\f11d";
+}
+.pbmit-willbuild-icon-mapping:before {
+	content: "\f11e";
+}
+.pbmit-willbuild-icon-quality:before {
+	content: "\f11f";
+}
+.pbmit-willbuild-icon-trophy:before {
+	content: "\f120";
+}
+.pbmit-willbuild-icon-highway:before {
+	content: "\f121";
+}
+.pbmit-willbuild-icon-helmet-1:before {
+	content: "\f122";
+}
+.pbmit-willbuild-icon-construction-worker:before {
+	content: "\f123";
+}
+.pbmit-willbuild-icon-road-roller:before {
+	content: "\f124";
+}
+.pbmit-willbuild-icon-floor:before {
+	content: "\f125";
+}
+.pbmit-willbuild-icon-excavator:before {
+	content: "\f126";
+}
+.pbmit-willbuild-icon-architecture:before {
+	content: "\f127";
+}
+.pbmit-willbuild-icon-brickwall:before {
+	content: "\f128";
+}
+.pbmit-willbuild-icon-hook:before {
+	content: "\f129";
+}
+.pbmit-willbuild-icon-construction-1:before {
+	content: "\f12a";
+}
+.pbmit-willbuild-icon-barrier-2:before {
+	content: "\f12b";
+}
+.pbmit-willbuild-icon-level-1:before {
+	content: "\f12c";
+}
+.pbmit-willbuild-icon-construction:before {
+	content: "\f12d";
+}
+.pbmit-willbuild-icon-wheelbarrow:before {
+	content: "\f12e";
+}
+.pbmit-willbuild-icon-level:before {
+	content: "\f12f";
+}
+.pbmit-willbuild-icon-measuring-tape:before {
+	content: "\f130";
+}
+.pbmit-willbuild-icon-shovel:before {
+	content: "\f131";
+}
+.pbmit-willbuild-icon-trowel:before {
+	content: "\f132";
+}
+.pbmit-willbuild-icon-helmet:before {
+	content: "\f133";
+}
+.pbmit-willbuild-icon-oil-pump:before {
+	content: "\f134";
+}
+.pbmit-willbuild-icon-jackhammer:before {
+	content: "\f135";
+}
+.pbmit-willbuild-icon-vest:before {
+	content: "\f136";
+}
+.pbmit-willbuild-icon-driller:before {
+	content: "\f137";
+}
+.pbmit-willbuild-icon-bulldozer:before {
+	content: "\f138";
+}
+.pbmit-willbuild-icon-crane-2:before {
+	content: "\f139";
+}
+.pbmit-willbuild-icon-crane-1:before {
+	content: "\f13a";
+}
+.pbmit-willbuild-icon-crane:before {
+	content: "\f13b";
+}
+.pbmit-willbuild-icon-dumper:before {
+	content: "\f13c";
+}
+.pbmit-willbuild-icon-maze:before {
+	content: "\f13d";
+}
+.pbmit-willbuild-icon-cone:before {
+	content: "\f13e";
+}
+.pbmit-willbuild-icon-caliper:before {
+	content: "\f13f";
+}
+.pbmit-willbuild-icon-compass:before {
+	content: "\f140";
+}
+.pbmit-willbuild-icon-barrier-1:before {
+	content: "\f141";
+}
+.pbmit-willbuild-icon-circular-saw:before {
+	content: "\f142";
+}
+.pbmit-willbuild-icon-barrier:before {
+	content: "\f143";
+}
+.pbmit-willbuild-icon-safety-glasses:before {
+	content: "\f144";
+}
+.pbmit-willbuild-icon-hammer:before {
+	content: "\f145";
+}
+.pbmit-willbuild-icon-material:before {
+	content: "\f146";
+}
+.pbmit-willbuild-icon-wall:before {
+	content: "\f147";
+}
+.pbmit-willbuild-icon-metre:before {
+	content: "\f148";
+}
+.pbmit-willbuild-icon-tiles:before {
+	content: "\f149";
+}
+

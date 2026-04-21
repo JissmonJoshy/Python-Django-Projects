@@ -1,0 +1,93 @@
+{% extends 'CONTRACTOR/common.html' %}
+{% block content %}
+{% load static %}
+
+<h2 class="text-center">User Feedback to Workers</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Worker</th>
+            <th>Feedback</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for feedback in user_to_worker_feedbacks %}
+        <tr>
+            <td>
+                <img src="/static/assets/{{ feedback.user.image}}" alt="User Photo" class="rounded-circle" width="50" height="50">
+                <br>{{ feedback.user.name }}
+            </td>
+            <td>
+                <img src="/static/assets/{{ feedback.worker.image}}" alt="Worker Photo" class="rounded-circle" width="50" height="50">
+                <br>{{ feedback.worker.name }}
+            </td>
+            <td>{{ feedback.feedback }}</td>
+            <td>
+                {% if feedback.rating == "5" %}
+                    ⭐⭐⭐⭐⭐
+                {% elif feedback.rating == "4" %}
+                    ⭐⭐⭐⭐
+                {% elif feedback.rating == "3" %}
+                    ⭐⭐⭐
+                {% elif feedback.rating == "2" %}
+                    ⭐⭐
+                {% elif feedback.rating == "1" %}
+                    ⭐
+                {% else %}
+                    No rating given
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4" class="text-center">No feedback available</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2 class="text-center mt-4">Worker Feedback to Users</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Worker</th>
+            <th>User</th>
+            <th>Feedback</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for feedback in worker_to_user_feedbacks %}
+        <tr>
+            <td>
+                <img src="/static/assets/{{ feedback.worker.image }}" alt="Worker Photo" class="rounded-circle" width="50" height="50">
+                <br>{{ feedback.worker.name }}
+            </td>
+            <td>
+                <img src="/static/assets/{{ feedback.user.image }}" alt="User Photo" class="rounded-circle" width="50" height="50">
+                <br>{{ feedback.user.name }}
+            </td>
+            <td>{{ feedback.feedback }}</td>
+            <td>
+                {% if feedback.rating == "5" %}
+                    ⭐⭐⭐⭐⭐
+                {% elif feedback.rating == "4" %}
+                    ⭐⭐⭐⭐
+                {% elif feedback.rating == "3" %}
+                    ⭐⭐⭐
+                {% elif feedback.rating == "2" %}
+                    ⭐⭐
+                {% elif feedback.rating == "1" %}
+                    ⭐
+                {% else %}
+                    No rating given
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4" class="text-center">No feedback available</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

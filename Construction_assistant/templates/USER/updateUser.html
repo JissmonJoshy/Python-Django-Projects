@@ -1,0 +1,87 @@
+{% extends 'USER/common.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="page-content">  
+
+    <!-- Contact Form -->
+    <section>
+        <div class="container">
+            <div class="contact-us-bg section-xl">
+                <div class="row">
+                    
+                    <div class="col-md-12 col-xl-6">
+                        <div class="contact-form-area">
+                            <div class="pbmit-heading animation-style2">
+                                <h2 class="pbmit-title">Update</h2>
+                            </div>
+                            <form class="contact-form" method="post" id="contact-form" action=""    enctype="multipart/form-data" >
+                                {% for i in data %}
+                                {% csrf_token  %}
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control"  value={{i.name}}   placeholder="name" name="name" >
+                                    </div>
+                                    {% comment %} <div class="col-sm-6">
+                                        <input type="text" class="form-control"    placeholder="Email" name="email" required>
+                                    </div> {% endcomment %}
+                                    {% comment %} <div class="col-sm-6">
+                                        <input type="password" class="form-control" placeholder="Password" name="password" required>
+                                    </div> {% endcomment %}
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control"  value={{i.place}}  placeholder="Place" name="place" >
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control"  value={{i.phone}}  placeholder="Phone" name="phone" >
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="file" class="form-control"  value={{i.image}} placeholder="image" name="image" >
+                                    </div>
+                                    
+                                    {% comment %} <div class="col-md-12">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox">
+                                                I agree with your tearms and condistion tempor aliqua.
+                                            </label>
+                                        </div> {% endcomment %}
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="pbmit-btn">
+                                            <span class="pbmit-button-content-wrapper">
+                                                <span class="pbmit-button-icon pbmit-align-icon-right">
+                                                    <i aria-hidden="true" class="pbmit-willbuild-icon pbmit-willbuild-icon-up-right-arrow"></i>			
+                                                </span>
+                                                <span class="pbmit-button-text">Update</span>
+                                            </span>
+                                        </button>	
+                                    </div>
+                                    <div class="col-md-12 col-lg-12 message-status"></div>
+                                </div>
+                                {% endfor %}
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Form -->
+
+    <!-- Iframe -->
+  
+    <!-- Iframe End-->
+
+    <!-- Accordion -->
+    
+
+    <!-- Client --> 
+    
+    <!-- Client end --> 
+
+</div>
+
+
+
+{% endblock %}

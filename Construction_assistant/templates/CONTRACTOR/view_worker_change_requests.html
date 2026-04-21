@@ -1,0 +1,46 @@
+{% extends 'contractor/common.html' %}
+{% block content %}
+<div class="container py-5">
+    <h3 class="text-primary mb-4">Worker Change Requests</h3>
+
+    <div class="row g-4">
+        {% for req in change_requests %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm h-100">
+
+                <div class="card-body">
+                    <h5 class="fw-bold">{{ req.user.name }}</h5>
+
+                    <p><strong>Current Worker:</strong> 
+                        {{ req.assignedworker_set.first.worker.name }}
+                    </p>
+
+                    <p><strong>Requested Worker:</strong> 
+                        {{ req.requested_worker.name }}
+                    </p>
+
+                    <p><strong>Reason:</strong><br>
+                        {{ req.worker_change_reason }}
+                    </p>
+                </div>
+
+                <div class="card-footer d-flex gap-2">
+                    <a href="/handle_worker_change?req_id={{req.id}}&action=accept"
+                       class="btn btn-success w-50">
+                        Accept
+                    </a>
+
+                    <a href="/handle_worker_change?req_id={{req.id}}&action=reject"
+                       class="btn btn-danger w-50">
+                        Reject
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No requests</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

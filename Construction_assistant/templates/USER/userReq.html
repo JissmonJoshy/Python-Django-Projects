@@ -1,0 +1,206 @@
+{% extends 'USER/common.html' %}
+{% block content %}
+{% load static %}
+
+{% for message in messages %}
+<script>alert('{{message}}')</script>
+{% endfor %}
+
+<br><br><br>
+
+<!-- ===================== PENDING PAYMENT ===================== -->
+<div class="dashboard-section pt-5 pb-5">
+  <div class="container-fluid">
+
+    <h3 class="text-success mb-4">PENDING PAYMENT</h3>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+
+        <thead class="bg-dark text-light">
+          <tr>
+            <th>Contractor</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Work</th>
+            <th>Category</th>
+            <th>Workers</th>
+            <th>Job Type</th>
+            <th>Amount</th>
+            <th>Images</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for i in data %}
+          {% if i.user_to_contractor_payment == "PENDING" and i.status == "ASSIGNED" %}
+          <tr>
+
+            <td>{{ i.contractor.name }}</td>
+            <td>{{ i.start_date }}</td>
+            <td>{{ i.end_date }}</td>
+            <td>{{ i.plot }}</td>
+            <td>{{ i.category }}</td>
+
+            <!-- WORKERS -->
+            <td>
+              {% for w in i.assignedworker_set.all %}
+                {{ w.worker.name }}<br>
+              {% endfor %}
+            </td>
+
+            <!-- JOB -->
+            <td>
+              {% for w in i.assignedworker_set.all %}
+                {{ w.worker.job_type }}<br>
+              {% endfor %}
+            </td>
+
+            <td>{{ i.amount }}</td>
+
+            <!-- 🔥 IMAGES GRID -->
+            <td>
+              <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                {% for w in i.assignedworker_set.all %}
+                  {% for img in w.workimage_set.all %}
+                    <img src="{{ img.image.url }}" width="60" height="60" style="object-fit:cover; border-radius:5px;">
+                  {% empty %}
+                  {% endfor %}
+                {% empty %}
+                  No Images
+                {% endfor %}
+              </div>
+            </td>
+
+            <td>
+              <a href="/user_payment?id={{i.id}}" class="btn btn-success btn-sm">Pay</a>
+            </td>
+
+          </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PAID ===================== -->
+<div class="dashboard-section pt-5 pb-5">
+  <div class="container-fluid">
+
+    <h3 class="text-success mb-4">PAID REQUESTS</h3>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+
+        <thead class="bg-dark text-light">
+          <tr>
+            <th>Contractor</th>
+            
+            <th>Start</th>
+            <th>End</th>
+            <th>Work</th>
+            <th>Category</th>
+            <th>Workers</th>
+            <th>Job Type</th>
+            <th>Amount</th>
+            <th>Images</th>
+            <th>Feedback</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for i in data %}
+          {% if i.user_to_contractor_payment == "PAID" %}
+          <tr>
+
+            <td>{{ i.contractor.name }}</td>
+            <td>{{ i.start_date }}</td>
+            <td>{{ i.end_date }}</td>
+            <td>{{ i.plot }}</td>
+            <td>{{ i.category }}</td>
+
+            <!-- WORKERS -->
+            <td>
+              {% for w in i.assignedworker_set.all %}
+                {{ w.worker.name }}<br>
+              {% endfor %}
+            </td>
+
+            <!-- JOB -->
+            <td>
+              {% for w in i.assignedworker_set.all %}
+                {{ w.worker.job_type }}<br>
+              {% endfor %}
+            </td>
+
+            <td>{{ i.amount }}</td>
+
+            <!-- 🔥 IMAGE GRID -->
+            <td>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+
+                {% for w in i.assignedworker_set.all %}
+                  {% for img in w.workimage_set.all %}
+
+                    <div style="text-align:center;">
+                      
+                      <!-- IMAGE -->
+                      <a href="{{ img.image.url }}" target="_blank">
+                        <img src="{{ img.image.url }}" width="70" height="70"
+                            style="object-fit:cover; border-radius:6px;">
+                      </a>
+
+                      <!-- DOWNLOAD BUTTON -->
+                      <br>
+                      <a href="{{ img.image.url }}" download class="btn btn-sm btn-success mt-1">
+                        ⬇ Download
+                      </a>
+
+                    </div>
+
+                  {% empty %}
+                  {% endfor %}
+                {% empty %}
+                  No Images
+                {% endfor %}
+
+              </div>
+            </td>
+
+            <!-- FEEDBACK -->
+            <td>
+              <!-- Contractor Feedback -->
+              <a href="/user_add_contractor_feedback?req_id={{i.id}}" 
+                class="btn btn-primary btn-sm mb-2">
+                Contractor
+              </a>
+
+              <br>
+
+              <!-- Worker Feedback -->
+              {% for w in i.assignedworker_set.all %}
+                <a href="/useraddfeedback?id={{w.worker.id}}&req_id={{i.id}}" 
+                  class="btn btn-warning btn-sm mb-1">
+                  {{ w.worker.name }}
+                </a><br>
+              {% endfor %}
+            </td>
+
+          </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<br><br><br>
+
+{% endblock %}

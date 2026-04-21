@@ -1,0 +1,2203 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+	
+<!-- Mirrored from willbuild-demo.pbminfotech.com/html-demo/homepage-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Dec 2024 10:56:55 GMT -->
+<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Willbuild Demo2 – Construction HTML Template</title>
+		<meta name="robots" content="noindex, follow">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/fevicon.png' %}">
+		<!-- CSS
+			============================================ -->
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<!-- Fontawesome -->
+		<link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+		<!-- Flaticon -->
+		<link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+		<!-- Base Icons -->
+		<link rel="stylesheet" href="{% static 'css/pbminfotech-base-icons.css' %}">
+		<!-- Themify Icons -->
+		<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+		<!-- Slick -->
+		<link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+		<!-- Magnific -->
+		<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+		<!-- AOS -->
+		<link rel="stylesheet" href="{% static 'css/aos.css' %}">
+		<!-- Shortcode CSS -->
+		<link rel="stylesheet" href="{% static 'css/shortcode.css' %}">
+		<!-- Base CSS -->
+		<link rel="stylesheet" href="{% static 'css/base.css' %}">
+		<!-- Style CSS -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<!-- Responsive CSS -->
+		<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+	</head>
+	<body>
+		{% for message in messages %}
+		<script>
+		  alert('{{message}}')
+		</script>
+	  {% endfor %}
+	  {% load static %}
+	<!-- page wrapper -->
+	<div class="page-wrapper" id="page">
+
+		<!-- Header Main Area -->
+		<header class="site-header header-style-2">
+			<div class="pbmit-header-overlay">
+				<div class="pbmit-main-header-area">
+					<div class="container-fluid">
+						<div class="pbmit-header-content d-flex justify-content-between align-items-center">
+							<div class="site-branding">
+								<h1 class="site-title">
+									<a href="">
+										<img class="logo-img" src="{% static 'images/logo.svg' %}" alt="Willbuild">
+									</a>
+								</h1>
+							</div>
+							<div class="pbmit-menuarea">
+								<div class="site-navigation">
+									<nav class="main-menu navbar-expand-xl navbar-light">
+										<div class="navbar-header">
+											<!-- Toggle Button --> 
+											<button class="navbar-toggler" type="button">
+												<i class="pbmit-base-icon-menu-1"></i>
+											</button>
+										</div>
+										<div class="pbmit-mobile-menu-bg"></div>
+										<div class="collapse navbar-collapse clearfix show" id="pbmit-menu">
+											<div class="pbmit-menu-wrap">
+												<span class="closepanel">
+													<svg class="qodef-svg--close qodef-m" xmlns="http://www.w3.org/2000/svg" width="20.163" height="20.163" viewBox="0 0 26.163 26.163">
+														<rect width="36" height="1" transform="translate(0.707) rotate(45)"></rect>
+														<rect width="36" height="1" transform="translate(0 25.456) rotate(-45)"></rect>
+													</svg>
+												</span>
+												<ul class="navigation clearfix">
+													<li class="dropdown active">
+														<a href="/">HOME</a>	
+													</li>
+													<li class="dropdown active">
+														<a href="login">LOGIN</a>
+													</li>
+													<li class="dropdown active">
+														<a href="">REGISTER</a>
+														<ul>
+															<li><a href="/userRegister">User Register</a></li>
+														
+														
+															<li><a href="/ConRegister">Contractor Register</a></li>
+														
+														
+															<li><a href="/workerRegister">Worker Register</a></li>
+														</ul>
+
+														
+													</li>
+													{% comment %} <li class="dropdown">
+														<a href="#">Portfolio</a>.
+
+														<ul>
+															<li class="dropdown">
+																<a href="#">Masonry View</a>
+																<ul>
+																	<li><a href="portfolio-m-grid-col-2.html">Grid Col-2</a></li>
+																	<li><a href="portfolio-m-grid-col-3.html">Grid Col-3</a></li>
+																	<li><a href="portfolio-m-grid-col-4.html">Grid Col-4</a></li>
+																	<li><a href="portfolio-m-grid-col-wide.html">Grid Col-Wide</a></li>
+																</ul>
+															</li>
+															<li class="dropdown">
+																<a href="#">Grid View</a>
+																<ul>
+																	<li><a href="portfolio-grid-col-2.html">Grid Col-2</a></li>
+																	<li><a href="portfolio-grid-col-3.html">Grid Col-3</a></li>
+																	<li><a href="portfolio-grid-col-4.html">Grid Col-4</a></li>
+																	<li><a href="portfolio-grid-no-gap.html">Grid No Gap</a></li>
+																</ul>
+															</li>
+															<li class="dropdown">
+																<a href="#">Sortable View</a>
+																<ul>
+																	<li><a href="portfolio-sortable-grid-col-2.html">Grid Col-2</a></li>
+																	<li><a href="portfolio-sortable-grid-col-3.html">Grid Col-3</a></li>
+																	<li><a href="portfolio-sortable-grid-col-4.html">Grid Col-4</a></li>
+																</ul>
+															</li>
+															<li class="dropdown">
+																<a href="#">Single Detail Style</a>
+																<ul>
+																	<li><a href="portfolio-single-detail-style-1.html">Single Detail Style 01</a></li>
+																	<li><a href="portfolio-single-detail-style-2.html">Single Detail Style 02</a></li>
+																</ul>
+															</li>
+														</ul>
+													</li> {% endcomment %}
+													{% comment %} <li class="dropdown">
+														<a href="#">Blogs</a>
+														<ul>
+															<li class="dropdown">
+																<a href="#">Blog Grid View</a>
+																<ul>
+																	<li><a href="blog-grid-col-2.html">Grid Col-2</a></li>
+																	<li><a href="blog-grid-col-3.html">Grid Col-3</a></li>
+																	<li><a href="blog-grid-col-4.html">Grid Col-4</a></li>
+																	<li><a href="blog-sortable-grid-view.html">Sortable Grid View</a></li>
+																</ul>
+															</li>
+															<li class="dropdown">
+																<a href="#">Blog Masonry View</a>
+																<ul>
+																	<li><a href="blog-m-grid-col-2.html">Grid Col-2</a></li>
+																	<li><a href="blog-m-grid-col-3.html">Grid Col-3</a></li>
+																	<li><a href="blog-m-grid-col-4.html">Grid Col-4</a></li>
+																	<li><a href="blog-masonry-wide.html">Masonry Wide</a></li>
+																</ul>
+															</li>
+															<li><a href="blog-classic.html">Blog Classic</a></li>
+															<li><a href="blog-single-details.html">Blog Single Details</a></li>
+														</ul>
+													</li>
+													<li><a href="contact-us.html">Contact Us</a></li> {% endcomment %}
+												</ul>
+											</div>
+										</div>
+									</nav>
+								</div>
+							</div>
+							<div class="pbmit-right-box d-flex align-items-center">
+								{% comment %} <div class="pbmit-header-button">
+									<a href="">
+										<span class="pbmit-header-button-text-1">+89(0) 1256 2156</span>					
+									</a>
+								</div> {% endcomment %}
+								{% comment %} <div class="pbmit-header-search-btn">
+									<a href="#" title="Search">
+										<i class="pbmit-base-icon-search-1"></i>
+									</a>
+								</div> {% endcomment %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pbmit-slider-area pbmit-slider-two">
+				<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="true" data-arrows="false" data-columns="1" data-margin="0" data-effect="fade">
+					<div class="swiper-wrapper">
+						<!-- Slide1 -->
+						<div class="swiper-slide"> 
+							<div class="pbmit-slider-item">
+								<div class="pbmit-slider-bg" style="background-image: url({% static 'images/banner-slider-img/slider1-slide01.jpg' %})"></div>
+								<div class="container"> 
+									<div class="row text-center">
+										<div class="col-md-12">
+											<div class="pbmit-slider-content">
+												<h2 class="pbmit-title transform-center transform-delay-1">
+													Building it better <br> <i>in concrete.</i>
+												</h2>		
+												<div class="pbmit-desc transform-left transform-delay-2">
+													A meticulously crafted Webflow template designed for <br> seamless project management.
+												</div>										
+												<div class="pbmit-button transform-left transform-delay-3">
+													<a class="pbmit-btn" href="">
+														<span class="pbmit-button-content-wrapper">
+															<span class="pbmit-button-icon pbmit-align-icon-right">
+																<i aria-hidden="true" class="pbmit-willbuild-icon pbmit-willbuild-icon-up-right-arrow"></i>			
+															</span>
+															<span class="pbmit-button-text">Get Started</span>
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Slide2 -->
+						<div class="swiper-slide">
+							<div class="pbmit-slider-item">
+								<div class="pbmit-slider-bg" style="background-image: url({% static 'images/banner-slider-img/slider1-slide02.jpg' %})"></div>
+								<div class="container">
+									<div class="row text-center">
+										<div class="col-md-12">
+											<div class="pbmit-slider-content">
+												<h2 class="pbmit-title transform-center transform-delay-1">
+													Building it better <br> <i>in concrete.</i>
+												</h2>		
+												<div class="pbmit-desc transform-left transform-delay-2">
+													A meticulously crafted Webflow template designed for <br> seamless project management.
+												</div>										
+												<div class="pbmit-button transform-left transform-delay-3">
+													<a class="pbmit-btn" href="">
+														<span class="pbmit-button-content-wrapper">
+															<span class="pbmit-button-icon pbmit-align-icon-right">
+																<i aria-hidden="true" class="pbmit-willbuild-icon pbmit-willbuild-icon-up-right-arrow"></i>			
+															</span>
+															<span class="pbmit-button-text">Get Started</span>
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- Header Main Area End Here -->
+
+		<!-- page content -->
+		<div class="page-content">
+
+			<!-- Ihbox --> 
+			<section class="pbmit-multi-icon-box-hover-effect">
+				<div class="container-fluid p-0">
+					<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="false" data-arrows="false" data-columns="4" data-margin="0" data-effect="slide">
+						<div class="swiper-wrapper">
+							<!-- Slide1 -->
+							<article class="pbmit-miconheading-style-1 swiper-slide">
+								<div class="pbmit-ihbox-style-1">
+									<div class="pbmit-ihbox-contents">
+										<div class="pbmit-ihbox-icon">
+											<div class="pbmit-icon-wrapper pbmit-ihbox-icon-type-image">
+												<img src="{% static 'images/homepage-2/ihbox/ih-award01.png' %}" alt="">
+											</div>
+										</div>
+										<h2 class="pbmit-element-title">
+											Winner Best of Substainable Construction 2023
+										</h2>
+										<div class="pbmit-heading-desc">Consectetur adipiscing elit sed do</div>
+										<div class="pbmit-ihbox-btn">
+											<a href="">
+												<span class="pbmit-button-text">Read More</span>
+												<span class="pbmit-button-icon-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="pbmit-base-icon-up-right-arrow-1"></i>
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+									<a class="pbmit-link" href=""></a>
+								</div>
+							</article>
+							<!-- Slide2 -->
+							<article class="pbmit-miconheading-style-1 swiper-slide">
+								<div class="pbmit-ihbox-style-1">
+									<div class="pbmit-ihbox-contents">
+										<div class="pbmit-ihbox-icon">
+											<div class="pbmit-icon-wrapper pbmit-ihbox-icon-type-image">
+												<img src="{% static 'images/homepage-2/ihbox/ih-award02.png' %}" alt="">
+											</div>
+										</div>
+										<h2 class="pbmit-element-title">
+											Top 5 Interior Design Inspiration 2023
+										</h2>
+										<div class="pbmit-heading-desc">eiusm onsectetur adipiscing elit.</div>
+										<div class="pbmit-ihbox-btn">
+											<a href="">
+												<span class="pbmit-button-text">Read More</span>
+												<span class="pbmit-button-icon-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="pbmit-base-icon-up-right-arrow-1"></i>
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+									<a class="pbmit-link" href="about-us.html"></a>
+								</div>
+							</article>
+							<!-- Slide3 -->
+							<article class="pbmit-miconheading-style-1 swiper-slide">
+								<div class="pbmit-ihbox-style-1">
+									<div class="pbmit-ihbox-contents">
+										<div class="pbmit-ihbox-icon">
+											<div class="pbmit-icon-wrapper pbmit-ihbox-icon-type-image">
+												<img src="{% static 'images/homepage-2/ihbox/ih-award03.png' %}" alt="">
+											</div>
+										</div>
+										<h2 class="pbmit-element-title">
+											Top 10 Agency Use Sustainable Material
+										</h2>
+										<div class="pbmit-heading-desc">eiusm onsectetur adipiscing elit.</div>
+										<div class="pbmit-ihbox-btn">
+											<a href="">
+												<span class="pbmit-button-text">Read More</span>
+												<span class="pbmit-button-icon-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="pbmit-base-icon-up-right-arrow-1"></i>
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+									<a class="pbmit-link" href=""></a>
+								</div>
+							</article>
+							<!-- Slide4 -->
+							<article class="pbmit-miconheading-style-1 swiper-slide">
+								<div class="pbmit-ihbox-style-1">
+									<div class="pbmit-ihbox-contents">
+										<div class="pbmit-ihbox-icon">
+											<div class="pbmit-icon-wrapper pbmit-ihbox-icon-type-image">
+												<img src="{% static 'images/homepage-2/ihbox/ih-award04.png' %}" alt="">
+											</div>
+										</div>
+										<h2 class="pbmit-element-title">
+											Winner Best CGI <br> Artist 2022
+										</h2>
+										<div class="pbmit-heading-desc">eiusm onsectetur adipiscing elit.</div>
+										<div class="pbmit-ihbox-btn">
+											<a href="">
+												<span class="pbmit-button-text">Read More</span>
+												<span class="pbmit-button-icon-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="pbmit-base-icon-up-right-arrow-1"></i>
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+									<a class="pbmit-link" href=""></a>
+								</div>
+							</article>
+							<!-- Slide5 -->
+							<article class="pbmit-miconheading-style-1 swiper-slide">
+								<div class="pbmit-ihbox-style-1">
+									<div class="pbmit-ihbox-contents">
+										<div class="pbmit-ihbox-icon">
+											<div class="pbmit-icon-wrapper pbmit-ihbox-icon-type-image">
+												<img src="{% static 'images/homepage-2/ihbox/ih-award05.png' %}" alt="">
+											</div>
+										</div>
+										<h2 class="pbmit-element-title">
+											Winner Best of Substainable Interior 2023
+										</h2>
+										<div class="pbmit-heading-desc">Consectetur adipiscing elit sed do</div>
+										<div class="pbmit-ihbox-btn">
+											<a href="">
+												<span class="pbmit-button-text">Read More</span>
+												<span class="pbmit-button-icon-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="pbmit-base-icon-up-right-arrow-1"></i>
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+									<a class="pbmit-link" href=""></a>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+            </section>
+			<!-- Ihbox end --> 
+
+			<!-- About Start --> 
+			<section class="about-sec-two">
+				<div class="container">
+					<div class="row g-0">
+						<div class="col-md-12 col-xl-6">
+							<div class="position-relative">
+								<div class="ioscertificate-img">
+									<div class="pbmit-animation-style7">
+										<img src="{% static 'images/homepage-2/ioscertificate.png' %}" class="img-fluid" alt="">
+									</div>
+								</div>
+								<div class="text-start">
+									<div class="pbmit-animation-style3">
+										<img src="{% static 'images/homepage-2/about-01.jpg' %}" class="img-fluid" alt="">
+									</div>
+								</div>
+								<div class="about-two-img02">
+									<div class="pbmit-animation-style4">
+										<img src="{% static 'images/homepage-2/about-02.jpg' %}" class="img-fluid" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 col-xl-6">
+							<div class="about-two-rightbox">
+								<div class="hook-img pbmit-contaner-move">
+									<img src="{% static 'images/homepage-2/hook-img.png' %}" alt="">
+								</div>
+								<div class="pbmit-heading-subheading animation-style3">
+									<h4 class="pbmit-subtitle">About</h4>
+									<h2 class="pbmit-title">Committed to superior quality and results.</h2>
+								</div>
+								<div class="pbmit-tab">
+									<ul class="nav nav-tabs" role="tablist">
+										<li class="nav-item" role="presentation">
+											<a class="nav-link active" data-bs-toggle="tab" href="#tab-2-1" aria-selected="true" role="tab"> 
+												<span>Who We Are</span>
+											</a>	
+										</li>
+										<li class="nav-item" role="presentation"> 
+											<a class="nav-link" data-bs-toggle="tab" href="#tab-2-2" aria-selected="false" role="tab" tabindex="-1"> 
+												<span>Our Mission</span>
+											</a>
+										</li>
+										<li class="nav-item" role="presentation">
+											<a class="nav-link" data-bs-toggle="tab" href="#tab-2-3" aria-selected="false" role="tab" tabindex="-1"> 
+												<span>Our Values</span>
+											</a>
+										</li>
+									</ul>
+									<div class="tab-content">
+										<div class="tab-pane show active" id="tab-2-1" role="tabpanel">
+											<div class="pbmit-column-inner">
+												<h6>Expertly shaping the future of construction one project at a time.</h6>
+												It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus.
+											</div>
+										</div>
+										<div class="tab-pane" id="tab-2-2" role="tabpanel">
+											<div class="pbmit-column-inner">
+												<h6>Using Interior Design to Leave a Memorable Impact with Construction</h6>
+												It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem.
+											</div>
+										</div>
+										<div class="tab-pane" id="tab-2-3" role="tabpanel">
+											<div class="pbmit-column-inner">
+												<h6>We Offer Profitable Solutions with High Performance Innovative Machines</h6>
+												The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable.
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="button-box">
+									<div class="row align-items-center">
+										<div class="col-md-4">
+											<a class="pbmit-btn pbmit-btn-transparent" href="our-history.html">
+												<span class="pbmit-button-content-wrapper">
+													<span class="pbmit-button-icon pbmit-align-icon-right">
+														<i aria-hidden="true" class="pbmit-willbuild-icon pbmit-willbuild-icon-up-right-arrow"></i>			
+													</span>
+													<span class="pbmit-button-text">Read Our Story</span>
+												</span>
+											</a>
+										</div>
+										<div class="col-md-8">
+											<a class="pbmit-btn" href="contact-us.html">
+												<span class="pbmit-button-content-wrapper">
+													<span class="pbmit-button-icon pbmit-align-icon-right">
+														<i aria-hidden="true" class="pbmit-willbuild-icon pbmit-willbuild-icon-up-right-arrow"></i>			
+													</span>
+													<span class="pbmit-button-text">Get Started</span>
+												</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- About End -->
+
+			<!-- Fid Start --> 
+            <section class="section-lgb">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-xl-3">
+							<div class="pbminfotech-ele-fid-style-3">
+								<div class="pbmit-fld-contents">
+									<div class="pbmit-fld-wrap">
+										<h4 class="pbmit-fid-inner d-flex">
+											<span class="pbmit-fid-sub"></span>
+											<span class="odometer" data-appear-animation="animateDigits" data-from="0" data-to="27" data-interval="" data-before="" data-before-style="" data-after="" data-after-style="">
+												<span class="odometer-inside">
+													<span class="odometer-digit">
+														<span class="odometer-digit-spacer">8</span>
+														<span class="odometer-digit-inner">
+															<span class="odometer-ribbon">
+																<span class="odometer-ribbon-inner">
+																	<span class="odometer-value">2</span>
+																</span>
+															</span>
+														</span>
+													</span>
+													<span class="odometer-digit">
+														<span class="odometer-digit-spacer">8</span>
+														<span class="odometer-digit-inner">
+															<span class="odometer-ribbon">
+																<span class="odometer-ribbon-inner">
+																	<span class="odometer-value">7</span>
+																</span>
+															</span>
+														</span>
+													</span>
+												</span>
+											</span>
+											<span class="pbmit-fid-sub"></span>
+										</h4>
+										<h3 class="pbmit-fid-title"><span>+year<br></span></h3>
+										<div class="pbmit-heading-desc">We have been providing <br>service for 27 years</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-xl-3">
+							<div class="pbminfotech-ele-fid-style-3 pt-md-0 pt-4">
+								<div class="pbmit-fld-contents">
+									<div class="pbmit-fld-wrap">
+										<h4 class="pbmit-fid-inner d-flex">
+											<span class="pbmit-fid-sub"></span>
+											<span class="odometer" data-appear-animation="animateDigits" data-from="0" data-to="8" data-interval="" data-before="" data-before-style="" data-after="" data-after-style="">
+												<span class="odometer-inside">
+													<span class="odometer-digit">
+														<span class="odometer-digit-spacer">8</span>
+														<span class="odometer-digit-inner">
+															<span class="odometer-ribbon">
+																<span class="odometer-ribbon-inner">
+																	<span class="odometer-value">8</span>
+																</span>
+															</span>
+														</span>
+													</span>
+												</span>
+											</span>
+											<span class="pbmit-fid-sub"><span>k</span></span>
+										</h4>
+										<h3 class="pbmit-fid-title"><span>+projects<br></span></h3>
+										<div class="pbmit-heading-desc">We recently done our<br>80+ quality project</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-xl-3">
+							<div class="pbminfotech-ele-fid-style-3 pt-xl-0 pt-4">
+								<div class="pbmit-fld-contents">
+									<div class="pbmit-fld-wrap">
+										<h4 class="pbmit-fid-inner d-flex">
+											<span class="pbmit-fid-sub"></span>
+											<span class="odometer" data-appear-animation="animateDigits" data-from="0" data-to="90" data-interval="" data-before="" data-before-style="" data-after="" data-after-style="">
+												<span class="odometer-inside">
+													<span class="odometer-digit">
+														<span class="odometer-digit-spacer">8</span>
+														<span class="odometer-digit-inner">
+															<span class="odometer-ribbon">
+																<span class="odometer-ribbon-inner">
+																	<span class="odometer-value">9</span>
+																</span>
+															</span>
+														</span>
+													</span>
+													<span class="odometer-digit">
+														<span class="odometer-digit-spacer">8</span>
+														<span class="odometer-digit-inner">
+															<span class="odometer-ribbon">
+																<span class="odometer-ribbon-inner">
+																	<span class="odometer-value">0</span>
+																</span>
+															</span>
+														</span>
+													</span>
+												</span>
+											</span>
+											<span class="pbmit-fid-sub"></span>
+										</h4>
+										<h3 class="pbmit-fid-title"><span>+team<br></span></h3>
+										<div class="pbmit-heading-desc">My agency consists of<br>90+ team members</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-xl-3">
+							<div class="pbminfotech-ele-fid-style-3 pt-xl-0 pt-4">
+								<div class="pbmit-fld-contents">
+									<div class="pbmit-fld-wrap">
+										<h4 class="pbmit-fid-inner d-flex">
+											<span class="pbmit-fid-sub"></span>
+											<span class="odometer odometer-auto-theme" data-appear-animation="animateDigits" data-from="0" data-to="7" data-interval="" data-before="" data-before-style="" data-after="" data-after-style="">
+												<span class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span></span></span></span>
+											</span>
+											<span class="pbmit-fid-sub"><span>k</span></span>
+										</h4>
+										<h3 class="pbmit-fid-title"><span>+clients<br></span></h3>
+										<div class="pbmit-heading-desc">Our happy client <br>our service</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </section>
+            <!-- Fid End -->
+
+			<!-- Service Start --> 
+            <section class="section-xl service-two-bg pbmit-bg-color-secondary">
+				<div class="container">
+					<div class="pbmit-element-service-style-4">
+						<div class="row align-items-center">
+							<div class="col-md-12 col-xl-6">
+								<div class="pbmit-heading-subheading animation-style3">
+									<h4 class="pbmit-subtitle">Why Us</h4>
+									<h2 class="pbmit-title">Let’s See What We will Do.</h2>
+								</div>
+							</div>
+							<div class="col-md-12 col-xl-6">
+								<div class="text-xl-end mb-4 mb-xl-0">
+									<a class="pbmit-btn" href="service-details.html">
+										<span class="pbmit-button-content-wrapper">
+											<span class="pbmit-button-icon pbmit-align-icon-right">
+												<i aria-hidden="true" class="pbmit-willbuild-icon pbmit-willbuild-icon-up-right-arrow"></i>			
+											</span>
+											<span class="pbmit-button-text">Get Started</span>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<article class="pbmit-service-style-4 col-md-12">
+								<div class="pbminfotech-post-item">
+									<div class="pbmit-service-icon-wrapper elementor-icon">
+										<i class="pbmit-willbuild-icon pbmit-willbuild-icon-mapping"></i>	
+									</div>
+									<div class="pbmit-featured-img-wrapper">
+										<div class="pbmit-featured-wrapper">
+											<img src="{% static 'images/homepage-2/service/service-01.jpg' %}" class="img-fluid" alt="">
+										</div>
+									</div>
+									<div class="pbmit-title-wrapper">
+										<div class="pbminfotech-box-number">01</div>
+										<h3 class="pbmit-service-title">
+											<a href="">Structural Engineering<span></span></a>
+										</h3>
+										<div class="pbmit-service-description">
+											Various versions have evolved over the years, sometimes by accident is not.			
+										</div>
+										<div class="pbmit-service-btn">
+											<a class="btn-arrow" href="service-details.html">
+												<span class="pbmit-button-icon-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="pbmit-base-icon-up-right-arrow-1"></i>
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</article>
+							<article class="pbmit-service-style-4 col-md-12">
+								<div class="pbminfotech-post-item">
+									<div class="pbmit-service-icon-wrapper elementor-icon">
+										<i class="pbmit-willbuild-icon pbmit-willbuild-icon-mapping"></i>	
+									</div>
+									<div class="pbmit-featured-img-wrapper">
+										<div class="pbmit-featured-wrapper">
+											<img src="{% static 'images/homepage-2/service/service-02.jpg' %}" class="img-fluid" alt="">
+										</div>
+									</div>
+									<div class="pbmit-title-wrapper">
+										<div class="pbminfotech-box-number">02</div>
+										<h3 class="pbmit-service-title">
+											<a href="">Architectural Design<span></span></a>
+										</h3>
+										<div class="pbmit-service-description">
+											Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia des.			
+										</div>
+										<div class="pbmit-service-btn">
+											<a class="btn-arrow" href="">
+												<span class="pbmit-button-icon-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="pbmit-base-icon-up-right-arrow-1"></i>
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</article>
+							<article class="pbmit-service-style-4 col-md-12">
+								<div class="pbminfotech-post-item">
+									<div class="pbmit-service-icon-wrapper elementor-icon">
+										<i class="pbmit-willbuild-icon pbmit-willbuild-icon-mapping"></i>	
+									</div>
+									<div class="pbmit-featured-img-wrapper">
+										<div class="pbmit-featured-wrapper">
+											<img src="{% static 'images/homepage-2/service/service-03.jpg' %}" class="img-fluid" alt="">
+										</div>
+									</div>
+									<div class="pbmit-title-wrapper">
+										<div class="pbminfotech-box-number">03</div>
+										<h3 class="pbmit-service-title">
+											<a href="">New Build & Development<span></span></a>
+										</h3>
+										<div class="pbmit-service-description">
+											Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam.			
+										</div>
+										<div class="pbmit-service-btn">
+											<a class="btn-arrow" href="">
+												<span class="pbmit-button-icon-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="pbmit-base-icon-up-right-arrow-1"></i>
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</article>
+							<article class="pbmit-service-style-4 col-md-12">
+								<div class="pbminfotech-post-item">
+									<div class="pbmit-service-icon-wrapper elementor-icon">
+										<i class="pbmit-willbuild-icon pbmit-willbuild-icon-mapping"></i>	
+									</div>
+									<div class="pbmit-featured-img-wrapper">
+										<div class="pbmit-featured-wrapper">
+											<img src="{% static 'images/homepage-2/service/service-04.jpg' %}" class="img-fluid" alt="">
+										</div>
+									</div>
+									<div class="pbmit-title-wrapper">
+										<div class="pbminfotech-box-number">04</div>
+										<h3 class="pbmit-service-title">
+											<a href="">Construction Management<span></span></a>
+										</h3>
+										<div class="pbmit-service-description">
+											Various versions have evolved over the years, sometimes by accident is not.		
+										</div>
+										<div class="pbmit-service-btn">
+											<a class="btn-arrow" href="service-details.html">
+												<span class="pbmit-button-icon-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="pbmit-base-icon-up-right-arrow-1"></i>
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</article>
+							<article class="pbmit-service-style-4 col-md-12">
+								<div class="pbminfotech-post-item">
+									<div class="pbmit-service-icon-wrapper elementor-icon">
+										<i class="pbmit-willbuild-icon pbmit-willbuild-icon-mapping"></i>	
+									</div>
+									<div class="pbmit-featured-img-wrapper">
+										<div class="pbmit-featured-wrapper">
+											<img src="{% static 'images/homepage-2/service/service-05.jpg' %}" class="img-fluid" alt="">
+										</div>
+									</div>
+									<div class="pbmit-title-wrapper">
+										<div class="pbminfotech-box-number">05</div>
+										<h3 class="pbmit-service-title">
+											<a href="">Design Build Services<span></span></a>
+										</h3>
+										<div class="pbmit-service-description">
+											Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia des.			
+										</div>
+										<div class="pbmit-service-btn">
+											<a class="btn-arrow" href="">
+												<span class="pbmit-button-icon-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="pbmit-base-icon-up-right-arrow-1"></i>
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+            </section>
+            <!-- Service End -->
+
+			<!-- Miconheading Style Start -->
+			<section class="section-xl">
+				<div class="container">
+					<div class="pbmit-heading-subheading text-center animation-style3">
+						<h4 class="pbmit-subtitle">Why Us</h4>
+						<h2 class="pbmit-title">We’re not just constructing, we’re <br> creating for you.</h2>
+					</div>
+					<div class="row g-0">
+						<div class="col-md-6 col-xl-4">
+							<div class="miconheading-style-leftbox">
+								<article class="pbmit-miconheading-style-4">
+									<div class="pbmit-ihbox-style-4">
+										<div class="pbmit-ihbox-contents">
+											<div class="pbmit-ihbox-icon">
+												<div class="pbmit-ihbox-icon-wrapper">
+													<div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+														<i class="pbmit-willbuild-icon pbmit-willbuild-icon-drawing-tool"></i>
+													</div>
+												</div>
+											</div>
+											<div class="pbmit-title-wrapper">
+												<h2 class="pbmit-element-title">
+													Accurate Measurements
+												</h2>
+												<div class="pbmit-heading-desc">There are many variations of passages <br>of Lorem Ipsum available.</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<article class="pbmit-miconheading-style-4">
+									<div class="pbmit-ihbox-style-4">
+										<div class="pbmit-ihbox-contents">
+											<div class="pbmit-ihbox-icon">
+												<div class="pbmit-ihbox-icon-wrapper">
+													<div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+														<i class="pbmit-willbuild-icon pbmit-willbuild-icon-wall"></i>
+													</div>
+												</div>
+											</div>
+											<div class="pbmit-title-wrapper">
+												<h2 class="pbmit-element-title">
+													Modern Methods
+												</h2>
+												<div class="pbmit-heading-desc">All the Lorem Ipsum generators on <br>the Internet tend.</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<article class="pbmit-miconheading-style-4">
+									<div class="pbmit-ihbox-style-4">
+										<div class="pbmit-ihbox-contents">
+											<div class="pbmit-ihbox-icon">
+												<div class="pbmit-ihbox-icon-wrapper">
+													<div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+														<i class="pbmit-willbuild-icon pbmit-willbuild-icon-construction-worker"></i>
+													</div>
+												</div>
+											</div>
+											<div class="pbmit-title-wrapper">
+												<h2 class="pbmit-element-title">
+													Certified Engineers
+												</h2>
+												<div class="pbmit-heading-desc">The standard chunk of Lorem Ipsum used <br>since the 1500s.</div>
+											</div>
+										</div>
+									</div>
+								</article>
+							</div>
+						</div>
+						<div class="col-md-6 col-xl-4">
+							<div class="fadeIn animated animated-slow pbm-sinlge-mh-img">
+								<img src="{% static 'images/homepage-2/pbm-sinlge-mh.jpg' %}" class="img-fluid" alt="">
+							</div>
+						</div>
+						<div class="col-md-12 col-xl-4">
+							<div class="miconheading-style-rightbox">
+								<article class="pbmit-miconheading-style-4">
+									<div class="pbmit-ihbox-style-4">
+										<div class="pbmit-ihbox-contents">
+											<div class="pbmit-ihbox-icon">
+												<div class="pbmit-ihbox-icon-wrapper">
+													<div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+														<i class="pbmit-willbuild-icon pbmit-willbuild-icon-construction-1"></i>
+													</div>
+												</div>
+											</div>
+											<div class="pbmit-title-wrapper">
+												<h2 class="pbmit-element-title">
+													Best Sustainability
+												</h2>
+												<div class="pbmit-heading-desc">Contrary to popular belief, Lorem <br>Ipsum is not simply random text</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<article class="pbmit-miconheading-style-4">
+									<div class="pbmit-ihbox-style-4">
+										<div class="pbmit-ihbox-contents">
+											<div class="pbmit-ihbox-icon">
+												<div class="pbmit-ihbox-icon-wrapper">
+													<div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+														<i class="pbmit-willbuild-icon pbmit-willbuild-icon-oil-pump"></i>
+													</div>
+												</div>
+											</div>
+											<div class="pbmit-title-wrapper">
+												<h2 class="pbmit-element-title">
+													Residential Structures
+												</h2>
+												<div class="pbmit-heading-desc">All the Lorem Ipsum generators on <br>the Internet tend.</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<article class="pbmit-miconheading-style-4">
+									<div class="pbmit-ihbox-style-4">
+										<div class="pbmit-ihbox-contents">
+											<div class="pbmit-ihbox-icon">
+												<div class="pbmit-ihbox-icon-wrapper">
+													<div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+														<i class="pbmit-willbuild-icon pbmit-willbuild-icon-buildings"></i>
+													</div>
+												</div>
+											</div>
+											<div class="pbmit-title-wrapper">
+												<h2 class="pbmit-element-title">
+													Tackle Environmental
+												</h2>
+												<div class="pbmit-heading-desc">The standard chunk of Lorem Ipsum <br> used since the 1500s.</div>
+											</div>
+										</div>
+									</div>
+								</article>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- Miconheading Style End --> 
+
+			<!-- Portfolio Start --> 
+			{% comment %} <section class="pbmit-element-portfolio-style-3">
+				<div class="container-fluid p-0">
+					<div class="pbmit-main-hover-faded">
+						<div class="pbmit-content-box">
+							<div class="swiper-slider swiper-hover-slide-nav" data-autoplay="false" data-loop="true" data-dots="false" data-arrows="false" data-columns="4" data-margin="0" data-effect="slide">
+								<div class="swiper-wrapper">
+									<!-- Slide1 -->
+									<div class="swiper-slide">
+										<div class="pbmit-content-box-inner">
+											<div class="pbminfotech-box-number">
+												<h3>01</h3>										
+											</div>
+											<div class="pbmit-titlebox-wrap">
+												<div class="pbmit-titlebox">
+													<div class="pbmit-port-cat">
+														<a href="" rel="tag">Commercial</a>
+													</div>
+													<h3 class="pbmit-portfolio-title">
+														<a href="portfolio-single-detail-style-1.html">Urbanite Developments</a>
+													</h3>
+												</div>
+												<div class="pbmit-portfolio-btn">
+													<a class="btn-arrow" href="portfolio-single-detail-style-1.html">
+														<span class="pbmit-button-icon-wrapper">
+															<span class="pbmit-button-icon">
+																<i class="pbmit-base-icon-up-right-arrow-1"></i>
+															</span>
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Slide2 -->
+									<div class="swiper-slide">
+										<div class="pbmit-content-box-inner">
+											<div class="pbminfotech-box-number">
+												<h3>02</h3>										
+											</div>
+											<div class="pbmit-titlebox-wrap">
+												<div class="pbmit-titlebox">
+													<div class="pbmit-port-cat">
+														<a href="" rel="tag">Roof Replacement</a>
+													</div>
+													<h3 class="pbmit-portfolio-title">
+														<a href="portfolio-single-detail-style-1.html">Mountain Skys Homes</a>
+													</h3>
+												</div>
+												<div class="pbmit-portfolio-btn">
+													<a class="btn-arrow" href="portfolio-single-detail-style-1.html">
+														<span class="pbmit-button-icon-wrapper">
+															<span class="pbmit-button-icon">
+																<i class="pbmit-base-icon-up-right-arrow-1"></i>
+															</span>
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Slide3 -->
+									<div class="swiper-slide">
+										<div class="pbmit-content-box-inner">
+											<div class="pbminfotech-box-number">
+												<h3>03</h3>										
+											</div>
+											<div class="pbmit-titlebox-wrap">
+												<div class="pbmit-titlebox">
+													<div class="pbmit-port-cat">
+														<a href="#" rel="tag">Factory</a>
+													</div>
+													<h3 class="pbmit-portfolio-title">
+														<a href="portfolio-single-detail-style-1.html">River’s Edge Construction</a>
+													</h3>
+												</div>
+												<div class="pbmit-portfolio-btn">
+													<a class="btn-arrow" href="portfolio-single-detail-style-1.html">
+														<span class="pbmit-button-icon-wrapper">
+															<span class="pbmit-button-icon">
+																<i class="pbmit-base-icon-up-right-arrow-1"></i>
+															</span>
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Slide4 -->
+									<div class="swiper-slide">
+										<div class="pbmit-content-box-inner">
+											<div class="pbminfotech-box-number">
+												<h3>04</h3>										
+											</div>
+											<div class="pbmit-titlebox-wrap">
+												<div class="pbmit-titlebox">
+													<div class="pbmit-port-cat">
+														<a href="" rel="tag">Factory</a>
+													</div>
+													<h3 class="pbmit-portfolio-title">
+														<a href="portfolio-single-detail-style-1.html">Outdoor Building Concepts</a>
+													</h3>
+												</div>
+												<div class="pbmit-portfolio-btn">
+													<a class="btn-arrow" href="portfolio-single-detail-style-1.html">
+														<span class="pbmit-button-icon-wrapper">
+															<span class="pbmit-button-icon">
+																<i class="pbmit-base-icon-up-right-arrow-1"></i>
+															</span>
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Slide5 -->
+									<div class="swiper-slide">
+										<div class="pbmit-content-box-inner">
+											<div class="pbminfotech-box-number">
+												<h3>05</h3>										
+											</div>
+											<div class="pbmit-titlebox-wrap">
+												<div class="pbmit-titlebox">
+													<div class="pbmit-port-cat">
+														<a href="" rel="tag">Factory</a>
+													</div>
+													<h3 class="pbmit-portfolio-title">
+														<a href="portfolio-single-detail-style-1.html">Commercial buildings</a>
+													</h3>
+												</div>
+												<div class="pbmit-portfolio-btn">
+													<a class="btn-arrow" href="portfolio-single-detail-style-1.html">
+														<span class="pbmit-button-icon-wrapper">
+															<span class="pbmit-button-icon">
+																<i class="pbmit-base-icon-up-right-arrow-1"></i>
+															</span>
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Slide6 -->
+									<div class="swiper-slide">
+										<div class="pbmit-content-box-inner">
+											<div class="pbminfotech-box-number">
+												<h3>06</h3>										
+											</div>
+											<div class="pbmit-titlebox-wrap">
+												<div class="pbmit-titlebox">
+													<div class="pbmit-port-cat">
+														<a href="" rel="tag">Residential</a>
+													</div>
+													<h3 class="pbmit-portfolio-title">
+														<a href="portfolio-single-detail-style-1.html">Construction process</a>
+													</h3>
+												</div>
+												<div class="pbmit-portfolio-btn">
+													<a class="btn-arrow" href="portfolio-single-detail-style-1.html">
+														<span class="pbmit-button-icon-wrapper">
+															<span class="pbmit-button-icon">
+																<i class="pbmit-base-icon-up-right-arrow-1"></i>
+															</span>
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Slide7 -->
+									<div class="swiper-slide">
+										<div class="pbmit-content-box-inner">
+											<div class="pbminfotech-box-number">
+												<h3>07</h3>										
+											</div>
+											<div class="pbmit-titlebox-wrap">
+												<div class="pbmit-titlebox">
+													<div class="pbmit-port-cat">
+														<a href="" rel="tag">Roof Replacement</a>
+													</div>
+													<h3 class="pbmit-portfolio-title">
+														<a href="">Contemporary Design</a>
+													</h3>
+												</div>
+												<div class="pbmit-portfolio-btn">
+													<a class="btn-arrow" href="portfolio-single-detail-style-1.html">
+														<span class="pbmit-button-icon-wrapper">
+															<span class="pbmit-button-icon">
+																<i class="pbmit-base-icon-up-right-arrow-1"></i>
+															</span>
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Slide8 -->
+									<div class="swiper-slide">
+										<div class="pbmit-content-box-inner">
+											<div class="pbminfotech-box-number">
+												<h3>08</h3>										
+											</div>
+											<div class="pbmit-titlebox-wrap">
+												<div class="pbmit-titlebox">
+													<div class="pbmit-port-cat">
+														<a href="#" rel="tag">Commercial</a>
+													</div>
+													<h3 class="pbmit-portfolio-title">
+														<a href="portfolio-single-detail-style-1.html">Architectural visualization</a>
+													</h3>
+												</div>
+												<div class="pbmit-portfolio-btn">
+													<a class="btn-arrow" href="portfolio-single-detail-style-1.html">
+														<span class="pbmit-button-icon-wrapper">
+															<span class="pbmit-button-icon">
+																<i class="pbmit-base-icon-up-right-arrow-1"></i>
+															</span>
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Slide9 -->
+									<div class="swiper-slide">
+										<div class="pbmit-content-box-inner">
+											<div class="pbminfotech-box-number">
+												<h3>09</h3>										
+											</div>
+											<div class="pbmit-titlebox-wrap">
+												<div class="pbmit-titlebox">
+													<div class="pbmit-port-cat">
+														<a href="#" rel="tag">Commercial</a>
+													</div>
+													<h3 class="pbmit-portfolio-title">
+														<a href="">Cathedral Enclave</a>
+													</h3>
+												</div>
+												<div class="pbmit-portfolio-btn">
+													<a class="btn-arrow" href="portfolio-single-detail-style-1.html">
+														<span class="pbmit-button-icon-wrapper">
+															<span class="pbmit-button-icon">
+																<i class="pbmit-base-icon-up-right-arrow-1"></i>
+															</span>
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-hover-slide-images">
+							<div class="swiper-container pbmit-hover-image-faded">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<div class="pbmit-featured-img-wrapper">
+											<div class="pbmit-featured-wrapper">
+												<img src="images/homepage-2/portfolio/portfolio-01.jpg" alt="">
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="pbmit-featured-img-wrapper">
+											<div class="pbmit-featured-wrapper">
+												<img src="images/homepage-2/portfolio/portfolio-02.jpg" alt="">
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="pbmit-featured-img-wrapper">
+											<div class="pbmit-featured-wrapper">
+												<img src="images/homepage-2/portfolio/portfolio-03.jpg" alt="">
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="pbmit-featured-img-wrapper">
+											<div class="pbmit-featured-wrapper">
+												<img src="images/homepage-2/portfolio/portfolio-04.jpg" alt="">
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="pbmit-featured-img-wrapper">
+											<div class="pbmit-featured-wrapper">
+												<img src="images/homepage-2/portfolio/portfolio-05.jpg" alt="">
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="pbmit-featured-img-wrapper">
+											<div class="pbmit-featured-wrapper">
+												<img src="images/homepage-2/portfolio/portfolio-06.jpg" alt="">
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="pbmit-featured-img-wrapper">
+											<div class="pbmit-featured-wrapper">
+												<img src="images/homepage-2/portfolio/portfolio-07.jpg" alt="">
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="pbmit-featured-img-wrapper">
+											<div class="pbmit-featured-wrapper">
+												<img src="images/homepage-2/portfolio/portfolio-08.jpg" alt="">
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="pbmit-featured-img-wrapper">
+											<div class="pbmit-featured-wrapper">
+												<img src="images/homepage-2/portfolio/portfolio-09.jpg" alt="">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section> {% endcomment %}
+			<!-- Portfolio End --> 
+
+			<!-- pricing Start -->
+			<section class="pricing-two-bg">
+				<div class="container">
+					<div class="pbminfotech-ele-ptable-style-1">
+						<div class="pbmit-heading-subheading text-center animation-style3">
+							<h4 class="pbmit-subtitle">Pricing</h4>
+							<h2 class="pbmit-title">Choose Your Pack You Can Afford.</h2>
+						</div>
+						<div class="pbmit-ptable-cols row multi-columns-row">
+							<div class="pbmit-ptable-col col-md-6 col-lg-4">
+								<div class="pbmit-pricing-table-box">
+									<div class="pbmit-icon-heading-wrapper">
+										<div class="pbmit-ptable-icon-wrapper pbmit-ptable-icon-type-image">
+											<img src="images/homepage-2/pricing-bg-1.jpg" class="img-fluid" alt="">
+										</div>
+										<h3 class="pbminfotech-ptable-heading">Basic</h3>
+										<div class="pbmit-feature-wrap"> </div>
+									</div>
+									<div class="pbmit-head-wrap">
+										<div class="pbmit-ptable-price-w">
+											<div class="pbminfotech-ptable-symbol">$</div>
+											<div class="pbminfotech-ptable-price">249</div>
+										</div>
+										<div class="pbminfotech-ptable-frequency">Monthly billing</div>
+									</div>
+									<div class="pbmit-ptable-inner">
+										<div class="pbmit-ptable-lines-w">
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Advanced Analytics
+											</div>
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Change Management
+											</div>
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Corporate Finance
+											</div>
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Str	ategy &amp; Marketing
+											</div>
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Information Technology
+											</div>
+										</div>
+										<div class="pbminfotech-ptable-btn">
+											<div class="pbmit-button">
+												<a href="contact-us.html">
+													<span class="pbmit-button-text">Choose Package</span>
+													<span class="pbmit-button-icon-wrapper">
+														<span class="pbmit-button-icon">
+															<i class="pbmit-base-icon-up-right-arrow-1"></i>
+														</span>
+													</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="pbmit-pricing-table-featured-col pbmit-ptable-col col-md-6 col-lg-4">
+								<div class="pbmit-pricing-table-box">
+									<div class="pbmit-icon-heading-wrapper">
+										<div class="pbmit-ptable-icon-wrapper pbmit-ptable-icon-type-image">
+											<img src="images/homepage-2/pricing-bg-2.jpg" class="img-fluid" alt="">
+										</div>
+										<h3 class="pbminfotech-ptable-heading">Premium</h3>
+										<div class="pbmit-feature-wrap">
+											<div class="pbmit-ptablebox-featured-w"><span>Trending</span></div>
+										</div>
+									</div>
+									<div class="pbmit-head-wrap">
+										<div class="pbmit-ptable-price-w">
+											<div class="pbminfotech-ptable-symbol">$</div>
+											<div class="pbminfotech-ptable-price">269</div>
+										</div>
+										<div class="pbminfotech-ptable-frequency">Monthly billing</div>
+									</div>
+									<div class="pbmit-ptable-inner">
+										<div class="pbmit-ptable-lines-w">
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Advanced Analytics
+											</div>
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Change Management
+											</div>
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Corporate Finance
+											</div>
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Strategy &amp; Marketing
+											</div>
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Information Technology
+											</div>
+										</div>
+										<div class="pbminfotech-ptable-btn">
+											<div class="pbmit-button">
+												<a href="contact-us.html">
+													<span class="pbmit-button-text">Choose package</span>
+													<span class="pbmit-button-icon-wrapper">
+														<span class="pbmit-button-icon">
+															<i class="pbmit-base-icon-up-right-arrow-1"></i>
+														</span>
+													</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="pbmit-ptable-col col-md-6 col-lg-4">
+								<div class="pbmit-pricing-table-box">
+									<div class="pbmit-icon-heading-wrapper">
+										<div class="pbmit-ptable-icon-wrapper pbmit-ptable-icon-type-image">
+											<img src="images/homepage-2/pricing-bg-3.jpg" class="img-fluid" alt="">
+										</div>
+										<h3 class="pbminfotech-ptable-heading">Advance</h3>
+										<div class="pbmit-feature-wrap"> </div>
+									</div>
+									<div class="pbmit-head-wrap">
+										<div class="pbmit-ptable-price-w">
+											<div class="pbminfotech-ptable-symbol">$</div>
+											<div class="pbminfotech-ptable-price">299</div>
+										</div>
+										<div class="pbminfotech-ptable-frequency">Monthly billing</div>
+									</div>
+									<div class="pbmit-ptable-inner">
+										<div class="pbmit-ptable-lines-w">
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Advanced Analytics
+											</div>
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Change Management
+											</div>
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Corporate Finance
+											</div>
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Strategy &amp; Marketing
+											</div>
+											<div class="pbmit-ptable-line">
+												<svg class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+													<path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+												</svg>
+												Information Technology
+											</div>
+										</div>
+										<div class="pbminfotech-ptable-btn">
+											<div class="pbmit-button">
+												<a href="contact-us.html">
+													<span class="pbmit-button-text">Choose Package</span>
+													<span class="pbmit-button-icon-wrapper">
+														<span class="pbmit-button-icon">
+															<i class="pbmit-base-icon-up-right-arrow-1"></i>
+														</span>
+													</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="list-items-area">
+							<ul class="list-group list-group-style-2 list-group-borderless">
+								<li class="list-group-item">
+									<span class="pbmit-icon-list-icon">
+										<i class="pbmit-willbuild-icon pbmit-willbuild-icon-wallet-1"></i>
+									</span>
+									<span class="pbmit-icon-list-text">No credit card required </span>
+								</li>
+								<li class="list-group-item">
+									<span class="pbmit-icon-list-icon">
+										<i class="pbmit-willbuild-icon pbmit-willbuild-icon-clock"></i>
+									</span>
+									<span class="pbmit-icon-list-text">Get 30 day free trial</span>
+								</li>
+								<li class="list-group-item">
+									<span class="pbmit-icon-list-icon">
+										<i class="pbmit-willbuild-icon pbmit-willbuild-icon-calendar"></i>
+									</span>
+									<span class="pbmit-icon-list-text">Cancel anytime</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+            </section>
+			<!-- pricing End -->
+
+			<!-- Video Start -->
+            <section class="section-lg pbmit-bg-color-blackish video-section-one">
+				<div class="video-bg-overlay"></div>
+				<div class="container">
+					<div class="text-center">
+						<div class="pbmit-heading-subheading animation-style4">
+							<h4 class="pbmit-subtitle">emergency call 123 4567 890</h4>
+							<h2 class="pbmit-title">Save yourself trouble and aggravation, <br> hire us for your  <span id="js-rotating">manufacture, development, composition, explanation</span></h2>
+						</div>
+						<div class="play-button">
+							<a class="pbmit-icon pbmin-lightbox-video" href="https://www.youtube.com/watch?v=SZEflIVnhH8">
+								<i class="fa fa-play"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+            </section>
+            <!-- Video End -->
+
+			<!-- Testimonial Start -->
+			<section class="section-xl pbmit-element-testimonial-style-3 animated fadeIn overflow-hidden">
+				<div class="container pbmit-col-stretched-yes pbmit-col-right">
+					<div class="row align-items-center">
+						<div class="col-md-6">
+							<div class="pbmit-heading-subheading animation-style3">
+								<h4 class="pbmit-subtitle">Client feedback</h4>
+								<h2 class="pbmit-title">Our Clients Review</h2>
+							</div>
+						</div>
+						<div class="col-md-6 text-end">
+							<div class="testimonial-arrow swiper-btn-custom d-inline-flex flex-row-reverse"></div>
+						</div>
+					</div>
+					<div class="pbmit-col-stretched-right">
+						<div class="swiper-slider" data-arrows-class="testimonial-arrow" data-autoplay="false" data-loop="false" data-dots="false" data-arrows="true" data-columns="2.3" data-margin="30" data-effect="slide">
+							<div class="swiper-wrapper">
+								<!-- Slide1 -->
+								<article class="pbmit-testimonial-style-3 swiper-slide">
+									<div class="pbminfotech-post-item">
+										<div class="pbminfotech-box-img">
+											<div class="pbmit-testimonial-bg-img" style="background-image:url(images/homepage-2/testimonial/testimonial-01.jpg)">
+												<div class="pbmit-featured-img-wrapper">
+													<div class="pbmit-featured-wrapper">
+														<img src="images/homepage-2/testimonial/testimonial-01.jpg" class="img-fluid" alt="">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="pbmit-box-content-wrap">
+											<div class="pbminfotech-box-star-ratings">
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1"></i>
+											</div>
+											<div class="pbminfotech-star-ratings-text">"Urban Living"</div>
+											<div class="pbminfotech-box-desc">
+												<blockquote class="pbminfotech-testimonial-text">
+													<p>“It was really great working with Architect team and I am happy I was introduced to this team! It’s not easy to work on a website some one else I am grateful that Architect team.”</p>
+												</blockquote>
+											</div>
+											<div class="pbminfotech-box-author d-flex align-items-center">
+												<div class="pbmit-auther-content">
+													<h3 class="pbminfotech-box-title">Fabiana Winds</h3>
+													<div class="pbminfotech-testimonial-detail">Supervisor</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide2 -->
+								<article class="pbmit-testimonial-style-3 swiper-slide">
+									<div class="pbminfotech-post-item">
+										<div class="pbminfotech-box-img">
+											<div class="pbmit-testimonial-bg-img" style="background-image:url(images/homepage-2/testimonial/testimonial-02.jpg)">
+												<div class="pbmit-featured-img-wrapper">
+													<div class="pbmit-featured-wrapper">
+														<img src="images/homepage-2/testimonial/testimonial-02.jpg" class="img-fluid" alt="">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="pbmit-box-content-wrap">
+											<div class="pbminfotech-box-star-ratings">
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1"></i>
+											</div>
+											<div class="pbminfotech-star-ratings-text">"professionalism"</div>
+											<div class="pbminfotech-box-desc">
+												<blockquote class="pbminfotech-testimonial-text">
+													<p>“It was really great working with Architect team and I am happy I was introduced to this team! It’s not easy to work on a website some one else I am grateful that Architect team.”</p>
+												</blockquote>
+											</div>
+											<div class="pbminfotech-box-author d-flex align-items-center">
+												<div class="pbmit-auther-content">
+													<h3 class="pbminfotech-box-title">Alexa Zender</h3>
+													<div class="pbminfotech-testimonial-detail">Supervisor</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide3 -->
+								<article class="pbmit-testimonial-style-3 swiper-slide">
+									<div class="pbminfotech-post-item">
+										<div class="pbminfotech-box-img">
+											<div class="pbmit-testimonial-bg-img" style="background-image:url(images/homepage-2/testimonial/testimonial-03.jpg)">
+												<div class="pbmit-featured-img-wrapper">
+													<div class="pbmit-featured-wrapper">
+														<img src="images/homepage-2/testimonial/testimonial-03.jpg" class="img-fluid" alt="">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="pbmit-box-content-wrap">
+											<div class="pbminfotech-box-star-ratings">
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1"></i>
+											</div>
+											<div class="pbminfotech-star-ratings-text">"punctuality "</div>
+											<div class="pbminfotech-box-desc">
+												<blockquote class="pbminfotech-testimonial-text">
+													<p>“It was really great working with Architect team and I am happy I was introduced to this team! It’s not easy to work on a website some one else I am grateful that Architect team.”</p>
+												</blockquote>
+											</div>
+											<div class="pbminfotech-box-author d-flex align-items-center">
+												<div class="pbmit-auther-content">
+													<h3 class="pbminfotech-box-title">Martin Bailey</h3>
+													<div class="pbminfotech-testimonial-detail">Project Manager</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide4 -->
+								<article class="pbmit-testimonial-style-3 swiper-slide">
+									<div class="pbminfotech-post-item">
+										<div class="pbminfotech-box-img">
+											<div class="pbmit-testimonial-bg-img" style="background-image:url(images/homepage-2/testimonial/testimonial-04.jpg)">
+												<div class="pbmit-featured-img-wrapper">
+													<div class="pbmit-featured-wrapper">
+														<img src="images/homepage-2/testimonial/testimonial-04.jpg" class="img-fluid" alt="">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="pbmit-box-content-wrap">
+											<div class="pbminfotech-box-star-ratings">
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1"></i>
+											</div>
+											<div class="pbminfotech-star-ratings-text">"comfortable"</div>
+											<div class="pbminfotech-box-desc">
+												<blockquote class="pbminfotech-testimonial-text">
+													<p>“It was really great working with Architect team and I am happy I was introduced to this team! It’s not easy to work on a website some one else I am grateful that Architect team.”</p>
+												</blockquote>
+											</div>
+											<div class="pbminfotech-box-author d-flex align-items-center">
+												<div class="pbmit-auther-content">
+													<h3 class="pbminfotech-box-title">Bobby Flay</h3>
+													<div class="pbminfotech-testimonial-detail">Co-Founder, Director</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide5 -->
+								<article class="pbmit-testimonial-style-3 swiper-slide">
+									<div class="pbminfotech-post-item">
+										<div class="pbminfotech-box-img">
+											<div class="pbmit-testimonial-bg-img" style="background-image:url(images/homepage-2/testimonial/testimonial-05.jpg)">
+												<div class="pbmit-featured-img-wrapper">
+													<div class="pbmit-featured-wrapper">
+														<img src="images/homepage-2/testimonial/testimonial-05.jpg" class="img-fluid" alt="">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="pbmit-box-content-wrap">
+											<div class="pbminfotech-box-star-ratings">
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1"></i>
+											</div>
+											<div class="pbminfotech-star-ratings-text">"outstanding"</div>
+											<div class="pbminfotech-box-desc">
+												<blockquote class="pbminfotech-testimonial-text">
+													<p>“It was really great working with Architect team and I am happy I was introduced to this team! It’s not easy to work on a website some one else I am grateful that Architect team.”</p>
+												</blockquote>
+											</div>
+											<div class="pbminfotech-box-author d-flex align-items-center">
+												<div class="pbmit-auther-content">
+													<h3 class="pbminfotech-box-title">Justin Beckham</h3>
+													<div class="pbminfotech-testimonial-detail">Manager</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide6 -->
+								<article class="pbmit-testimonial-style-3 swiper-slide">
+									<div class="pbminfotech-post-item">
+										<div class="pbminfotech-box-img">
+											<div class="pbmit-testimonial-bg-img" style="background-image:url(images/homepage-2/testimonial/testimonial-06.jpg)">
+												<div class="pbmit-featured-img-wrapper">
+													<div class="pbmit-featured-wrapper">
+														<img src="images/homepage-2/testimonial/testimonial-06.jpg" class="img-fluid" alt="">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="pbmit-box-content-wrap">
+											<div class="pbminfotech-box-star-ratings">
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+												<i class="pbmit-base-icon-star-1"></i>
+											</div>
+											<div class="pbminfotech-star-ratings-text">"Pricing is fair"</div>
+											<div class="pbminfotech-box-desc">
+												<blockquote class="pbminfotech-testimonial-text">
+													<p>“It was really great working with Architect team and I am happy I was introduced to this team! It’s not easy to work on a website some one else I am grateful that Architect team.”</p>
+												</blockquote>
+											</div>
+											<div class="pbminfotech-box-author d-flex align-items-center">
+												<div class="pbmit-auther-content">
+													<h3 class="pbminfotech-box-title">Sarah Rodriguez</h3>
+													<div class="pbminfotech-testimonial-detail">Project Manager</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+							</div>
+						</div>
+					</div>
+				</div>
+            </section>
+			<!-- Testimonial End -->
+
+			<!-- Client Start -->
+			<section> 
+				<div class="container">
+					<div class="row">
+						<div class="swiper-slider client-one" data-autoplay="true" data-loop="true" data-dots="false" data-arrows="false" data-columns="6" data-margin="30" data-effect="slide">
+							<div class="swiper-wrapper">
+								<!-- Slide1 -->
+								<article class="pbmit-client-style-1 swiper-slide">
+									<div class="pbmit-border-wrapper">
+										<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+											<h4 class="pbmit-hide">Client 15</h4>
+											<div class="pbmit-client-hover-img">
+												<img src="images/client/client-global-01.png" class="img-fluid" alt="">
+											</div>
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/client/client-black-01.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide2 -->
+								<article class="pbmit-client-style-1 swiper-slide">
+									<div class="pbmit-border-wrapper">
+										<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+											<h4 class="pbmit-hide">Client 15</h4>
+											<div class="pbmit-client-hover-img">
+												<img src="images/client/client-global-02.png" class="img-fluid" alt="">
+											</div>
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/client/client-black-02.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide3 -->
+								<article class="pbmit-client-style-1 swiper-slide">
+									<div class="pbmit-border-wrapper">
+										<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+											<h4 class="pbmit-hide">Client 15</h4>
+											<div class="pbmit-client-hover-img">
+												<img src="images/client/client-global-03.png" class="img-fluid" alt="">
+											</div>
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/client/client-black-03.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide4 -->
+								<article class="pbmit-client-style-1 swiper-slide">
+									<div class="pbmit-border-wrapper">
+										<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+											<h4 class="pbmit-hide">Client 15</h4>
+											<div class="pbmit-client-hover-img">
+												<img src="images/client/client-global-04.png" class="img-fluid" alt="">
+											</div>
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/client/client-black-04.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide5 -->
+								<article class="pbmit-client-style-1 swiper-slide">
+									<div class="pbmit-border-wrapper">
+										<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+											<h4 class="pbmit-hide">Client 15</h4>
+											<div class="pbmit-client-hover-img">
+												<img src="images/client/client-global-05.png" class="img-fluid" alt="">
+											</div>
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/client/client-black-05.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide6 -->
+								<article class="pbmit-client-style-1 swiper-slide">
+									<div class="pbmit-border-wrapper">
+										<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+											<h4 class="pbmit-hide">Client 15</h4>
+											<div class="pbmit-client-hover-img">
+												<img src="images/client/client-global-06.png" class="img-fluid" alt="">
+											</div>
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/client/client-black-06.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- Client Start -->
+
+			<!-- Blog Start -->
+			<section class="section-md pbmit-element-blog-style-4">
+				<div class="container">
+					<div class="pbmit-heading-subheading text-center animation-style3">
+						<h4 class="pbmit-subtitle">Blog</h4>
+						<h2 class="pbmit-title">News & Articles</h2>
+					</div>
+					<div class="row">
+						<article class="pbmit-blog-style-4 col-md-12">
+							<div class="post-item">
+								<div class="pbmit-blog-content d-flex align-items-center justify-content-between">
+									<div class="pbmit-category-author-wraper">
+										<div class="pbmit-meta-cat-wrapper pbmit-meta-line">
+											<div class="pbmit-meta-category">
+												<a href="blog-classic.html" rel="category tag">Factory</a>
+											</div>
+										</div>
+										<div class="pbmit-meta-author pbmit-meta-line d-flex align-items-center">
+											<span class="pbmit-author-image">
+												<img src="images/homepage-2/blog/author-1.jpg" alt="" class="img-fluid"> 
+											</span>
+											<span class="pbmit-post-author"> alexa</span>
+										</div>
+									</div>
+									<div class="pbmit-box-content-wrapper">
+										<div class="pbmit-title-desc-wrapper">
+											<h3 class="pbmit-post-title">
+												<a href="blog-single-details.html">Upgrades to Your House That Will Help You Save Money This Winter</a>
+											</h3>
+											<div class="pbminfotech-box-desc">
+												Mtiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui elit adipiscing. Etiam… 
+											</div>
+										</div>
+									</div>
+									<div class="pbmit-featured-img-wrapper">
+										<div class="pbmit-featured-wrapper">
+											<img src="images/homepage-2/blog/blog-01.jpg" class="img-fluid" alt="">
+										</div>
+									</div>
+									<div class="pbmit-date-btn-wrapper">
+										<div class="pbmit-meta-date-wrapper pbmit-meta-line">
+											<span class="pbmit-meta-date">April  17. 2024</span>
+										</div>
+										<div class="pbmit-blog-btn">
+											<a class="pbmit-button" href="blog-single-details.html">
+												<span class="pbmit-button-wrapper">Read more</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</article>
+						<article class="pbmit-blog-style-4 col-md-12">
+							<div class="post-item">
+								<div class="pbmit-blog-content d-flex align-items-center justify-content-between">
+									<div class="pbmit-category-author-wraper">
+										<div class="pbmit-meta-cat-wrapper pbmit-meta-line">
+											<div class="pbmit-meta-category">
+												<a href="blog-classic.html" rel="category tag">Commercial</a>
+											</div>
+										</div>
+										<div class="pbmit-meta-author pbmit-meta-line d-flex align-items-center">
+											<span class="pbmit-author-image">
+												<img src="images/homepage-2/blog/author-2.jpg" alt="" class="img-fluid"> 
+											</span>
+											<span class="pbmit-post-author">johnduck</span>
+										</div>
+									</div>
+									<div class="pbmit-box-content-wrapper">
+										<div class="pbmit-title-desc-wrapper">
+											<h3 class="pbmit-post-title">
+												<a href="blog-single-details.html">The Bill and Adele Jonas Center is completed by Alten Construction.</a>
+											</h3>
+											<div class="pbminfotech-box-desc">
+												Mtiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui elit adipiscing. Etiam… 
+											</div>
+										</div>
+									</div>
+									<div class="pbmit-featured-img-wrapper">
+										<div class="pbmit-featured-wrapper">
+											<img src="images/homepage-2/blog/blog-02.jpg" class="img-fluid" alt="">
+										</div>
+									</div>
+									<div class="pbmit-date-btn-wrapper">
+										<div class="pbmit-meta-date-wrapper pbmit-meta-line">
+											<span class="pbmit-meta-date">April  17. 2024</span>
+										</div>
+										<div class="pbmit-blog-btn">
+											<a class="pbmit-button" href="blog-single-details.html">
+												<span class="pbmit-button-wrapper">Read more</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</article>
+						<article class="pbmit-blog-style-4 col-md-12">
+							<div class="post-item">
+								<div class="pbmit-blog-content d-flex align-items-center justify-content-between">
+									<div class="pbmit-category-author-wraper">
+										<div class="pbmit-meta-cat-wrapper pbmit-meta-line">
+											<div class="pbmit-meta-category">
+												<a href="blog-classic.html" rel="category tag">Residential</a>
+											</div>
+										</div>
+										<div class="pbmit-meta-author pbmit-meta-line d-flex align-items-center">
+											<span class="pbmit-author-image">
+												<img src="images/homepage-2/blog/author-3.jpg" alt="" class="img-fluid"> 
+											</span>
+											<span class="pbmit-post-author">alina</span>
+										</div>
+									</div>
+									<div class="pbmit-box-content-wrapper">
+										<div class="pbmit-title-desc-wrapper">
+											<h3 class="pbmit-post-title">
+												<a href="blog-single-details.html">Interest Rate in Small Loans Now is Lowest For Your Dream</a>
+											</h3>
+											<div class="pbminfotech-box-desc">
+												Mtiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui elit adipiscing. Etiam… 
+											</div>
+										</div>
+									</div>
+									<div class="pbmit-featured-img-wrapper">
+										<div class="pbmit-featured-wrapper">
+											<img src="images/homepage-2/blog/blog-03.jpg" class="img-fluid" alt="">
+										</div>
+									</div>
+									<div class="pbmit-date-btn-wrapper">
+										<div class="pbmit-meta-date-wrapper pbmit-meta-line">
+											<span class="pbmit-meta-date">April  17. 2024</span>
+										</div>
+										<div class="pbmit-blog-btn">
+											<a class="pbmit-button" href="blog-single-details.html">
+												<span class="pbmit-button-wrapper">Read more</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+			<!-- Blog End -->
+
+		</div>
+		<!-- page content End -->
+
+		<!-- footer -->
+		<footer class="site-footer footer-style-1 pbmit-bg-color-secondary">
+			<div class="footer-wrap pbmit-footer-widget-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 pbmit-footer-widget-col-1">
+							<aside class="widget pbmit-two-column-menu">
+								<ul>
+									<li><a href="#">About us</a></li>
+									<li><a href="#">Services</a></li>
+									<li><a href="#">Pricing</a></li>
+									<li><a href="#">Service Detail</a></li>
+									<li><a href="#">Our History</a></li>
+									<li><a href="#">Team</a></li>
+									<li><a href="#">Projects</a></li>
+									<li><a href="#">Contact Us</a></li>
+									<li><a href="#">Blog</a></li>
+								</ul>
+							</aside>
+						</div>
+						<div class="col-md-4 pbmit-footer-widget-col-2 text-md-center">
+							<aside class="widget">
+								<div class="textwidget">
+									<div class="pbmit-footer-logo">
+										<img src="images/logo-white.svg" alt="">
+									</div>
+								</div>
+							</aside>
+						</div>
+						<div class="col-md-4 pbmit-footer-widget-col-3">
+							<aside class="widget pbmit-two-column-menu">
+								<ul>
+									<li><a href="#">Style Guide</a></li>
+									<li><a href="#">Error 404</a></li>
+									<li><a href="#">Instructions</a></li>
+									<li><a href="#">Password</a></li>
+									<li><a href="#">Licenses</a></li>
+									<li><a href="#">Protected</a></li>
+									<li><a href="#">Changelog</a></li>
+									<li><a href="#">Coming Soon</a></li>
+								</ul>
+							</aside>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pbmit-footer-big-area-wrapper">
+				<div class="footer-wrap pbmit-footer-big-area">
+					<div class="container">
+						<div class="row align-items-center">
+							<div class="col-md-4 pbmit-footer-left">
+								<span class="pbmit-email-text"> <a href="https://willbuild-demo.pbminfotech.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a525f5656557a5f425b574a565f14595557">[email&#160;protected]</a></span>
+								<span class="pbmit-phone-number"> +79 2589 63598</span>
+							</div>
+							<div class="col-md-4 pbmit-footer-right">
+								<span class="pbmit-address"> Chicago HQ Estica cop, <br>Macomb,MI 48042</span>
+							</div>
+							<div class="col-md-4 pbmit-footer-right-social">
+								<ul class="pbmit-social-links">
+									<li class="pbmit-social-li pbmit-social-facebook">
+										<a title="Facebook" href="#" target="_blank">
+											<span><i class="pbmit-base-icon-facebook-f"></i></span>
+										</a>
+									</li>
+									<li class="pbmit-social-li pbmit-social-twitter">
+										<a title="Twitter" href="#" target="_blank">
+											<span><i class="pbmit-base-icon-twitter-2"></i></span>
+										</a>
+									</li>
+									<li class="pbmit-social-li pbmit-social-linkedin">
+										<a title="LinkedIn" href="#" target="_blank">
+											<span><i class="pbmit-base-icon-linkedin-in"></i></span>
+										</a>
+									</li>
+									<li class="pbmit-social-li pbmit-social-youtube">
+										<a title="Youtube" href="#" target="_blank">
+											<span><i class="pbmit-base-icon-youtube-play"></i></span>
+										</a>
+									</li>
+								</ul>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pbmit-footer-text-area">
+				<div class="container">
+					<div class="pbmit-footer-text-inner">
+						<div class="row">
+							<div class="col-md-12"> 
+								<div class="pbmit-footer-copyright-text-area"> Copyright © 2024 <a href="homepage-2.html">Willbuild Demo2</a>, All Rights Reserved.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </footer>
+		<!-- footer End -->
+
+	</div>
+	<!-- page wrapper End -->
+
+	<!-- Search Box Start Here -->
+	<div class="pbmit-search-overlay">
+		<div class="pbmit-icon-close">
+			<svg class="qodef-svg--close qodef-m" xmlns="http://www.w3.org/2000/svg" width="28.163" height="28.163" viewBox="0 0 26.163 26.163">
+				<rect width="36" height="1" transform="translate(0.707) rotate(45)"></rect>
+				<rect width="36" height="1" transform="translate(0 25.456) rotate(-45)"></rect>
+			</svg>
+		</div>
+		<div class="pbmit-search-outer"> 
+			<form class="pbmit-site-searchform">
+				<input type="search" class="form-control field searchform-s" name="s" placeholder="Search …">
+				<button type="submit"></button>
+			</form>
+		</div>
+	</div>
+	<!-- Search Box End Here -->
+
+	<!-- Scroll To Top -->
+	<div class="pbmit-progress-wrap">
+		<svg class="pbmit-progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+		</svg>	
+	</div>
+	<!-- Scroll To Top End -->
+	
+	<!-- JS
+		============================================ -->
+	<!-- jQuery JS -->
+	<script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="{% static 'js/jquery.min.js' %}"></script>
+	<!-- Popper JS -->
+	<script src="{% static 'js/popper.min.js' %}"></script>
+	<!-- Bootstrap JS -->
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<!-- jquery Waypoints JS -->
+	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+	<!-- jquery Appear JS -->
+	<script src="{% static 'js/jquery.appear.js' %}"></script>
+	<!-- Numinate JS -->
+	<script src="{% static 'js/numinate.min.js' %}"></script>
+	<!-- Slick JS -->
+	<script src="{% static 'js/swiper.min.js' %}"></script>
+	<!-- Magnific JS -->
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<!-- Circle Progress JS -->
+	<script src="{% static 'js/circle-progress.js' %}"></script> 
+	<!-- countdown JS -->
+	<script src="{% static 'js/jquery.countdown.min.js' %}"></script> 
+	<!-- AOS -->
+	<script src="{% static 'js/aos.js' %}"></script>
+	<!-- GSAP -->
+	<script src="{% static 'js/gsap.js' %}"></script>
+	<!-- Scroll Trigger -->
+	<script src="{% static 'js/ScrollTrigger.js' %}"></script>
+	<!-- Split Text -->
+	<script src="{% static 'js/SplitText.js' %}"></script>
+	<!-- Magnetic -->
+	<script src="{% static 'js/magnetic.js' %}"></script>
+	<!-- Morphext JS -->
+	<script src="{% static 'js/morphext.min.js' %}"></script>
+	<script src="{% static 'js/popper.min.js' %}"></script>
+	<!-- Counter JS -->
+	<script src="{% static 'js/animated-counter.js' %}"></script>
+	<!-- GSAP Animation -->
+	<script src="{% static 'js/gsap-animation.js' %}"></script>
+	<!-- Scripts JS -->
+	<script src="{% static 'js/scripts.js' %}"></script>
+
+	<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'8f67d10c5da79bea',t:'MTczNDk1MTI5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='../cdn-cgi/challenge-platform/h/b/scripts/jsd/787bc399e22f/maind41d.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"8f67d10c5da79bea","version":"2024.10.5","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"125856bf84ab44059737e93b01aa0fef","b":1}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from willbuild-demo.pbminfotech.com/html-demo/homepage-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Dec 2024 10:57:36 GMT -->
+</html>

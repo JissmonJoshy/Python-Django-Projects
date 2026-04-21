@@ -1,0 +1,213 @@
+{% extends 'common.html' %}
+{% block content %}
+{% load static %}
+
+<div class="page-content">  
+
+    <!-- Contact Form -->
+    <section>
+        <div class="container">
+            <div class="contact-us-bg section-xl">
+                <div class="row">
+                    
+                    <div class="col-md-12 col-xl-6">
+                        <div class="contact-form-area">
+                            <div class="pbmit-heading animation-style2">
+                                <h2 class="pbmit-title">Register</h2>
+                            </div>
+                            <form class="contact-form" method="post" id="contact-form" action=""    enctype="multipart/form-data" >
+                                {% csrf_token  %}
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="name" name="name" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control" placeholder="Email" name="email" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control" placeholder="Password" name="password" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="Place" name="place" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                       <select class="form-control" name="job_type" required>
+                                            <option value="">Select Job Type</option>
+
+                                            <!-- 🔨 Construction Works -->
+                                            <option value="Mason">Mason</option>
+                                            <option value="Carpenter">Carpenter</option>
+                                            <option value="Welder">Welder</option>
+                                            <option value="Painter">Painter</option>
+                                            <option value="Electrician">Electrician</option>
+                                            <option value="Plumber">Plumber</option>
+                                            <option value="Construction Labor">Construction Labor</option>
+                                            <option value="Site Supervisor">Site Supervisor</option>
+
+                                            <!-- 🏠 Interior Design Works -->
+                                            <option value="Interior Designer">Interior Designer</option>
+                                            <option value="Furniture Carpenter">Furniture Carpenter</option>
+                                            <option value="Tile Worker">Tile Worker</option>
+                                            <option value="False Ceiling Worker">False Ceiling Worker</option>
+                                            <option value="Flooring Specialist">Flooring Specialist</option>
+                                            <option value="Decorator">Decorator</option>
+
+                                            <!-- 🌿 Others -->
+                                            
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="experience" name="experience" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="Phone" name="phone" required maxlength="10" minlength="10" pattern="[0-9]{10}" title="Phone number must be exactly 10 digits" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="file" class="form-control" placeholder="image" name="image" required>
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <div class="form-check">
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="pbmit-btn">
+                                            <span class="pbmit-button-content-wrapper">
+                                                <span class="pbmit-button-icon pbmit-align-icon-right">
+                                                    <i aria-hidden="true" class="pbmit-willbuild-icon pbmit-willbuild-icon-up-right-arrow"></i>			
+                                                </span>
+                                                <span class="pbmit-button-text">Login </span>
+                                            </span>
+                                        </button>	
+                                    </div>
+                                    <div class="col-md-12 col-lg-12 message-status"></div>
+                                </div>
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Form -->
+
+    <!-- Iframe -->
+    
+
+    <!-- Accordion -->
+    
+
+    <!-- Client --> 
+    <section class="section-lgb"> 
+        <div class="container">
+            <div class="row">
+                <div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="false" data-arrows="false" data-columns="6" data-margin="30" data-effect="slide">
+                    <div class="swiper-wrapper">
+                        <!-- Slide1 -->
+                        <article class="pbmit-client-style-1 swiper-slide">
+                            <div class="pbmit-border-wrapper">
+                                <div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+                                    <h4 class="pbmit-hide">Client 15</h4>
+                                    <div class="pbmit-client-hover-img">
+                                        <img src="images/client/client-global-01.png" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="pbmit-featured-img-wrapper">
+                                        <div class="pbmit-featured-wrapper">
+                                            <img src="images/client/client-logo-01.png" class="img-fluid" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Slide2 -->
+                        <article class="pbmit-client-style-1 swiper-slide">
+                            <div class="pbmit-border-wrapper">
+                                <div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+                                    <h4 class="pbmit-hide">Client 15</h4>
+                                    <div class="pbmit-client-hover-img">
+                                        <img src="images/client/client-global-02.png" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="pbmit-featured-img-wrapper">
+                                        <div class="pbmit-featured-wrapper">
+                                            <img src="images/client/client-logo-02.png" class="img-fluid" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Slide3 -->
+                        <article class="pbmit-client-style-1 swiper-slide">
+                            <div class="pbmit-border-wrapper">
+                                <div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+                                    <h4 class="pbmit-hide">Client 15</h4>
+                                    <div class="pbmit-client-hover-img">
+                                        <img src="images/client/client-global-03.png" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="pbmit-featured-img-wrapper">
+                                        <div class="pbmit-featured-wrapper">
+                                            <img src="images/client/client-logo-03.png" class="img-fluid" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Slide4 -->
+                        <article class="pbmit-client-style-1 swiper-slide">
+                            <div class="pbmit-border-wrapper">
+                                <div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+                                    <h4 class="pbmit-hide">Client 15</h4>
+                                    <div class="pbmit-client-hover-img">
+                                        <img src="images/client/client-global-04.png" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="pbmit-featured-img-wrapper">
+                                        <div class="pbmit-featured-wrapper">
+                                            <img src="images/client/client-logo-04.png" class="img-fluid" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Slide5 -->
+                        <article class="pbmit-client-style-1 swiper-slide">
+                            <div class="pbmit-border-wrapper">
+                                <div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+                                    <h4 class="pbmit-hide">Client 15</h4>
+                                    <div class="pbmit-client-hover-img">
+                                        <img src="images/client/client-global-05.png" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="pbmit-featured-img-wrapper">
+                                        <div class="pbmit-featured-wrapper">
+                                            <img src="images/client/client-logo-05.png" class="img-fluid" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Slide6 -->
+                        <article class="pbmit-client-style-1 swiper-slide">
+                            <div class="pbmit-border-wrapper">
+                                <div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+                                    <h4 class="pbmit-hide">Client 15</h4>
+                                    <div class="pbmit-client-hover-img">
+                                        <img src="images/client/client-global-06.png" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="pbmit-featured-img-wrapper">
+                                        <div class="pbmit-featured-wrapper">
+                                            <img src="images/client/client-logo-06.png" class="img-fluid" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Client end --> 
+
+</div>
+
+{% endblock %}

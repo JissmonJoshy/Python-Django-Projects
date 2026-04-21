@@ -1,0 +1,56 @@
+{% extends 'WORKER/common.html' %}
+{% block content %}
+{% load static %}
+{% for message in messages %}
+  <script>
+    alert('{{message}}')
+  </script>
+{% endfor %}
+
+
+
+
+
+
+<div class="dashboard-section pt-120 pb-120">
+
+  <div class="table-wrapper container-fluid">
+    <h3 class="text-capitalize  text-success">
+    PAID
+    </h3>
+
+    <table class="eg-table order-table table mb-0">
+      <thead>
+        <tr class="bg-dark">
+
+          <th class="text-light">CONTRACTOR NAME</th>
+          
+          <th class="text-light">START DATE</th>
+          <th class="text-light">END DATE</th>
+          <th class="text-light">WORKER </th>
+          <th class="text-light">JOB-TYPE </th>
+          <th class="text-light">AMOUNT </th>
+          <th class="text-light">CATEGORY </th>
+          <th class="text-light">ACTION </th>
+        </tr>
+      </thead>
+      {% for i in data %}
+      {% if i.payment_status == "PAID" %}
+          <tbody>
+            <tr class="text-capitalize">
+              <td>{{ i.contractor.name}}</td>
+              <td>{{ i.request.start_date }}</td>
+              <td>{{ i.request.end_date}}</td>
+              <td>{{ i.worker.name }}</td>
+              <td>{{ i.worker.job_type }}</td>
+              <td>{{ i.workeramt }}</td>
+              <td>{{ i.request.category }}</td>
+              <td><a href="/workeraddfeedback?id={{i.user.id}}" class="btn btn-outline-danger">Feedback</a></td>
+            </tr>
+          </tbody>
+          {% endif %}
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %}
