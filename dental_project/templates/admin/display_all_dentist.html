@@ -1,0 +1,76 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+<main class="container">
+    <h2 class="text-center">All Dentists</h2>
+    <table border="1" class="table table-striped">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Image</th>
+                <th>License</th>
+                <th>Work Experience</th>
+                
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dentist in dentists %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ dentist.username }}</td>
+                <td>{{ dentist.name }}</td>
+                <td>{{ dentist.email }}</td>
+                <td>{{ dentist.address }},<br>{{ dentist.district }},<br>{{ dentist.state }}-{{ dentist.pincode }}</td>
+                <td>{{ dentist.phone }}</td>
+                <td>
+                    {% if dentist.image %}
+                    <img src="{{ dentist.image.url }}" alt="Dentist Image" width="50">
+                    {% else %}
+                    No Image
+                    {% endif %}
+                </td>
+
+                <td>
+                    {% if dentist.licence %}
+                        <a href="{{ dentist.licence.url }}" download class="btn btn-primary btn-sm">Download</a>
+                    {% else %}
+                        No License
+                    {% endif %}
+                </td>
+                
+                <td>
+                    {% if dentist.experience %}
+                        <a href="{{ dentist.experience.url }}" download class="btn btn-primary btn-sm">Download</a>
+                    {% else %}
+                        No Experience
+                    {% endif %}
+                </td>
+                
+                <td>
+                    {% if not dentist.dentist_id.is_active %}
+                        <a href="{% url 'approve_dentist' dentist.id %}" class="btn btn-success btn-sm">Approve</a>
+                        <a href="{% url 'reject_dentist' dentist.id %}" class="btn btn-danger btn-sm">Reject</a>
+                    {% else %}
+                        <a href="{% url 'delete_dentist' dentist.id %}" class="btn btn-warning btn-sm">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}

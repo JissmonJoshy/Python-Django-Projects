@@ -1,0 +1,64 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+
+<main class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-lg" style="width: 400px;">
+        <h2 class="text-center mb-4">Edit Schedule</h2>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label class="form-label">Dentist:</label>
+                <select name="dentist" class="form-select" required>
+                    {% for dentist in dentists %}
+                        <option value="{{ dentist.id }}" {% if dentist.id == schedule.dentist.id %}selected{% endif %}>
+                            {{ dentist.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Day:</label>
+                <select name="day" class="form-select" required>
+                    <option value="Monday" {% if schedule.day == "Monday" %}selected{% endif %}>Monday</option>
+                    <option value="Tuesday" {% if schedule.day == "Tuesday" %}selected{% endif %}>Tuesday</option>
+                    <option value="Wednesday" {% if schedule.day == "Wednesday" %}selected{% endif %}>Wednesday</option>
+                    <option value="Thursday" {% if schedule.day == "Thursday" %}selected{% endif %}>Thursday</option>
+                    <option value="Friday" {% if schedule.day == "Friday" %}selected{% endif %}>Friday</option>
+                    <option value="Saturday" {% if schedule.day == "Saturday" %}selected{% endif %}>Saturday</option>
+                    <option value="Sunday" {% if schedule.day == "Sunday" %}selected{% endif %}>Sunday</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Start Time:</label>
+                <input type="time" name="start_time" class="form-control" value="{{ schedule.start_time|time:'H:i' }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">End Time:</label>
+                <input type="time" name="end_time" class="form-control" value="{{ schedule.end_time|time:'H:i' }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Price:</label>
+                <input type="number" name="price" class="form-control" step="0.01" value="{{ schedule.price }}" required>
+            </div>            
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Update Schedule</button>
+                <a href="{% url 'display_all_schedule' %}" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}

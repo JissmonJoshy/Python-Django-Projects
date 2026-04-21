@@ -1,0 +1,40 @@
+{% extends 'lab/lab_base.html' %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+
+<br>
+
+
+<main class="container mt-5">
+    <h2 class="text-center mb-4">Request Out of Stock Items</h2>
+
+    <form method="post" action="{% url 'request_order' %}" class="mx-auto" style="max-width: 400px;">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="order_type" class="form-label">Select Order Type:</label>
+            <select class="form-select" name="order_type" id="order_type" required>
+                <option value="" disabled selected>-- Select an Item --</option>
+                <option value="Crown">Crown</option>
+                <option value="Bridge">Bridge</option>
+                <option value="Denture">Denture</option>
+                <option value="Braces">Braces</option>
+                <option value="Retainer">Retainer</option>
+                <option value="Teeth Whitening">Teeth Whitening</option>
+                <option value="Implant">Implant</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Submit Request</button>
+    </form>
+</main>
+<br><br>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+<main class="container">
+    <h2 class="text-center">All Labs</h2>
+    <table border="1" class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lab in labs %}
+            <tr>
+                <td>{{ lab.id }}</td>
+                <td>{{ lab.username }}</td>
+                <td>{{ lab.name }}</td>
+                <td>{{ lab.email }}</td>
+                <td>{{ lab.address }},<br>{{ lab.district }},<br>{{ lab.state }}-{{ lab.pincode }}</td>
+                <td>{{ lab.phone }}</td>
+                <td>
+                    {% if lab.image %}
+                    <img src="{{ lab.image.url }}" alt="Lab Image" width="50">
+                    {% else %}
+                    No Image
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not lab.lab_id.is_active %}
+                        <a href="{% url 'approve_lab' lab.id %}" class="btn btn-success btn-sm">Approve</a>
+                        <a href="{% url 'reject_lab' lab.id %}" class="btn btn-danger btn-sm">Reject</a>
+                    {% else %}
+                        <a href="{% url 'delete_lab' lab.id %}" class="btn btn-warning btn-sm">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}

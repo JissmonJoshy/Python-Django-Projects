@@ -1,0 +1,42 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+
+<main class="container">
+    <h2 class="text-center my-4">Admin Dashboard</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Total Patients</h5>
+                    <h2>{{ patient_count }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Total Dentists</h5>
+                    <h2>{{ dentist_count }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Total Labs</h5>
+                    <h2>{{ lab_count }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

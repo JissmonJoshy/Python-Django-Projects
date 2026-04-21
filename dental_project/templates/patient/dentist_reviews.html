@@ -1,0 +1,31 @@
+{% extends 'patient/patient_base.html' %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+<main class="container mt-5">
+    <h2 class="text-center mb-4">{{ dentist.name }} - Reviews</h2>
+    {% if reviews %}
+        <div class="list-group">
+            {% for review in reviews %}
+                <div class="list-group-item">
+                    <h5>Rating: 
+                        {% for _ in "x"|rjust:review.rating %}
+                            ⭐
+                        {% endfor %}
+                    </h5>
+                    <p><strong>Comment:</strong> {{ review.comment }}</p>
+                    <p><strong>By:</strong> {{ review.patient.name }}</p>
+                    <small>Reviewed on {{ review.created_at|date:"F d, Y H:i A" }}</small>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">No reviews yet.</p>
+    {% endif %}
+</main><br>
+{% endblock %}

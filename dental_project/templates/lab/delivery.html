@@ -1,0 +1,113 @@
+{% extends 'lab/lab_base.html' %}
+
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+
+<main class="content">
+    <h2 style="text-align: center; color: #333;">Deliver Orders</h2>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Patient Name</th>
+                    <th>Dentist Name</th>
+                    <th>Order Type</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ order.patient.name }}</td>
+                    <td>{{ order.dentist.name }}</td>
+                    <td>{{ order.order_type }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>
+                        {% if order.status != 'Completed' %}
+                            <form action="{% url 'mark_order_delivered' order.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-deliver">Mark as Delivered</button>
+                            </form>
+                        {% else %}
+                            <button class="btn-delivered" disabled>Delivered</button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" style="text-align: center; color: red;">No orders found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<style>
+    .table-container {
+        width: 90%;
+        margin: 20px auto;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    thead {
+        background-color: steelblue;
+        color: white;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .btn-deliver {
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .btn-deliver:hover {
+        background-color: darkgreen;
+    }
+
+    .btn-delivered {
+        background-color: gray;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: not-allowed;
+    }
+
+    @media screen and (max-width: 768px) {
+        th, td {
+            padding: 10px;
+            font-size: 14px;
+        }
+    }
+</style>
+{% endblock %}

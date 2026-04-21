@@ -1,0 +1,140 @@
+{% extends 'patient/patient_base.html' %}
+
+{% block content %}
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+<main class="container mt-5">
+    <h2 class="text-center mb-4">Make Payment</h2>
+    
+    <div class="payment-summary text-center p-3">
+        <p class="fs-5">Amount to be Paid: <strong class="text-success">${{ lab_order.price }}</strong></p>
+    </div>
+
+    <div class="payment-container mx-auto">
+        <form method="post" action="{% url 'make_payment' lab_order.id %}" id="payment-form" class="p-4 shadow-sm rounded">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="payment_method" class="form-label fw-bold">Select Payment Method</label>
+                <select class="form-select" id="payment_method" name="payment_method" required>
+                    <option value="">-- Select --</option>
+                    <option value="card">Credit/Debit Card</option>
+                    <option value="upi">UPI</option>
+                </select>
+            </div>
+
+            <!-- Card Payment Section -->
+            <div id="card-section" class="payment-section" style="display: none;">
+                <div class="mb-3">
+                    <label for="card_name" class="form-label">Cardholder Name</label>
+                    <input type="text" class="form-control" id="card_name" name="card_name" placeholder="Full Name">
+                </div>
+
+                <div class="mb-3">
+                    <label for="card_number" class="form-label">Card Number</label>
+                    <input type="text" class="form-control" id="card_number" name="card_number" maxlength="16" placeholder="Enter 16-digit card number">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="expiry_date" class="form-label">Expiry Date</label>
+                        <input type="text" class="form-control" id="expiry_date" name="expiry_date" placeholder="MM/YY">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="cvv" class="form-label">CVV</label>
+                        <input type="text" class="form-control" id="cvv" name="cvv" maxlength="3" placeholder="3-digit CVV">
+                    </div>
+                </div>
+            </div>
+
+            <!-- UPI Payment Section -->
+            <div id="upi-section" class="payment-section" style="display: none;">
+                <div class="mb-3">
+                    <label for="upi_id" class="form-label">UPI ID</label>
+                    <input type="text" class="form-control" id="upi_id" name="upi_id" placeholder="example@upi">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Proceed to Pay</button>
+        </form>
+    </div>
+</main>
+
+<style>
+    .payment-summary {
+        background: #f8f9fa;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .payment-container {
+        max-width: 450px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .payment-section {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-top: 10px;
+        background: #f9f9f9;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    .btn-primary {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+</style>
+
+<script>
+    document.getElementById("payment_method").addEventListener("change", function () {
+        let method = this.value;
+    
+        let cardSection = document.getElementById("card-section");
+        let upiSection = document.getElementById("upi-section");
+    
+        if (method === "card") {
+            cardSection.style.display = "block";
+            upiSection.style.display = "none";
+            toggleRequiredFields(cardSection, true);
+            toggleRequiredFields(upiSection, false);
+        } else if (method === "upi") {
+            cardSection.style.display = "none";
+            upiSection.style.display = "block";
+            toggleRequiredFields(cardSection, false);
+            toggleRequiredFields(upiSection, true);
+        } else {
+            cardSection.style.display = "none";
+            upiSection.style.display = "none";
+            toggleRequiredFields(cardSection, false);
+            toggleRequiredFields(upiSection, false);
+        }
+    });
+    
+    // Function to enable/disable required attributes
+    function toggleRequiredFields(section, isRequired) {
+        let inputs = section.querySelectorAll("input");
+        inputs.forEach(input => {
+            if (isRequired) {
+                input.setAttribute("required", "true");
+            } else {
+                input.removeAttribute("required");
+            }
+        });
+    }
+    
+</script>
+
+{% endblock %}

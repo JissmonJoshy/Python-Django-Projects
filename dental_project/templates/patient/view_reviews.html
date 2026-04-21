@@ -1,0 +1,46 @@
+{% extends 'patient/patient_base.html' %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+<div class="container mt-4">
+    <h2 class="text-center">Your Reviews</h2>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Dentist</th>
+                <th>Rating</th>
+                <th>Comment</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for review in reviews %}
+            <tr>
+                <td>{{ review.dentist.name }}</td>
+                <td>
+                    {% if review.rating == 1 %} ⭐
+                    {% elif review.rating == 2 %} ⭐⭐
+                    {% elif review.rating == 3 %} ⭐⭐⭐
+                    {% elif review.rating == 4 %} ⭐⭐⭐⭐
+                    {% elif review.rating == 5 %} ⭐⭐⭐⭐⭐
+                    {% endif %}
+                </td>
+                <td>{{ review.comment }}</td>
+                <td>{{ review.created_at }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="text-center">No reviews added yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+
+<main class="container mt-5">
+    <h2 class="text-center mb-4">Lab Orders & Requests</h2>
+
+    <h3 class="mt-4">Lab Orders</h3>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                
+                <th>No</th>
+                <th>Patient</th>
+                <th>Dentist</th>
+                <th>Lab</th>
+                <th>Order Type</th>
+                <th>Status</th>
+                <th>Assigned Date</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in lab_orders %}
+            <tr>
+                
+                <td>{{ forloop.counter}}</td>
+                <td>{{ order.patient.name }}</td>
+                <td>{{ order.dentist.name }}</td>
+                <td>{{ order.lab.name }}</td>
+                <td>{{ order.order_type }}</td>
+                <td>
+                    {% if order.status == "Completed" %}
+                        <span class="text-success">Delivered</span>
+                    {% else %}
+                        {{ order.status }}
+                    {% endif %}
+                </td>
+                <td>{{ order.assigned_date }}</td>
+                <td>${{ order.price|default:"N/A" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="9" class="text-center">No lab orders found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3 class="mt-5">Lab Order Requests</h3>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>No</th>
+                <th>Lab</th>
+                <th>Order Type</th>
+                <th>Status</th>
+                <th>Requested Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in lab_order_requests %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ request.lab.name }}</td>
+                <td>{{ request.order_type }}</td>
+                <td>{{ request.status }}</td>
+                <td>{{ request.requested_date }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No lab order requests found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}

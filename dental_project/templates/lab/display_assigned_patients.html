@@ -1,0 +1,87 @@
+{% extends 'lab/lab_base.html' %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+
+<br>
+<main class="content">
+    <h2 style="text-align: center; color: #333;">Assigned Patients</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Patient Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Scheduled Date</th>
+                    <th>Assigned Dentist</th>
+                    <th>Order Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                    {% with lab_order=appointment.laborder_set.first %}
+                        {% if lab_order %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ appointment.patient.name }}</td>
+                            <td>{{ appointment.patient.email }}</td>
+                            <td>{{ appointment.patient.phone }}</td>
+                            <td>{{ appointment.schedule.date }}</td>
+                            <td>{{ appointment.dentist.name }}</td>
+                            <td>{{ lab_order.order_type }}</td>
+                        </tr>
+                        {% endif %}
+                    {% endwith %}
+                {% empty %}
+                <tr>
+                    <td colspan="6" style="text-align: center; color: red;">No assigned patients found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<style>
+    .table-container {
+        width: 90%;
+        margin: 20px auto;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    thead {
+        background-color: steelblue;
+        color: white;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    @media screen and (max-width: 768px) {
+        th, td {
+            padding: 10px;
+            font-size: 14px;
+        }
+    }
+</style>
+{% endblock %}

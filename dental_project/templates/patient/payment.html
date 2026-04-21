@@ -1,0 +1,136 @@
+{% extends 'patient/patient_base.html' %}
+
+
+{% block content %}
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+
+<main class="container mt-5">
+    <h2 class="text-center mb-4">Make Payment</h2>
+
+    <form method="POST" action="{% url 'confirm_payment' appointment.id %}" onsubmit="return validatePayment()">
+
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label class="form-label">Select Payment Method:</label>
+            <select name="payment_method" id="paymentMethod" class="form-select" required onchange="togglePaymentFields()">
+                <option value="">Select Payment Method</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="UPI">UPI</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Enter Amount:</label>
+            <input type="text" class="form-control" value="{{ appointment.schedule.price }}" readonly>
+        </div>
+
+        <!-- Credit Card Fields -->
+        <div id="creditCardFields" style="display: none;">
+            <div class="mb-3">
+                <label class="form-label">Cardholder Name:</label>
+                <input type="text" id="cardholderName" name="cardholder_name" class="form-control" placeholder="Enter Cardholder Name">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Card Number:</label>
+                <input type="text" id="cardNumber" name="card_number" class="form-control" placeholder="Enter Card Number" maxlength="16">
+                <small class="text-danger" id="cardNumberError"></small>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Expiry Date:</label>
+                    <input type="month" id="expiryDate" name="expiry_date" class="form-control">
+                    <small class="text-danger" id="expiryDateError"></small>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" class="form-control" placeholder="Enter CVV" maxlength="3">
+                    <small class="text-danger" id="cvvError"></small>
+                </div>
+            </div>
+        </div>
+
+        <!-- UPI Field -->
+        <div id="upiField" style="display: none;">
+            <div class="mb-3">
+                <label class="form-label">UPI ID:</label>
+                <input type="text" id="upiId" name="upi_id" class="form-control" placeholder="Enter UPI ID">
+                <small class="text-danger" id="upiError"></small>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Confirm Payment</button>
+            <a href="{% url 'patient_bookings' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</main>
+
+<script>
+    function togglePaymentFields() {
+        var method = document.getElementById("paymentMethod").value;
+        document.getElementById("creditCardFields").style.display = method === "Credit Card" ? "block" : "none";
+        document.getElementById("upiField").style.display = method === "UPI" ? "block" : "none";
+    }
+
+    function validatePayment() {
+        var method = document.getElementById("paymentMethod").value;
+        var isValid = true;
+
+        if (method === "Credit Card") {
+            var cardNumber = document.getElementById("cardNumber").value;
+            var expiryDate = document.getElementById("expiryDate").value;
+            var cvv = document.getElementById("cvv").value;
+
+            document.getElementById("cardNumberError").textContent = "";
+            document.getElementById("expiryDateError").textContent = "";
+            document.getElementById("cvvError").textContent = "";
+
+            // Validate Card Number (16 digits)
+            var cardRegex = /^\d{16}$/;
+            if (!cardRegex.test(cardNumber)) {
+                document.getElementById("cardNumberError").textContent = "Enter a valid 16-digit card number.";
+                isValid = false;
+            }
+
+            // Validate Expiry Date (should be in future)
+            var today = new Date();
+            var selectedDate = new Date(expiryDate + "-01");
+            if (expiryDate === "" || selectedDate < today) {
+                document.getElementById("expiryDateError").textContent = "Enter a valid expiry date.";
+                isValid = false;
+            }
+
+            // Validate CVV (3 digits)
+            var cvvRegex = /^\d{3}$/;
+            if (!cvvRegex.test(cvv)) {
+                document.getElementById("cvvError").textContent = "Enter a valid 3-digit CVV.";
+                isValid = false;
+            }
+        }
+
+        if (method === "UPI") {
+            var upiId = document.getElementById("upiId").value;
+            document.getElementById("upiError").textContent = "";
+
+            // Validate UPI ID format (Example: username@bank)
+            var upiRegex = /^[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}$/;
+            if (!upiRegex.test(upiId)) {
+                document.getElementById("upiError").textContent = "Enter a valid UPI ID (e.g., username@bank).";
+                isValid = false;
+            }
+        }
+
+        return isValid;
+    }
+</script>
+{% endblock %}
+

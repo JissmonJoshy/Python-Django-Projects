@@ -1,0 +1,62 @@
+{% extends 'dentist/dentist_base.html' %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+
+<div class="container mt-4">
+    <h2 class="text-center">My Booked Appointments</h2>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Patient Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Status</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ appointment.patient.name }}</td>
+                <td>{{ appointment.patient.email }}</td>
+                <td>{{ appointment.patient.phone }}</td>
+                <td>{{ appointment.schedule.date }}</td>
+                <td>{{ appointment.schedule.day }}</td>
+                <td>{{ appointment.schedule.start_time }} - {{ appointment.schedule.end_time }}</td>
+                <td>
+                    {% if appointment.status == "Scheduled" %}
+                        <span class="badge bg-success">Scheduled</span>
+                    {% else %}
+                        <form method="POST" action="{% url 'update_appointment_status' appointment.id %}">
+                            {% csrf_token %}
+                            <select name="status" class="form-select" onchange="this.form.submit()">
+                                <option value="Pending" {% if appointment.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                <option value="Approved" {% if appointment.status == 'Approved' %}selected{% endif %}>Approved</option>
+                                <option value="Rejected" {% if appointment.status == 'Rejected' %}selected{% endif %}>Cancelled</option>
+                            </select>
+                        </form>
+                    {% endif %}
+                </td>
+                
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="9" class="text-center">No booked appointments found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

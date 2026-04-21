@@ -1,0 +1,92 @@
+{% extends 'patient/patient_base.html' %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+<main class="container mt-5">
+    <h2 class="text-center">Assigned Lab Details</h2>
+    <br>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>No</th>
+                <th>Dentist Name</th>
+                <th>Lab Name</th>
+                <th>Lab Address</th>
+                <th>Lab Contact</th>
+                <th>Order Type</th>
+                <th>Lab Order Price</th>
+                <th>Status</th>
+                <th>Payment Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+                {% with lab_order=appointment.laborder_set.first %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ appointment.dentist.name }}</td>
+                        <td>{% if appointment.assigned_lab %}{{ appointment.assigned_lab.name }}{% else %}Not Assigned{% endif %}</td>
+                        <td>{% if appointment.assigned_lab %}{{ appointment.assigned_lab.address }}{% else %}N/A{% endif %}</td>
+                        <td>{% if appointment.assigned_lab %}{{ appointment.assigned_lab.phone }}{% else %}N/A{% endif %}</td>
+                        <td>
+                            {% if lab_order %}
+                                {{ lab_order.order_type }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if lab_order and lab_order.price %}
+                                ${{ lab_order.price }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if lab_order %}
+                                {% if lab_order.status == "Completed" %}
+                                    Delivered
+                                {% else %}
+                                    {{ lab_order.status }}
+                                {% endif %}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        
+                        <td>
+                            {% if lab_order and lab_order.status == "Paid" or lab_order.status == "Completed" %}
+                                Paid
+                            {% else %}
+                                Pending
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if lab_order and lab_order.status != "Paid" and lab_order.status != "Completed" %}
+                                <form method="post" action="{% url 'make_payment' lab_order.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-success">Pay Now</button>
+                                </form>
+                            {% else %}
+                                <button class="btn btn-secondary" disabled>Paid</button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endwith %}
+            {% empty %}
+                <tr>
+                    <td colspan="10" class="text-center">No assigned labs found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+{% endblock %}

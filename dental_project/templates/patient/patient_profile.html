@@ -1,0 +1,61 @@
+{% extends 'patient/patient_base.html' %}
+{% load static %}
+{% block content %}
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+
+<main class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+            <div class="card border-0 rounded-4 p-4 shadow-lg" style="max-width: 420px; margin: auto; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px);">
+                
+                <div class="text-center">
+                    <h3 class="mb-3 fw-bold text-dark">My Profile</h3>
+
+                    {% if patient.image %}
+                        <img src="{{ patient.image.url }}" alt="Profile Picture"
+                             class="img-fluid rounded-circle shadow-lg"
+                             style="width: 140px; height: 140px; object-fit: cover; border: 5px solid rgba(0, 123, 255, 0.3);">
+                    {% else %}
+                        <img src="{% static 'images/default_profile.png' %}" alt="Default Profile"
+                             class="img-fluid rounded-circle shadow-lg"
+                             style="width: 140px; height: 140px; object-fit: cover; border: 5px solid rgba(0, 123, 255, 0.3);">
+                    {% endif %}
+                </div>
+
+                <div class="card-body p-4">
+                    <table class="table table-hover text-start">
+                        <tbody>
+                            <tr>
+                                <th class="text-primary" style="width: 40%; font-weight: 600;">Name:</th>
+                                <td class="fw-semibold text-dark">{{ patient.name }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-primary" style="font-weight: 600;">Username:</th>
+                                <td class="fw-semibold text-dark">{{ patient.username }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-primary" style="font-weight: 600;">Email:</th>
+                                <td class="fw-semibold text-dark">{{ patient.email }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-primary" style="font-weight: 600;">Address:</th>
+                                <td class="fw-semibold text-dark">{{ patient.address }},{{ patient.district }},{{ patient.state }}-{{ patient.pincode }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-primary" style="font-weight: 600;">Phone:</th>
+                                <td class="fw-semibold text-dark">{{ patient.phone }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main><br><br>
+{% endblock %}

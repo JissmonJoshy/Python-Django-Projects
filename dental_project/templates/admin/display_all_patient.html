@@ -1,0 +1,55 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+
+{% block content %}
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+<main class="container">
+    <h2 class="text-center">All Patients</h2>
+    <table border="1" class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.username }}</td>
+                <td>{{ patient.name }}</td>
+                <td>{{ patient.email }}</td>
+                <td>{{ patient.address }},<br>{{ patient.district }},<br>{{ patient.state }}-{{ patient.pincode }}</td>
+                <td>{{ patient.phone }}</td>
+                <td>
+                    {% if patient.image %}
+                    <img src="{{ patient.image.url }}" alt="Patient Image" width="50">
+                    {% else %}
+                    No Image
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not patient.patient_id.is_active %}
+                        <a href="{% url 'approve_patient' patient.id %}" class="btn btn-success btn-sm">Approve</a>
+                        <a href="{% url 'reject_patient' patient.id %}" class="btn btn-danger btn-sm">Reject</a>
+                    {% else %}
+                        <a href="{% url 'delete_patient' patient.id %}" class="btn btn-warning btn-sm">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}

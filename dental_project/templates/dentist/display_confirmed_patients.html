@@ -1,0 +1,152 @@
+{% extends 'dentist/dentist_base.html' %}
+
+{% block content %}
+
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+<main class="content">
+    <h2 style="text-align: center; color: #333;">Confirmed Patients</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Scheduled Date</th>
+                    <th>Scheduled Time</th>
+                    <th>Assign Lab</th>
+                    <th>Select Order Type</th>
+                    <th>Price</th>
+                 
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.patient.name }}</td>
+                    <td>{{ appointment.patient.email }}</td>
+                    <td>{{ appointment.patient.phone }}</td>
+                    <td>{{ appointment.schedule.date }}</td>
+                    <td>{{ appointment.assigned_time }}</td>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
+                    
+                        <td>
+                            <select name="lab_id" required {% if appointment.assigned_lab %}disabled{% endif %}>
+                                <option value="" disabled selected>Select Lab</option>
+                                {% for lab in labs %}
+                                <option value="{{ lab.id }}" {% if appointment.assigned_lab == lab %}selected{% endif %}>
+                                    {{ lab.name }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    
+                        <td>
+                            <select name="order_type" required {% if appointment.assigned_lab %}disabled{% endif %} onchange="updatePrice(this, '{{ appointment.id }}')">
+                                <option value="" disabled selected>Select Order Type</option>
+                                {% for key, value in ORDER_PRICES.items %}
+                                <option value="{{ key }}" data-price="{{ value }}" {% if appointment.laborder.order_type == key %}selected{% endif %}>
+                                    {{ key }} - ₹{{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    
+                        <td id="price_display_{{ appointment.id }}">
+                            ₹{% if appointment.laborder.price %}{{ appointment.laborder.price }}{% else %}0{% endif %}
+                        </td>
+
+                        
+            
+                        <td>
+                            <button type="submit" class="assign-btn" {% if appointment.assigned_lab %}disabled{% endif %}>
+                                Assign
+                            </button>
+                        </td>
+                    </form>
+                    
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="10" style="text-align: center; color: red;">No confirmed patients found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<style>
+    .table-container {
+        width: 90%;
+        margin: 20px auto;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    thead {
+        background-color: steelblue;
+        color: white;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    select {
+        padding: 6px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 100%;
+    }
+
+    .assign-btn {
+        background-color: darkcyan;
+        color: white;
+        padding: 8px 12px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .assign-btn:hover {
+        background-color: teal;
+    }
+
+    @media screen and (max-width: 768px) {
+        th, td {
+            padding: 10px;
+            font-size: 14px;
+        }
+    }
+</style>
+
+<script>
+    function updatePrice(selectElement, appointmentId) {
+        var selectedOption = selectElement.options[selectElement.selectedIndex];
+        var price = selectedOption.getAttribute('data-price');
+        var priceField = document.getElementById('price_display_' + appointmentId);
+        priceField.innerHTML = "₹" + price;
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'admin/admin_base.html' %}
+
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+
+
+<main class="container mt-5">
+    <h2 class="text-center mb-4">Patient Reviews for Dentists</h2>
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>No</th>
+                <th>Patient</th>
+                <th>Dentist</th>
+                <th>Rating</th>
+                <th>Comment</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for review in reviews %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ review.patient.name }}</td>
+                <td>{{ review.dentist.name }}</td>
+                
+
+                <td>
+                    {% if review.rating == 1 %} ⭐
+                    {% elif review.rating == 2 %} ⭐⭐
+                    {% elif review.rating == 3 %} ⭐⭐⭐
+                    {% elif review.rating == 4 %} ⭐⭐⭐⭐
+                    {% elif review.rating == 5 %} ⭐⭐⭐⭐⭐
+                    {% endif %}
+                </td>
+                <td>{{ review.comment }}</td>
+                <td>{{ review.created_at }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No reviews found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+
+{% endblock %}

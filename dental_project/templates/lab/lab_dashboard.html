@@ -1,0 +1,103 @@
+{% extends 'lab/lab_base.html' %}
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+
+<div class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <!-- Hero Content Start -->
+                <div class="hero-content">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">Experience <span>Dental Excellence</span> with a Gentle Touch   </h1>
+                        <p class="wow fadeInUp" data-wow-delay="0.25s">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p>
+                    </div>
+                    <!-- Section Title End -->
+
+                    <!-- Hero Content Body Start -->
+                    <div class="hero-content-body wow fadeInUp" data-wow-delay="0.5s">
+                        <a href="#" class="btn-default">make an appointment</a>
+                    </div>
+                    <!-- Hero Content Body End -->
+
+                    <!-- Google Rating Start -->
+                    <div class="google-rating wow fadeInUp" data-wow-delay="0.75s">
+                        <ul>
+                           <li>Google Rating <span>5.0</span></li>
+                           <li>
+                               <i class="fa-solid fa-star"></i>
+                               <i class="fa-solid fa-star"></i>
+                               <i class="fa-solid fa-star"></i>
+                               <i class="fa-solid fa-star"></i>
+                               <i class="fa-solid fa-star"></i>
+                           </li>
+                           <li>based on 492 reviews</li>
+                        </ul>   
+                   </div>
+                   <!-- Google Rating End -->
+                </div>
+                <!-- Hero Content End -->
+            </div>
+
+            <div class="col-lg-6">
+                <!-- Hero Image Start -->
+                <div class="hero-image">
+                    <!-- Hero Img Start -->
+                    <div class="hero-img">
+                        <figure>
+                            <img src="{% static "images/hero-img.png" %}" alt="">
+                        </figure>
+                    </div>
+                    <!-- Hero Img End -->
+
+                    <!-- Hero Image Tag Start -->
+                    <div class="export-dantist-box">
+                        <div class="icon-box">
+                            <figure class="image-anime">
+                                <img src="{% static "images/dantist-doctor-img.jpg" %}" alt="">
+                            </figure>
+                        </div>
+                        <div class="export-dantist-content">
+                            <h3>dr. clara Lee</h3>
+                            <p>dantist</p>
+                        </div>
+                    </div>  
+                    <!-- Hero Image Tag End -->
+
+                    <!-- Hero Icon List Start -->
+                    <div class="hero-icon-list">
+                        <div class="hero-icon-box-1">
+                            <img src="{% static "images/icon-hero-theeth-1.svg" %}" alt="">
+                        </div>
+
+                        <div class="hero-icon-box-2">
+                            <img src="{% static "images/icon-hero-theeth-2.svg" %}" alt="">
+                        </div>
+
+                        <div class="hero-icon-box-3">
+                            <img src="{% static "images/icon-hero-theeth-3.svg" %}" alt="">
+                        </div>
+                    </div>
+                    <!-- Hero Icon List End -->
+
+                    <!-- Icon Start Image Start -->
+                    <div class="icon-star-image">
+                        <img src="{% static "images/icon-star.svg" %}" alt="">
+                    </div>
+                    <!-- Icon Start Image End -->
+                </div>
+                <!-- Hero Image End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero Section End -->
+{% endblock %}

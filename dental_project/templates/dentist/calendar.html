@@ -1,0 +1,56 @@
+{% extends 'dentist/dentist_base.html' %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{ m }}")
+</script>
+{% endfor %}
+
+
+<div class="container mt-4">
+    <h2 class="text-center">Dentist Calendar</h2>
+    
+    <!-- Date Picker Form -->
+    <form method="GET" class="text-center mb-4">
+        <label for="date">Select a Date:</label>
+        <input type="date" id="date" name="date" class="form-control d-inline-block w-auto" value="{{ selected_date }}" required>
+        <button type="submit" class="btn btn-primary">View Appointments</button>
+    </form>
+
+    {% if selected_date %}
+    <h4 class="text-center">Confirmed Appointments for {{ selected_date }}</h4>
+    {% endif %}
+
+    <!-- Appointments Table -->
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Patient Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Time</th>
+                <th>Schedule</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in confirmed_appointments %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ appointment.patient.name }}</td>
+                <td>{{ appointment.patient.email }}</td>
+                <td>{{ appointment.patient.phone }}</td>
+                <td>{{ appointment.schedule.start_time }} - {{ appointment.schedule.end_time }}</td>
+                <td>{{ appointment.assigned_time}}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">Select or No confirmed appointments found for this date</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
