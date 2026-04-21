@@ -1,0 +1,161 @@
+{% extends 'admin/adminbase.html' %} {% block header %} {% load static %}
+<style>
+  body {
+    overflow-x: hidden;
+  }
+
+  th {
+    white-space: nowrap;
+  }
+
+  #title {
+    color: black;
+  }
+
+  #bank {
+    white-space: nowrap;
+  }
+</style>
+
+<div class="inner-banner">
+  <section class="w3l-breadcrumb py-5">
+    <div class="container py-lg-5 py-md-3">
+      <h2 class="title">Registered Camps</h2>
+    </div>
+  </section>
+</div>
+
+<!-- banner bottom shape -->
+<div class="position-relative">
+  <div class="shape overflow-hidden">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+    </svg>
+  </div>
+</div>
+<!-- banner bottom shape -->
+{% if campdata %}
+<section class="w3l-contact-7 py-5" id="contact">
+  <div class="contacts-9 py-lg-5 py-md-4">
+    <div class="container">
+      <div class="top-map">
+        <div class="row map-content-9">
+          <div class="col-lg-12">
+            <table class="table table-bordered">
+              <tr>
+                <th>Camper Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>State</th>
+                <th>District</th>
+                <th>Date</th>
+                <th>Address</th>
+                <th>Capacity</th>
+                <th colspan="2" style="text-align: center">Action</th>
+              </tr>
+              {% for i in campdata %}
+              <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.phone}}</td>
+                <td>{{i.state}}</td>
+                <td>{{i.district}}</td>
+                <td>{{i.date}}</td>
+                <td>{{i.address}}</td>
+                <td>{{i.members}}</td>
+                <td>
+                  <a href="/approvecamp?id={{i.id}}">Approve</a>
+                </td>
+                <td><a href="/rejectcamp?id={{i.id}}">Reject</a></td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% else %}
+
+<h1 style="text-align: center;margin: 20px;color: red;" class="title" id="title">No Pending Requests</h1>
+{% endif %}
+<!-- VIEW Requests -->
+
+<!-- <div class="inner-banner">
+      <section class="w3l-breadcrumb py-5">
+        <div class="container py-lg-5 py-md-3">
+          <h2 class="title">View Authority</h2>
+        </div>
+      </section>
+    </div> -->
+
+<div class="container py-lg-1 py-md-2">
+  <h2 class="title" id="title" style="color: green;">Approved Camps</h2>
+</div>
+
+<!-- banner bottom shape -->
+<div class="position-relative">
+  <div class="shape overflow-hidden">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+    </svg>
+  </div>
+</div>
+<!-- banner bottom shape -->
+<section class="w3l-contact-7 py-5" id="contact">
+  <div class="contacts-9 py-lg-5 py-md-4">
+    <div class="container">
+      <div class="top-map">
+        <div class="row map-content-9">
+          <div class="col-lg-12">
+            <table class="table table-bordered">
+              <tr>
+                <th>Camper Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>State</th>
+                <th>District</th>
+                <th>Date</th>
+                <th>Address</th>
+                <th>Capacity</th>
+              </tr>
+              {% for i in approvedcamp %}
+              <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.phone}}</td>
+                <td>{{i.state}}</td>
+                <td>{{i.district}}</td>
+                <td>{{i.date}}</td>
+                <td>{{i.address}}</td>
+                <td>{{i.members}}</td>
+
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .zoom {
+    padding: 0px;
+    transition: transform 0.2s;
+  }
+
+  .zoom:hover {
+    transform: scale(3);
+  }
+
+  #img {
+    height: 70px;
+    width: 70px;
+  }
+</style>
+
+{% endblock %}

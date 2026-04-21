@@ -1,0 +1,157 @@
+{% extends 'camp officer/officerbase.html' %} {% block header %} {% load static
+%}
+
+<style>
+  body {
+    overflow-x: hidden;
+  }
+</style>
+
+<div class="inner-banner">
+  <section class="w3l-breadcrumb py-5">
+    <div class="container py-lg-5 py-md-3">
+      <h2 class="title">Add Requirements</h2>
+    </div>
+  </section>
+</div>
+<!-- banner bottom shape -->
+<div class="position-relative">
+  <div class="shape overflow-hidden">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  </div>
+</div>
+<!-- banner bottom s1hape -->
+<section class="w3l-contact-7 py-5" id="contact">
+  <div class="contacts-9 py-lg-5 py-md-4">
+    <div class="container" style="margin-left: 300px">
+      <div class="top-map">
+        <div class="row map-content-9">
+          <div class="col-lg-8">
+            <form action="" method="post" class="text-center">
+              {% csrf_token %}
+              <div class="form-grid">
+                <input
+                  type="text"
+                  name="itemname"
+                  id="w3lSender"
+                  pattern="[a-z A-Z]+"
+                  placeholder="Item Name*"
+                  required=""
+                />
+                <input
+                  type="text"
+                  name="quantity"
+                  id="w3lSender"
+                  pattern="[a-z A-Z 0-9]+"
+                  placeholder="Quantity if any*"
+                  required=""
+                />
+                <textarea
+                  name="remarks"
+                  id=""
+                  cols="30"
+                  rows="5"
+                  placeholder="Remarks*"
+                  style="width: 205%; margin-top: -10px"
+                ></textarea>
+                <div
+                  id="dumdiv"
+                  align="center"
+                  style="display: none; font-size: 10px; color: #dadada"
+                >
+                  <a
+                    id="dum"
+                    style="
+                      padding-right: 0px;
+                      display: none;
+                      text-decoration: none;
+                      color: green;
+                      text-align: center;
+                    "
+                    href="http://www.hscripts.com"
+                    >&copy;h</a
+                  >
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-style mt-3">
+                Add
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <style>
+  body {
+    overflow-x: hidden;
+  }
+  th {
+    white-space: nowrap;
+    text-align: center;
+  }
+  td {
+    text-align: center;
+  }
+  #title {
+    color: black;
+  }
+</style>
+
+<div class="container py-lg-1 py-md-2">
+  <h2 class="title" id="title">View Requirements</h2>
+</div>
+
+<div class="position-relative">
+  <div class="shape overflow-hidden">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  </div>
+</div>
+<section class="w3l-contact-7 py-5" id="contact">
+  <div class="contacts-9 py-lg-5 py-md-4">
+    <div class="container" style="margin-left: 70px">
+      <div class="top-map">
+        <div class="row map-content-9">
+          <div class="col-lg-12">
+            <table class="table table-bordered">
+              <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Remarks</th>
+                <th>Status</th>
+              </tr>
+              {% for i in creq %}
+              <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.quantity}}</td>
+                <td>{{i.remarks}}</td>
+                <td>
+                  {% if i.status == "Requested" %}
+                  <h6 style="color: red; font-weight: bold">Requested</h6>
+                  {% else %}
+                  <h6 style="color: green; font-weight: bold">Completed</h6>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+{% endblock %}

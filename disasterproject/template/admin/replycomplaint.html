@@ -1,0 +1,58 @@
+{% extends 'admin/adminbase.html' %}
+{% block header %}
+
+<style>
+    body {
+        overflow-x: hidden;
+    }
+</style>
+
+<div class="inner-banner">
+    <section class="w3l-breadcrumb py-5">
+        <div class="container py-lg-5 py-md-3">
+            <h2 class="title">Send Reply</h2>
+        </div>
+    </section>
+  </div>
+  <!-- banner bottom shape -->
+  <div class="position-relative">
+    <div class="shape overflow-hidden">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+        </svg>
+    </div>
+  </div>
+  <!-- banner bottom s1hape -->
+<section class="w3l-contact-7 py-5" id="contact">
+    <div class="contacts-9 py-lg-5 py-md-4">
+        <div class="container" style="margin-left: 300px;">
+            <div class="top-map">
+                <div class="row map-content-9">
+                    <div class="col-lg-8">
+                        <form action="" method="post" class="text-center">
+                            {% csrf_token %}
+                            <div class="form-grid">
+                                <textarea name="reply" id="" cols="30" rows="5" placeholder="Message*" style="width: 205%;margin-top: -10px;"></textarea>
+                                <div id="dumdiv" align="center" style="display: none; font-size: 10px;color: #dadada;">
+                                    <a id="dum"
+                                        style="padding-right:0px;display: none; text-decoration:none;color: green;text-align:center;"
+                                        href="http://www.hscripts.com">&copy;h</a>
+                                </div>
+                                
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-style mt-3">Reply</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+{% endblock %}

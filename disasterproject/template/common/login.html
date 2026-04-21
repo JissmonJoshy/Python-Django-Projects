@@ -1,0 +1,82 @@
+{% extends 'common/commonbase.html' %} 
+{% block header %}
+
+<style>
+  body {
+    overflow-x: hidden;
+  }
+</style>
+
+<div class="inner-banner">
+  <section class="w3l-breadcrumb py-5">
+    <div class="container py-lg-5 py-md-3">
+      <h2 class="title">Login</h2>
+    </div>
+  </section>
+</div>
+<section class="w3l-contact-7 py-5" id="contact">
+  <div class="contacts-9 py-lg-5 py-md-4">
+    <div class="container" style="margin-left: 300px">
+      <div class="top-map">
+        <div class="row map-content-9">
+          <div class="col-lg-8">
+            {% if messages %}
+            <ul class="messages">
+              {% for message in messages %}
+              <script>
+                alert("{{message}}");
+              </script>
+              {% if type == "admin" %}
+              <script>
+                window.location.href = "/adminhome";
+              </script>
+              {% elif type == "Social Worker" %}
+              <script>
+                window.location.href = "/workerhome";
+              </script>
+              {% elif type == "User" %}
+              <script>
+                window.location.href = "/userhome";
+              </script>
+              {% elif type == "authority" %}
+              <script>
+                window.location.href = "/authorityhome";
+              </script>
+              {% elif type == "Camp Officer" %}
+              <script>
+                window.location.href = "/officerhome";
+              </script>
+              {% endif %} {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="" method="post" class="text-center">
+              {% csrf_token %}
+              <div class="form-grid">
+                <input
+                  type="email"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  name="email"
+                  id="w3lSender"
+                  placeholder="Email*"
+                  required=""
+                />
+                <input
+                  type="password"
+                  name="password"
+                  id="w3lPhone"
+                  placeholder="Password*"
+                  required=""
+                />
+              </div>
+              <button type="submit" class="btn btn-primary btn-style mt-3">
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

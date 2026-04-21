@@ -1,0 +1,126 @@
+{% extends 'user/userbase.html' %}
+{% load static %}
+{% block header %}
+<script language="Javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/JavaScript" src="{% static 'js/state.js' %}"></script>
+
+<style>
+
+body{
+    overflow-x: hidden;
+}
+
+    #selection select {
+        width: 99%;
+        background: #fff;
+        border: #ddd 1px solid;
+        border-radius: .35em;
+        -moz-border-radius: .35em;
+        -webkit-border-radius: .35em;
+        -o-border-radius: .35em;
+        padding: 0 .5%;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        height: 35px;
+    }
+
+    #selection select:hover {
+        box-shadow: #dae1e5 0px 0px 5px;
+        -moz-box-shadow: #dae1e5 0px 0px 5px;
+        -webkit-box-shadow: #dae1e5 0px 0px 5px;
+        -o-box-shadow: #dae1e5 0px 0px 5px;
+    }
+
+    #selection select:focus {
+        -webkit-box-shadow: inset 7px 4px 7px -7px rgba(0, 0, 0, 0.42);
+        -moz-box-shadow: inset 7px 4px 7px -7px rgba(0, 0, 0, 0.42);
+        box-shadow: inset 7px 4px 7px -7px rgba(0, 0, 0, 0.42);
+
+        border: #9d9983 1px solid;
+    }
+
+    .resp_code {
+        margin: 5px 10px 10px 300px;
+        padding: 10px 20px 10px 20px;
+        color: #333;
+        background: #f8f8f8;
+        overflow: auto;
+        width: 50%;
+    }
+
+    h5 {
+        margin: 0;
+        padding: 0;
+    }
+
+    @media screen and (max-width: 480px) {
+        .resp_code {
+            width: auto !important;
+            margin: 0px !important;
+        }
+    }
+</style>
+<div class="inner-banner">
+    <section class="w3l-breadcrumb py-5">
+        <div class="container py-lg-5 py-md-3">
+            <h2 class="title">Edit Profile</h2>
+        </div>
+    </section>
+  </div>
+  <!-- banner bottom shape -->
+  <div class="position-relative">
+    <div class="shape overflow-hidden">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+        </svg>
+    </div>
+  </div>
+  <!-- banner bottom s1hape -->
+<section class="w3l-contact-7 py-5" id="contact">
+    <div class="contacts-9 py-lg-5 py-md-4">
+        <div class="container" style="margin-left: 300px;">
+            {% for i in edtprof %}
+            <div class="top-map">
+                <div class="row map-content-9">
+                    <div class="col-lg-8">
+                        <form action="/edtprof/" method="post" class="text-center">
+                            {% csrf_token %}
+                            <div class="form-grid">
+                                <input type="text" name="name" id="w3lSender" value="{{i.name}}" pattern="[a-z A-Z]+" placeholder="Name*"
+                                    required="">
+                                <input type="email" name="email" id="w3lSender" value="{{i.email}}" readonly
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email*"
+                                    required="">
+                                <input type="text" name="phone" id="w3lSender" pattern="[9876][0-9]{9}" value="{{i.phone}}"
+                                    placeholder="Phone Number*" minlength="10" maxlength="10" required="">
+                                    <input type="password" class="text-left" name="password" value="{{i.loginid.password}}" minlength="8" maxlength="16" id="w3lPhone" placeholder="Password*"
+                                    required="">
+                                    
+                                <div id="selection">
+                                    <select name="state" style="height: 50px;padding: 5px;">
+                                    <option value="{{i.state}}" selected>{{i.state}}</option></select>
+                                </div>
+                                <div id="selection">
+                                <select id='secondlist' name="district" style=" height: 50px;padding: 5px;">
+                                <option value="{{i.district}}" selected>{{i.district}}</option></select>
+                                </div>
+                                <textarea name="address" id="" cols="30" rows="5" placeholder="Address*" style="width: 205%;margin-top: -10px;">{{i.address}}</textarea>
+                                <div id="dumdiv" align="center" style="display: none; font-size: 10px;color: #dadada;">
+                                    <a id="dum"
+                                        style="padding-right:0px;display: none; text-decoration:none;color: green;text-align:center;"
+                                        href="http://www.hscripts.com">&copy;h</a>
+                                </div>
+                                
+                                
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-style mt-3">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

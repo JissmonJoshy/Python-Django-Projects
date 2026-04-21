@@ -1,0 +1,198 @@
+{% extends 'admin/adminbase.html' %} {% block header %} {% load static %}
+<style>
+  body {
+    overflow-x: hidden;
+  }
+  th {
+    white-space: nowrap;
+  }
+  #title {
+    color: black;
+  }
+  #bank {
+    white-space: nowrap;
+  }
+</style>
+
+<div class="inner-banner">
+  <section class="w3l-breadcrumb py-5">
+    <div class="container py-lg-5 py-md-3">
+      <h2 class="title">Claim Requests</h2>
+    </div>
+  </section>
+</div>
+
+<!-- <div class="container py-lg-1 py-md-2">
+      <h2 class="title" id="title">Claim History</h2>
+    </div> -->
+
+<!-- banner bottom shape -->
+<div class="position-relative">
+  <div class="shape overflow-hidden">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  </div>
+</div>
+<!-- banner bottom shape -->
+<section class="w3l-contact-7 py-5" id="contact">
+  <div class="contacts-9 py-lg-5 py-md-4">
+    <div class="container text-center" style="margin: 10px auto">
+      <div class="top-map">
+        <div class="row map-content-9">
+          <div class="col-lg-8">
+            <table class="table table-bordered">
+              <tr>
+                <th>Name</th>
+                <!-- <th>Email</th> -->
+                <th>Phone</th>
+                <th>Damages</th>
+                <th>Bank Name</th>
+                <!-- <th>Holder Name</th> -->
+                <th>Account Number</th>
+                <th>IFSC</th>
+                <th>Branch</th>
+                <th>Address</th>
+                <th>Image</th>
+                <th>Action</th>
+              </tr>
+
+              {% for i in crequest %}
+
+              <tr>
+                <td id="bank">{{i.fname}} {{i.lname}}</td>
+                <!-- <td>{{i.email}}</td> -->
+                <td>{{i.phone}}</td>
+                <td>{{i.damages}}</td>
+                <td id="bank">{{i.bankname}}</td>
+                <!-- <td>{{i.holdername}}</td> -->
+                <td>{{i.accno}}</td>
+                <td>{{i.ifsc}}</td>
+                <td>{{i.branch}}</td>
+                <td>{{i.address}}</td>
+                <td>
+                  <div class="zoom">
+                    <img id="img" src="/static/image/{{i.image}}" alt="No" />
+                  </div>
+                </td>
+
+                <td>
+                  {% if i.status == "Pending" %}
+                  <a
+                    class="btn btn-primary"
+                    style="white-space: nowrap"
+                    href="/allotfund?id={{i.id}}"
+                    >Allot Fund</a
+                  >
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container py-lg-1 py-md-2">
+  <h2 class="title" id="title">Claim History</h2>
+</div>
+
+<!-- banner bottom shape -->
+<div class="position-relative">
+  <div class="shape overflow-hidden">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  </div>
+</div>
+<!-- banner bottom shape -->
+<section class="w3l-contact-7 py-5" id="contact">
+  <div class="contacts-9 py-lg-5 py-md-4">
+    <div class="container" style="margin: 10px auto">
+      <div class="top-map">
+        <div class="row map-content-9">
+          <div class="col-lg-8">
+            <table class="table table-bordered">
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Damages</th>
+                <th>Bank Name</th>
+                <!-- <th>Holder Name</th> -->
+                <th>Account Number</th>
+                <th>IFSC</th>
+                <th>Branch</th>
+                <th>Address</th>
+                <th>Image</th>
+                <th>Action</th>
+              </tr>
+              {% for i in allotted %}
+              <tr>
+                <td>{{i.fname}} {{i.lname}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.phone}}</td>
+                <td>{{i.damages}}</td>
+                <td>{{i.bankname}}</td>
+                <!-- <td>{{i.holdername}}</td> -->
+                <td>{{i.accno}}</td>
+                <td>{{i.ifsc}}</td>
+                <td>{{i.branch}}</td>
+                <td>{{i.address}}</td>
+                <td>
+                  <div class="zoom">
+                    <img
+                      id="img"
+                      src="/static/image/{{i.image}}"
+                      alt="No Image"
+                    />
+                  </div>
+                </td>
+
+                <td>
+                  {% if i.status == "Allotted" %}
+                  <p style="color: green; font-weight: bolder">Fund Allotted</p>
+                  {% else %}
+                  <p style="color: red; font-weight: bolder">Under Review</p>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .zoom {
+    padding: 0px;
+    transition: transform 0.2s;
+  }
+
+  .zoom:hover {
+    transform: scale(3);
+  }
+
+  #img {
+    height: 70px;
+    width: 70px;
+  }
+</style>
+
+{% if msg %}
+<script>
+  alert("{{msg}}");
+</script>
+{% endif %} {% endblock %}
