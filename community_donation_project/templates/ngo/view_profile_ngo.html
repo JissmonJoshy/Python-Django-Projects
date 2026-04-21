@@ -1,0 +1,27 @@
+{% extends 'ngo/ngo_base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br>
+<main class="container mt-5">
+    <h2 class="text-center mb-4">NGO Profile</h2>
+
+    {% if ngo_profile %}
+        <div class="card mx-auto" style="max-width: 500px;">
+            <img src="{{ ngo_profile.image.url }}" class="card-img-top" alt="Profile Image">
+            <div class="card-body">
+                <h5 class="card-title">{{ ngo_profile.name }}</h5>
+                <p><strong>Username:</strong> {{ ngo_profile.username }}</p>
+                <p><strong>Email:</strong> {{ ngo_profile.email }}</p>
+                <p><strong>Phone:</strong> {{ ngo_profile.phone }}</p>
+                <p><strong>Address:</strong> {{ ngo_profile.address }}</p>
+                
+                <a href="{% url 'edit_profile_ngo' %}" class="btn btn-primary w-100 mt-3">Edit Profile</a>
+            </div>
+        </div>
+    {% else %}
+        <p class="text-center text-danger">NGO Profile not found.</p>
+    {% endif %}
+</main>
+{% endblock %}
+

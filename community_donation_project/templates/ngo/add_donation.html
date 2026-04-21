@@ -1,0 +1,133 @@
+{% extends 'ngo/ngo_base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br>
+<main class="container mt-5">
+  <h2 class="text-center mb-4">Add Donation</h2>
+
+  {% if messages %}
+    <div class="messages text-center">
+      {% for message in messages %}
+        <p class="{{ message.tags }}">{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        
+        <!-- Donation Title -->
+        <div class="form-group">
+          <label for="title">Donation Title</label>
+          <input type="text" name="title" class="form-control" id="title" required>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea name="description" class="form-control" id="description" rows="4" required></textarea>
+        </div>
+        <br>
+
+        <!-- Category (Radio Buttons) -->
+        <div class="form-group">
+          <label>Category</label><br>
+          <div class="radio-group">
+            <label><input type="radio" name="category" value="Food" required> Food</label>
+            <label><input type="radio" name="category" value="Education"> Education</label>
+            <label><input type="radio" name="category" value="Medical"> Medical Supplies</label>
+            <label><input type="radio" name="category" value="Clothing"> Clothing</label>
+            <label><input type="radio" name="category" value="General" checked> General</label>
+          </div>
+        </div><br>
+
+        <!-- Target Amount -->
+        <div class="form-group">
+          <label for="target_amount">Target Amount</label>
+          <input type="number" name="target_amount" class="form-control" id="target_amount">
+        </div><br>
+
+        <!-- Donation Type (Radio Buttons) -->
+        <div class="form-group">
+          <label>Donation Type</label><br>
+          <div class="radio-group">
+            <label><input type="radio" name="donation_type" value="Monetary" checked> Monetary</label>
+            <label><input type="radio" name="donation_type" value="Material"> Material</label>
+            <label><input type="radio" name="donation_type" value="Food"> Food</label>
+            <label><input type="radio" name="donation_type" value="Clothing"> Clothing</label>
+            <label><input type="radio" name="donation_type" value="Medical Supplies"> Medical Supplies</label>
+          </div>
+        </div><br>
+
+        <!-- Image -->
+        <div class="form-group">
+          <label for="image">Donation Image</label>
+          <input type="file" name="image" class="form-control" id="image">
+        </div>
+
+        <!-- Start Date -->
+        <div class="form-group">
+          <label for="start_date">Start Date</label>
+          <input type="date" name="start_date" class="form-control" id="start_date" required>
+        </div>
+
+        <!-- End Date -->
+        <div class="form-group">
+          <label for="end_date">End Date</label>
+          <input type="date" name="end_date" class="form-control" id="end_date" required>
+        </div>
+
+        <!-- Location -->
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" name="location" class="form-control" id="location" required>
+        </div>
+
+        <!-- Status (Defaults to 'Active') -->
+        <div class="form-group">
+          <label for="status">Status</label>
+          <input type="text" name="status" class="form-control" id="status" value="Active" readonly>
+        </div>
+
+        <br>
+        <button type="submit" class="btn btn-primary w-100">Add Donation</button>
+      </div>
+    </div>
+  </form>
+</main><br><br>
+
+<!-- Custom Styles for Radio Buttons -->
+<style>
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .radio-group label {
+    display: flex;
+    align-items: center;
+    background-color: #d3d3d3; /* Ash color */
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .radio-group input {
+    margin-right: 8px;
+  }
+
+  .radio-group label:hover {
+    background-color: #b2b2b2; /* Slightly darker ash */
+  }
+
+  .radio-group input:checked + label {
+    background-color: black;
+    color: white;
+  }
+</style>
+
+{% endblock %}

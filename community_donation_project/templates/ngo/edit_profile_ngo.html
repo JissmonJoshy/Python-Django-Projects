@@ -1,0 +1,49 @@
+{% extends 'ngo/ngo_base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br>
+<main class="container mt-5">
+    <h2 class="text-center mb-4">Edit NGO Profile</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" value="{{ ngo_profile.username }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">NGO Name</label>
+                    <input type="text" name="name" class="form-control" id="name" value="{{ ngo_profile.name }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" value="{{ ngo_profile.email }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="number" name="phone" class="form-control" id="phone" value="{{ ngo_profile.phone }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea name="address" class="form-control" id="address" rows="3" required>{{ ngo_profile.address }}</textarea>
+                </div><br>
+                <div class="form-group text-center">
+                    {% if ngo_profile.image %}
+                        <img src="{{ ngo_profile.image.url }}" alt="NGO Image" class="img-fluid rounded mb-3" style="max-height: 200px;">
+                    {% else %}
+                        <p class="text-muted">No image uploaded</p>
+                    {% endif %}
+                    <label for="image">Change NGO Image</label>
+                    <input type="file" name="image" class="form-control" id="image">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-success w-100">Update Profile</button>
+                <a href="{% url 'view_profile_ngo' %}" class="btn btn-secondary w-100 mt-2">Cancel</a>
+            </div>
+        </div>
+    </form><br>
+</main>
+{% endblock %}

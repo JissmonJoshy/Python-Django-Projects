@@ -1,0 +1,42 @@
+{% extends 'admin/admin_base.html' %}
+
+
+{% block content %}
+<br><br><br><br><br>
+<div class="container mt-3">
+    <h4 class="text-center">Donations Report</h4>
+    <p class="text-center"><strong>Total Donors:</strong> {{ total_donors }}</p>  <!-- Display total donors count -->
+    
+    <div class="d-flex justify-content-center">
+        <div style="width: 80%; height: 500px;">  <!-- Bigger horizontal graph -->
+            <canvas id="donationChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('donationChart').getContext('2d');
+    var donationChart = new Chart(ctx, {
+        type: 'bar',  // Horizontal bar graph
+        data: {
+            labels: {{ donation_titles|safe }},
+            datasets: [{
+                label: 'Avg Donation Per Donor (₹)',
+                data: {{ avg_amounts|safe }},
+                backgroundColor: 'lightblue',
+                borderColor: 'blue',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',  // Horizontal bar chart
+            responsive: true,
+            maintainAspectRatio: false,  
+            scales: {
+                x: { beginAtZero: true }  // X-axis for horizontal view
+            }
+        }
+    });
+</script>
+{% endblock %}

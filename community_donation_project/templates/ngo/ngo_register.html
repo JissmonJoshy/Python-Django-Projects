@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br>
+<main class="container mt-5">
+    <h2 class="text-center mb-4">NGO Registration</h2>
+    
+    {% if messages %}
+        <div class="messages text-center">
+            {% for message in messages %}
+                <p class="{{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">NGO Name</label>
+                    <input type="text" name="name" class="form-control" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" name="phone" class="form-control" id="phone" required 
+                           pattern="[0-9]{10}" title="Enter a 10-digit phone number">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea name="address" class="form-control" id="address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" required
+                           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                           title="Password must be at least 8 characters long, include one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*)" placeholder='Min 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character'>
+                    
+                </div><br>
+                <div class="form-group">
+                    <label for="image">NGO Image</label>
+                    <input type="file" name="image" class="form-control" id="image">
+                </div><br>
+                <button type="submit" class="btn btn-primary w-100">Register</button>
+            </div>
+        </div>
+    </form>
+</main><br><br>
+
+<style>
+    .messages {
+        color: red;
+        margin-bottom: 10px;
+        text-align: center;
+        margin-top: 15px;
+    }
+</style>
+
+<script>
+    // Email validation
+    document.getElementById("email").addEventListener("input", function () {
+        let emailField = this;
+        let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(emailField.value)) {
+            emailField.setCustomValidity("Enter a valid email address");
+        } else {
+            emailField.setCustomValidity("");
+        }
+    });
+
+    // Password validation
+    document.getElementById("password").addEventListener("input", function () {
+        let passwordField = this;
+        let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (!passwordPattern.test(passwordField.value)) {
+            passwordField.setCustomValidity("Password must contain at least 8 characters, including 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.");
+        } else {
+            passwordField.setCustomValidity("");
+        }
+    });
+</script>
+
+{% endblock %}

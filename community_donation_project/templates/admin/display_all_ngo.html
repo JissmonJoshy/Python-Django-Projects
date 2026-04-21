@@ -1,0 +1,71 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br><br>
+<main class="container mt-5">
+    <h2 class="text-center mb-4">All NGOs</h2>
+    
+    {% if messages %}
+        <div class="messages text-center">
+            {% for message in messages %}
+                <p class="{{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if ngos %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ngo in ngos %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ ngo.username }}</td>
+                        <td>{{ ngo.name }}</td>
+                        <td>{{ ngo.email }}</td>
+                        <td>{{ ngo.phone }}</td>
+                        <td>{{ ngo.address }}</td>
+                        <td>
+                            {% if ngo.image %}
+                                <img src="{{ ngo.image.url }}" alt="Image" width="50" height="50">
+                            {% else %}
+                                No image
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if ngo.ngo_id.is_active %}
+                                <a href="{% url 'delete_ngo' ngo.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            {% else %}
+                                <a href="{% url 'approve_ngo' ngo.id %}" class="btn btn-success btn-sm">Approve</a>
+                                <a href="{% url 'reject_ngo' ngo.id %}" class="btn btn-warning btn-sm">Reject</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No NGOs found</p>
+    {% endif %}
+</main><br><br>
+
+<style>
+    .messages {
+        color: red;
+        margin-bottom: 10px;
+    }
+</style>
+
+{% endblock %}

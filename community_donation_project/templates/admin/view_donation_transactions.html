@@ -1,0 +1,43 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block content %}
+<br><br><br><br>
+<main class="container mt-5">
+    <h2 class="text-center mb-4">All Donation Transactions</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Donor Name</th>
+                    <th>Donation Title</th>
+                    <th>NGO Name</th>
+                    <th>Donation Type</th>
+                    <th>Amount</th>
+                    <th>Payment Method</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.id }}</td>
+                    <td>{{ transaction.donor.name }}</td>
+                    <td>{{ transaction.donation.title }}</td>
+                    <td>{{ transaction.donation.ngo.name }}</td>
+                    <td>{{ transaction.donation_type }}</td>
+                    <td>₹{{ transaction.amount }}</td>
+                    <td>{{ transaction.payment_method }}</td>
+                    
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" class="text-center">No transactions available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main><br>
+{% endblock %}

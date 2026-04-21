@@ -1,0 +1,74 @@
+{% extends 'ngo/ngo_base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br>
+<main class="container mt-5">
+    <h2 class="text-center mb-4">Edit Donation</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="form-group">
+                    <label for="title">Donation Title</label>
+                    <input type="text" name="title" class="form-control" id="title" value="{{ donation.title }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea name="description" class="form-control" id="description" required>{{ donation.description }}</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select name="category" class="form-control" id="category" required>
+                        <option value="Food" {% if donation.category == 'Food' %}selected{% endif %}>Food</option>
+                        <option value="Education" {% if donation.category == 'Education' %}selected{% endif %}>Education</option>
+                        <option value="Medical" {% if donation.category == 'Medical' %}selected{% endif %}>Medical Supplies</option>
+                        <option value="Clothing" {% if donation.category == 'Clothing' %}selected{% endif %}>Clothing</option>
+                        <option value="General" {% if donation.category == 'General' %}selected{% endif %}>General</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="target_amount">Target Amount</label>
+                    <input type="number" name="target_amount" class="form-control" id="target_amount" value="{{ donation.target_amount }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="current_amount">Current Amount</label>
+                    <input type="number" name="current_amount" class="form-control" id="current_amount" value="{{ donation.current_amount }}" required>
+                </div>                
+                <div class="form-group">
+                    <label for="start_date">Start Date</label>
+                    <input type="date" name="start_date" class="form-control" id="start_date" value="{{ donation.start_date|date:'Y-m-d' }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="end_date">End Date</label>
+                    <input type="date" name="end_date" class="form-control" id="end_date" value="{{ donation.end_date|date:'Y-m-d' }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" name="location" class="form-control" id="location" value="{{ donation.location }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select name="status" class="form-control" id="status" required>
+                        <option value="Active" {% if donation.status == 'Active' %}selected{% endif %}>Active</option>
+                        <option value="Completed" {% if donation.status == 'Completed' %}selected{% endif %}>Completed</option>
+                        <option value="Cancelled" {% if donation.status == 'Cancelled' %}selected{% endif %}>Cancelled</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="image">Donation Image</label>
+                    <input type="file" name="image" class="form-control" id="image">
+                    {% if donation.image %}
+                        <img src="{{ donation.image.url }}" alt="Donation Image" width="100">
+                    {% endif %}
+                </div><br>
+                <button type="submit" class="btn btn-success w-100">Update Donation</button>
+                <a href="{% url 'view_donations' %}" class="btn btn-secondary w-100 mt-2">Cancel</a>
+            </div>
+        </div>
+    </form>
+</main><br><br>
+{% endblock %}

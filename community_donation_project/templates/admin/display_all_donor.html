@@ -1,0 +1,72 @@
+{% extends 'admin/admin_base.html' %} 
+
+{% block content %}
+<br><br><br><br>
+<main class="container mt-5">
+    <h2 class="text-center mb-4">All Donors</h2>
+
+    {% if messages %}
+        <div class="messages text-center">
+            {% for message in messages %}
+                <p class="{{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for donor in donors %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ donor.username }}</td>
+                    <td>{{ donor.name }}</td>
+                    <td>{{ donor.email }}</td>
+                    <td>{{ donor.phone }}</td>
+                    <td>{{ donor.address }}</td>
+                    <td>
+                        {% if donor.image %}
+                            <img src="{{ donor.image.url }}" alt="Donor Image" style="width: 50px; height: 50px;">
+                        {% else %}
+                            No Image
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if donor.donor_id.is_active %}
+                            <a href="{% url 'delete_donor' donor.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        {% else %}
+                            <a href="{% url 'approve_donor' donor.id %}" class="btn btn-success btn-sm">Approve</a>
+                            <a href="{% url 'reject_donor' donor.id %}" class="btn btn-warning btn-sm">Reject</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" class="text-center">No donors found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main><br><br>
+
+<style>
+    .messages {
+        color: red;
+        margin-bottom: 10px;
+    }
+    
+</style>
+{% endblock %}
