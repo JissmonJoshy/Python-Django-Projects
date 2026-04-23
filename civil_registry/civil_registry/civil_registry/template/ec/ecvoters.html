@@ -1,0 +1,94 @@
+{% extends 'common/eccommon.html' %}
+{% load static %}
+
+{% block content %}
+{% for m in messages %}
+<script>
+alert('{{m}}')
+</script>
+    {% endfor %}
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4"><b>Voter Requests</b></h2>
+
+    {% if res %}
+
+        {% for data in res %}
+        <div class="card shadow mb-4 p-3">
+
+            <!-- PERSONAL INFO -->
+            <h5 class="text-primary">Personal Information</h5>
+            <p><b>Name:</b> {{ data.name }}</p>
+            <p><b>Father:</b> {{ data.father }}</p>
+            <p><b>Mother:</b> {{ data.mother }}</p>
+            <p><b>Gender:</b> {{ data.gender }}</p>
+            <p><b>Marital:</b> {{ data.martial }}</p>
+            <p><b>DOB:</b> {{ data.dob }}</p>
+            <p><b>Place:</b> {{ data.place }}</p>
+            <p><b>Blood:</b> {{ data.blood }}</p>
+
+            <hr>
+
+            <!-- ADDRESS -->
+            <h5 class="text-primary">Address</h5>
+            <p><b>District:</b> {{ data.district }}</p>
+            <p><b>Address:</b> {{ data.address }}</p>
+
+            <hr>
+
+            <!-- APPLICANT -->
+            <h5 class="text-primary">Applicant Details</h5>
+            <p><b>Name:</b> {{ data.user.name }}</p>
+            <p><b>Phone:</b> {{ data.user.phone_number }}</p>
+            <p><b>Email:</b> {{ data.user.email }}</p>
+            <p><b>Aadhar:</b> {{ data.user.aadhar }}</p>
+            <p><b>Address:</b> {{ data.user.address }}</p>
+
+            <hr>
+
+            <!-- FILES -->
+            <h5 class="text-primary">Documents</h5>
+
+            {% if data.idproof %}
+                <a href="{{ data.idproof.url }}" target="_blank" class="btn btn-outline-primary btn-sm">View ID Proof</a>
+            {% endif %}
+
+            {% if data.photo %}
+                <a href="{{ data.photo.url }}" target="_blank" class="btn btn-outline-success btn-sm">View Photo</a>
+            {% endif %}
+
+            {% if data.addressproof %}
+                <a href="{{ data.addressproof.url }}" target="_blank" class="btn btn-outline-info btn-sm">View Address Proof</a>
+            {% endif %}
+
+            <hr>
+
+            <!-- ACTIONS -->
+            <div class="text-end">
+
+                <a href="/approvevoters?id={{data.id}}" class="btn btn-success">
+                    Approve
+                </a>
+
+                <a href="/deletevotersec?id={{data.id}}" class="btn btn-danger">
+                    Delete
+                </a>
+
+                {% if data.status == "approved" %}
+                <a href="{{ data.certificate.url }}" class="btn btn-primary">
+                    Download PDF
+                </a>
+                {% endif %}
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    {% else %}
+        <h5 class="text-center text-muted">No requests available</h5>
+    {% endif %}
+
+</div>
+
+{% endblock %}

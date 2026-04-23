@@ -1,0 +1,94 @@
+{% extends 'common/rpocommon.html' %}
+{% load static %}
+
+{% block content %}
+{% for m in messages %}
+<script>
+alert('{{m}}')
+</script>
+    {% endfor %}
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">Passport Requests</h2>
+
+    {% if res %}
+
+        {% for data in res %}
+        <div class="card shadow mb-4 p-3">
+
+            <!-- HEADER -->
+            <div class="text-center">
+                <img src="{{ data.photo.url }}" class="rounded-circle" width="100" height="100">
+                <h4>{{ data.name }}</h4>
+            </div>
+
+            <hr>
+
+            <!-- ALL DETAILS -->
+            <div class="row">
+
+                <div class="col-md-6">
+                    <h5>Basic Details</h5>
+                    <p><b>Father:</b> {{ data.father }}</p>
+                    <p><b>Mother:</b> {{ data.mother }}</p>
+                    <p><b>Gender:</b> {{ data.gender }}</p>
+                    <p><b>DOB:</b> {{ data.dob }}</p>
+                    <p><b>Place:</b> {{ data.place }}</p>
+                    <p><b>Blood:</b> {{ data.blood }}</p>
+                    <p><b>Marital:</b> {{ data.martial }}</p>
+                    <p><b>District:</b> {{ data.district }}</p>
+                    <p><b>Address:</b> {{ data.address }}</p>
+                    <p><b>Status:</b> {{ data.status }}</p>
+                    <p><b>Payment:</b> {{ data.payment_status }}</p>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>Applicant Details</h5>
+                    <p><b>Name:</b> {{ data.user.name }}</p>
+                    <p><b>Phone:</b> {{ data.user.phone_number }}</p>
+                    <p><b>Email:</b> {{ data.user.email }}</p>
+                    <p><b>Aadhar:</b> {{ data.user.aadhar }}</p>
+                    <p><b>Address:</b> {{ data.user.address }}</p>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <!-- DOCUMENTS -->
+            <h5>Documents</h5>
+
+            <a href="{{ data.idproof.url }}" class="btn btn-outline-primary btn-sm" target="_blank">ID Proof</a>
+            <a href="{{ data.addressproof.url }}" class="btn btn-outline-secondary btn-sm" target="_blank">Address Proof</a>
+
+            <hr>
+
+            <!-- ACTIONS -->
+            <div class="text-end">
+
+                <a href="/approvepassport?id={{ data.id }}" class="btn btn-success">
+                    Approve
+                </a>
+
+                <a href="/deletepassportrpo?id={{ data.id }}" class="btn btn-danger">
+                    Delete
+                </a>
+
+                {% if data.status == 'approved' and data.certificate %}
+                <a href="{{ data.certificate.url }}" class="btn btn-primary" target="_blank">
+                    Download PDF
+                </a>
+                {% endif %}
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    {% else %}
+        <p class="text-center text-muted">No requests available</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

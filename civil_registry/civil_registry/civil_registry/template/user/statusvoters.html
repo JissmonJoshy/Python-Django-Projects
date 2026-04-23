@@ -1,0 +1,91 @@
+{% extends 'common/usercommon.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="text-center mb-4">
+        <h2 class="display-6">Voter Application Status</h2>
+    </div>
+
+    {% if messages %}
+        {% for m in messages %}
+        <div class="alert alert-info text-center">{{ m }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% if not res and not resul and not result %}
+        <div class="alert alert-warning text-center">
+            No Application Status Available
+        </div>
+    {% endif %}
+
+    <!-- PENDING -->
+    {% for data in res %}
+    <div class="card mx-auto mb-3 shadow-sm" style="max-width: 600px;">
+        <div class="card-body">
+
+            <h4 class="text-center">{{ data.name }}</h4>
+
+            <hr>
+
+            <p><b>Date:</b> {{ data.date }}</p>
+            <p><b>Status:</b> {{ data.status }}</p>
+
+            <div class="text-end">
+                <a href="/withdrawvoters?id={{data.id}}" class="btn btn-danger btn-sm">
+                    Withdraw
+                </a>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- FORWARDED -->
+    {% for data in resul %}
+    <div class="card mx-auto mb-3 shadow-sm" style="max-width: 600px;">
+        <div class="card-body">
+
+            <h4 class="text-center">{{ data.name }}</h4>
+
+            <hr>
+
+            <p><b>Date:</b> {{ data.date }}</p>
+            <p><b>Status:</b> {{ data.status }}</p>
+
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- APPROVED + PDF DOWNLOAD -->
+    {% for data in result %}
+    <div class="card mx-auto mb-3 shadow-sm border-success" style="max-width: 600px;">
+        <div class="card-body">
+
+            <h4 class="text-center text-success">{{ data.name }}</h4>
+
+            <hr>
+
+            <p><b>Date:</b> {{ data.date }}</p>
+            <p><b>Status:</b> <span class="text-success">{{ data.status }}</span></p>
+
+            <!-- ✅ PDF DOWNLOAD BUTTON -->
+            {% if data.certificate %}
+            <div class="text-center mt-3">
+                <a href="{{ data.certificate.url }}" class="btn btn-primary" target="_blank">
+                    Download Voter PDF
+                </a>
+            </div>
+            {% else %}
+            <p class="text-danger text-center">Certificate not generated yet</p>
+            {% endif %}
+
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

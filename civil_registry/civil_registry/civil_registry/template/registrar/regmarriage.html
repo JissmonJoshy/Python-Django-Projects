@@ -1,0 +1,113 @@
+{% extends 'common/registrarcommon.html' %}
+{% load static %}
+{% block content %}
+
+{% for m in messages %}
+<script>alert('{{m}}')</script>
+{% endfor %}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Marriage Requests</h2>
+
+    {% for data in res %}
+    <div class="card shadow mb-4">
+        <div class="card-body">
+
+            <h4 class="text-primary text-center">
+                {{ data.marriage.bridename }} ❤️ {{ data.marriage.groomname }}
+            </h4>
+
+            <div class="row mt-3">
+
+                <!-- Bride -->
+                <div class="col-md-6">
+                    <h5 class="text-secondary">Bride Details</h5>
+                    <p><b>Name:</b> {{ data.marriage.bridename }}</p>
+                    <p><b>Father:</b> {{ data.marriage.bridefather }}</p>
+                    <p><b>Mother:</b> {{ data.marriage.bridemother }}</p>
+                    <p><b>DOB:</b> {{ data.marriage.bridedob }}</p>
+                    <p><b>Address:</b> {{ data.marriage.brideaddress }}</p>
+                </div>
+
+                <!-- Groom -->
+                <div class="col-md-6">
+                    <h5 class="text-secondary">Groom Details</h5>
+                    <p><b>Name:</b> {{ data.marriage.groomname }}</p>
+                    <p><b>Father:</b> {{ data.marriage.groomfather }}</p>
+                    <p><b>Mother:</b> {{ data.marriage.groommother }}</p>
+                    <p><b>DOB:</b> {{ data.marriage.groomdob }}</p>
+                    <p><b>Address:</b> {{ data.marriage.groomaddress }}</p>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <!-- Marriage -->
+            <h5 class="text-info">Marriage Info</h5>
+            <p><b>Date:</b> {{ data.marriage.marriagedate }}</p>
+            <p><b>Place:</b> {{ data.marriage.marriageplace }}</p>
+            <p><b>Type:</b> {{ data.marriage.marriagetype }}</p>
+            <p><b>District:</b> {{ data.marriage.district }}</p>
+
+            <hr>
+
+            <!-- Applicant -->
+            <h5 class="text-warning">Applicant Info</h5>
+            <p><b>Name:</b> {{ data.marriage.user.name }}</p>
+            <p><b>Phone:</b> {{ data.marriage.user.phone_number }}</p>
+            <p><b>Email:</b> {{ data.marriage.user.email }}</p>
+            <p><b>Relation:</b> {{ data.marriage.relation }}</p>
+
+            <hr>
+
+            <!-- Proofs -->
+            <div class="text-center">
+                {% if data.marriage.idproofbride %}
+                <a href="/media/{{ data.marriage.idproofbride }}" target="_blank"
+                   class="btn btn-outline-primary btn-sm">
+                   Bride Proof
+                </a>
+                {% endif %}
+
+                {% if data.marriage.idproofgroom %}
+                <a href="/media/{{ data.marriage.idproofgroom }}" target="_blank"
+                   class="btn btn-outline-secondary btn-sm">
+                   Groom Proof
+                </a>
+                {% endif %}
+            </div>
+
+            <hr>
+
+            <!-- ACTIONS -->
+            <div class="text-center mt-3">
+
+                {% if data.marriage.status == 'approved' %}
+                    <a href="/media/{{ data.marriage.certificate }}" target="_blank"
+                       class="btn btn-success">
+                        Download Certificate
+                    </a>
+                {% else %}
+                    <form method="post" class="d-inline">
+                        {% csrf_token %}
+                        <input type="hidden" name="bid" value="{{ data.id }}">
+                        <button class="btn btn-primary">Approve</button>
+                    </form>
+
+                    <a href="/deletemarriagereg?id={{ data.id }}"
+                       class="btn btn-danger">
+                        Reject
+                    </a>
+                {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+    {% empty %}
+        <p class="text-center text-muted">No Requests</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

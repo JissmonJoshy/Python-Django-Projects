@@ -1,0 +1,156 @@
+{% extends 'common/admincommon.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>alert('{{ m }}');</script>
+{% endfor %}
+
+<main class="container py-5">
+
+    <h2 class="text-center mb-4 text-primary fw-bold">
+        Marriage Certificate Requests
+    </h2>
+
+    {% if res %}
+    {% for data in res %}
+
+    <div class="card shadow-lg mb-4 border-0">
+        <div class="card-body">
+
+            <!-- Title -->
+            <h4 class="text-center text-success fw-bold mb-3">
+                {{ data.bridename }}   ||   {{ data.groomname }}
+            </h4>
+
+            <!-- OTP STATUS -->
+            <div class="text-center mb-3">
+                {% if data.is_verified %}
+                    <span class="badge bg-success">OTP Verified</span>
+                {% else %}
+                    <span class="badge bg-warning text-dark">OTP Not Verified</span>
+                {% endif %}
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Bride -->
+                <div class="col-md-6">
+                    <div class="card border-primary h-100">
+                        <div class="card-header bg-primary text-white text-center">
+                            Bride Details
+                        </div>
+                        <div class="card-body">
+
+                            <p><strong>Name:</strong> {{ data.bridename }}</p>
+                            <p><strong>Father:</strong> {{ data.bridefather }}</p>
+                            <p><strong>Mother:</strong> {{ data.bridemother }}</p>
+                            <p><strong>DOB:</strong> {{ data.bridedob }}</p>
+                            <p><strong>Address:</strong> {{ data.brideaddress }}</p>
+
+                            {% if data.idproofbride %}
+                            <a href="{{ data.idproofbride.url }}" target="_blank"
+                               class="btn btn-outline-primary btn-sm w-100">
+                                View Bride ID Proof
+                            </a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Groom -->
+                <div class="col-md-6">
+                    <div class="card border-success h-100">
+                        <div class="card-header bg-success text-white text-center">
+                            Groom Details
+                        </div>
+                        <div class="card-body">
+
+                            <p><strong>Name:</strong> {{ data.groomname }}</p>
+                            <p><strong>Father:</strong> {{ data.groomfather }}</p>
+                            <p><strong>Mother:</strong> {{ data.groommother }}</p>
+                            <p><strong>DOB:</strong> {{ data.groomdob }}</p>
+                            <p><strong>Address:</strong> {{ data.groomaddress }}</p>
+
+                            {% if data.idproofgroom %}
+                            <a href="{{ data.idproofgroom.url }}" target="_blank"
+                               class="btn btn-outline-success btn-sm w-100">
+                                View Groom ID Proof
+                            </a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="my-4">
+
+            <!-- Marriage Details -->
+            <div class="row">
+
+                <div class="col-md-6">
+                    <h5 class="text-secondary">Marriage Details</h5>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Date:</strong> {{ data.marriagedate }}</li>
+                        <li class="list-group-item"><strong>Place:</strong> {{ data.marriageplace }}</li>
+                        <li class="list-group-item"><strong>Type:</strong> {{ data.marriagetype }}</li>
+                        <li class="list-group-item"><strong>District:</strong> {{ data.district }}</li>
+
+                        {% if data.taluk %}
+                        <li class="list-group-item"><strong>Taluk:</strong> {{ data.taluk }}</li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <!-- Applicant -->
+                <div class="col-md-6">
+                    <h5 class="text-secondary">Applicant Details</h5>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Name:</strong> {{ data.user.name }}</li>
+                        <li class="list-group-item"><strong>Phone:</strong> {{ data.user.phone_number }}</li>
+                        <li class="list-group-item"><strong>Email:</strong> {{ data.user.email }}</li>
+                        <li class="list-group-item"><strong>Relation:</strong> {{ data.relation }}</li>
+                        <li class="list-group-item"><strong>Address:</strong> {{ data.address }}</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="d-flex justify-content-center mt-4 gap-3">
+
+                {% if data.is_verified %}
+                    <a href="/forwardmarriage?id={{ data.id }}" 
+                       class="btn btn-success px-4">
+                        Forward
+                    </a>
+                {% else %}
+                    <button class="btn btn-secondary px-4" disabled>
+                        Not Verified
+                    </button>
+                {% endif %}
+
+                <a href="/deletemarriage?id={{ data.id }}" 
+                   class="btn btn-danger px-4">
+                    Reject
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+    {% endfor %}
+    {% else %}
+        <p class="text-center text-muted">No requests available</p>
+    {% endif %}
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'common/usercommon.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>alert('{{ m }}');</script>
+{% endfor %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow p-4">
+                <h2 class="text-center mb-3">Payment</h2>
+                <p class="text-center text-danger">
+                    Service charge of ₹25 will be deducted
+                </p>
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <input type="text"
+                               class="form-control"
+                               name="name"
+                               placeholder="Card Holder Name"
+                               pattern="[A-Za-z ]+"
+                               required>
+                    </div>
+
+                    <!-- Card Number -->
+                    <div class="mb-3">
+                        <input type="text"
+                               class="form-control"
+                               name="number"
+                               placeholder="Card Number (16 digits)"
+                               maxlength="16"
+                               pattern="\d{16}"
+                               inputmode="numeric"
+                               required>
+                    </div>
+
+                    <!-- CVV -->
+                    <div class="mb-3">
+                        <input type="password"
+                               class="form-control"
+                               name="cvv"
+                               placeholder="CVV (3 digits)"
+                               maxlength="3"
+                               pattern="\d{3}"
+                               inputmode="numeric"
+                               required>
+                    </div>
+
+                    <!-- Expiry -->
+                    <div class="mb-3">
+                        <input type="month"
+                               class="form-control"
+                               name="expiry"
+                               id="expiry"
+                               required>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary w-100">
+                            Pay Now
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS for expiry validation -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let expiryInput = document.getElementById("expiry");
+
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = String(today.getMonth() + 1).padStart(2, '0');
+
+    let minDate = year + "-" + month;
+    expiryInput.setAttribute("min", minDate);
+});
+</script>
+
+{% endblock %}

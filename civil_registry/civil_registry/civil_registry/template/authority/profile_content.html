@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center text-primary mb-4">Authority Profile</h2>
+
+        <ul class="list-group">
+            <li class="list-group-item"><b>Name:</b> {{ auth.name }}</li>
+            <li class="list-group-item"><b>Email:</b> {{ auth.email }}</li>
+            <li class="list-group-item"><b>Phone:</b> {{ auth.phone_number }}</li>
+            <li class="list-group-item"><b>District:</b> {{ auth.district }}</li>
+            <li class="list-group-item"><b>Taluk:</b> {{ auth.taluk }}</li>
+            <li class="list-group-item">
+                <b>Password:</b>
+                <span id="pwd">••••••••</span>
+                <button onclick="togglePwd()" class="btn btn-sm btn-secondary ms-2">Show</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+function togglePwd(){
+    let p = document.getElementById("pwd");
+    if(p.innerText==="••••••••"){
+        p.innerText = "{{ login.viewpassword }}";
+    }else{
+        p.innerText = "••••••••";
+    }
+}
+</script>

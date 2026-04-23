@@ -1,0 +1,111 @@
+{% extends 'common/registrarcommon.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>alert('{{ m }}');</script>
+{% endfor %}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Death Certificate Requests</h2>
+
+    {% for data in res %}
+    <div class="card shadow mb-4">
+        <div class="card-body">
+
+            <h4 class="text-center text-danger">{{ data.death.name }}</h4>
+
+            <!-- BASIC DETAILS -->
+            <p><b>Father:</b> {{ data.death.father }}</p>
+            <p><b>Mother:</b> {{ data.death.mother }}</p>
+            <p><b>Gender:</b> {{ data.death.gender }}</p>
+            <p><b>DOB:</b> {{ data.death.dob }}</p>
+            <p><b>DOD:</b> {{ data.death.dod }}</p>
+            <p><b>Death Place:</b> {{ data.death.deathplace }}</p>
+            <p><b>Death Type:</b> {{ data.death.death }}</p>
+
+            <hr>
+
+            <!-- FAMILY DETAILS -->
+            <h5>Family Details</h5>
+            <p><b>Father Phone:</b> {{ data.death.father_phone }}</p>
+            <p><b>Mother Phone:</b> {{ data.death.mother_phone }}</p>
+            <p><b>Father Email:</b> {{ data.death.father_email }}</p>
+            <p><b>Mother Email:</b> {{ data.death.mother_email }}</p>
+
+            <p><b>Father Address:</b> {{ data.death.father_address }}</p>
+            <p><b>Mother Address:</b> {{ data.death.mother_address }}</p>
+
+            <p><b>Father Blood:</b> {{ data.death.father_blood }}</p>
+            <p><b>Mother Blood:</b> {{ data.death.mother_blood }}</p>
+
+            <hr>
+
+            <!-- APPLICANT -->
+            <h5>Applicant</h5>
+            <p><b>Name:</b> {{ data.death.user.name }}</p>
+            <p><b>Phone:</b> {{ data.death.user.phone_number }}</p>
+            <p><b>Email:</b> {{ data.death.user.email }}</p>
+            <p><b>Relation:</b> {{ data.death.relation }}</p>
+
+            <hr>
+
+            <!-- FILES -->
+            {% if data.death.idproof %}
+                <a href="{{ data.death.idproof.url }}" target="_blank" class="btn btn-sm btn-outline-primary">User ID</a>
+            {% endif %}
+
+            {% if data.death.father_idproof %}
+                <a href="{{ data.death.father_idproof.url }}" target="_blank" class="btn btn-sm btn-outline-success">Father Proof</a>
+            {% endif %}
+
+            {% if data.death.mother_idproof %}
+                <a href="{{ data.death.mother_idproof.url }}" target="_blank" class="btn btn-sm btn-outline-warning">Mother Proof</a>
+            {% endif %}
+
+            <hr>
+
+            <!-- STATUS -->
+            <p>
+                <b>Status:</b>
+                {% if data.death.status == 'approved' %}
+                    <span class="badge bg-success">Approved</span>
+                {% else %}
+                    <span class="badge bg-warning">Pending</span>
+                {% endif %}
+            </p>
+
+            <!-- ACTION -->
+            <div class="text-center mt-3">
+
+                {% if data.death.status != 'approved' %}
+                <form method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="hidden" name="bid" value="{{ data.id }}">
+                    <input type="hidden" name="action" value="approve">
+                    <button class="btn btn-success">Approve & Generate PDF</button>
+                </form>
+                {% endif %}
+
+                {% if data.death.certificate %}
+                    <a href="{{ data.death.certificate.url }}" target="_blank"
+                       class="btn btn-primary mt-2">
+                        Download Certificate
+                    </a>
+                {% endif %}
+
+                <!-- REJECT -->
+                <a href="/deletedeathreg?id={{ data.death.id }}"
+                   class="btn btn-danger mt-2">
+                   Reject
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

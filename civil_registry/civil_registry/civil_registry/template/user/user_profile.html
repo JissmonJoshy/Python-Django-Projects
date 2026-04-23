@@ -1,0 +1,70 @@
+{% extends 'common/usercommon.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>alert('{{m}}')</script>
+{% endfor %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow-lg rounded-4 p-4">
+                
+                <h2 class="text-center text-primary mb-4">User Profile</h2>
+
+                <div class="row">
+                    
+                    <!-- LEFT SIDE -->
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Name:</strong> {{ user.name }}</li>
+                            <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+                            <li class="list-group-item"><strong>Phone:</strong> {{ user.phone_number }}</li>
+                            <li class="list-group-item"><strong>District:</strong> {{ user.district }}</li>
+                        </ul>
+                    </div>
+
+                    <!-- RIGHT SIDE -->
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Aadhar:</strong> {{ user.aadhar }}</li>
+                            <li class="list-group-item"><strong>Address:</strong> {{ user.address }}</li>
+                            <li class="list-group-item">
+                                <strong>Password:</strong> 
+                                <span id="passwordField">••••••••</span>
+                                
+                                <button class="btn btn-sm btn-outline-secondary ms-2" onclick="togglePassword()">
+                                    Show
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- BUTTONS -->
+                <br>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<br><br>
+<!-- JS TO TOGGLE PASSWORD -->
+<script>
+function togglePassword() {
+    var field = document.getElementById("passwordField");
+
+    if (field.innerText === "••••••••") {
+        field.innerText = "{{ login.viewpassword }}";
+    } else {
+        field.innerText = "••••••••";
+    }
+}
+</script>
+
+{% endblock %}

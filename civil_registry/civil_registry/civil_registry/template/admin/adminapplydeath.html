@@ -1,0 +1,140 @@
+{% extends 'common/admincommon.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>alert('{{ m }}');</script>
+{% endfor %}
+
+<main class="container py-5">
+    <h1 class="text-center mb-4">Death Certificate Requests</h1>
+
+    {% if res %}
+    {% for data in res %}
+    <div class="card shadow-lg mb-4">
+        <div class="card-body">
+
+            <h3 class="text-center text-primary fw-bold">{{ data.name }}</h3>
+
+            <div class="row mt-3">
+
+                <!-- 🔹 BASIC DETAILS -->
+                <div class="col-md-6">
+                    <h5 class="text-success">Basic Details</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Father:</b> {{ data.father }}</li>
+                        <li class="list-group-item"><b>Mother:</b> {{ data.mother }}</li>
+                        <li class="list-group-item"><b>Gender:</b> {{ data.gender }}</li>
+                        <li class="list-group-item"><b>DOB:</b> {{ data.dob }}</li>
+                        <li class="list-group-item"><b>DOD:</b> {{ data.dod }}</li>
+                        <li class="list-group-item"><b>Death Place:</b> {{ data.deathplace }}</li>
+                        <li class="list-group-item"><b>Death Type:</b> {{ data.death }}</li>
+                    </ul>
+                </div>
+
+                <!-- 🔹 LOCATION + APPLICANT -->
+                <div class="col-md-6">
+                    <h5 class="text-success">Location & Applicant</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>District:</b> {{ data.district }}</li>
+
+                        {% if data.taluk %}
+                        <li class="list-group-item"><b>Taluk:</b> {{ data.taluk }}</li>
+                        {% endif %}
+
+                        <li class="list-group-item"><b>Address:</b> {{ data.address }}</li>
+                        <li class="list-group-item"><b>Relation:</b> {{ data.relation }}</li>
+
+                        <li class="list-group-item"><b>Applicant:</b> {{ data.user.name }}</li>
+                        <li class="list-group-item"><b>Phone:</b> {{ data.user.phone_number }}</li>
+                        <li class="list-group-item"><b>Email:</b> {{ data.user.email }}</li>
+                        <li class="list-group-item"><b>Aadhar:</b> {{ data.user.aadhar }}</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- 🔥 PARENT DETAILS -->
+            <div class="row mt-4">
+
+                <!-- FATHER -->
+                <div class="col-md-6">
+                    <h5 class="text-primary">Father Details</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Address:</b> {{ data.father_address }}</li>
+                        <li class="list-group-item"><b>Phone:</b> {{ data.father_phone }}</li>
+                        <li class="list-group-item"><b>Email:</b> {{ data.father_email }}</li>
+                        <li class="list-group-item"><b>Blood Group:</b> {{ data.father_blood }}</li>
+                    </ul>
+
+                    <div class="mt-2 text-center">
+                        {% if data.father_idproof %}
+                            <a href="{{ data.father_idproof.url }}" target="_blank"
+                               class="btn btn-outline-secondary btn-sm">
+                                View Father ID Proof
+                            </a>
+                        {% else %}
+                            <p class="text-danger small">No Father ID Proof</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- MOTHER -->
+                <div class="col-md-6">
+                    <h5 class="text-primary">Mother Details</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Address:</b> {{ data.mother_address }}</li>
+                        <li class="list-group-item"><b>Phone:</b> {{ data.mother_phone }}</li>
+                        <li class="list-group-item"><b>Email:</b> {{ data.mother_email }}</li>
+                        <li class="list-group-item"><b>Blood Group:</b> {{ data.mother_blood }}</li>
+                    </ul>
+
+                    <div class="mt-2 text-center">
+                        {% if data.mother_idproof %}
+                            <a href="{{ data.mother_idproof.url }}" target="_blank"
+                               class="btn btn-outline-secondary btn-sm">
+                                View Mother ID Proof
+                            </a>
+                        {% else %}
+                            <p class="text-danger small">No Mother ID Proof</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 🔹 MAIN DOCUMENT -->
+            <div class="text-center mt-4">
+                <h5 class="text-success">Main Document</h5>
+
+                {% if data.idproof %}
+                    <a href="{{ data.idproof.url }}" target="_blank"
+                       class="btn btn-outline-primary">
+                        View Uploaded ID Proof
+                    </a>
+                {% else %}
+                    <p class="text-danger">No ID Proof Uploaded</p>
+                {% endif %}
+            </div>
+
+            <!-- 🔹 STATUS -->
+            <div class="text-center mt-3">
+                <span class="badge bg-warning text-dark">OTP Verified: {{ data.is_verified }}</span>
+            </div>
+
+            <!-- 🔹 ACTIONS -->
+            <div class="d-flex justify-content-center mt-4">
+                <a href="/forwarddeath?id={{ data.id }}" class="btn btn-success me-3">Forward</a>
+                <a href="/deletedeathreg?id={{ data.id }}" class="btn btn-danger">Reject</a>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="text-center text-muted">No requests available.</p>
+    {% endif %}
+</main>
+
+{% endblock %}

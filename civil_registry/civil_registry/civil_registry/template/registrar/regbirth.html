@@ -1,0 +1,116 @@
+{% extends 'common/registrarcommon.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>alert('{{ m }}');</script>
+{% endfor %}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Birth Requests</h2>
+
+    {% if res %}
+    {% for data in res %}
+    <div class="card shadow mb-4">
+        <div class="card-body">
+
+            <h4 class="text-center text-primary">{{ data.birth.name }}</h4>
+
+            <!-- BASIC -->
+            <p><b>Father:</b> {{ data.birth.father }}</p>
+            <p><b>Mother:</b> {{ data.birth.mother }}</p>
+            <p><b>Gender:</b> {{ data.birth.gender }}</p>
+            <p><b>DOB:</b> {{ data.birth.dob }}</p>
+            <p><b>Birth Place:</b> {{ data.birth.birthplace }}</p>
+            <p><b>Birth Type:</b> {{ data.birth.birth }}</p>
+
+            <hr>
+
+            <!-- EXTRA -->
+            <h5>Family Details</h5>
+            <p><b>Father Phone:</b> {{ data.birth.father_phone }}</p>
+            <p><b>Mother Phone:</b> {{ data.birth.mother_phone }}</p>
+            <p><b>Father Email:</b> {{ data.birth.father_email }}</p>
+            <p><b>Mother Email:</b> {{ data.birth.mother_email }}</p>
+
+            <p><b>Father Address:</b> {{ data.birth.father_address }}</p>
+            <p><b>Mother Address:</b> {{ data.birth.mother_address }}</p>
+
+            <p><b>Father Blood:</b> {{ data.birth.father_blood }}</p>
+            <p><b>Mother Blood:</b> {{ data.birth.mother_blood }}</p>
+            <p><b>Child Blood:</b> {{ data.birth.child_blood }}</p>
+
+            <hr>
+
+            <!-- FILES -->
+            {% if data.birth.idproof %}
+            <a href="{{ data.birth.idproof.url }}" target="_blank" class="btn btn-sm btn-outline-primary">User ID</a>
+            {% endif %}
+
+            {% if data.birth.father_idproof %}
+            <a href="{{ data.birth.father_idproof.url }}" target="_blank" class="btn btn-sm btn-outline-success">Father Proof</a>
+            {% endif %}
+
+            {% if data.birth.mother_idproof %}
+            <a href="{{ data.birth.mother_idproof.url }}" target="_blank" class="btn btn-sm btn-outline-warning">Mother Proof</a>
+            {% endif %}
+
+            <hr>
+
+            <!-- STATUS -->
+            <p>
+                <b>Status:</b>
+                {% if data.birth.status == 'approved' %}
+                    <span class="badge bg-success">Approved</span>
+                {% elif data.birth.status == 'rejected' %}
+                    <span class="badge bg-danger">Rejected</span>
+                {% else %}
+                    <span class="badge bg-warning">Pending</span>
+                {% endif %}
+            </p>
+
+            <!-- ACTION -->
+            <div class="text-center mt-3">
+
+                {% if data.birth.status == 'forwarded' %}
+                
+                <!-- APPROVE -->
+                <form method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="bid" value="{{ data.id }}">
+                    <input type="hidden" name="action" value="approve">
+                    <button class="btn btn-success">Approve & Generate PDF</button>
+                </form>
+
+                <!-- REJECT -->
+                <a href="/deletebirthreg?id={{ data.id }}" 
+                   class="btn btn-danger"
+                   onclick="return confirm('Reject this application?')">
+                    Reject
+                </a>
+
+                {% endif %}
+
+                <!-- DOWNLOAD -->
+                {% if data.birth.certificate %}
+                <div class="mt-2">
+                    <a href="{{ data.birth.certificate.url }}" 
+                       target="_blank" 
+                       class="btn btn-primary">
+                        Download Certificate
+                    </a>
+                </div>
+                {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="text-center text-muted">No requests available</p>
+    {% endif %}
+</div>
+
+{% endblock %}

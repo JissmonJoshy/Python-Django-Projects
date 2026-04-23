@@ -1,0 +1,107 @@
+{% extends 'common/admincommon.html' %}
+
+{% load static %} 
+{% block content %}
+{% for m in messages %} 
+<script>
+    alert('{{m}}');
+</script>
+{% endfor %}
+<br><br><br>
+<main class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="card shadow-lg p-5 rounded-4 w-50">
+        <h2 class="text-center text-primary fw-bold mb-4">Add Registrar</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Officer in Charge</label>
+                <input type="text" class="form-control" placeholder="Officer in Charge" name="name" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="Email" name="email" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" minlength="10" pattern="[789][0-9]{9}" maxlength="10" placeholder="Phone Number" name="phone" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">District</label>
+                <select id="district" name="district" class="form-select">
+                    <option value="Alappuzha">Alappuzha</option>
+                    <option value="Ernakulam">Ernakulam</option>
+                    <option value="Idukki">Idukki</option>
+                    <option value="Kannur">Kannur</option>
+                    <option value="Kasaragod">Kasaragod</option>
+                    <option value="Kollam">Kollam</option>
+                    <option value="Kottayam">Kottayam</option>
+                    <option value="Kozhikode">Kozhikode</option>
+                    <option value="Malappuram">Malappuram</option>
+                    <option value="Palakkad">Palakkad</option>
+                    <option value="Pathanamthitta">Pathanamthitta</option>
+                    <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                    <option value="Thrissur">Thrissur</option>
+                    <option value="Wayanad">Wayanad</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Taluk</label>
+                <select class="form-select" name="taluk" id="taluk">
+                    <!-- Taluk options will be populated dynamically -->
+                </select>
+            </div>
+
+          
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Register Now</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<script>
+    const taluksByDistrict = {
+        "Thiruvananthapuram": ["Neyyattinkara", "Kattakkada", "Nedumangadu", "Thiruvananthapuram", "Chirayinkeezhu", "Varkala"],
+        "Kollam": ["Kollam", "Kunnathoor", "Karunagappally", "Kottarakkara", "Punalur"],
+        "Pathanamthitta": ["Adoor", "Konni", "Kozhencherry", "Ranni"],
+        "Alappuzha": ["Chenganoor", "Mavelikkara", "Karthikappally", "Kuttanad", "Ambalappuzha", "Cherthala"],
+        "Kottayam": ["Changanasserry", "Kottayam", "Vaikom", "Meenachil", "Kanjirappally"],
+        "Idukki": ["Peermade", "Udumbanchola", "Idukki", "Thodupuzha", "Devikulam"],
+        "Ernakulam": ["Kothamangalam", "Muvattupuzha", "Kunnathunad", "Kanayannur", "Kochi", "North Paravur", "Aluva"],
+        "Thrissur": ["Chalakudy", "Mukundapuram", "Kodungallur", "Thrissur", "Chavakkad", "Kunnamkulam", "Thalapilly"],
+        "Palakkad": ["Alathoor", "Chittur", "Palakkad", "Pattambi", "Ottappalam", "Mannarkkad"],
+        "Malappuram": ["Attappady", "Perinthalmanna", "Nilambur", "Eranad", "Kondotty", "Ponnani", "Tirur"],
+        "Kozhikode": ["Thamarassery", "Koyilandy", "Vatakara", "Kozhikode"],
+        "Wayanad": ["Vythiri", "Sulthan Bathery", "Mananthavady"],
+        "Kannur": ["Thalassery", "Iritty", "Kannur", "Taliparamba", "Payyanur"],
+        "Kasaragod": ["Hosdurg", "Vellarikundu", "Kasaragod", "Manjeshwaram"]
+    };
+
+    const districtSelect = document.getElementById('district');
+    const talukSelect = document.getElementById('taluk');
+
+    districtSelect.addEventListener('change', () => {
+        const selectedDistrict = districtSelect.value;
+        const taluks = taluksByDistrict[selectedDistrict] || [];
+
+        talukSelect.innerHTML = '';
+
+        taluks.forEach((taluk) => {
+            const option = document.createElement('option');
+            option.value = taluk;
+            option.textContent = taluk;
+            talukSelect.appendChild(option);
+        });
+    });
+
+    // Trigger change event to populate the taluk options on page load
+    districtSelect.dispatchEvent(new Event('change'));
+</script>
+<br><br><br>
+                    
+{% endblock %}

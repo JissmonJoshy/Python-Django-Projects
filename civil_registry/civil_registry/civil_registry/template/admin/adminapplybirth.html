@@ -1,0 +1,119 @@
+{% extends 'common/admincommon.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>alert('{{m}}');</script>
+{% endfor %}
+
+<main class="container py-5">
+    <h1 class="text-center mb-4">Birth Applications</h1>
+
+    {% for data in res %}
+    <div class="card shadow-lg mb-4">
+        <div class="card-body">
+
+            <h3 class="text-center text-primary">{{ data.name }}</h3>
+
+            <div class="row mt-3">
+
+                <!-- CHILD DETAILS -->
+                <div class="col-md-6">
+                    <h5 class="text-success">Child Details</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Gender:</b> {{ data.gender }}</li>
+                        <li class="list-group-item"><b>DOB:</b> {{ data.dob }}</li>
+                        <li class="list-group-item"><b>Blood Group:</b> {{ data.child_blood }}</li>
+                        <li class="list-group-item"><b>Birth Place:</b> {{ data.birthplace }}</li>
+                        <li class="list-group-item"><b>Birth Type:</b> {{ data.birth }}</li>
+                        <li class="list-group-item"><b>District:</b> {{ data.district }}</li>
+                        <li class="list-group-item"><b>Taluk:</b> {{ data.taluk }}</li>
+                    </ul>
+                </div>
+
+                <!-- PARENT DETAILS -->
+                <div class="col-md-6">
+                    <h5 class="text-success">Father Details</h5>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item"><b>Name:</b> {{ data.father }}</li>
+                        <li class="list-group-item"><b>Phone:</b> {{ data.father_phone }}</li>
+                        <li class="list-group-item"><b>Email:</b> {{ data.father_email }}</li>
+                        <li class="list-group-item"><b>Address:</b> {{ data.father_address }}</li>
+                        <li class="list-group-item"><b>Blood Group:</b> {{ data.father_blood }}</li>
+                    </ul>
+
+                    <h5 class="text-success">Mother Details</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Name:</b> {{ data.mother }}</li>
+                        <li class="list-group-item"><b>Phone:</b> {{ data.mother_phone }}</li>
+                        <li class="list-group-item"><b>Email:</b> {{ data.mother_email }}</li>
+                        <li class="list-group-item"><b>Address:</b> {{ data.mother_address }}</li>
+                        <li class="list-group-item"><b>Blood Group:</b> {{ data.mother_blood }}</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- APPLICANT DETAILS -->
+            <div class="mt-4">
+                <h5 class="text-success">Applicant Details</h5>
+                <ul class="list-group">
+                    <li class="list-group-item"><b>Name:</b> {{ data.user.name }}</li>
+                    <li class="list-group-item"><b>Email:</b> {{ data.user.email }}</li>
+                    <li class="list-group-item"><b>Phone:</b> {{ data.user.phone_number }}</li>
+                    <li class="list-group-item"><b>Aadhar:</b> {{ data.user.aadhar }}</li>
+                    <li class="list-group-item"><b>Address:</b> {{ data.user.address }}</li>
+                    <li class="list-group-item"><b>Relation:</b> {{ data.relation }}</li>
+                </ul>
+            </div>
+
+            <!-- DOCUMENTS -->
+            <div class="mt-4 text-center">
+                <h5 class="text-success">Documents</h5>
+
+                {% if data.idproof %}
+                    <a href="{{ data.idproof.url }}" target="_blank" class="btn btn-outline-primary m-1">
+                        Child ID Proof
+                    </a>
+                {% else %}
+                    <p class="text-danger">No Child ID Proof</p>
+                {% endif %}
+
+                {% if data.father_idproof %}
+                    <a href="{{ data.father_idproof.url }}" target="_blank" class="btn btn-outline-secondary m-1">
+                        Father ID Proof
+                    </a>
+                {% else %}
+                    <p class="text-danger">No Father ID Proof</p>
+                {% endif %}
+
+                {% if data.mother_idproof %}
+                    <a href="{{ data.mother_idproof.url }}" target="_blank" class="btn btn-outline-secondary m-1">
+                        Mother ID Proof
+                    </a>
+                {% else %}
+                    <p class="text-danger">No Mother ID Proof</p>
+                {% endif %}
+            </div>
+            <!-- OTP STATUS -->
+            <div class="text-center mb-3">
+                {% if data.is_verified %}
+                    <span class="badge bg-success">OTP Verified</span>
+                {% else %}
+                    <span class="badge bg-danger">OTP Not Verified</span>
+                {% endif %}
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="text-center mt-4">
+                <a href="/forwardbirth?id={{data.id}}" class="btn btn-success me-3">Forward</a>
+                <a href="/deletebirth?id={{data.id}}" class="btn btn-danger">Reject</a>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</main>
+
+{% endblock %}

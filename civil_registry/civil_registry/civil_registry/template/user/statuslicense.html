@@ -1,0 +1,79 @@
+{% extends 'common/usercommon.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <!-- Messages -->
+    {% if messages %}
+        {% for m in messages %}
+        <div class="alert alert-info text-center">{{ m }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <h2 class="text-center mb-4">Driving License Status</h2>
+
+    {% if not res and not resul and not result %}
+        <div class="alert alert-warning text-center">
+            No License Application Status Available
+        </div>
+    {% endif %}
+
+    <!-- ================= PENDING ================= -->
+    <h4 class="text-warning mt-4">Pending Applications</h4>
+
+    {% for data in res %}
+    <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+            <h5>{{ data.name }}</h5>
+            <p><b>Date:</b> {{ data.date }}</p>
+            <p><b>Status:</b> {{ data.status }}</p>
+
+            <a href="/withdrawlicense?id={{ data.id }}" class="btn btn-danger btn-sm">
+                Withdraw
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- ================= FORWARDED ================= -->
+    <h4 class="text-primary mt-4">Forwarded Applications</h4>
+
+    {% for data in resul %}
+    <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+            <h5>{{ data.name }}</h5>
+            <p><b>Date:</b> {{ data.date }}</p>
+            <p><b>Status:</b> {{ data.status }}</p>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- ================= APPROVED ================= -->
+    <h4 class="text-success mt-4">Approved Applications</h4>
+
+    {% for data in result %}
+    <div class="card mb-3 shadow-sm border-success">
+        <div class="card-body">
+            <h5>{{ data.name }}</h5>
+            <p><b>Date:</b> {{ data.date }}</p>
+            <p><b>Status:</b> {{ data.status }}</p>
+
+            <!-- ✅ PDF DOWNLOAD SECTION -->
+            {% if data.certificate %}
+                <a href="{{ data.certificate.url }}" target="_blank"
+                   class="btn btn-success btn-sm">
+                    Download License PDF
+                </a>
+            {% else %}
+                <p class="text-danger">Certificate not generated yet</p>
+            {% endif %}
+
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
